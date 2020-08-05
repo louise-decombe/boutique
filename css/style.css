@@ -1,0 +1,605 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600;700;900&display=swap');
+
+
+*{
+ margin: 0;
+ padding: 0;
+ list-style: none;
+ text-decoration: none;
+ font-family: 'Kameron', serif;
+}
+
+body{
+ width: 100%;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** HEADER ***/
+
+#toplogo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5%;
+}
+
+#toplogo h1{
+  font-size: 2.2em;
+  font-weight: 550;
+  letter-spacing: 1.7px;
+}
+
+#first-nav{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#first-nav h2{
+  font-size: 1.4em;
+  font-weight: 400;
+  font-family: 'Noto Serif JP', serif;
+  margin-left: 8.5%;
+  letter-spacing: 1px;
+}
+
+#first-nav nav ul{
+  display: flex;
+}
+
+#first-nav nav ul i{
+  font-size: 25px;
+  color: gainsboro;
+  font-weight: 200;
+  padding-right: 20px;
+}
+
+/* loupe-search anim*/
+#search-form{
+  transform: translate(0,50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 25px; 
+}
+
+#loupe{
+  display: flex;
+  margin-top: -1.7%;
+}
+
+.search{
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 50px;
+  outline: none;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+}
+
+.fa{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: gainsboro;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+#search-form:hover{
+  width: 300px;
+  cursor: pointer;
+}
+
+#search-form:hover input{
+  display: block;
+}
+
+#search-form:hover .fa{
+  background: gainsboro;
+  color: white;
+}
+
+
+
+/***RESPONSIVE HEADER ***/
+@media (max-width: 780px) {
+
+
+}
+
+@media (max-width: 980px){
+
+  #toplogo h1{
+    margin-top: 2.5%;
+    font-size: 1.8em;
+  }
+
+  #first-nav h2{
+    font-size: 0.9em;
+  }
+
+  #first-nav nav ul i{
+    font-size: 15px;
+    padding-right: 12.5px;
+  }
+
+  #loupe{
+    margin-top: -7%;
+  }
+
+  .fa{
+    font-size: 0.8em;
+  }
+
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/*** FOOTER ***/
+
+
+
+/***RESPONSIVE FOOTER***/
+@media (max-width: 780px) {
+
+
+}
+
+@media (max-width: 980px){
+ 
+
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** INDEX ***/
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** AVIS FROM INDEX***/
+
+
+/*** RESPONSIVE INDEX ***/
+
+@media screen and (max-width:980px){
+
+ 
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** INSCRIPTION ***/
+
+#container-register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-register form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid gray;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  width: 40%;
+  padding-bottom: 2.5%;
+  box-shadow: 0 0 7px #00000070;
+}
+
+#container-register form h3{
+  display: flex;
+  padding-top: 5%;
+  padding-bottom: 1.5%;
+  font-family: 'Exo', sans-serif;
+  letter-spacing: 1px;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1.5%;
+}
+
+#box-form input[type=text],
+#box-form input[type=tel]{
+  height: 25px;
+  border: 1px solid #B1C2BE;
+  font-family: 'Exo', sans-serif;
+  border-radius: 2px;
+  color: #B1C2BE;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 3px;
+  margin-bottom: 5%;
+  width: 100%;
+  background: #F9FDF6;
+}
+
+#container-register form button{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+#container-register form button:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}
+
+#box-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+#box-gender{
+  display: flex;
+  align-items: center;
+  margin-top: 2.5%;
+  margin-bottom: 1.5%;
+  margin-left: -5.5%;
+  width: 100%;
+}
+
+#box-gender label{
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+#box-gender input[type=radio]{
+  margin-left: 25px;
+}
+
+#box-password{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#box-password label{
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+#box-password input[type=password]{
+  height: 25px;
+  border: 1px solid #B1C2BE;
+  font-family: 'Exo', sans-serif;
+  border-radius: 2px;
+  color: #B1C2BE;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 3px;
+  margin-bottom: 5%;
+  background: #F9FDF6;
+}
+
+#box-newsletter{
+  display: flex;
+  align-items: center;
+  margin-left: -20.5%;
+  margin-bottom: 2.5%;
+}
+
+#box-newsletter label{
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+
+
+/*** RESPONSIVE INSCRIPTION ***/
+@media (max-width: 980px){
+
+#container-register form{
+  width: 90%;
+  margin-top: 10%;
+}
+
+#box-gender{
+  margin-left: -1.5%;
+  margin-top: 5%;
+}
+#box-gender label{
+  margin-left: 7px;
+  font-size: 10px;
+}
+#box-gender input[type=radio]{
+  margin-left: 15px;
+}
+#box-password label{
+  font-size: 10px;
+}
+#box-newsletter{
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
+#container-register form button{
+  width: 80%;
+  font-size: 0.8em;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+}
+
+@media screen and (max-width:800px){
+ 
+}
+@media screen and (max-width:500px){
+ 
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** CONNEXION ***/
+#container-connect{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-connect form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.5px solid gray;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  width: 40%;
+  padding-bottom: 2.5%;
+  height: 65vh;
+  box-shadow: 0 0 7px #00000070;
+}
+
+#container-connect form h4{
+  display: flex;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  justify-content: center;
+  border: 0.5px solid gray;
+  margin-top: 10%;
+  margin-bottom: 7.5%;
+  width: 75%;
+}
+
+#new-user{
+  display: flex;
+  padding-bottom: 1.5%;
+  font-family: 'Exo', sans-serif;
+  letter-spacing: 1px;
+  justify-content: space-around;
+  margin-bottom: 1.5%;
+  width: 100%;
+}
+
+
+#new-user h3{
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  font-weight: 400;
+  width: 50%;
+}
+
+#new-user a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#F9FDF6;
+  color: black;
+  border-bottom: 0.5px solid gray;
+  border-left: 1px solid gray;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  width: 50%;
+}
+
+#new-user a:hover{
+  background-color: black;
+  color: #00FF00;
+  transition: 1.5s;
+}
+
+#box-connect{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 75%;
+  height: 30%;
+}
+
+#box-connect a{
+  display: flex;
+  justify-content: flex-end;
+  color: #B1C2BE;
+  margin-bottom: 5%;
+  font-size: 12px;
+}
+
+#box-connect a:hover{
+  color: black;
+  transition: 1.5s;
+}
+
+#box-connect input[type=password],
+#box-connect input[type=text]{
+  height: 25px;
+  border: 1px solid #B1C2BE;
+  font-family: 'Exo', sans-serif;
+  border-radius: 2px;
+  color: #B1C2BE;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 3px;
+  background: #F9FDF6;
+}
+
+#container-connect form button{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  font-size: 1em;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
+
+#container-connect form button:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}
+
+#linkconnect{
+  display: flex;
+  color:#B1C2BE;
+  margin-top: 2.5%;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+#linkconnect:hover{
+  color: black;
+  transition: 1.5s;
+}
+
+
+/*** RESPONSIVE CONNEXION ***/
+@media (max-width: 980px){
+  #container-connect form{
+    margin-top: 10%;
+    width: 90%;
+    padding-bottom: 0;
+  }
+
+  #new-user h3{
+  align-items: center;
+  font-size: 12px;
+  }
+
+  #new-user a{
+    font-size: 12px;
+  }
+
+  #container-connect form h4{
+    font-size: 13px;
+    text-align: center;
+    width: 80%;
+  }
+
+  #box-connect{
+    width: 80%;
+  }
+
+  #linkconnect{
+    font-size: 0.6em;
+    margin-top: 5%;
+  }
+  #container-connect form button{
+    font-size: 0.8em;
+  }
+  
+
+}
+
+@media screen and (max-width:500px){
+ 
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** ADMIN  ***/
+
+
+/*** RESPONSIVE ADMIN ***/
+
+
+@media (max-width: 980px)
+{
+
+    
+    
+}
+
+
+@media screen and (max-width:500px){
+ 
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** PROFIL  ***/
+
+
+/*** RESPONSIVE PROFIL ***/
+
+
+@media (max-width: 980px){
+
+}
+
+@media screen and (max-width:700px){
+   
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** PANIER EN COURS ***/
+
+
+
+
+/*** RESPONSIVE PANIER EN COURS ***/
+@media (max-width: 980px){
+
+}
+
+@media screen and (max-width:500px){
+ 
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** FACTURATION  ***/
+
+
+/*** RESPONSIVE FACTURATION ***/
+@media (max-width: 980px){
+}
+
+@media screen and (max-width:800px){
+ 
+}
+@media screen and (max-width:500px){
+ 
+}
+
+
+
+
+
+
+
+
