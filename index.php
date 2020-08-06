@@ -13,7 +13,7 @@
 <body>
 <header>
     <?php
-    include("includes/header1.php");
+    include("includes/header.php");
    ?>
 </header>
 <main>
@@ -28,8 +28,11 @@
   				// la boucle qui démarre permet d'afficher les articles ?>
   				<div class="box">
   					<div class="product full">
-  						<a href="#">
-  							<img src="<?= $product->id; ?>.jpg" width="10%">
+  						<a href="item.php">
+  							<img src="img/<?= $product->id; ?>.jpg" width="10%">
+  						</a>
+              <a href="item.php?=<?php echo $product->id;?>">
+  							<?= $product->name; ?>
   						</a>
   						<div class="description">
   <a href="#">

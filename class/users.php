@@ -38,7 +38,7 @@ class Users
                 $this->password = $user['password'];
                 $this->date_registration = $user['date_registration'];
                 $this->is_admin = $user['is_admin'];
-                
+
                 $_SESSION['user'] = [
                     'id_user' =>
                         $this->id_user,
@@ -121,7 +121,7 @@ class Users
         }
         //date
         date_default_timezone_set("Europe/Paris");
-        
+
         if (empty($firstname) or empty($lastname) or empty($email) or empty($password) or empty($password_check) or empty($phone)) {
             $errors[] = "Tous les champs doivent être remplis.";
         }
@@ -146,7 +146,7 @@ class Users
             echo $message->renderMessage();
         }
     }
-    
+
     public
     function disconnect()
     {
@@ -184,7 +184,7 @@ class Users
             $q3->bindParam(':email', $email, PDO::PARAM_STR);
             $q3->execute();
             header('location:connexion.php');
-        
+
     }
 
 }

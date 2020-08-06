@@ -15,7 +15,7 @@
 <body>
 <header>
     <?php
-    include("includes/header1.php");
+    include("includes/header.php");
    ?>
 </header>
 
@@ -33,14 +33,13 @@ if(isset($_GET['search']) AND !empty($_GET['search'])) {
  }
 }
 ?>
-<form method="GET">
- <input type="search" name="search" placeholder="Recherche..." />
- <input type="submit" value="Valider" />
-</form>
+
 <?php if($articles->rowCount() > 0) { ?>
  <ul>
  <?php while($a = $articles->fetch()) { ?>
-    <li><?= $a['name'] ?></li>
+   <a href="img/<?= $a['img'] ?>"/>
+
+    <a href="item.php?id=<?php echo $a['id'] ;?>" > <li><?= $a['name'] ?></li>
     <li><?= $a['price'] ?> euros</li>
 
  <?php } ?>

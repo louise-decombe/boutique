@@ -13,13 +13,9 @@
 <body>
 <header>
     <?php
-    include("includes/header1.php");
+    include("includes/header.php");
    ?>
 </header>
-
-
-
-
 <div class="checkout">
 	<div class="title">
 		<div class="wrap">
@@ -34,7 +30,6 @@
 				<span class="name">Product name</span>
 				<span class="price">Price</span>
 				<span class="quantity">Quantity</span>
-				<span class="subtotal">Prix avec TVA</span>
 				<span class="action">Actions</span>
 			</div>
 
@@ -50,7 +45,7 @@
 			foreach($products as $product):
 			?>
 			<div class="row">
-				<a href="#" class="img"> <img src="<?= $product->id; ?>.jpg" height="53"></a>
+				<a href="#" class="img"> <img src="img/<?= $product->id; ?>.jpg" height="53"></a>
 				<span class="name"><?= $product->name; ?></span>
 				<span class="price"><?= number_format($product->price,2,',',' '); ?> €</span>
 				<span class="quantity"><input type="text" name="panier[quantity][<?= $product->id; ?>]" value="<?= $_SESSION['panier'][$product->id]; ?>"></span>

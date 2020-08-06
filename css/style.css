@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600;700;900&display=swap');
 
@@ -17,6 +16,25 @@ body{
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** HEADER ***/
+
+/******* AJOUT LOUISE DROPDOWN PANIER HEADER *********/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/****** FIN AJOUT DROPDOWN PANIER ****/
 
 #toplogo{
   display: flex;
@@ -63,7 +81,7 @@ body{
   width: 50px;
   height: 50px;
   box-sizing: border-box;
-  border-radius: 25px; 
+  border-radius: 25px;
 }
 
 #loupe{
@@ -112,6 +130,79 @@ body{
   color: white;
 }
 
+/*menu-profile*/
+.boutonmenuprincipal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 20px;
+  }
+  .boutonmenuprincipal:hover {
+  display: none;
+  }
+
+  .bottom-child {
+  display: none;
+  background-color: white;
+  border:1px solid #EEF3E9;
+  min-width: 50px;
+  margin-right: 20px;
+  }
+
+  .bottom-child a {
+  padding: 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 9px;
+  color: gray;
+  border-bottom: 1px solid #EEF3E9;
+  }
+
+  .bottom-child a:hover{
+    color: black;
+    background-color: #F9FDF6;
+    transition: 2s;
+  }
+  .bottom:hover .bottom-child {
+  display: block;
+  }
+
+  .bottom li{
+    list-style-type: none;
+  }
+
+  #bottom-title{
+    display: flex;
+    background-color: black;
+    color: #F9FDF6;
+    justify-content: center;
+    font-family: 'Exo', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #deco{
+    border:none;
+    display: flex;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    background-color: white;
+    color: gray;
+  }
+
+  #deco:hover{
+    color: black;
+    transition: 1.5s;
+    background-color: #F9FDF6;
+  }
+
 
 
 /***RESPONSIVE HEADER ***/
@@ -159,7 +250,7 @@ body{
 }
 
 @media (max-width: 980px){
- 
+
 
 }
 
@@ -175,7 +266,7 @@ body{
 
 @media screen and (max-width:980px){
 
- 
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -344,10 +435,10 @@ body{
 }
 
 @media screen and (max-width:800px){
- 
+
 }
 @media screen and (max-width:500px){
- 
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -522,12 +613,12 @@ body{
   #container-connect form button{
     font-size: 0.8em;
   }
-  
+
 
 }
 
 @media screen and (max-width:500px){
- 
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -540,18 +631,58 @@ body{
 @media (max-width: 980px)
 {
 
-    
-    
+
+
 }
 
 
 @media screen and (max-width:500px){
- 
+
 }
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** PROFIL  ***/
+
+#container-profile{
+  display: flex;
+  height: 75vh;
+  background-color:whitesmoke;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+
+#profile-infos{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  background-color:#F9FDF6;
+}
+
+#profile-title{
+  display: flex;
+  font-weight: 200;
+  font-size: 16px;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+#profile-infos p{
+  display: flex;
+  font-weight: 200;
+  font-size: 14px;
+  background-color: none;
+  border-bottom: none;
+  width: 100%;
+}
+
+#profile-infos address p{
+  display: flex;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  font-size: 12px;
+  text-transform: uppercase;
+}
 
 
 /*** RESPONSIVE PROFIL ***/
@@ -562,7 +693,7 @@ body{
 }
 
 @media screen and (max-width:700px){
-   
+
 }
 
 
@@ -578,7 +709,23 @@ body{
 }
 
 @media screen and (max-width:500px){
- 
+
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** PANIER EN COURS ***/
+
+
+
+
+/*** RESPONSIVE PANIER EN COURS ***/
+@media (max-width: 980px){
+
+}
+
+@media screen and (max-width:500px){
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -590,16 +737,8 @@ body{
 }
 
 @media screen and (max-width:800px){
- 
+
 }
 @media screen and (max-width:500px){
- 
+
 }
-
-
-
-
-
-
-
-

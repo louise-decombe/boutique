@@ -1,3 +1,9 @@
+
+<?php
+require("admin.class.php");
+include("includes/header.php");
+require("admin_nav.php")
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,35 +13,37 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+          <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <header>
-    <?php
-    include("includes/header.php");
-   ?>
+
 </header>
-    <main>
+<main>
+<div class="admin">
 
-      <?php
-       $products = $DB->query('SELECT * FROM categorie');
+<a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
+<a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
+<?php
 
-       foreach ( $products as $product ):
-         $req = $DB->query('SELECT * FROM sous_categorie');
+if(isset($_GET['utilisateurs'])){
 
-  ?>
+echo "les utilisateurs";
 
-          <h4><?= $product->nom_categorie ?></h4>
-          <a href="subcategory.php?id=<?= $product->id_categorie; ?>">Voir la catégorie</a>
-      </div>
-    <?php endforeach; ?>
+}
 
 
+if(isset($_GET['ajouter'])){
 
+echo "ajouter un utilisateur";
 
-    </main>
-    <footer>
-        <?php include('includes/footer.php'); ?>
-    </footer>
+}
+
+ ?>
+
+</div>
+
+</main>
 </body>
 </html>
