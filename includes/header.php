@@ -15,9 +15,9 @@ if (isset($_POST["deco"])) {
 }
 ?>
 <header>
-    <section id="toplogo">
+    <a id="toplogo" href="index.php">
         <h1>LOVECRAFT</h1>
-    </section>
+    </a>
     <section id="first-nav">
         <section id="loupe">
             <form id="search-form" action="">
@@ -25,34 +25,39 @@ if (isset($_POST["deco"])) {
                 <i class="fa fa-search"></i>
             </form>
         </section>
-        <h2>FANZINE BOOKSTORE</h2>
+        <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
             <ul>
-                <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
-                <li><a href="cart.php"><i class="fas fa-cart-plus"></i></a></li>
-            </ul>
-        </nav>
-    </section>
-    <section>
-        <nav>
-            <ul>
-           
-                <?php
-                if (isset($_SESSION['user'])){
-                    ?>
-                    <li><a href="profil.php">MON COMPTE</a></li>
-                    <form action="index.php" method="post">
-                        <input id="deco" name="deco" value="DECONNEXION" type="submit"/>
-                    </form>
-                    <?php
-                }else{
-                ?>
-                <li><a  href="inscription.php"></a></li>
-                <li><a  href="connexion.php"></a></li>
-            </ul>
+            <li><a href="cart.php"><i class="fas fa-cart-plus"></i></a></li>
             <?php
-            } ?>
-
+                if (isset($_SESSION['user'])){
+            ?>  
+            <li>
+                <nav class="bottom">
+                    <button class="boutonmenuprincipal"><i class="far fa-user"></i></button>
+                    <section class="bottom-child">
+                        <li id="bottom-title">bonjour @ <?= $_SESSION['user']['firstname'] ?></li>
+                        <li><a class="bottomlist" href="profil.php">MES INFORMATIONS</a></li>
+                        <li><a class="bottomlist" href="past-orders.php">MES COMMANDES</a></li>
+                        <li><a class="bottomlist" href="returns.php">MES LIVRAISONS</a></li>
+                        <li><a class="bottomlist" href="profil.php">MES MODES DE PAIEMENT</a></li>
+                        <li><a class="bottomlist" href="change-password.php">CHANGER LE MOT DE PASSE</a></li>
+                        <li><a class="bottomlist" href="whishlist.php">WHISHLIST</a></li>
+                        <li>
+                            <form action="index.php" method="post">
+                                <input id="deco" name="deco" value="DECONNEXION" type="submit"/>
+                            </form>
+                        </li>
+                    </section>
+                </nav>
+            </li>
+          
+            <?php
+                }else{
+            ?>
+                <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
+            <?php } ?>
+            </ul>
         </nav>
     </section>
 </header>
