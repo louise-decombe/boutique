@@ -65,27 +65,37 @@
             <section>
                 <h4>Espace mon compte</h4>
                 <ul>
+                <?php if (isset($_SESSION['user']['id_user'])){?>
+                    <li><a href="profil.php">mon compte client</a></li>
+                    <li><a href="profil.php">suivi de commande</a></li>
+                    <li><a href="profil.php">ma whishlist</a></li>
+                    <li><a href="faq.php">F.A.Q.</a></li>
+                                   
+                <?php }else{ ?>
+               
                     <li><a href="connexion.php">mon compte client</a></li>
                     <li><a href="connexion.php">suivi de commande</a></li>
                     <li><a href="connexion.php">ma whishlist</a></li>
-                    <li><a href="connexion.php">F.A.Q.</a></li>
+        
+                <?php } ?>
+                    <li><a href="faq.php">F.A.Q.</a></li>
                 </ul>
             </section>
             <section>
                 <h4>Espace distribution</h4>
                 <ul>
-                    <li><a href="connexion.php">vendre son fanzine</a></li>
-                    <li><a href="connexion.php">formulaire de contact</a></li>
-                    <li><a href="connexion.php">F.A.Q.</a></li>
+                    <li><a href="seller-form.php">vendre son fanzine</a></li>
+                    <li><a href="seller-form.php">formulaire de contact</a></li>
+                    <li><a href="faq.php">F.A.Q.</a></li>
                 </ul>
             </section>
             <section>
                 <h4>Mentions légales</h4>
                 <ul>
-                    <li><a href="connexion.php">c.g.v.</a></li>
-                    <li><a href="connexion.php">politique de confidentialité</a></li>
-                    <li><a href="connexion.php">mentions légales</a></li>
-                    <li><a href="connexion.php">charte cookies</a></li>
+                    <li><a href="cgv.php">c.g.v.</a></li>
+                    <li><a href="confidentialite.php">politique de confidentialité</a></li>
+                    <li><a href="mentions-legales.php">mentions légales</a></li>
+                    <li><a href="cookies.php">charte cookies</a></li>
                 </ul>
             </section>
             <section id="footer-nav">
