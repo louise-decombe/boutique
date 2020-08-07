@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'faq.php'; ?>
 <!DOCTYPE html>
 <html>
 

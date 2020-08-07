@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'cart.php'; ?>
 <!DOCTYPE html>
 <html>
 

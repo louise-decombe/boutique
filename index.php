@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'index'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,11 @@
    ?>
 </header>
 <main>
+    <section id="container-banner">
+        <section id="banner">
+            <a href="index1.php"><h1>SHOP FANZINE</h1></a>
+        </section>
+    </section>
 </main>
 <footer>
     <?php
@@ -24,6 +29,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
