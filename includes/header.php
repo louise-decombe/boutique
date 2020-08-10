@@ -69,7 +69,7 @@ if (isset($_POST["deco"])) {
                 }else{
             ?>
                 <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
-            <?php } }?>
+            <?php } ?>
             </ul>
         </nav>
     </section>
@@ -81,7 +81,7 @@ if (isset($_POST["deco"])) {
             <form action="index.php" method="post">
                 <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
             </form>
-            <?php } ?>
+            <?php } } ?>
         </nav>
 
 
