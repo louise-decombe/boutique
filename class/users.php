@@ -38,7 +38,7 @@ class Users
                 $this->password = $user['password'];
                 $this->date_registration = $user['date_registration'];
                 $this->is_admin = $user['is_admin'];
-                
+
                 $_SESSION['user'] = [
                     'id_user' =>
                         $this->id_user,
@@ -56,6 +56,7 @@ class Users
                         $this->password,
                     'is_admin' =>
                         $this->is_admin,
+
                     'date_registration' =>
                         $this->date_registration
                 ];
@@ -77,6 +78,7 @@ class Users
     {
         $connexion = $this->db->connectDb();
         //var_dump($connexion);
+
          //firstname
          $firstname_required = preg_match("/^(?=.*[A-Za-z]$)[A-Za-z][A-Za-z\-]{2,19}$/", $firstname);
          if (!$firstname_required) {
@@ -121,7 +123,7 @@ class Users
         }
         //date
         date_default_timezone_set("Europe/Paris");
-        
+
         if (empty($firstname) or empty($lastname) or empty($email) or empty($password) or empty($password_check) or empty($phone)) {
             $errors[] = "Tous les champs doivent être remplis.";
         }
@@ -187,6 +189,7 @@ class Users
         }
     }
     
+
     public
     function disconnect()
     {
@@ -374,4 +377,5 @@ class Users
 
 }
 ?>
+
 
