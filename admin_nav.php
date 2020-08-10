@@ -43,7 +43,7 @@
       <a href="javascript:void(0)" class="dropbtn" href="admin_messages">Catégories</a>
       <div class="dropdown-content">
         <a href="admin_categories.php?categories"> Catégories</a>
-        <a href="admin_categories.php?sous_categories"> Sous-catégories</a>
+        <a href="admin_categories.php?sous_categorie"> Sous-catégories</a>
         <a href="admin_categories.php?ajouter"> Ajouter</a>
       </div>
     </li>

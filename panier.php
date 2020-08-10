@@ -16,6 +16,8 @@
     include("includes/header.php");
    ?>
 </header>
+
+<?php if(isset($_SESSION['user'])){ ?>
 <div class="checkout">
 	<div class="title">
 		<div class="wrap">
@@ -64,3 +66,9 @@
 	</form>
 	<a href="order.php">Commander</a>
 </div>
+<?php }else{
+
+echo "vous ne pouvez pas accéder à cette page sans vous <a href='connexion.php'> connecter </a> ou bien vous
+<a href='subscription.php'> inscrire </a>";
+}
+ ?>

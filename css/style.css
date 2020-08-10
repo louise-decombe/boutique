@@ -302,6 +302,8 @@ body{
 }
 
 #box-form input[type=text],
+#box-form input[type=number],
+#box-form input[type=textarea],
 #box-form input[type=tel]{
   height: 25px;
   border: 1px solid #B1C2BE;

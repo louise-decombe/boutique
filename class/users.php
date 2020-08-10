@@ -55,7 +55,7 @@ class Users
                     'password' =>
                         $this->password,
                     'is_admin' =>
-                        $this->is_admin,
+                          $this->is_admin,
                     'date_registration' =>
                         $this->date_registration
                 ];

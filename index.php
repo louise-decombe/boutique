@@ -40,16 +40,19 @@
   							<a href="#" class="price"><?= //number format permet de formater un nombre ici avec deux zéros
   							 number_format($product->price,2,',',' '); ?> €</a>
   						</div>
-  						<a href="
-  						panier.php?id=<?= $product->id; ?>" class="gift addpanier">
-  							Gift
-  						</a>
+<?php if(isset($_SESSION['user'])){ ?>
+              <a class="" href="addwishlist.php?id=<?= $product->id; ?>">
+wishlist </a>
   						<a class="add addpanier" href="addpanier.php?id=<?= $product->id; ?>">
   							add
   						</a>
-  					</div>
+    <?php }else{?>
+<a href="connexion.php">  wishlist </a>
+      <a class="" href="connexion.php">
+        add
+      </a>  					</div>
   				</div>
-  			<?php endforeach ?>
+  			<?php } endforeach ?>
   		</div>
   	</div>
   </div>

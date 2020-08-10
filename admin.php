@@ -1,7 +1,6 @@
 <?php
-require("admin.class.php");
 include("includes/header.php");
-require("admin_nav.php")
+require("admin_nav.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +26,17 @@ if($users->is_admin==1) {
 <div class="admin">
 
 
+
+<h2>Derniers messages</h2>
+
+
+<h2>Dernière commande</h2>
+
+
+
+
 </div>
+
 <?php }else{
   echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
   echo "<a href='index.php'> Retour à l'accueil </a>";

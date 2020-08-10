@@ -1,6 +1,5 @@
 <?php
 
-
 class messages
 {
     public $messages;
