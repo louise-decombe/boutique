@@ -8,7 +8,6 @@ session_start();
 $db = new DB();
 //var_dump($db);
 $category = new Categorie($db);
-
 $user = new Users($db);
 //var_dump($user);
 
