@@ -1,8 +1,8 @@
 <?php
 
-    require 'class/categories.php';
+    //require 'class/categories.php';
 
-    $category = new Categorie($db);
+    //$category = new Categorie($db);
     //$categorie = $category->categories();
     //var_dump ($categorie);
 
@@ -108,13 +108,13 @@
                         ?>
                         <li><a href="admin.php">espace admin</a></li>
                         <?php } ?>
-                        <form action="index.php" method="post">
-                            <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
-                        </form>
-                        <?php 
-                            } 
-                        ?>
                     </ul>
+                    <form action="index.php" method="post">
+                        <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
+                    </form>
+                    <?php 
+                        } 
+                    ?>
                 </nav>
             </section>
         </section>

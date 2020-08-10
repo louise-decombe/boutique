@@ -6,12 +6,9 @@ require 'class/categories.php';
 session_start();
 $db = new DB();
 //var_dump($db);
-
 $category = new Categorie($db);
-
 $user = new Users($db);
 //var_dump($user);
-
 
 if (isset($_POST["deco"])) {
     $user->disconnect();
@@ -81,9 +78,7 @@ if (isset($_POST["deco"])) {
             <form action="index.php" method="post">
                 <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
             </form>
-            <?php } } ?>
+            <?php } }?>
         </nav>
-
-
     </section>
 </header>

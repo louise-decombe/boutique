@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style-profile.css">
 </head>
 <body>
     <header>
@@ -31,26 +32,45 @@
             $id_user= ($_SESSION['user']['id_user']);
             $user->modify_password($id_user, $_POST['new_password'],$_POST['check_password']);
         }
+        /*if (isset($_POST["close_window"])) {      
+            $id_user= ($_SESSION['user']['id_user']);
+            $user->modify_password($id_user, $_POST['new_password'],$_POST['check_password']);
+        }*/
         ?>
     </header>
     <main>
         <section id="container-profile">
+            <nav>
+                <li><a id="selected_page" href="profil.php"> <i class="far fa-user-circle"></i>  &nbsp; MES INFORMATIONS</a></li>
+                <li><a href="order.php"> <i class="fas fa-shopping-bag"></i> MES COMMANDES</a></li>
+                <li><a href="returns.php"> <i class="fas fa-truck"></i> MES LIVRAISONS</a></li>
+                <li><a href="wallet.php"> <i class="far fa-credit-card"></i> MES MODES DE PAIEMENT</a></li>
+                <li><a href="whishlist.php"> <i class="far fa-heart"></i> WHISHLIST</a></li>
+                <li><a href="contact-form.php"> <i class="far fa-envelope"></i> NOUS CONTACTER</a></li>
+                <li>
+                    <form action="index.php" method="post">
+                        <input id="deco" name="deco" value="SE DECONNECTER" type="submit"/>
+                    </form>
+                </li>
+            </nav>
+               
             <article id="profile-infos">
-                <h2 id="profile-title">Mes informations<h2>
-                <p><?= $_SESSION['user']['firstname'] ?>&nbsp;<?= $_SESSION['user']['lastname']?></p>
-                <address><p>Tel : <?= $_SESSION['user']['phone'] ?></p></address>
+                <h2>Mes informations</h2>
+                    <p><?= $_SESSION['user']['firstname'] ?>&nbsp;<?= $_SESSION['user']['lastname']?></p>
+                    <address>Tel : <?= $_SESSION['user']['phone'] ?></address>
                 
-                <form class='onglet' method='POST'>
-                    <input id="link-modif" name="modifier" value="modifier" type="submit"/>
-                </form>
+                    <form class='onglet' method='POST'>
+                        <input id="link-modif" name="modifier" value="modifier" type="submit"/>
+                    </form>
 
-                <form class='onglet' method='POST'>
-                    <input id="link-modif" name="change_password" value="change_password" type="submit"/>
-                </form>
+                    <form class='onglet' method='POST'>
+                        <input id="link-modif" name="change_password" value="changer le mot de passe" type="submit"/>
+                    </form>
             </article>
             
             <?php if(isset($_POST['modifier'])){?>
                     <section class="modify">
+                        <a href="profil.php">x</a>
                         <h3>MODIFIER MES INFOS</h3>
                         <form action="profil.php" method='POST'>
                             <section id="box-gender">
@@ -73,16 +93,17 @@
                <?php } 
                 
                 if(isset($_POST['change_password'])){?>
-                 <section class="modify">
-                        <h3>CHANGER LE MOT DE PASSE</h3>
-                        <form action="profil.php" method='POST'>
-                            <section>
-                                <input type="password" name="new_password" placeholder="nouveau password">
-                                <input type="password" name="check_password" placeholder="confirmer le password">
-                            </section>
-                            <button type="submit" name="modify_password">ENREGISTRER LE NOUVEAU MOT DE PASSE</button>
-                        </form>
-                    </section>
+                <section class="modify">
+                    <a href="profil.php">x</a>
+                    <h3>CHANGER LE MOT DE PASSE</h3>
+                    <form action="profil.php" method='POST'>
+                        <section>
+                            <input type="password" name="new_password" placeholder="nouveau password">
+                            <input type="password" name="check_password" placeholder="confirmer le password">
+                        </section>
+                        <button type="submit" name="modify_password">ENREGISTRER LE NOUVEAU MOT DE PASSE</button>
+                     </form>
+                </section>
 
                 <?php } ?>
         </section>
