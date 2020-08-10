@@ -1,6 +1,5 @@
 <?php
 
-
 class messages
 {
     public $messages;
@@ -31,3 +30,4 @@ class messages
         }
     }
 }
+

@@ -1,4 +1,5 @@
 <?php $page_selected = 'inscription.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>

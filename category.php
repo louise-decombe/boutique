@@ -4,6 +4,7 @@
 
 <head>
     <title>boutique - categorie</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -13,12 +14,25 @@
 </head>
 
 <body>
-    <header>
-        <?php 
-        include("includes/header.php");
-        ?>
-    </header>
+<header>
+    <?php
+    include("includes/header.php");
+   ?>
+</header>
     <main>
+
+      <?php
+       $products = $DB->query('SELECT * FROM categorie');
+
+       foreach ( $products as $product ):
+         $req = $DB->query('SELECT * FROM sous_categorie');
+
+  ?>
+
+          <h4><?= $product->nom_categorie ?></h4>
+          <a href="subcategory.php?id=<?= $product->id_categorie; ?>">Voir la catégorie</a>
+      </div>
+    <?php endforeach; ?>
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>

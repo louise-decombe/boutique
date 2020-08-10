@@ -1,4 +1,5 @@
 <?php $page_selected = 'cgv.php'; ?>
+
 <!DOCTYPE html>
 <html>
 

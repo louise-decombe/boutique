@@ -3,14 +3,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
-
 *{
- margin: 0;
- padding: 0;
- list-style: none;
- text-decoration: none;
- font-family: 'Kameron', serif;
-}
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Kameron', serif;
+ }
 
 body{
  width: 100%;
@@ -18,6 +17,26 @@ body{
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** HEADER ***/
+
+
+/******* AJOUT LOUISE DROPDOWN PANIER HEADER *********/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/****** FIN AJOUT DROPDOWN PANIER ****/
 
 #toplogo{
   display: flex;
@@ -58,6 +77,7 @@ body{
   letter-spacing: 1px;
   color: black;
   width: 100%;
+
 }
 
 #first-nav nav ul{
@@ -79,6 +99,7 @@ body{
   height: 50px;
   box-sizing: border-box;
   border-radius: 25px; 
+
 }
 
 #loupe{
@@ -178,7 +199,7 @@ body{
   min-width: 50px;
   margin-right: 20px;
   }
-  
+
   .bottom-child a {
   padding: 15px;
   text-decoration: none;
@@ -537,6 +558,7 @@ footer{
  }
 
 
+
 /***RESPONSIVE FOOTER***/
 @media (max-width: 780px) {
 
@@ -600,8 +622,13 @@ footer{
     padding-bottom: 5%;
   }
 
-  
- 
+  #deco1{
+    background-color: black;
+    color: white;
+    padding-top: 2px;
+  }
+
+
 
 }
 
@@ -617,7 +644,11 @@ footer{
 
 @media screen and (max-width:980px){
 
- 
+  #banner a{
+    font-size: 30px;
+}
+
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -653,6 +684,9 @@ footer{
 }
 
 #box-form input[type=text],
+
+#box-form input[type=number],
+#box-form input[type=textarea],
 #box-form input[type=tel]{
   height: 25px;
   border: 1px solid #B1C2BE;
@@ -790,6 +824,7 @@ footer{
 }
 @media screen and (max-width:500px){
  
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -964,12 +999,12 @@ footer{
   #container-connect form button{
     font-size: 0.8em;
   }
-  
+
 
 }
 
 @media screen and (max-width:500px){
- 
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -982,13 +1017,12 @@ footer{
 @media (max-width: 980px)
 {
 
-    
-    
+
 }
 
 
 @media screen and (max-width:500px){
- 
+
 }
 
 
@@ -1206,7 +1240,6 @@ padding-top: 5px;
 }
 
 @media screen and (max-width:700px){
- 
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -1238,11 +1271,6 @@ padding-top: 5px;
 @media screen and (max-width:500px){
  
 }
-
-
-
-
-
 
 
 
