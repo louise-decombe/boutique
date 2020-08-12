@@ -1,20 +1,33 @@
 <?php
-require_once 'class/db.php';
-require 'class/users.php';
-require 'class/_header.php';
-
+require 'class/db.php';
+session_start();
 $db = new DB();
 //var_dump($db);
 
+require 'class/categories.php';
+require 'class/users.php';
+require 'class/_header.php';
+
+$category = new Categorie($db);
 $user = new Users($db);
 //var_dump($user);
-
 
 if (isset($_POST["deco"])) {
     $user->disconnect();
 }
 ?>
 <header>
+    <?php
+        if ($page_selected === 'index'){ ?>
+            <a id="toplogo" href="index1.php">
+                <h1>LOVECRAFT</h1>
+            </a>
+            <a id="top-subtitle" href="index1.php"><h2>FANZINE BOOKSTORE</h2></a>
+          
+        <?php
+            }else{
+        ?> 
+
     <a id="toplogo" href="index.php">
         <h1>LOVECRAFT</h1>
     </a>
@@ -22,20 +35,21 @@ if (isset($_POST["deco"])) {
         <section id="loupe">
             <form id="search-form" action="search.php" method="GET">
                <input class=search type="search" name="search" placeholder="Recherche..." />
-               <button type="submit" value="Valider" />
+               <button type="submit" value="Valider">
                 <i class="fa fa-search"></i> </button>
             </form>
         </section>
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
             <ul>
+
             <?php
                 if (isset($_SESSION['user'])){
             ?>
 
 
 
-<div class="dropdown">
+            <div class="dropdown">
     <li>
       <ul class="panier">
         <li class="caddie"><a href="panier.php">Panier</a>
@@ -48,7 +62,7 @@ if (isset($_POST["deco"])) {
     if(empty($ids)){
       $products = array();
     }else{
-      $products = $DB->query('SELECT * FROM article WHERE id IN ('.implode(',',$ids).')');
+      $products = $db->query('SELECT * FROM article WHERE id IN ('.implode(',',$ids).')');
     }
     foreach($products as $product):
     ?>
@@ -106,7 +120,6 @@ if (isset($_POST["deco"])) {
                     </section>
                 </nav>
             </li>
-
             <?php
                 }else{
             ?>
@@ -115,4 +128,19 @@ if (isset($_POST["deco"])) {
             </ul>
         </nav>
     </section>
+    <section id="second-nav">
+        <nav>
+            <?php $categorie = $category->categories(); ?>
+            <li> <a href="about.php"> À PROPOS DE NOUS</a></li>
+            <?php if (isset($_SESSION['user'])){ ?>
+            <form action="index.php" method="post">
+                <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
+            </form>
+            <?php } } ?>
+        </nav>
+
+
+    </section>
 </header>
+
+

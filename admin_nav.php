@@ -1,3 +1,5 @@
+<?php $page_selected = 'admin_nav.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

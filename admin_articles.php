@@ -1,3 +1,5 @@
+<?php $page_selected = 'admin_articles.php'; ?>
+
 <?php
 include("includes/header.php");
 require('admin_nav.php');
@@ -6,7 +8,7 @@ require('admin_nav.php');
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - admin_articles</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -20,7 +22,7 @@ require('admin_nav.php');
 <main>
   <?php
 
-if($users->is_admin==1) {
+if($user->is_admin==0) {
    ?>
   <div class="admin">
     <div class="button">
@@ -158,9 +160,10 @@ if($users->is_admin==1) {
   echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>
   </main>
+
+  <footer>
+    <?php include('includes/footer.php'); ?>
+
+  </footer>
   </body>
   </html>
-
-</main>
-</body>
-</html>

@@ -1,7 +1,10 @@
+<?php $page_selected = 'category.php'; ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - categorie</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -9,6 +12,7 @@
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
 <header>
     <?php
@@ -18,10 +22,10 @@
     <main>
 
       <?php
-       $products = $DB->query('SELECT * FROM categorie');
+       $products = $db->query('SELECT * FROM categorie');
 
        foreach ( $products as $product ):
-         $req = $DB->query('SELECT * FROM sous_categorie');
+         $req = $db->query('SELECT * FROM sous_categorie');
 
   ?>
 
@@ -29,10 +33,6 @@
           <a href="subcategory.php?id=<?= $product->id_categorie; ?>">Voir la catégorie</a>
       </div>
     <?php endforeach; ?>
-
-
-
-
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>

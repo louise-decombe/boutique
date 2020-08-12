@@ -1,3 +1,5 @@
+<?php $page_selected = 'admin_categories.php'; ?>
+
 <?php
 include("includes/header.php");
 require('admin_nav.php');
@@ -6,7 +8,7 @@ require('admin_nav.php');
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - admin_categories</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -20,7 +22,7 @@ require('admin_nav.php');
 <main>
   <?php
 
-if($users->is_admin==1) {
+if($user->is_admin==0) {
    ?>
 
   <div class="admin">
@@ -179,38 +181,81 @@ if($users->is_admin==1) {
           ?>
 
       <section id="container-register">
-         <form action="inscription.php" method="post">
+         <form action="admin_categories.php" method="post">
              <h3>CRÉER UNE CATEGORIE</h3>
              <section id="box-form">
 
 <label for="">Nom</label>
-                     <input type="text" name="name" placeholder="Nom de la catégorie*">
+                     <input type="text" name="name_categorie" placeholder="Nom de la catégorie*">
    </section>
-             <button type="submit" name="submit">Enregistrer les informations</button>
+             <button type="submit" name="submit_categorie">Créer la catégorie</button>
          </form>
      </section>
 
      <section id="container-register">
-        <form action="inscription.php" method="post">
-
-
+        <form action="admin_categories.php" method="post">
             <h3>CRÉER UNE SOUS CATEGORIE</h3>
             <section id="box-form">
 
 <label for="">Nom</label>
-                    <input type="text" name="name" placeholder="Nom de la sous catégorie*">
-                    <label for="">Catégorie</label>
-<select class="" name="catégorie">
+                    <input type="text" name="name_sous_categorie" placeholder="Nom de la sous catégorie*">
+                    <label for="">Sous-catégorie</label>
 
-</select>
+                    <select name="categorie">
+
+
+                    <?php
+                       $products = $DB->query('SELECT * FROM categorie ');
+
+                 foreach ( $products as $product ):
+                         // On affiche chaque entrée une à une
+                             ?>
+                             <strong>catégorie</strong> : <?php echo"<option value = '". $donnees->id_categorie."'>". $donnees->nom_categorie."</option>";
+                       ?>
+                             <br />
+
+                       </select>
+
+
           </section>
 
-            <button type="submit" name="submit">Enregistrer les informations</button>
+            <button type="submit" name="submit_sous_categorie">Créer la sous-catégorie</button>
         </form>
     </section>
 
   </div>
 <?php
+
+if(isset($_POST['submit_categorie'])){
+$id_categorie= 10;
+$nom_categorie = $_POST['name_categorie'];
+
+$ins=array($id_categorie);
+$DB->insert('categorie',$ins,null);
+
+
+echo "le message a bien été posté";
+}
+
+if(isset($_POST['submit_sous_categorie'])){
+$id_sous_categorie= 10;
+$nom_sous_categorie = $_POST['name_sous_categorie'];
+$id_categorie = $_POST['id_categorie'];
+
+$ins=array($id_sous_categorie, $nom_sous_categorie,$id_categorie);
+$DB->insert('sous_categorie',$ins,null);
+
+
+echo "le message a bien été posté";
+}
+
+
+
+
+
+
+
+
 } ?>
 
 </div>
@@ -219,9 +264,9 @@ if($users->is_admin==1) {
   echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>
   </main>
+  <footer>
+    <?php include('includes/footer.php'); ?>
+
+  </footer>
   </body>
   </html>
-
-</main>
-</body>
-</html>

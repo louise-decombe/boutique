@@ -1,13 +1,15 @@
 <?php
 class wishlist{
 
-	private $DB;
+	private $db;
 
-	public function __construct($DB){
+	public function __construct($db){
+		$this->db = $db;
+		
 		if(!isset($_SESSION['user'])){
 			session_start();
 		}
-		$this->DB = $DB;
+		
 
 		if(isset($_GET['delWishlist'])){
 			$this->del($_GET['delWishlist']);
@@ -19,3 +21,5 @@ class wishlist{
 	}
 
 }
+?>
+

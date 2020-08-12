@@ -1,3 +1,4 @@
+<?php $page_selected = 'seller-form.php'; ?>
 
 <!DOCTYPE html>
 <html>

@@ -1,22 +1,25 @@
 <?php
 class panier{
 
-	private $DB;
+	private $db;
 
-	public function __construct($DB){
+	public function __construct($db){
+
+		$this->db = $db;
 		// vérifier que la session existe : variables stockées tout au long de la navigation
 		if(!isset($_SESSION)){
 			session_start();
 		}
+
 		if(!isset($_SESSION['panier'])){
 			// création d'un panier vide
 			$_SESSION['panier'] = array();
 		}
-		$this->DB = $DB;
 
 		if(isset($_GET['delPanier'])){
 			$this->del($_GET['delPanier']);
 		}
+		
 		if(isset($_POST['panier']['quantity'])){
 			$this->recalc();
 		}
@@ -42,7 +45,7 @@ class panier{
 		if(empty($ids)){
 			$products = array();
 		}else{
-			$products = $this->DB->query('SELECT id, price FROM article WHERE id IN ('.implode(',',$ids).')');
+			$products = $this->db->query('SELECT id, price FROM article WHERE id IN ('.implode(',',$ids).')');
 		}
 		foreach( $products as $product ) {
 			// récupération et incrémentation du prix total
@@ -67,3 +70,4 @@ class panier{
 	}
 
 }
+

@@ -1,3 +1,4 @@
+<?php $page_selected = 'connexion.php'; ?>
 
 <!DOCTYPE html>
 <html>

@@ -1,3 +1,4 @@
+<?php $page_selected = 'item.php'; ?>
 
 <!DOCTYPE html>
 <html>

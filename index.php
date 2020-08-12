@@ -1,3 +1,4 @@
+<?php $page_selected = 'index'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,15 @@
    ?>
 </header>
 <main>
-
-
+    <section id="container-banner">
+        <section id="banner">
+            <a href="index1.php"><h1>SHOP FANZINE</h1></a>
+        </section>
+    </section>
   <div class="home">
   	<div class="row">
   		<div class="wrap">
-  			<?php $products = $DB->query('SELECT * FROM article'); ?>
+  			<?php $products = $db->query('SELECT * FROM article'); ?>
 
   			<?php foreach ( $products as $product ):
   				// la boucle qui démarre permet d'afficher les articles ?>
@@ -56,9 +60,6 @@ wishlist </a>
   		</div>
   	</div>
   </div>
-
-
-
 </main>
 <footer>
     <?php

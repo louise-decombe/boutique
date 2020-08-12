@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'search.php'; ?>
 
 
 <!DOCTYPE html>

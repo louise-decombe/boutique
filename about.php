@@ -1,9 +1,9 @@
-<?php $page_selected = 'cart.php'; ?>
+<?php $page_selected = 'about.php'; ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>boutique - cart</title>
+    <title>boutique - about</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         ?>
     </header>

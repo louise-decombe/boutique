@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'panier.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>

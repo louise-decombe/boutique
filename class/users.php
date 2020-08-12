@@ -55,7 +55,8 @@ class Users
                     'password' =>
                         $this->password,
                     'is_admin' =>
-                          $this->is_admin,
+                        $this->is_admin,
+
                     'date_registration' =>
                         $this->date_registration
                 ];
@@ -76,7 +77,8 @@ class Users
     public function register( $firstname, $lastname, $gender, $phone, $email, $password, $password_check)
     {
         $connexion = $this->db->connectDb();
-        var_dump($connexion);
+        //var_dump($connexion);
+
          //firstname
          $firstname_required = preg_match("/^(?=.*[A-Za-z]$)[A-Za-z][A-Za-z\-]{2,19}$/", $firstname);
          if (!$firstname_required) {
@@ -147,6 +149,47 @@ class Users
         }
     }
 
+    public function newsletter($email)
+    {
+        $connexion = $this->db->connectDb();
+        $this->newsletter = ($_POST['newsletter']);
+        //var_dump($this->newsletter);
+            $q3 = $connexion->prepare(
+                "INSERT INTO newsletter(email_utilisateur) VALUES (:email)"
+            );
+            $q3->bindParam(':email', $email, PDO::PARAM_STR);
+            $q3->execute();
+            header('location:connexion.php');
+    }
+
+    public function newsletter_footer($email)
+    {
+        $connexion = $this->db->connectDb();
+        $this->newsletter = ($_POST['newsletter']);
+        //var_dump($this->newsletter);
+        $email_required = preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email);
+        if (!$email_required) {
+            $errors[] = "L'email n'est pas conforme.";
+        }
+        $q = $connexion->prepare("SELECT email_utilisateur FROM newsletter WHERE email = :email");
+        $q->bindParam(':email', $email, PDO::PARAM_STR);
+        $q->execute();
+        $email_check = $q->fetch();
+        if (!empty($email_check)) {
+            $errors[] = "Cette adresse mail est déjà utilisée.";
+        }
+        if (empty($errors)) {
+            $q1 = $connexion->prepare("INSERT INTO newsletter(email_utilisateur) VALUES (:email)");
+            $q1->bindParam(':email', $email, PDO::PARAM_STR);
+            $q1->execute();
+        }
+        else {
+            $message = new messages($errors);
+            echo $message->renderMessage();
+        }
+    }
+    
+
     public
     function disconnect()
     {
@@ -173,19 +216,166 @@ class Users
         }
     }
 
-    public function newsletter($email)
+    public function refresh($id_user)
     {
         $connexion = $this->db->connectDb();
-        $this->newsletter = ($_POST['newsletter']);
-        var_dump($this->newsletter);
-            $q3 = $connexion->prepare(
-                "INSERT INTO newsletter(email) VALUES (:email)"
-            );
-            $q3->bindParam(':email', $email, PDO::PARAM_STR);
-            $q3->execute();
-            header('location:connexion.php');
+        $refresh = $connexion->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = $id_user");
+        $refresh->execute();
+        $result_refresh = ($refresh->fetchAll());
+        //var_dump($result_refresh);
+
+            $this->id_user = $result_refresh[0]['id_utilisateur'];
+            $this->firstname = $result_refresh[0]['prenom'];
+            $this->lastname = $result_refresh[0]['nom'];
+            $this->gender = $result_refresh[0]['gender'];
+            $this->phone = $result_refresh[0]['phone'];
+            $this->email = $result_refresh[0]['email'];
+            $this->password = $result_refresh[0]['password'];
+            $this->is_admin = $result_refresh[0]['is_admin'];
+            $this->date_registration = $result_refresh[0]['date_registration'];
+           
+
+            $_SESSION['user'] = [
+                'id_user' =>
+                    $this->id_user,
+                'firstname' =>
+                    $this->firstname,
+                'lastname' =>
+                    $this->lastname,
+                'gender' =>
+                    $this->gender,
+                'phone' =>
+                    $this->phone,
+                'email' =>
+                    $this->email,
+                'password' =>
+                    $this->password,
+                'is_admin' =>
+                    $this->is_admin,
+                'date_registration' =>
+                    $this->date_registration
+            ];
+
+        return $_SESSION['user'];
+    }
+
+
+
+    public function profile($id_user)
+    {
+        $connexion = $this->db->connectDb();
+        $q4 = $connexion->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = $id_user");
+        $q4->execute();
+        $infos_user = $q4->fetchAll();
+        var_dump($infos_user);
+        
+        return $infos_user;
+    }
+
+
+    public function modify_infos($id_user, $new_gender, $new_firstname, $new_lastname, $new_phone)
+    {  
+        $connexion = $this->db->connectDb();
+        //UPDATE GENDER
+        if(isset($new_gender))
+        {
+            $update_g = "UPDATE utilisateurs SET gender=:gender WHERE id_utilisateur = '$id_user' ";
+            $update_gender = $connexion -> prepare($update_g);
+            $update_gender->bindParam(':gender',$new_gender, PDO::PARAM_STR);
+            $update_gender->execute();
+        }
+
+        //UPDATE FIRSTNAME
+        if(isset($new_firstname))
+        {
+            $firstname_required = preg_match("/^(?=.*[A-Za-z]$)[A-Za-z][A-Za-z\-]{2,19}$/", $new_firstname);
+            if (!$firstname_required) 
+            {
+                $errors[] = "Le prénom doit :<br>- Comporter entre 3 et 19 caractères.<br>- Commencer et finir par une lettre.<br>- Ne contenir aucun caractère spécial (excepté -).";
+            }
+            
+            if (empty($errors)) 
+            {   
+            $update_f = "UPDATE utilisateurs SET prenom=:firstname WHERE id_utilisateur = '$id_user' ";
+            $update_firstname = $connexion -> prepare($update_f);
+            $update_firstname->bindParam(':firstname',$new_firstname, PDO::PARAM_STR);
+            $update_firstname->execute();
+            }
+        }
+
+        //UPDATE LASTNAME
+        if(isset($new_lastname))
+        {
+            $lastname_required = preg_match("/^(?=.*[A-Za-z]$)([A-Za-z]{2,25}[\s]?[A-Za-z]{1,25})$/", $new_lastname);
+            if (!$lastname_required) 
+            {
+                $errors[] = "Le nom doit:<br>- Comporter entre 3 et 50 caractètres.<br>- Commencer et finir par une lettre.<br>- Ne contenir aucun caractère spécial (excepté un espace).";
+            }
+            
+            if (empty($errors)) 
+            {
+            $update_l = "UPDATE utilisateurs SET nom=:lastname WHERE id_utilisateur = '$id_user' ";
+            $update_lastname = $connexion -> prepare($update_l);
+            $update_lastname->bindParam(':lastname',$new_lastname, PDO::PARAM_STR);
+            $update_lastname->execute();
+            }   
+        }
+
+
+        //UPDATE PHONE
+        if(isset($new_phone))
+        {
+            $phone_required = preg_match("/^[0-9]{10}$/", $new_phone);
+            if (!$phone_required) 
+            {
+                $errors[] = "Le numéro de téléphone doit contenir exactement 10 chiffres.";
+            }
+            if (empty($errors)) 
+            {
+            $update_p = "UPDATE utilisateurs SET phone=:phone WHERE id_utilisateur = '$id_user' ";
+            $update_phone = $connexion -> prepare($update_p);
+            $update_phone->bindParam(':phone',$new_phone, PDO::PARAM_STR);
+            $update_phone->execute();
+            }
+        }
+          
+        if (!empty($errors))
+        {
+            $message = new messages($errors);
+            echo $message->renderMessage();
+        }
 
     }
 
+    public function modify_password ($id_user, $new_password, $check_password)
+    {
+        $connexion = $this->db->connectDb(); 
+        if(isset($new_password) && isset($check_password)){
+            $password_required = preg_match("/^(?=.*?[A-Z]{1,})(?=.*?[a-z]{1,})(?=.*?[0-9]{1,})(?=.*?[\W]{1,}).{8,20}$/",$new_password);
+            if (!$password_required) {
+                $errors[] = "Le mot de passe doit contenir:<br>- Entre 8 et 20 caractères<br>- Au moins 1 caractère spécial<br>- Au moins 1 majuscule et 1 minuscule<br>- Au moins un chiffre.";
+            }
+            if ($new_password != $check_password) {
+                $errors[] = "Les mots de passe ne correspondent pas.";
+            } else {
+    
+                $password_modified = password_hash($new_password, PASSWORD_BCRYPT, array('cost' => 10));
+
+                $update_pass = "UPDATE utilisateurs SET password=:pass WHERE id_utilisateur = '$id_user' ";
+                $update_password = $connexion -> prepare($update_pass);
+                $update_password->bindParam(':pass',$password_modified, PDO::PARAM_STR);
+                $update_password->execute();
+            }
+        }
+        if (!empty($errors))
+        {
+            $message = new messages($errors);
+            echo $message->renderMessage();
+        }
+    }
+
+
 }
 ?>
+
+

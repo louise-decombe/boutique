@@ -1,3 +1,4 @@
+<?php $page_selected = 'lost-password.php'; ?>
 
 <!DOCTYPE html>
 <html>

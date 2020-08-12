@@ -1,7 +1,8 @@
+<?php $page_selected = 'subcategory.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - sous categories</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -21,7 +22,7 @@
 
       if(isset($_GET['id'])){
 $id = $_GET['id'];
-       $products = $DB->query("SELECT * FROM sous_categorie WHERE id_sous_categorie = '$id' ");
+       $products = $db->query("SELECT * FROM sous_categorie WHERE id_sous_categorie = '$id' ");
 
        foreach ( $products as $product ):
   ?>

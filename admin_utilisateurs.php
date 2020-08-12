@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'admin_utilisateurs.php'; ?>
 <?php
 require("admin.class.php");
 include("includes/header.php");
@@ -21,6 +21,10 @@ require("admin_nav.php")
 
 </header>
 <main>
+  <?php
+
+if($user->is_admin==0) {
+   ?>
 <div class="admin">
 
 <div class="button">
@@ -166,6 +170,14 @@ if (isset($_GET['ajouter'])){
 
 </div>
 <?php } ?>
+<?php }else{
+  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
+  echo "<a href='index.php'> Retour à l'accueil </a>";
+} ?>
 </main>
+<footer>
+  <?php include('includes/footer.php'); ?>
+
+</footer>
 </body>
 </html>
