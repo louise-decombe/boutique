@@ -1,0 +1,226 @@
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** ITEM  ***/
+
+#info-category{
+    display: flex;
+    width: 80%;
+    padding-left : 10%;
+    padding-bottom: 2.5%;
+}
+
+#container-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+#box-img-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:#00FF00;
+    border : 1px solid black;
+    height: 85vh;
+    width : 35%;
+    margin-right : 2.5%;
+}
+
+#box-img-item img{
+    width: 90%;
+    height: 90%;
+    box-shadow: 6px 6px 10px black;
+}
+
+#presentation-item{
+    display: flex;
+    padding-left : 2.5%;
+    flex-direction: column;
+    width: 25%;
+    min-height: 85vh;
+}
+
+#presentation-item h1{
+    display: flex;
+    width : 100%;
+    background-color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-top:10%;
+}
+
+#presentation-item h2{
+    display: flex;
+    width : 100%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 200;
+    margin-top:2.5%;
+}
+
+#heart-icon{
+    display:flex;
+    font-size : 20px;
+    justify-content: flex-end;
+    color: gray;
+}
+
+#heart-icon:hover{
+    color:#00FF00;
+    transition: 1.5s;
+}
+
+#presentation-item aside{
+    display: flex;
+    background-color : white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight : 200;
+    margin-top:1.5%;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid gray;
+}
+
+#price-item{
+    display: flex;
+    background-color : white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#add-basket{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color : black;
+    color: #00FF00;
+    margin-top:2.5%;
+    margin-bottom:2.5%;
+    padding-bottom: 3.5%;
+    padding-top: 3.5%;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+#add-basket:hover{
+    background-color : #00FF00;
+    color:black;
+    transition: 1.5s;
+}
+
+#presentation-item form input[type=submit]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color : white;
+    color: gray;
+    width:100%;
+    margin-top:2.5%;
+    margin-bottom:2.5%;
+    padding-bottom: 3.5%;
+    padding-top: 3.5%;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    border: 1px solid gray;
+}
+
+#presentation-item input[type=submit]:hover{
+    background-color : black;
+    border: 1px solid white;
+    color:white;
+    transition: 1.5s;
+}
+
+#more{
+    display:flex;
+    flex-direction:column;
+    width:90%;
+    padding: 5%;
+    border: 0.5px solid black;
+}
+
+#more a{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    color: black;
+    font-size : 18px;
+}
+
+#more a:hover{
+    color:#00FF00;
+    transition: 1.5s;
+}
+
+#more p{
+    font-size : 12px;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#more aside{
+    display: flex;
+    background-color : white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight : 200;
+    margin-top:1.5%;
+
+}
+
+#similar-article{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+}
+
+#similar-article h3{
+    display:flex;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color : white;
+    border-bottom : 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: 2.5vh;
+}
+
+/*** ITEM ***/
+
+
+@media (max-width: 980px){
+
+
+  
+}
+
+@media screen and (max-width:700px){
+   
+}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
+
+
+
+
