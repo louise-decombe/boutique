@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 19, 2020 at 07:21 AM
+-- Generation Time: Aug 19, 2020 at 07:43 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.7
 
@@ -317,11 +317,11 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `gender`, `phone`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `whishlist`
+-- Table structure for table `wishlist`
 --
 
-CREATE TABLE `whishlist` (
-  `id_whishlist` int(11) NOT NULL,
+CREATE TABLE `wishlist` (
+  `id_wishlist` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -403,10 +403,10 @@ ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`id_utilisateur`);
 
 --
--- Indexes for table `whishlist`
+-- Indexes for table `wishlist`
 --
-ALTER TABLE `whishlist`
-  ADD PRIMARY KEY (`id_whishlist`);
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id_wishlist`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -485,10 +485,10 @@ ALTER TABLE `utilisateurs`
   MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `whishlist`
+-- AUTO_INCREMENT for table `wishlist`
 --
-ALTER TABLE `whishlist`
-  MODIFY `id_whishlist` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `wishlist`
+  MODIFY `id_wishlist` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
