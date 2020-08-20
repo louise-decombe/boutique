@@ -1,4 +1,4 @@
-<?php $page_selected = 'category.php'; ?>
+<?php $page_selected = 'category'; ?>
 <!DOCTYPE html>
 <html>
 

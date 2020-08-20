@@ -1,15 +1,15 @@
 <?php
 require 'class/db.php';
+require 'class/panier.php';
+require 'class/users.php';
+require 'class/categories.php';
+
 session_start();
 $db = new DB();
-//var_dump($db);
-
-require 'class/categories.php';
-require 'class/users.php';
-//require 'class/_header.php';
-
+$panier = new Panier($db);
 $category = new Categorie($db);
 $user = new Users($db);
+
 //var_dump($user);
 
 if (isset($_POST["deco"])) {
@@ -18,7 +18,7 @@ if (isset($_POST["deco"])) {
 ?>
 <header>
     <?php
-        if ($page_selected === 'index'){ ?>
+        if ($page_selected === 'index' OR $page_selected === 'panier' OR $page_selected === 'order'){ ?>
         <a id="toplogo" href="index1.php">
             <h1>HIGH & CRAFT</h1>
         </a>
@@ -40,11 +40,6 @@ if (isset($_POST["deco"])) {
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
             <ul>
-            <?php
-                if (isset($_SESSION['user'])){
-                require 'class/panier.class.php';
-                $panier = new panier($db);
-            ?>
             <div class="dropdown">
                 <li>
                     <ul class="panier">
@@ -59,17 +54,17 @@ if (isset($_POST["deco"])) {
                             if(empty($ids)){
                             $products = array();
                             }else{
-                            $products = $db->query('SELECT * FROM article WHERE id IN ('.implode(',',$ids).')');
+                            $products = $db->query('SELECT * FROM article WHERE id_article IN ('.implode(',',$ids).')');
                             }
                             foreach($products as $product):
                             ?>
                             <div class="row">
-                                <a href="#" class="img"> <img src="img/<?= $product->id; ?>.jpg" height="53"></a>
-                                <span class="name"><?= $product->name; ?></span>
-                                <span class="price"><?= number_format($product->price,2,',',' '); ?> €</span>
-                                <span class="quantity"> quantité  <?= $_SESSION['panier'][$product->id]; ?></span>
+                                <a href="#" class="img"> <img src="img/<?= $product->id_article; ?>.jpg" height="53"></a>
+                                <span class="name"><?= $product->nom_article; ?></span>
+                                <span class="price">prix : <?= number_format($product->prix_article,2,',',' '); ?> €</span>
+                                <span class="quantity"> quantité  <?= $_SESSION['panier'][$product->id_article]; ?></span>
                                 <span class="action">
-                                    <a href="panier.php?delPanier=<?= $product->id; ?>" class="del"> supprimer du panier</a>
+                                    <a href="panier.php?delPanier=<?= $product->id_article; ?>" class="del"> supprimer du panier</a>
                                 </span>
                             </div>
                             <?php endforeach; ?>
@@ -91,6 +86,9 @@ if (isset($_POST["deco"])) {
                     </ul>
                 </li>
             </div>
+            <?php
+                if (isset($_SESSION['user'])){
+            ?>
             <li>
                 <nav class="bottom">
                     <button class="boutonmenuprincipal"><i class="far fa-user"></i></button>
@@ -112,7 +110,6 @@ if (isset($_POST["deco"])) {
             <?php
                 }else{
             ?> 
-            <li><a href="connexion.php"><i class="fas fa-shopping-basket"></i></a></li>
             <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
             <?php } ?>
             </ul>
@@ -132,5 +129,4 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-
 

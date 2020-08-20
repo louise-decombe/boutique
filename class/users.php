@@ -60,7 +60,14 @@ class Users
                     'date_registration' =>
                         $this->date_registration
                 ];
-                header('location:profil.php');
+                
+                $ids = array_keys($_SESSION['panier']);
+                if (isset($_SESSION['panier']) && empty($ids)){
+                    header('location:index1.php');
+                }else{
+                    header('location:order.php');
+                }
+                
                 return $_SESSION['user'];
             } else {
                 $errors[] = "Le mail ou le mot de passe est erroné.";
@@ -155,7 +162,7 @@ class Users
         $this->newsletter = ($_POST['newsletter']);
         //var_dump($this->newsletter);
             $q3 = $connexion->prepare(
-                "INSERT INTO newsletter(email) VALUES (:email)"
+                "INSERT INTO newsletter(email_utilisateur) VALUES (:email)"
             );
             $q3->bindParam(':email', $email, PDO::PARAM_STR);
             $q3->execute();
@@ -171,7 +178,7 @@ class Users
         if (!$email_required) {
             $errors[] = "L'email n'est pas conforme.";
         }
-        $q = $connexion->prepare("SELECT email FROM newsletter WHERE email = :email");
+        $q = $connexion->prepare("SELECT email_utilisateur FROM newsletter WHERE email = :email");
         $q->bindParam(':email', $email, PDO::PARAM_STR);
         $q->execute();
         $email_check = $q->fetch();
@@ -179,7 +186,7 @@ class Users
             $errors[] = "Cette adresse mail est déjà utilisée.";
         }
         if (empty($errors)) {
-            $q1 = $connexion->prepare("INSERT INTO newsletter(email) VALUES (:email)");
+            $q1 = $connexion->prepare("INSERT INTO newsletter(email_utilisateur) VALUES (:email)");
             $q1->bindParam(':email', $email, PDO::PARAM_STR);
             $q1->execute();
         }

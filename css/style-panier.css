@@ -1,0 +1,255 @@
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** PANIER ***/
+
+#container-panier{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:whitesmoke;
+    min-height: 60vh;
+    padding-bottom:5%;
+}
+
+#container-panier nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    border-top: 0.3px solid gainsboro;
+    border-bottom: 0.3px solid gainsboro;
+}
+
+#container-panier nav ul{
+    display: flex;
+    font-size:12px;
+}
+
+#container-panier nav ul li{
+    padding : 20px;
+}
+
+#sub-panier{
+    display:flex;
+    width:80%;
+    justify-content: space-between;
+    margin-top : 2.5%;
+}
+
+/*TABLEAU*/ 
+
+#sub-panier form{
+    display: flex;
+    width: 67.5%;
+}
+
+#sub-panier form input[type=text]{
+    padding : 10px;
+    width: 50px;
+}
+
+#sub-panier form input[type=submit]{
+    border : none;
+    color:transparent;
+    background-image: url(background/arrow-icon.png);
+    background-size: cover;
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color : white;
+}
+
+
+#sub-panier form table {
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    background-color: white;  
+}
+
+#sub-panier form thead th {
+    background: white;
+    font-size: 12px;
+    font-weight: 100;
+    height: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+#supp{
+    padding-right:30px;
+    padding-left:30px;
+}
+
+#sub-panier form  a{
+    color:black;
+}
+
+#sub-panier form a:hover{
+    color:#00FF00;
+    transition:1.5s;
+}
+   
+#sub-panier form th, td {
+    font-weight: 400;
+    font-size: 13px;
+    text-align: center;
+    width: 20%;
+    text-transform: uppercase;
+    }
+
+#sub-panier img{
+    box-shadow: 0 0 15px #00FF00;
+}
+
+#sub-panier form tr {
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+    background-color: #fff;;
+    }
+   
+#sub-panier form td {
+    border-bottom: 1px solid #FFF;
+    padding-bottom:5%;
+    background-color: #fff;;
+    font-family: 'Roboto', sans-serif;
+    }
+
+#recap-order{
+    display: flex;
+    flex-direction: column;
+    width : 30%;
+    background-color:whitesmoke;
+}
+#recap-order article{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    min-height: 30vh;
+    margin-bottom : 5%;
+}
+
+#recap-order article h1{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid gainsboro;
+    font-weight:200;
+    font-size:13px;
+}
+
+#recap-order article p{
+    text-transform: uppercase;
+    font-size:11px;
+    display: flex;
+    padding:20px;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#total-order{
+    display: flex;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding:20px;
+    border-top:0.5px solid gainsboro;
+}
+
+#delivery{
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size:10px;
+}
+
+#recap-order a{
+    display:flex;
+    justify-content: center;
+    background-color:#00FF00;
+    border : 0.5px solid black;
+    color : black;
+    text-transform : uppercase;
+    font-size : 14px;
+    letter-spacing: 2px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top : 2.5%;
+    margin-bottom : 5%;
+}
+
+#recap-order a:hover{
+    background-color: black;
+    color : #00FF00;
+    border : 0.5px solid #00FF00;
+    transition: 1.5s;
+}
+
+#recap-order aside{
+    display:flex;
+    flex-direction: column;  
+}
+
+#recap-order aside h3{
+    display: flex;
+    font-size : 14px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1.3px;
+    padding-bottom : 3.5%;
+}
+
+#recap-order aside #contact-client{
+    display: flex;
+    background-color: whitesmoke;
+    padding-top : 0;
+    padding-bottom : 0;
+    border:none;
+    letter-spacing: none;
+    font-size : 12px;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+#recap-order aside p{
+    text-align: justify;
+    font-size : 11px;
+    letter-spacing: 0.9px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#validation-panier{
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:10%;
+    height: 30vh;
+    background-color:white;
+    border: 0.5px solid black;
+}
+
+
+/*** PANIER ***/
+
+
+@media (max-width: 980px){
+
+
+  
+}
+
+@media screen and (max-width:700px){
+   
+}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
+
+
+
+
