@@ -23,13 +23,12 @@
 <?php
 
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=boutique;charset=utf8','root','');
-
 $articles = $bdd->query('SELECT * FROM article ORDER BY id DESC');
 if(isset($_GET['search']) AND !empty($_GET['search'])) {
  $search = htmlspecialchars($_GET['search']);
- $articles = $bdd->query('SELECT * FROM article WHERE name LIKE "%'.$search.'%" ORDER BY id DESC');
+ $articles = $bdd->query('SELECT * FROM article WHERE nom_article LIKE "%'.$search.'%" ORDER BY id DESC');
  if($articles->rowCount() == 0) {
-    $articles = $bdd->query('SELECT * FROM article WHERE CONCAT(name, description_article) LIKE "%'.$search.'%" ORDER BY id DESC');
+    $articles = $bdd->query('SELECT * FROM article WHERE CONCAT(nom_article, description_article) LIKE "%'.$search.'%" ORDER BY id DESC');
  }
 }
 ?>
@@ -39,7 +38,7 @@ if(isset($_GET['search']) AND !empty($_GET['search'])) {
  <?php while($a = $articles->fetch()) { ?>
    <a href="img/<?= $a['img'] ?>"/>
 
-    <a href="item.php?id=<?php echo $a['id'] ;?>" > <li><?= $a['name'] ?></li>
+    <a href="item.php?id=<?php echo $a['id'] ;?>" > <li><?= $a['nom_article'] ?></li>
     <li><?= $a['price'] ?> euros</li>
 
  <?php } ?>

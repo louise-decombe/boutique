@@ -233,8 +233,7 @@ $nom_categorie = $_POST['name_categorie'];
 $ins=array($id_categorie);
 $DB->insert('categorie',$ins,null);
 
-
-echo "le message a bien été posté";
+echo "la catégorie a bien été ajoutée";
 }
 
 if(isset($_POST['submit_sous_categorie'])){
@@ -245,14 +244,8 @@ $id_categorie = $_POST['id_categorie'];
 $ins=array($id_sous_categorie, $nom_sous_categorie,$id_categorie);
 $DB->insert('sous_categorie',$ins,null);
 
-
-echo "le message a bien été posté";
+echo "la sous catégorie a bien été ajoutée";
 }
-
-
-
-
-
 
 
 
@@ -262,7 +255,7 @@ echo "le message a bien été posté";
 <?php }else{
   echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
   echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+}?>
   </main>
   <footer>
     <?php include('includes/footer.php'); ?>

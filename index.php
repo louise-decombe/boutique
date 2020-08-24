@@ -36,13 +36,13 @@
   							<img src="img/<?= $product->id; ?>.jpg" width="10%">
   						</a>
               <a href="item.php?=<?php echo $product->id;?>">
-  							<?= $product->name; ?>
+  							<?= $product->nom_article; ?>
   						</a>
   						<div class="description">
   <a href="#">
   </a>
-  							<a href="#" class="price"><?= //number format permet de formater un nombre ici avec deux zéros
-  							 number_format($product->price,2,',',' '); ?> €</a>
+  							<a href="#" class="prix_article"><?= //number format permet de formater un nombre ici avec deux zéros
+  							 number_format($product->prix_article,2,',',' '); ?> €</a>
   						</div>
 <?php if(isset($_SESSION['user'])){ ?>
               <a class="" href="addwishlist.php?id=<?= $product->id; ?>">

@@ -130,10 +130,29 @@ if (isset($_GET['utilisateurs'])) {
 }
 
 if (isset($_GET['ajouter'])){
+
+  if (isset($_POST['submit'])) {
+      $user->register(
+          $_POST['firstname'],
+          $_POST['lastname'],
+          $_POST['gender'],
+          $_POST['phone'],
+          $_POST['email'],
+          $_POST['password'],
+          $_POST['conf_password']
+      );
+
+      if (isset($_POST['newsletter'])){
+          $user->newsletter($_POST['email']);
+      }
+  }
+
+
     ?>
 
+
     <section id="container-register">
-       <form action="inscription.php" method="post">
+       <form action="admin_utilisateurs.php" method="post">
            <h3>CRÉER UN COMPTE</h3>
            <section id="box-form">
 
