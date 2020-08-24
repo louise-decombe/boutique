@@ -117,10 +117,9 @@
                 </nav>
             </section>
         </section>
-        <p id="copyright">&copy; 2020 LOVECRAFT FANZINE BOOKSTORE</p>
+        <p id="copyright">&copy; 2020 HIGH & CRAFT FANZINE BOOKSTORE</p>
     </section>
     <?php 
         } 
     ?>
 </footer>
-

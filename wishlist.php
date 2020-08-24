@@ -1,7 +1,8 @@
+<?php $page_selected = 'whishlist.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - whishlist</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -29,15 +30,15 @@
 
 			<?php
 
-      $bdd = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '');
-
-      $requete = $bdd->prepare('
+    if (isset($_SESSION['user'])){ 
+      $connexion = $this->db->connectDb();
+      $requete = $connexion->prepare('
                   INSERT INTO wishlist (nom)
                   VALUES(:nom)'
               ) or exit(print_r($req->errorInfo()));
               $requete->execute( array( 'nom' => $_POST['nom'] ) );
               $requete->closeCursor();
-          }
+          
 		 ?>
 
 	</div>

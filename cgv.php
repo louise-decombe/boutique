@@ -1,4 +1,4 @@
-<?php $page_selected = 'cgv'; ?>
+<?php $page_selected = 'cgv.php'; ?>
 
 <!DOCTYPE html>
 <html>

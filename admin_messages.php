@@ -1,4 +1,4 @@
-
+<?php $page_selected = 'admin_messages.php'; ?>
 <?php
 require("admin.class.php");
 include("includes/header.php");
@@ -7,7 +7,7 @@ require("admin_nav.php")
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - admin_messages</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">

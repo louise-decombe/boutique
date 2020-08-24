@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 19, 2020 at 07:43 AM
+-- Generation Time: Aug 24, 2020 at 09:12 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.7
 
@@ -94,12 +94,75 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `chemin_category`) VAL
 
 CREATE TABLE `commande` (
   `id_commande` int(11) NOT NULL,
-  `id_article` int(11) NOT NULL,
-  `nom_article` int(11) NOT NULL,
-  `prix_article` decimal(10,0) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `date_commande` datetime NOT NULL
+  `date_commande` datetime NOT NULL,
+  `statut_commande` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `id_utilisateur`, `date_commande`, `statut_commande`) VALUES
+(74, 16, '2020-08-22 11:58:48', 1),
+(75, 16, '2020-08-22 12:02:43', 1),
+(76, 16, '2020-08-22 12:04:48', 1),
+(77, 16, '2020-08-22 13:14:50', 1),
+(78, 16, '2020-08-22 13:18:43', 1),
+(79, 16, '2020-08-22 13:18:58', 1),
+(80, 16, '2020-08-22 13:19:50', 1),
+(81, 16, '2020-08-22 13:26:40', 1),
+(82, 16, '2020-08-22 13:31:21', 1),
+(83, 16, '2020-08-22 13:32:18', 1),
+(84, 16, '2020-08-22 13:34:32', 1),
+(85, 16, '2020-08-22 13:35:40', 1),
+(86, 16, '2020-08-22 13:42:17', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_commande`
+--
+
+CREATE TABLE `detail_commande` (
+  `id_detail_commande` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `titre_article` varchar(100) NOT NULL,
+  `quantite_article` int(11) NOT NULL,
+  `id_commande` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `detail_commande`
+--
+
+INSERT INTO `detail_commande` (`id_detail_commande`, `id_article`, `titre_article`, `quantite_article`, `id_commande`) VALUES
+(47, 6, 'CRAP ZINE volume 5', 1, 74),
+(48, 10, 'Project issue 4', 1, 74),
+(49, 6, 'CRAP ZINE volume 5', 1, 75),
+(50, 10, 'Project issue 4', 1, 75),
+(51, 6, 'CRAP ZINE volume 5', 1, 76),
+(52, 10, 'Project issue 4', 1, 76),
+(53, 6, 'CRAP ZINE volume 5', 1, 77),
+(54, 10, 'Project issue 4', 1, 77),
+(55, 6, 'CRAP ZINE volume 5', 1, 78),
+(56, 10, 'Project issue 4', 1, 78),
+(57, 6, 'CRAP ZINE volume 5', 1, 79),
+(58, 10, 'Project issue 4', 1, 79),
+(59, 6, 'CRAP ZINE volume 5', 1, 80),
+(60, 10, 'Project issue 4', 1, 80),
+(61, 6, 'CRAP ZINE volume 5', 1, 81),
+(62, 10, 'Project issue 4', 1, 81),
+(63, 6, 'CRAP ZINE volume 5', 1, 82),
+(64, 10, 'Project issue 4', 1, 82),
+(65, 6, 'CRAP ZINE volume 5', 1, 83),
+(66, 10, 'Project issue 4', 1, 83),
+(67, 6, 'CRAP ZINE volume 5', 1, 84),
+(68, 10, 'Project issue 4', 1, 84),
+(69, 6, 'CRAP ZINE volume 5', 1, 85),
+(70, 10, 'Project issue 4', 1, 85),
+(71, 6, 'CRAP ZINE volume 5', 1, 86),
+(72, 10, 'Project issue 4', 1, 86);
 
 -- --------------------------------------------------------
 
@@ -111,14 +174,32 @@ CREATE TABLE `facture` (
   `id_facture` int(11) NOT NULL,
   `id_commande` int(11) NOT NULL,
   `nbr_total_articles` int(11) NOT NULL,
-  `prix_total_articles` decimal(10,0) NOT NULL,
-  `id_livraison` int(11) NOT NULL,
-  `prix_livraison` decimal(10,0) NOT NULL,
+  `prix_total_articles` float NOT NULL,
+  `prix_livraison` float NOT NULL,
   `adresse_facturation` varchar(255) NOT NULL,
-  `prix_total` decimal(10,0) NOT NULL,
+  `prix_total` float NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `date_facturation` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `facture`
+--
+
+INSERT INTO `facture` (`id_facture`, `id_commande`, `nbr_total_articles`, `prix_total_articles`, `prix_livraison`, `adresse_facturation`, `prix_total`, `id_utilisateur`, `date_facturation`) VALUES
+(2, 74, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 11:58:48'),
+(3, 75, 2, 26, 7, 'la Crau', 33, 16, '2020-08-22 12:02:43'),
+(4, 76, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 12:04:48'),
+(5, 77, 2, 26, 5.9, 'la Crau', 31.9, 16, '2020-08-22 13:14:50'),
+(6, 78, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:18:43'),
+(7, 79, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:18:58'),
+(8, 80, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:19:50'),
+(9, 81, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:26:40'),
+(10, 82, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:31:21'),
+(11, 83, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:32:18'),
+(12, 84, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:34:32'),
+(13, 85, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:35:40'),
+(14, 86, 2, 26, 3.9, 'la Crau', 29.9, 16, '2020-08-22 13:42:17');
 
 -- --------------------------------------------------------
 
@@ -272,12 +353,12 @@ INSERT INTO `stock` (`id_stock`, `id_article`, `nb_articles_stock`, `date_check_
 (2, 2, 22, '2020-08-14 15:22:15'),
 (3, 3, 1, '2020-08-14 15:22:15'),
 (4, 4, 9, '2020-08-14 15:22:15'),
-(5, 5, 33, '2020-08-14 15:22:15'),
-(6, 6, 20, '2020-08-14 15:22:15'),
+(5, 5, 0, '2020-08-14 15:22:15'),
+(6, 6, 14, '2020-08-22 13:42:17'),
 (7, 7, 10, '2020-08-14 15:22:15'),
 (8, 8, 17, '2020-08-14 15:22:15'),
 (9, 9, 43, '2020-08-14 15:22:15'),
-(10, 10, 42, '2020-08-14 15:22:15'),
+(10, 10, 36, '2020-08-22 13:42:17'),
 (11, 11, 25, '2020-08-14 15:22:15'),
 (12, 12, 30, '2020-08-14 15:22:15'),
 (13, 13, 30, '2020-08-14 15:22:15');
@@ -327,6 +408,13 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`id_wishlist`, `id_utilisateur`, `id_article`) VALUES
+(1, 1, 2);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -347,6 +435,12 @@ ALTER TABLE `categorie`
 --
 ALTER TABLE `commande`
   ADD PRIMARY KEY (`id_commande`);
+
+--
+-- Indexes for table `detail_commande`
+--
+ALTER TABLE `detail_commande`
+  ADD PRIMARY KEY (`id_detail_commande`);
 
 --
 -- Indexes for table `facture`
@@ -428,13 +522,19 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT for table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `detail_commande`
+--
+ALTER TABLE `detail_commande`
+  MODIFY `id_detail_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `image_article`
@@ -488,7 +588,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id_wishlist` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_wishlist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - récapitulatif panier</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
@@ -78,7 +78,7 @@
 			</form>
 			<section id="recap-order">
 				<article> 
-					<h1>Récapitulatif ( x article(s)) </h1>
+					<h1>Récapitulatif ( <?= $panier->count(); ?> article(s)) </h1>
 						<p>sous-total 
 						<?= number_format($panier->total(),2,',',' '); ?>€
 						</p>

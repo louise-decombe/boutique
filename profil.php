@@ -1,5 +1,4 @@
 <?php $page_selected = 'profil'; ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-profile.css">
 </head>
-
 <body>
     <header>
         <?php 
@@ -109,12 +107,10 @@
 
                 <?php } ?>
         </section>
-        ?>
-    </header>
-    <main>
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>
     </footer>
 </body>
 </html>
+

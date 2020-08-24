@@ -82,4 +82,3 @@ $current_month = date('F');
     </footer>
 </body>
 </html>
-

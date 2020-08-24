@@ -9,7 +9,7 @@ public function __construct($db)
 	$this->db = $db;
 }
 
-
+// SELECT 4 PREMIÈRE CATEGORIES POUR LE FOOTER
 public function cat()
     {
         $connexion = $this->db->connectDb();
@@ -27,6 +27,8 @@ public function cat()
 		return $categories;       
 	}
 
+
+// SELECT 4 CATEGORIES ET LES SOUS-CATEGORIES ASSOCIÉES POUR LE HEADER
 public function categories()
     {
         $connexion = $this->db->connectDb();
@@ -57,6 +59,7 @@ public function categories()
 		return $categories + $sub_categories;       
 	}
 
+// SELECT SOUS-CATEGORIES + CATEGORIES ASSOCIÉES
 public function sub_categories($id)
     {
         $connexion = $this->db->connectDb();
@@ -76,6 +79,7 @@ public function sub_categories($id)
 	}
 
 
+// SELECT LA CATEGORIE ASSOCIÉE À UN ARTICLE
 public function categorie_article($id_sub)
     {
         $connexion = $this->db->connectDb();
@@ -87,7 +91,7 @@ public function categorie_article($id_sub)
 		return $categorie_article;       
 	}
 
-
+// SELECT TOUTES LES CATÉGORIES POUR LA PAGE CATEGORIE + LES SOUS CATÉGORIES CORRESPONDANTES À CHAQUE CATÉGORIE
 public function all_categories()
     {
         $connexion = $this->db->connectDb();
@@ -118,6 +122,8 @@ public function all_categories()
 		return $categories + $sub_categories;       
 	}
 
+
+// SELECT LES NOUVEAUTÉS EN INDEX
 	public function new()
     {
         $connexion = $this->db->connectDb();
@@ -129,6 +135,7 @@ public function all_categories()
 	}
 
 
+// SELECT TOUTES LES INFOS D'UN ARTICLE DANS LES DIFFÉRENTES TABLES
 	public function article_infos($id_art)
     {
         $connexion = $this->db->connectDb();
@@ -149,6 +156,7 @@ public function all_categories()
 		return $item;       
 	}
 
+// SELECT ARTICLES SIMILAIRES
 	public function similar_article($id_sous_categorie)
     {
         $connexion = $this->db->connectDb();
