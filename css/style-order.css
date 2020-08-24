@@ -1,0 +1,230 @@
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** ORDER ***/
+
+#container-order{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:whitesmoke;
+    min-height: 60vh;
+    padding-bottom:5%;
+}
+
+#container-order nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    border-top: 0.3px solid gainsboro;
+    border-bottom: 0.3px solid gainsboro;
+}
+
+#container-order nav ul{
+    display: flex;
+    font-size:12px;
+}
+
+#container-order nav ul li{
+    padding : 20px;
+}
+
+#connect-order{
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:10%;
+    width: 50%;
+}
+
+#white-box{
+    display : flex;
+    justify-content:center;
+    border:1px solid black;
+    align-items:center;
+    text-transform: uppercase;
+    font-size : 12px;
+    color:black;
+    padding:1.5%;
+    height: 25vh;
+    width : 100%
+}
+
+#black-box{
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    text-transform: uppercase;
+    font-size : 12px;
+    color:white;
+    background-color:black;
+    border:1px solid black;
+    padding:1.5%;
+    height: 25vh;
+    width : 100%;
+}
+
+#white-box:hover{
+    color:black;
+    background-color:white;
+    height: 25vh;
+    width : 100%;
+    transform : scale(1.1);
+    transition : .5s;
+}
+
+#black-box:hover{
+    color:white;
+    background-color:black;
+    border:1px solid black;
+    height: 25vh;
+    width : 100%;
+    transform : scale(1.1);
+    transition : .5s;
+}
+
+#sub-order{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+#container-form-order{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+#container-delivery{
+    display:flex;
+    justify-content: space-between;
+    background-color:white;
+    margin-top:5%;
+    margin-bottom:5%;
+    width: 100%;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+#container-delivery form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:100%;
+}
+
+#container-delivery form h1{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    padding-top:10px;
+    color : gray;
+    font-size : 12px;
+}
+
+#radio-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#container-delivery form input[type=radio]{
+    width : 50px;
+    height: 50px;
+}
+
+#container-delivery form label{
+    margin-left:-10.5%;
+    font-size : 12px;
+    text-transform: uppercase;
+}
+
+
+#container-delivery form button{
+    display: flex;
+    padding-top:10px;
+    padding-bottom:10px;
+    width: 100%;
+    justify-content: center;
+    background-color:white;
+    border : 1px solid black;
+}
+
+#container-delivery form button:hover{
+    background-color:greenyellow;
+    transition : 1s;
+}
+
+#container-infos-order{
+    display: flex;
+    width: 100%;
+    background-color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+#container-infos-order form{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top:2.5%;
+}
+
+input[type=text]{
+  padding : 12.5px;
+  margin-bottom : 2.5%;
+  margin-left:2.5%;
+}
+
+#address input[type=text]{
+    padding-bottom : 50px;
+    margin-bottom : 2.5%;
+}
+
+#container-infos-order form button{
+    display: flex;
+    padding-top:10px;
+    padding-bottom:10px;
+    width: 100%;
+    justify-content: center;
+    background-color:white;
+    border : 1px solid black;
+}
+
+#container-infos-order form button:hover{
+    background-color:greenyellow;
+    transition : 1s;
+}
+
+#recap-order{
+    display: flex;
+    margin-top:2.5%;
+    flex-direction:column;
+    background-color : white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    width : 30%;
+}
+
+
+/*** ORDER ***/
+
+
+@media (max-width: 980px){
+
+
+  
+}
+
+@media screen and (max-width:700px){
+   
+}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
+
+
+
+
