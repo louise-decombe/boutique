@@ -30,15 +30,15 @@
 
 			<?php
 
-      $bdd = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '');
-
-      $requete = $bdd->prepare('
+    if (isset($_SESSION['user'])){ 
+      $connexion = $this->db->connectDb();
+      $requete = $connexion->prepare('
                   INSERT INTO wishlist (nom)
                   VALUES(:nom)'
               ) or exit(print_r($req->errorInfo()));
               $requete->execute( array( 'nom' => $_POST['nom'] ) );
               $requete->closeCursor();
-          }
+          
 		 ?>
 
 	</div>

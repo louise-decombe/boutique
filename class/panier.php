@@ -19,7 +19,7 @@ class Panier{
 		if(isset($_GET['delPanier'])){
 			$this->del($_GET['delPanier']);
 		}
-
+		
 		if(isset($_POST['panier']['quantity'])){
 			$this->recalc();
 		}
@@ -64,8 +64,8 @@ class Panier{
 			$_SESSION['panier'][$product_id] = 1;
 
 		}
-
-
+			
+	
 	}
 
 	public function del($product_id){
@@ -75,7 +75,7 @@ class Panier{
 
     // CHECK QUANTITÉ DISPONIBLE EN STOCK
 	public function check_stock($id_article){
-
+	
 			$check = $this->db->query("SELECT id_article, nb_articles_stock FROM stock WHERE id_article =  ".$id_article."");
 
 		return $check;
@@ -84,7 +84,7 @@ class Panier{
 	public function sub_total($prix_product, $nb_product) {
 
         $calcul = $prix_product * $nb_product;
-
+        
         return $calcul;
     }
 

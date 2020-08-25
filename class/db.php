@@ -83,4 +83,21 @@ class DB{
 			return false;
 			}
 		}
+
+		public function delete($table,$where=null){
+			if($where == null)
+	            {
+	                $delete = "DELETE ".$table;
+	            }
+	            else
+	            {
+	                $delete = "DELETE  FROM ".$table." WHERE ".$where;
+	            }
+				$del=$this->db->query($delete);
+				if($del){
+					return true;
+				}else{
+					return false;
+				}
+		}
 }

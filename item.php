@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <?php
+        <?php 
         include("includes/header.php");
         $id_article = $_GET['id'];
         $item = $category->article_infos($id_article)
@@ -27,7 +27,7 @@
             <section id="box-img-item">
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
-
+       
                 <article id="presentation-item">
                     <a id="heart-icon" href="addwishlist.php?id=<?= $id_article ?>">
                         <i class="far fa-heart"></i>
@@ -36,12 +36,12 @@
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
                         <section id="price-item">
-                            <?= //number format permet de formater un nombre ici avec deux zéros
-                            number_format(($item['prix_article']),2,',',' ');
+                            <?= //number format permet de formater un nombre ici avec deux zéros 
+                            number_format(($item['prix_article']),2,',',' '); 
                         ?>
-                        €
+                        € 
                         </section>
-
+                
                     <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
                         ajouter au panier
                     </a>
@@ -57,7 +57,7 @@
                         <p>nb de pages : <?= ($item['nb_pages'])?></p>
                     </section>
                     <?php } ?>
-
+ 		
                 </article>
         </section>
         <aside id="info-category">
@@ -72,16 +72,16 @@
             $similar = $category->similar_article(($item['id_sous_categorie']));
             var_dump(($similar['chemin']));
             var_dump(($similar['prix_article']));
-
+         
             ?>
-
+           
             </selection>
         </section>
     </main>
     <footer>
 
-        <?php include('includes/footer.php');
-
+        <?php include('includes/footer.php'); 
+        
         ?>
     </footer>
 </body>

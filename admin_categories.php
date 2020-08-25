@@ -1,8 +1,8 @@
 <?php $page_selected = 'admin_categories.php'; ?>
 
 <?php
-include("includes/header.php");
-require('admin_nav.php');
+include ("includes/header.php");
+require ('admin_nav.php');
 
 ?>
 <!DOCTYPE html>
@@ -21,9 +21,9 @@ require('admin_nav.php');
 
 <main>
   <?php
-
-if($user->is_admin==0) {
-   ?>
+if ($user->is_admin == 0)
+{
+?>
 
   <div class="admin">
     <div class="button">
@@ -34,9 +34,9 @@ if($user->is_admin==0) {
   </div>
 
   <?php
-
-  if (isset($_GET['categorie'])) {
-      ?>
+    if (isset($_GET['categorie']))
+    {
+?>
   <div class="boucle">
 
   <h3>Chercher une catégorie dans la liste</h3>
@@ -53,40 +53,45 @@ if($user->is_admin==0) {
     </thead>
     <tbody>
       <?php
+        //recherche d'une catégorie dans la base de donnée
+        $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+        $sql = 'SELECT * FROM categorie';
+        $params = [];
+        if (isset($_POST['recherche_valeur']))
+        {
+            $sql .= ' where nom_categorie like :nom_categorie';
+            $params[':nom_categorie'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
+        }
 
-      //recherche d'un utilisateur dans la base de donnée
-      $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-      $sql = 'SELECT * FROM categorie';
-      $params = [];
-      if (isset($_POST['recherche_valeur'])) {
-          $sql .= ' where nom_categorie like :nom_categorie';
-          $params[':nom_categorie'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
-      }
-
-      $resultats = $bdd->prepare($sql);
-      $resultats->execute($params);
-      if ($resultats->rowCount() > 0) {
-          while ($d = $resultats->fetch(PDO::FETCH_ASSOC)) {
-              ?>
+        $resultats = $bdd->prepare($sql);
+        $resultats->execute($params);
+        if ($resultats->rowCount() > 0)
+        {
+            while ($d = $resultats->fetch(PDO::FETCH_ASSOC))
+            {
+?>
   <div class="">
    <tr><td><?=$d['nom_categorie'] ?></td><td><?=$d['id_categorie'] ?></td>
        <td><a href="admin_categories.php?categorie&modifier_categorie=<?php echo $d['id_categorie'] ?>">modifier</a></td>
      <td><a href="admin_categories.php?categorie&supprimer_categorie=<?php echo $d['id_categorie'] ?>">supprimer</a></td>
   </div>
           <?php
-          }
-          //fin de la requête
-          $resultats->closeCursor();
-      } else {
-          echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
-      } ?>
+            }
+            //fin de la requête
+            $resultats->closeCursor();
+        }
+        else
+        {
+            echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
+        } ?>
     </div>
 
     </tbody>
   </table>
   <section id="container-register">
 
-  <?php if (isset($_GET['modifier_categorie'])) { ?>
+  <?php if (isset($_GET['modifier_categorie']))
+        { ?>
   <form name="modification" action="" method="POST">
   <table border="0" align="center" cellspacing="2" cellpadding="2">
   <tr align="center">
@@ -99,13 +104,15 @@ if($user->is_admin==0) {
   </table>
   </form>
   </section>
-<?php }} ?>
+<?php
+        }
+    } ?>
 
 
   <?php
-
-  if(isset($_GET['sous_categorie'])) {
-      ?>
+    if (isset($_GET['sous_categorie']))
+    {
+?>
   <div class="boucle">
 
   <h3>Chercher une sous catégorie dans la liste</h3>
@@ -122,39 +129,43 @@ if($user->is_admin==0) {
     </thead>
     <tbody>
       <?php
-
-      //recherche d'un utilisateur dans la base de donnée
-      $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-      $sql2 = 'SELECT * FROM sous_categorie';
-      $params2 = [];
-      if (isset($_POST['recherche_valeur'])) {
-          $sql2 .= ' where nom_sous_categorie like :nom_sous_categorie';
-          $params2[':nom_sous_categorie'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
-      }
-      $resultats2 = $bdd->prepare($sql2);
-      $resultats2->execute($params2);
-      if ($resultats2->rowCount() > 0) {
-          while ($d2 = $resultats2->fetch(PDO::FETCH_ASSOC)) {
-              ?>
+        //recherche d'une sous catégorie dans la base de donnée
+        $sql2 = 'SELECT * FROM sous_categorie';
+        $params2 = [];
+        if (isset($_POST['recherche_valeur']))
+        {
+            $sql2 .= ' where nom_sous_categorie like :nom_sous_categorie';
+            $params2[':nom_sous_categorie'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
+        }
+        $resultats2 = $bdd->prepare($sql2);
+        $resultats2->execute($params2);
+        if ($resultats2->rowCount() > 0)
+        {
+            while ($d2 = $resultats2->fetch(PDO::FETCH_ASSOC))
+            {
+?>
   <div class="">
    <tr><td><?=$d2['nom_sous_categorie'] ?></td><td><?=$d2['id_sous_categorie'] ?></td>
        <td><a href="admin_categories.php?sous_categorie&modifier_sous_categorie=<?php echo $d2['id_sous_categorie'] ?>">modifier</a></td>
      <td><a href="admin_categories.php?sous_categorie&supprimer_sous_categorie=<?php echo $d2['id_sous_categorie'] ?>">supprimer</a></td>
   </div>
           <?php
-          }
-          //fin de la requête
-          $resultats2->closeCursor();
-      } else {
-          echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
-      } ?>
+            }
+            //fin de la requête
+            $resultats2->closeCursor();
+        }
+        else
+        {
+            echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
+        } ?>
     </div>
 
     </tbody>
   </table>
   <section id="container-register">
 
-  <?php if (isset($_GET['modifier_sous_categorie'])) { ?>
+  <?php if (isset($_GET['modifier_sous_categorie']))
+        { ?>
   <form name="modification" action="" method="POST">
   <table border="0" align="center" cellspacing="2" cellpadding="2">
   <tr align="center">
@@ -167,18 +178,17 @@ if($user->is_admin==0) {
   </table>
   </form>
   </section>
-  <?php } ?>
-
   <?php
-} ?>
+        }
+    } ?>
 
 
 <div class="categories">
 
 <?php
-
-      if (isset($_GET['ajouter'])) {
-          ?>
+    if (isset($_GET['ajouter']))
+    {
+?>
 
       <section id="container-register">
          <form action="admin_categories.php" method="post">
@@ -202,17 +212,17 @@ if($user->is_admin==0) {
                     <label for="">Sous-catégorie</label>
 
                     <select name="categorie">
-
-
                     <?php
-                       $products = $DB->query('SELECT * FROM categorie ');
+        $products = $db->query('SELECT * FROM categorie ');
 
-                 foreach ( $products as $product ):
-                         // On affiche chaque entrée une à une
-                             ?>
-                             <strong>catégorie</strong> : <?php echo"<option value = '". $donnees->id_categorie."'>". $donnees->nom_categorie."</option>";
-                       ?>
+        foreach ($products as $product):
+            // On affiche chaque entrée une à une
+
+?>
+    <strong>catégorie</strong> : <?php echo "<option value = '" . $donnees->id_categorie . "'>" . $donnees->nom_categorie . "</option>";
+?>
                              <br />
+                           <?php endforeach; ?>
 
                        </select>
 
@@ -223,43 +233,50 @@ if($user->is_admin==0) {
         </form>
     </section>
 
+
   </div>
 <?php
 
-if(isset($_POST['submit_categorie'])){
-$id_categorie= 10;
-$nom_categorie = $_POST['name_categorie'];
+            if (isset($_POST['submit_categorie']))
+            {
+                $id_categorie = 10;
+                $nom_categorie = $_POST['name_categorie'];
 
-$ins=array($id_categorie);
-$DB->insert('categorie',$ins,null);
+                $ins = array(
+                    $id_categorie
+                );
+                $db->insert('categorie', $ins, null);
 
-echo "la catégorie a bien été ajoutée";
-}
+                echo "la catégorie a bien été ajoutée";
+            }
 
-if(isset($_POST['submit_sous_categorie'])){
-$id_sous_categorie= 10;
-$nom_sous_categorie = $_POST['name_sous_categorie'];
-$id_categorie = $_POST['id_categorie'];
+            if (isset($_POST['submit_sous_categorie']))
+            {
+                $id_sous_categorie = 10;
+                $nom_sous_categorie = $_POST['name_sous_categorie'];
+                $id_categorie = $_POST['id_categorie'];
 
-$ins=array($id_sous_categorie, $nom_sous_categorie,$id_categorie);
-$DB->insert('sous_categorie',$ins,null);
+                $ins = array(
+                    $id_sous_categorie,
+                    $nom_sous_categorie,
+                    $id_categorie
+                );
+                $db->insert('sous_categorie', $ins,null);
 
-echo "la sous catégorie a bien été ajoutée";
-}
+                echo "la sous catégorie a bien été ajoutée";
+            }
 
+        }
 
-
-} ?>
+    } ?>
 
 </div>
-<?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
-  echo "<a href='index.php'> Retour à l'accueil </a>";
-}?>
-  </main>
-  <footer>
-    <?php include('includes/footer.php'); ?>
+<?php
+?>
 
+    </main>
+    <footer>
+      <?php include ('includes/footer.php'); ?>
   </footer>
   </body>
   </html>
