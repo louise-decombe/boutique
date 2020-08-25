@@ -60,8 +60,6 @@ if($users->is_admin==0) {
 
 <h2>Dernière commande </h2>
 
-<h3>aopzierufhdvsopqs</h3>
-
 
 
 </div>
