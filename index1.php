@@ -18,7 +18,7 @@
     $select_news = $category->new();
     $title_1 = ($select_news[0]['nom_article']);
     $title_2 = ($select_news[1]['nom_article']);
-
+    
     ?>
 </header>
 <main>
@@ -159,7 +159,7 @@
       </article>
       <img src="src/fanzine-saturation.jpg" alt="presentation of a stand with multiple different fanzines">
     </section>
-    </section>
+    </section>    
 </main>
 <footer>
     <?php
@@ -167,3 +167,4 @@
 </footer>
 </body>
 </html>
+

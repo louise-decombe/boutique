@@ -24,7 +24,7 @@ require("admin_nav.php")
 <main>
   <?php
 
-if($user->is_admin==0) {
+if($users->is_admin==1) {
    ?>
 <div class="admin">
 
@@ -35,9 +35,5 @@ if($user->is_admin==0) {
   echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>
 </main>
-<footer>
-  <?php include('includes/footer.php'); ?>
-
-</footer>
 </body>
 </html>

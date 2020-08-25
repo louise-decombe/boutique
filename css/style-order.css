@@ -4,7 +4,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** ORDER ***/
 
-#container-panier{
+#container-order{
     display:flex;
     flex-direction:column;
     align-items: center;
@@ -13,7 +13,7 @@
     padding-bottom:5%;
 }
 
-#container-panier nav{
+#container-order nav{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -22,16 +22,16 @@
     border-bottom: 0.3px solid gainsboro;
 }
 
-#container-panier nav ul{
+#container-order nav ul{
     display: flex;
     font-size:12px;
 }
 
-#container-panier nav ul li{
+#container-order nav ul li{
     padding : 20px;
 }
 
-#connect-panier{
+#connect-order{
     display : flex;
     justify-content:center;
     align-items:center;
@@ -83,6 +83,125 @@
     width : 100%;
     transform : scale(1.1);
     transition : .5s;
+}
+
+#sub-order{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+#container-form-order{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+#container-delivery{
+    display:flex;
+    justify-content: space-between;
+    background-color:white;
+    margin-top:5%;
+    margin-bottom:5%;
+    width: 100%;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+#container-delivery form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:100%;
+}
+
+#container-delivery form h1{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    padding-top:10px;
+    color : gray;
+    font-size : 12px;
+}
+
+#radio-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#container-delivery form input[type=radio]{
+    width : 50px;
+    height: 50px;
+}
+
+#container-delivery form label{
+    margin-left:-10.5%;
+    font-size : 12px;
+    text-transform: uppercase;
+}
+
+
+#container-delivery form button{
+    display: flex;
+    padding-top:10px;
+    padding-bottom:10px;
+    width: 100%;
+    justify-content: center;
+    background-color:white;
+    border : 1px solid black;
+}
+
+#container-delivery form button:hover{
+    background-color:greenyellow;
+    transition : 1s;
+}
+
+#container-infos-order{
+    display: flex;
+    width: 100%;
+    background-color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+#container-infos-order form{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top:2.5%;
+}
+
+input[type=text]{
+  padding : 12.5px;
+  margin-bottom : 2.5%;
+  margin-left:2.5%;
+}
+
+#address input[type=text]{
+    padding-bottom : 50px;
+    margin-bottom : 2.5%;
+}
+
+#container-infos-order form button{
+    display: flex;
+    padding-top:10px;
+    padding-bottom:10px;
+    width: 100%;
+    justify-content: center;
+    background-color:white;
+    border : 1px solid black;
+}
+
+#container-infos-order form button:hover{
+    background-color:greenyellow;
+    transition : 1s;
+}
+
+#recap-order{
+    display: flex;
+    margin-top:2.5%;
+    flex-direction:column;
+    background-color : white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    width : 30%;
 }
 
 

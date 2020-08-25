@@ -37,7 +37,7 @@
             </section>
             <section id="end-logo">
                 <a href="index.php">
-                    <h1>LOVECRAFT</h1>
+                    <h1>HIGH & CRAFT</h1>
                     <h2>FANZINE BOOKSTORE</h2>
                 </a>
             </section>
@@ -99,7 +99,8 @@
             <section id="footer-nav">
                 <nav>
                     <ul>
-                        <?php $categorie = $category->categories(); ?>
+                        <?php $categorie = $category->cat(); ?>
+                        <li><a href="category.php">Voir tout</a></li>
              
                         <?php if (isset($_SESSION['user']['id_user'])){
                                 if ($_SESSION['user']['is_admin'] == 1) {
@@ -107,7 +108,7 @@
                         <li><a href="admin.php">espace admin</a></li>
                         <?php } ?>
                         <form action="index.php" method="post">
-                            <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
+                            <input id="deco-footer" name="deco" value="DECONNEXION" type="submit"/>
                         </form>
                         <?php 
                             } 
@@ -116,7 +117,7 @@
                 </nav>
             </section>
         </section>
-        <p id="copyright">&copy; 2020 LOVECRAFT FANZINE BOOKSTORE</p>
+        <p id="copyright">&copy; 2020 HIGH & CRAFT FANZINE BOOKSTORE</p>
     </section>
     <?php 
         } 

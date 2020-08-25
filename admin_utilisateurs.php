@@ -21,10 +21,6 @@ require("admin_nav.php")
 
 </header>
 <main>
-  <?php
-
-if($user->is_admin==0) {
-   ?>
 <div class="admin">
 
 <div class="button">
@@ -74,12 +70,20 @@ if (isset($_GET['utilisateurs'])) {
    <td><?=$d['is_admin'] ?></td><td><?=$d['date_registration'] ?></td>
 
      <td><a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $d['id_utilisateur'] ?>">modifier</a></td>
-   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['in_utilisateur'] ?>">supprimer</a></td>
+   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['id_utilisateur'] ?>">supprimer</a></td>
 </div>
         <?php
         }
         //fin de la requête
         $resultats->closeCursor();
+
+if(isset($_GET['supprimer_compte'])){
+
+$req->delete('user',' id = 1');
+
+}
+
+
     } else {
         echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
     } ?>
@@ -130,29 +134,10 @@ if (isset($_GET['utilisateurs'])) {
 }
 
 if (isset($_GET['ajouter'])){
-
-  if (isset($_POST['submit'])) {
-      $user->register(
-          $_POST['firstname'],
-          $_POST['lastname'],
-          $_POST['gender'],
-          $_POST['phone'],
-          $_POST['email'],
-          $_POST['password'],
-          $_POST['conf_password']
-      );
-
-      if (isset($_POST['newsletter'])){
-          $user->newsletter($_POST['email']);
-      }
-  }
-
-
     ?>
 
-
     <section id="container-register">
-       <form action="admin_utilisateurs.php" method="post">
+       <form action="inscription.php" method="post">
            <h3>CRÉER UN COMPTE</h3>
            <section id="box-form">
 
@@ -189,14 +174,6 @@ if (isset($_GET['ajouter'])){
 
 </div>
 <?php } ?>
-<?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
-  echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
 </main>
-<footer>
-  <?php include('includes/footer.php'); ?>
-
-</footer>
 </body>
 </html>

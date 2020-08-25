@@ -1,10 +1,9 @@
 <?php
 class wishlist{
 
-	private $db;
 
-	public function __construct($db){
-		$this->db = $db;
+	public function __construct(){
+	
 		
 		if(!isset($_SESSION['user'])){
 			session_start();
@@ -22,4 +21,3 @@ class wishlist{
 
 }
 ?>
-

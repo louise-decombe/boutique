@@ -14,25 +14,25 @@
 </head>
 <body>
     <header>
-        <?php
+        <?php 
         include("includes/header.php");
-
+        
         //var_dump($infos);
         //var_dump($_SESSION['user']);
 
         //$infos = $user->profile($_SESSION['user']['id_user']);
 
-        if (isset($_POST["modify_infos"])) {
+        if (isset($_POST["modify_infos"])) {      
             $id_user= ($_SESSION['user']['id_user']);
             $user->modify_infos($id_user,$_POST['gender'],$_POST['firstname'],$_POST['lastname'],$_POST['phone']);
             $refresh = $user->refresh($id_user);
             //var_dump($refresh);
         }
-        if (isset($_POST["modify_password"])) {
+        if (isset($_POST["modify_password"])) {      
             $id_user= ($_SESSION['user']['id_user']);
             $user->modify_password($id_user, $_POST['new_password'],$_POST['check_password']);
         }
-        /*if (isset($_POST["close_window"])) {
+        /*if (isset($_POST["close_window"])) {      
             $id_user= ($_SESSION['user']['id_user']);
             $user->modify_password($id_user, $_POST['new_password'],$_POST['check_password']);
         }*/
@@ -53,12 +53,12 @@
                     </form>
                 </li>
             </nav>
-
+               
             <article id="profile-infos">
                 <h2>Mes informations</h2>
                     <p><?= $_SESSION['user']['firstname'] ?>&nbsp;<?= $_SESSION['user']['lastname']?></p>
                     <address>Tel : <?= $_SESSION['user']['phone'] ?></address>
-
+                
                     <form class='onglet' method='POST'>
                         <input id="link-modif" name="modifier" value="modifier" type="submit"/>
                     </form>
@@ -67,7 +67,7 @@
                         <input id="link-modif" name="change_password" value="changer le mot de passe" type="submit"/>
                     </form>
             </article>
-
+            
             <?php if(isset($_POST['modifier'])){?>
                     <section class="modify">
                         <a href="profil.php">x</a>
@@ -90,8 +90,8 @@
                             <button type="submit" name="modify_infos">ENREGISTRER MES NOUVELLES INFORMATIONS</button>
                         </form>
                     </section>
-               <?php }
-
+               <?php } 
+                
                 if(isset($_POST['change_password'])){?>
                 <section class="modify">
                     <a href="profil.php">x</a>
@@ -99,7 +99,7 @@
                     <form action="profil.php" method='POST'>
                         <section>
                             <input type="password" name="new_password" placeholder="nouveau password">
-                            <input type="passxxword" name="check_password" placeholder="confirmer le password">
+                            <input type="password" name="check_password" placeholder="confirmer le password">
                         </section>
                         <button type="submit" name="modify_password">ENREGISTRER LE NOUVEAU MOT DE PASSE</button>
                      </form>
@@ -113,3 +113,4 @@
     </footer>
 </body>
 </html>
+

@@ -15,40 +15,11 @@
 
 <body>
     <header>
-        <?php
+        <?php 
         include("includes/header.php");
         ?>
     </header>
     <main>
-
-
-      <section id="container-register">
-         <form action="" method="post">
-             <h3>NOUS CONTACTER</h3>
-             <section id="box-form">
-                     <input type="textarea" name="message" value="Votre message ici">
-    </section>
-             <button type="submit" name="submit">Envoyer le message </button>
-         </form>
-     </section>
-<?php
-
-
-if(isset($_POST['submit'])){
-$id= 10;
-$message = $_POST['message'];
-$id_utilisateur = ($_SESSION['user']['id_user']);
-$date = date('Y-m-d H:i:s');
-
-$ins=array($id,$message,$id_utilisateur,$date);
-$DB->insert('message_utilisateurs',$ins,null);
-
-
-echo "le message a bien été posté";
-}
-
- ?>
-
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>

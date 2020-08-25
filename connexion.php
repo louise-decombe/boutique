@@ -1,4 +1,7 @@
-<?php $page_selected = 'connexion.php'; ?>
+<?php 
+ob_start();
+$page_selected = 'connexion.php'; 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -49,3 +52,6 @@
 </footer>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

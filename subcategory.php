@@ -33,13 +33,13 @@
                     <a href="index1.php">home</a>
                 </aside>
             </section>
-
+          
             <section id="container-news">
 
             <?php $article_sub_category  = $category->categorie_article($_GET['id']);
-            foreach ($article_sub_category as $article){
+            foreach ($article_sub_category as $article){ 
             ?>
-                <section id="container-article">
+                <section id="container-article"> 
                     <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
                     <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
                     <section id="description">
@@ -63,11 +63,11 @@
                     <form class='onglet' method='POST'>
                         <input id="more_articles" name="more_articles" value="VOIR + D'ARTICLES" type="submit"/>
                         <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
-                    </form>
+                    </form> 
                 </section>
-            </section>
+            </section>  
         </section>
-    </main>
+    </main> 
     <footer>
         <?php include('includes/footer.php'); ?>
     </footer>

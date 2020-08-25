@@ -31,7 +31,7 @@ require("admin_nav.php")
 
 if(isset($_GET['clients'])){
 
- $products = $DB->query('SELECT * FROM message_utilisateurs'); ?>
+ $products = $db->query('SELECT * FROM message_utilisateurs'); ?>
 
   <?php foreach ( $products as $product ):
     echo  'reçu le  '.$product->date.'<br/>';
@@ -50,7 +50,7 @@ if(isset($_GET['clients'])){
 if(isset($_GET['vendeurs']))
 {
 
- $products = $DB->query('SELECT * FROM message_vendeur'); ?>
+ $products = $db->query('SELECT * FROM message_vendeur'); ?>
 
   <?php foreach ( $products as $product ):
     echo  'reçu le  '.$product->date.'<br/>';
