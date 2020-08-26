@@ -23,8 +23,8 @@ public function cat()
 			echo '<a href="category.php?id='.$id_categorie.'">' .$name_categorie.'</a>';
 
 			}
-		
-		return $categories;       
+
+		return $categories;
 	}
 
 
@@ -42,7 +42,7 @@ public function categories()
 			echo '<li class="dropdown-menu"><a href="category.php?id='.$id_categorie.'">' .$name_categorie.'</a><ul class ="menu-area">';
 			echo '<a id="all_categories" href="category.php">voir toutes les catégories</a>';
 
-			
+
         	$q1 = $connexion->prepare("SELECT nom_sous_categorie, id_sous_categorie FROM sous_categorie WHERE id_categorie = $id_categorie");
         	$q1->execute();
 			$sub_categories = $q1->fetchAll();
@@ -53,10 +53,10 @@ public function categories()
 				$id_sous_categorie = $sub_cat["id_sous_categorie"];
 				echo '<ul><li><a href="subcategory.php?id='.$id_sous_categorie.'&category_name='.$name_categorie.'/subcategory=' .$name_sous_categorie. '">'.$name_sous_categorie.'</a></li></ul>';
 			}
-			echo '</ul></li>'; 
+			echo '</ul></li>';
 		}
-		
-		return $categories + $sub_categories;       
+
+		return $categories + $sub_categories;
 	}
 
 // SELECT SOUS-CATEGORIES + CATEGORIES ASSOCIÉES
@@ -75,7 +75,7 @@ public function sub_categories($id)
 			echo '<li><a href="category.php?id='.$id_categorie.'&category_name='.$name_categorie.'/subcategory=' .$name_sous_categorie. '">'.$name_sous_categorie.'</a></li>';
 		}
 
-		return $sub_categories;       
+		return $sub_categories;
 	}
 
 
@@ -86,9 +86,9 @@ public function categorie_article($id_sub)
         $q = $connexion->prepare("SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_sous_categorie = $id_sub");
         $q->execute();
 		$categorie_article = $q->fetchAll();
-		
-		
-		return $categorie_article;       
+
+
+		return $categorie_article;
 	}
 
 // SELECT TOUTES LES CATÉGORIES POUR LA PAGE CATEGORIE + LES SOUS CATÉGORIES CORRESPONDANTES À CHAQUE CATÉGORIE
@@ -116,10 +116,10 @@ public function all_categories()
 			}
 
 			echo '</section>';
-			
+
 		}
-		
-		return $categories + $sub_categories;       
+
+		return $categories + $sub_categories;
 	}
 
 
@@ -131,7 +131,7 @@ public function all_categories()
         $q1->execute();
 		$new_in = $q1->fetchall();
 
-		return $new_in;       
+		return $new_in;
 	}
 
 
@@ -139,13 +139,13 @@ public function all_categories()
 	public function article_infos($id_art)
     {
         $connexion = $this->db->connectDb();
-        $q = $connexion->prepare("SELECT * FROM article as A 
-								  INNER JOIN image_article as I 
+        $q = $connexion->prepare("SELECT * FROM article as A
+								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
 								  INNER JOIN categorie as C
 								  ON A.id_categorie = C.id_categorie
 								  INNER JOIN sous_categorie as S
-								  ON A.id_sous_categorie = S.id_sous_categorie 
+								  ON A.id_sous_categorie = S.id_sous_categorie
 								  INNER JOIN stock as T
 								  ON A.id_article = T.id_article
 								  WHERE A.id_article =' ".$id_art."'");
@@ -153,27 +153,27 @@ public function all_categories()
 		$item = ($q->fetch());
 
 		//var_dump($item);
-		return $item;       
+		return $item;
 	}
 
 // SELECT ARTICLES SIMILAIRES
 	public function similar_article($id_sous_categorie, $id_item)
     {
         $connexion = $this->db->connectDb();
-        $q = $connexion->prepare("SELECT * FROM article as A 
-								  INNER JOIN image_article as I 
+        $q = $connexion->prepare("SELECT * FROM article as A
+								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
 								  INNER JOIN categorie as C
 								  ON A.id_categorie = C.id_categorie
 								  INNER JOIN sous_categorie as S
-								  ON A.id_sous_categorie = S.id_sous_categorie 
+								  ON A.id_sous_categorie = S.id_sous_categorie
 								  WHERE A.id_sous_categorie =' ".$id_sous_categorie."'
 								  ORDER by A.date_ajout DESC limit 4");
         $q->execute();
 		$similar = ($q->fetchAll());
 
 		//var_dump($similar);
-		return $similar;       
+		return $similar;
 	}
 
 }

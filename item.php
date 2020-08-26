@@ -17,10 +17,10 @@
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         $id_article = $_GET['id'];
-        $item = $category->article_infos($id_article)
+        $item = $category->article_infos($id_article);
         ?>
     </header>
     <main>
@@ -29,7 +29,7 @@
             <section id="box-img-item">   
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
-       
+
                 <article id="presentation-item">
                     <a id="heart-icon" href="addwishlist.php?id=<?= $id_article ?>">
                         <i class="far fa-heart"></i>
@@ -42,7 +42,7 @@
                         </section>
                 
                         <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
-                        ajouter au panier
+                      ajouter au panier
                         <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
                     </a>
 
@@ -57,7 +57,7 @@
                         <p>nb de pages : <?= ($item['nb_pages'])?></p>
                     </section>
                     <?php } ?>
- 		
+
                 </article>
         </section>
         <aside id="info-category">
@@ -89,12 +89,13 @@
             
             <?php } } ?>
             </section>
+
         </section>
     </main>
     <footer>
 
-        <?php include('includes/footer.php'); 
-        
+        <?php include('includes/footer.php');
+
         ?>
     </footer>
 </body>

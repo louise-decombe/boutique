@@ -19,23 +19,19 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "boutique";
+if (isset($_GET['ajouter_wishlist']))
+{
+  $id_utilisateur=$_SESSION['id_utilisateur'];
+  $id_article=$_GET['id_article'];
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "INSERT INTO wishlist (id_utilisateur, id_article)
-  VALUES ('1','2')";
-  // use exec() because no results are returned
-  $conn->exec($sql);
-  echo "New record created successfully";
-} catch(PDOException $e) {
-  echo $sql . "<br>" . $e->getMessage();
-}
+    $ins = array(
+      $id_utilisateur,
+      $id_article,
+
+    );
+    $db->insert('wishlist', $ins, null);
+
+    echo "l'article a bien été ajouté à votre wishlist.";
 
 
 
@@ -43,5 +39,4 @@ try {
 
 ?>
 
-<a href="index.php">retour</a>
-<a href="wishlist.php">voir ma wishlist</a>
+<a href="wishlist.php">voir ma wishlist</a> }

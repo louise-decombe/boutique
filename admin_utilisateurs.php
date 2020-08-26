@@ -70,12 +70,19 @@ if (isset($_GET['utilisateurs'])) {
    <td><?=$d['is_admin'] ?></td><td><?=$d['date_registration'] ?></td>
 
      <td><a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $d['id_utilisateur'] ?>">modifier</a></td>
-   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['in_utilisateur'] ?>">supprimer</a></td>
+   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['id_utilisateur'] ?>">supprimer</a></td>
 </div>
         <?php
         }
         //fin de la requête
-        $resultats->closeCursor();
+
+if(isset($_GET['supprimer_compte'])){
+
+$req->delete('user',' id = 1');
+
+}
+
+
     } else {
         echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
     } ?>
@@ -85,41 +92,52 @@ if (isset($_GET['utilisateurs'])) {
 </table>
 <section id="container-register">
 
-<?php if (isset($_GET['modifier_compte'])) { ?>
-<form name="modification" action="" method="POST">
-<table border="0" align="center" cellspacing="2" cellpadding="2">
-<tr align="center">
-<td>Nom</td>
-	<td><input type="text" name="nom" value="<?php echo $info['nom']; ?>"></td>
-</tr>
-<tr align="center">
-<td>Prénom</td>
-	<td><input type="text" name="prenom" value="<?php echo $info['nom']; ?>"></td>
-</tr>
-<tr align="center">
-<td>Email</td>
-<td><input type="text" name="email"value="<?php echo $info['email'] ; ?>"></td>
-</tr>
-<tr align="center">
-<td>Gender</td>
-<td><input type="text" name="email"value="<?php echo $info['email'] ; ?>"></td>
-</tr>
-<tr align="center">
-<td>Admin</td>
-<td>
-<select name="is_admin" id="is_admin">
-	<option value="0">utilisateur</option>
-	<option value="1">admin</option>
-</td>
-</tr>
-<tr align="center">
-<td><input name="modifier" type="submit" value="modifier"></td>
-<td><button> <a href="admin_utilisateurs.php?utilisateurs"> Fermer</a> </button> </td>
-</tr>
-</table>
-</form>
-</section>
-<?php } ?>
+<?php if (isset($_GET['modifier_compte'])) {
+
+  $pdoselect = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = :id');
+
+  $pdoselect ->bindValue(':id', $_GET['modifier_compte'], PDO::PARAM_INT);
+
+  $executepdo= $pdoselect->execute();
+
+  $info= $pdoselect->fetch();
+
+  var_dump($info);
+
+
+  ?>
+
+
+  <form action="" method='POST'>
+      <section id="box-gender">
+          <label>CIVILITÉ</label>
+          <input type="radio" name="gender" id="female" value="Femme">
+          <label for="female">madame</label>
+          <input type="radio" name="gender" id="male" value="Homme">
+          <label for="male">monsieur</label>
+          <input type="radio" name="gender" id="no_gender" value="Non genré">
+          <label for="no_gender">non genré</label>
+      </section>
+      <section>
+          <input type="text" name="firstname" placeholder="<?=$db['user']['firstname']?>">
+          <input type="text" name="lastname" placeholder="<?=$db['user']['lastname']?>">
+      </section>
+      <input type="tel" name="phone" placeholder="<?=$db['user']['phone']?>">
+      <button type="submit" name="modify_infos">ENREGISTRER MES NOUVELLES INFORMATIONS</button>
+  </form> <br/>
+  <section>
+      <form action="" method='POST'>
+          <section>
+              <input type="password" name="new_password" placeholder="nouveau password">
+              <input type="password" name="check_password" placeholder="confirmer le password">
+          </section>
+          <button type="submit" name="modify_password">ENREGISTRER LE NOUVEAU MOT DE PASSE</button>
+       </form>
+  </section>
+
+
+<?php
+ } ?>
 
 
 <?php
@@ -128,43 +146,66 @@ if (isset($_GET['utilisateurs'])) {
 if (isset($_GET['ajouter'])){
     ?>
 
-    <section id="container-register">
-       <form action="inscription.php" method="post">
-           <h3>CRÉER UN COMPTE</h3>
-           <section id="box-form">
+    <main>
+        <?php
+        if (isset($_POST['submit'])) {
+            $user->register(
+                $_POST['firstname'],
+                $_POST['lastname'],
+                $_POST['gender'],
+                $_POST['phone'],
+                $_POST['email'],
+                $_POST['password'],
+                $_POST['conf_password']
+            );
 
-                   <section id="box-gender">
-                       <label>CIVILITÉ</label>
-                       <input type="radio" name="gender" id="female" value="Femme">
-                       <label for="female">madame</label>
-                       <input type="radio" name="gender" id="male" value="Homme">
-                       <label for="male">monsieur</label>
-                       <input type="radio" name="gender" id="no_gender" value="Non genré">
-                       <label for="no_gender">non genré</label>
-                   </section>
+            if (isset($_POST['newsletter'])){
+                $user->newsletter($_POST['email']);
+            }
+        }
 
 
-                   <input type="text" name="firstname" placeholder="prénom*">
+        ?>
+         <section id="container-register">
+            <form action="" method="post">
+                <h3>CRÉER MON COMPTE</h3>
+                <section id="box-form">
 
-                   <input type="text" name="lastname" placeholder="nom*">
+                        <section id="box-gender">
+                            <label>CIVILITÉ</label>
+                            <input type="radio" name="gender" id="female" value="Femme">
+                            <label for="female">madame</label>
+                            <input type="radio" name="gender" id="male" value="Homme">
+                            <label for="male">monsieur</label>
+                            <input type="radio" name="gender" id="no_gender" value="Non genré">
+                            <label for="no_gender">non genré</label>
+                        </section>
 
-                   <input type="text" name="email" placeholder="email@email.com*">
 
-                   <input type="tel" name="phone" placeholder="0123456789*">
+                        <input type="text" name="firstname" placeholder="prénom*">
 
-                   <section id="box-password">
-                       <label for="password">password</label>
-                       <input type="password" name="password" placeholder="mot de passe*">
-                       <label for="conf_password">confirmation password</label>
-                       <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
-                   </section>
+                        <input type="text" name="lastname" placeholder="nom*">
 
-           </section>
-           <button type="submit" name="submit">Enregistrer les informations</button>
-       </form>
-   </section>
+                        <input type="text" name="email" placeholder="email@email.com*">
 
-</div>
+                        <input type="tel" name="phone" placeholder="0123456789*">
+
+                        <section id="box-password">
+                            <label for="password">password</label>
+                            <input type="password" name="password" placeholder="mot de passe*">
+                            <label for="conf_password">confirmation password</label>
+                            <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
+                        </section>
+
+                </section>
+                <section id="box-newsletter">
+                    <input type="checkbox" name="newsletter" value="newsletter">
+                    <label for="newsletter">je souhaite recevoir votre actualité en avant-première. </label>
+                </section>
+                <button type="submit" name="submit">Enregistrer vos informations</button>
+            </form>
+        </section>
+
 <?php } ?>
 </main>
 </body>

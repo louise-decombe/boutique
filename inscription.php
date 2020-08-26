@@ -36,13 +36,13 @@ $page_selected = 'inscription';
     if (isset($_POST['submit']) && isset($_POST['newsletter'])){
         $user->newsletter($_POST['email']);
     }
-    
+
     ?>
      <section id="container-register">
         <form action="inscription.php" method="post">
             <h3>CRÉER MON COMPTE</h3>
             <section id="box-form">
-               
+
                     <section id="box-gender">
                         <label>CIVILITÉ</label>
                         <input type="radio" name="gender" id="female" value="Femme">
@@ -53,13 +53,13 @@ $page_selected = 'inscription';
                         <label for="gender">non genré</label>
                     </section>
 
-                   
+
                     <input type="text" name="firstname" placeholder="prénom*">
-                   
+
                     <input type="text" name="lastname" placeholder="nom*">
-                   
+
                     <input type="text" name="email" placeholder="email@email.com*">
-                   
+
                     <input type="tel" name="phone" placeholder="0123456789*">
 
                     <section id="box-password">
@@ -68,7 +68,7 @@ $page_selected = 'inscription';
                         <label for="conf_password">confirmation password</label>
                         <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
                     </section>
-                
+
             </section>
             <section id="box-newsletter">
                 <input type="checkbox" name="newsletter" value="newsletter">

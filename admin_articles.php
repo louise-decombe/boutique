@@ -22,7 +22,7 @@ require('admin_nav.php');
 <main>
   <?php
 
-if($users->is_admin==1) {
+if($user->is_admin==0) {
    ?>
   <div class="admin">
     <div class="button">
@@ -58,8 +58,8 @@ if($users->is_admin==1) {
       $sql = 'SELECT * FROM article';
       $params = [];
       if (isset($_POST['recherche_valeur'])) {
-          $sql .= ' where name like :name';
-          $params[':name'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
+          $sql .= ' where nom_article like :nom_article';
+          $params[':nom_article'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
       }
 
       $resultats = $bdd->prepare($sql);
@@ -68,9 +68,9 @@ if($users->is_admin==1) {
           while ($d = $resultats->fetch(PDO::FETCH_ASSOC)) {
               ?>
   <div class="">
-   <tr><td><?=$d['name'] ?></td><td><?=$d['description_article'] ?></td>
-     <td><?=$d['nb_pages'] ?></td><td><?=$d['price'] ?></td>
-     <td><?=$d['id_categorie'] ?></td><td><?=$d['date'] ?></td>
+   <tr><td><?=$d['nom_article'] ?></td><td><?=$d['description_article'] ?></td>
+     <td><?=$d['nb_pages'] ?></td><td><?=$d['prix_article'] ?></td>
+     <td><?=$d['citation_article'] ?></td><td><?=$d['date_ajout'] ?></td>
 
        <td><a href="admin_articles.php?articles&modifier_article=<?php echo $d['id'] ?>">modifier</a></td>
      <td><a href="admin_articles.php?articles&supprimer_article=<?php echo $d['id'] ?>">supprimer</a></td>
@@ -93,7 +93,7 @@ if($users->is_admin==1) {
   <table border="0" align="center" cellspacing="2" cellpadding="2">
   <tr align="center">
   <td>Nom de l'article</td>
-  	<td><input type="text" name="name" value="<?php echo "name" ?>"></td>
+  	<td><input type="text" name="nom_article" value="<?php echo "nom_article" ?>"></td>
   </tr>
   <tr align="center">
   <td>Description</td>
@@ -132,28 +132,91 @@ if($users->is_admin==1) {
       ?>
 
       <section id="container-register">
-         <form action="inscription.php" method="post">
+         <form action="" method="post">
              <h3>CRÉER UN ARTICLE</h3>
              <section id="box-form">
 
 <label for="">Nom</label>
-                     <input type="text" name="name" placeholder="Nom de l'article*">
+                     <input type="text" name="nom_article" placeholder="Nom de l'article*">
+<label for="">Auteur</label>
+                      <input type="text" name="auteur_article" placeholder="Auteur de l'article*">
+<label for="">Edition</label>
+                      <input type="text" name="editions_article" placeholder="Edition de l'article*">
 <label for="">Description</label>
-                     <input type="textarea" name="description" placeholder="Description*">
+                     <input type="textarea" name="description_article" placeholder="Description*">
+<label for="">Citation</label>
+                      <input type="textarea" name="citation_article" placeholder="Citation*">
 <label for="">Nombre de pages</label>
                      <input type="number" name="nb_pages" placeholder="Nombre de pages*">
 <label for="">Prix</label>
-                     <input type="number" name="price" placeholder="prix de l'article*">
-<label for="">Catégorie</label>
-<select class="" name="">
+                     <input type="number" name="prix_article" placeholder="prix de l'article*">
+<label for="annee_parution">Année parution:</label>
+                    <input type="number" name="annee_parution">
+<label for="">Sous-catégorie</label>
+<select name="sous_categorie">
+<?php
+$products = $db->query('SELECT * FROM sous_categorie');
 
-</select>
+foreach ($products as $product):
+// On affiche chaque entrée une à une
+
+?>
+         <strong>sous-catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
+?>
+         <br />
+       <?php endforeach; ?>
+
+   </select>
              </section>
-             <button type="submit" name="submit">Enregistrer les informations</button>
+             <button type="submit" name="submit_article">Enregistrer les informations</button>
          </form>
      </section>
 
   </div>
+
+
+
+<?php
+
+if (isset($_POST['submit_article']))
+{
+  $id_article=21;
+  $id_sous_categorie=1;
+  $nom_article=$_POST['auteur_article'];
+  $auteur_article=$_POST['auteur_article'];
+  $editions_article=$_POST['editions_article'];
+  $description_article=$_POST['description_article'];
+  $citation_article=$_POST['citation_article'];
+  $nb_page=$_POST['nb_pages'];
+  $annee_parution=$_POST['annee_parution'];
+  $prix_article=$_POST['prix_article'];
+  $date_ajout=date("Y-m-d H:i:s");;
+
+
+    $ins = array(
+      $id_article,
+      $id_sous_categorie,
+      $nom_article,
+      $auteur_article,
+      $editions_article,
+      $description_article,
+      $citation_article,
+      $nb_page,
+      $annee_parution,
+      $prix_article,
+      $date_ajout
+    );
+    $db->insert('article', $ins, null);
+
+//var_dump($ins);
+    echo "l'article a bien été ajouté";
+}
+
+ ?>
+
+
+
+
   <?php } ?>
 <?php }else{
   echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";

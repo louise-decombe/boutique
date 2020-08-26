@@ -59,6 +59,45 @@ class DB{
 		return $req->fetchAll(PDO::FETCH_OBJ);
 	}
 
-}
 
-?>
+
+	//pour faire une req insert into :
+	//$ins=array('','','','');
+	//$a->insert('matable',$ins,null);
+	public function insert($table,$value,$row=null){
+		$insert= " INSERT INTO ".$table;
+		if($row!=null){
+			$insert.=" (". $row." ) ";
+		}
+		for($i=0; $i<count($value); $i++){
+			if(is_string($value[$i])){
+				$value[$i]= '"'. $value[$i] . '"';
+			}
+		}
+		$value=implode(',',$value);
+		$insert.=' VALUES ('.$value.')';
+		$ins=$this->db->query($insert);
+		if($ins){
+			return true;
+		}else{
+			return false;
+			}
+		}
+
+		public function delete($table,$where=null){
+			if($where == null)
+	            {
+	                $delete = "DELETE ".$table;
+	            }
+	            else
+	            {
+	                $delete = "DELETE  FROM ".$table." WHERE ".$where;
+	            }
+				$del=$this->db->query($delete);
+				if($del){
+					return true;
+				}else{
+					return false;
+				}
+		}
+}
