@@ -42,7 +42,7 @@
 							<th id="supp">SUPP.</td>
 			    		</tr>
 					</thead>
-          
+
 					<?php
 					// récupération des informations de session pour le panier avec array_keys qui sont les clés du tableau
 					$ids = array_keys($_SESSION['panier']);
@@ -64,7 +64,7 @@
 							<td><input type="text" name="panier[quantity][<?= $product->id_article; ?>]" value="<?= $_SESSION['panier'][$product->id_article]; ?>"></td>
 							<td><input id="recalc" type="submit" value="Recalculer"></td>
 							<td>
-								<?php 
+								<?php
 									$sub_total = $panier->sub_total($product->prix_article, $_SESSION['panier'][$product->id_article]);
 							        echo $formatter->formatCurrency($sub_total,'EUR'), PHP_EOL;
 								?>
@@ -72,14 +72,14 @@
 							<td><a href="panier.php?delPanier=<?= $product->id_article; ?>" class="del">X</a></td>
 			  			</tr>
 					</tbody>
-		
+
 					<?php endforeach; ?>
 				</table>
 			</form>
 			<section id="recap-order">
-				<article> 
+				<article>
 					<h1>Récapitulatif ( <?= $panier->count(); ?> article(s)) </h1>
-						<p>sous-total 
+						<p>sous-total
 						<?= number_format($panier->total(),2,',',' '); ?>€
 						</p>
 					 	<p id="delivery">estimation livraison standard <?php $delivery = $order->default_delivery(); ?> € <p>
@@ -87,7 +87,7 @@
 							<?php
 							echo $formatter->formatCurrency($order->estimation($panier->total(), $delivery[0]['prix_livraison']), 'EUR'), PHP_EOL;
 							?>
-						</h2>	
+						</h2>
 				</article>
 				<a href="order.php">Commander</a>
 				<aside>

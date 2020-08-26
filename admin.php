@@ -17,6 +17,8 @@
         <?php include("includes/header.php"); ?>
     </header>
     <main>
+
+<?php include('admin_nav.php') ?>
     </main>
     <footer>
         <?php include("includes/footer.php") ?>
@@ -49,16 +51,14 @@ require("admin_nav.php");
 <main>
   <?php
 
-if($users->is_admin==1) {
+if($users->is_admin==0) {
    ?>
 <div class="admin">
-
-
 
 <h2>Derniers messages</h2>
 
 
-<h2>Dernière commande</h2>
+<h2>Dernière commande </h2>
 
 
 
@@ -66,7 +66,7 @@ if($users->is_admin==1) {
 </div>
 
 <?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
+  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ";
   echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>
 </main>

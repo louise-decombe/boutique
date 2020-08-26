@@ -129,6 +129,8 @@ if ($user->is_admin == 0)
     </thead>
     <tbody>
       <?php
+      $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+
         //recherche d'une sous catégorie dans la base de donnée
         $sql2 = 'SELECT * FROM sous_categorie';
         $params2 = [];
@@ -209,18 +211,18 @@ if ($user->is_admin == 0)
 
 <label for="">Nom</label>
                     <input type="text" name="name_sous_categorie" placeholder="Nom de la sous catégorie*">
-                    <label for="">Sous-catégorie</label>
+                    <label for="">catégorie</label>
 
-                    <select name="categorie">
+                    <select name="sous_categorie">
                     <?php
-        $products = $db->query('SELECT * FROM categorie ');
+                    $products = $db->query('SELECT * FROM categorie');
 
-        foreach ($products as $product):
-            // On affiche chaque entrée une à une
+                    foreach ($products as $product):
+                    // On affiche chaque entrée une à une
 
-?>
-    <strong>catégorie</strong> : <?php echo "<option value = '" . $donnees->id_categorie . "'>" . $donnees->nom_categorie . "</option>";
-?>
+                    ?>
+                             <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>";
+                    ?>
                              <br />
                            <?php endforeach; ?>
 
@@ -239,7 +241,7 @@ if ($user->is_admin == 0)
 
             if (isset($_POST['submit_categorie']))
             {
-                $id_categorie = 10;
+                $id_categorie = 11;
                 $nom_categorie = $_POST['name_categorie'];
 
                 $ins = array(
@@ -248,11 +250,12 @@ if ($user->is_admin == 0)
                 $db->insert('categorie', $ins, null);
 
                 echo "la catégorie a bien été ajoutée";
+                var_dump($db);
             }
 
             if (isset($_POST['submit_sous_categorie']))
             {
-                $id_sous_categorie = 10;
+                $id_sous_categorie = 11;
                 $nom_sous_categorie = $_POST['name_sous_categorie'];
                 $id_categorie = $_POST['id_categorie'];
 
