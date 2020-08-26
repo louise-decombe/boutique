@@ -70,12 +70,20 @@ if (isset($_GET['utilisateurs'])) {
    <td><?=$d['is_admin'] ?></td><td><?=$d['date_registration'] ?></td>
 
      <td><a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $d['id_utilisateur'] ?>">modifier</a></td>
-   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['in_utilisateur'] ?>">supprimer</a></td>
+   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['id_utilisateur'] ?>">supprimer</a></td>
 </div>
         <?php
         }
         //fin de la requête
         $resultats->closeCursor();
+
+if(isset($_GET['supprimer_compte'])){
+
+$req->delete('user',' id = 1');
+
+}
+
+
     } else {
         echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
     } ?>
