@@ -49,7 +49,6 @@ class DB{
 		}
     }
 
-
 //méthode qui permet de faire une requête rapidement, prend en paramètre la requête à faire
 // pour faire une requête : $DB->query('SELECT * FROM table')
 	public function query($sql, $data = array()){
@@ -58,8 +57,6 @@ class DB{
 //le résultat est retourné sous forme d'objet
 		return $req->fetchAll(PDO::FETCH_OBJ);
 	}
-
-
 
 	//pour faire une req insert into :
 	//$ins=array('','','','');
