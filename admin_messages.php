@@ -34,7 +34,7 @@ if(isset($_GET['clients'])){
  $products = $db->query('SELECT * FROM message_utilisateurs'); ?>
 
   <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date.'<br/>';
+    echo  'reçu le  '.$product->date_message.'<br/>';
 
   echo  $product->message_utilisateur;
     // l boucle qui démarre permet d'afficher les messages ?>
@@ -53,12 +53,13 @@ if(isset($_GET['vendeurs']))
  $products = $db->query('SELECT * FROM message_vendeur'); ?>
 
   <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date.'<br/>';
+    echo  'reçu le  '.$product->date_message_vendeur.'<br/>';
     echo  'mail du vendeur  '.$product->email_utilisateur	.'<br/>';
-    echo  'message  '.$product->message_utilisateur.'<br/>';
-    echo  'description  '.$product->description_utilisateur.'<br/>';
+    echo  'message  '.$product->message_vendeur.'<br/>';
+    echo  'description  '.$product->description_article_vendeur.'<br/>';
     echo  'titre du zine  '.$product->titre_fanzine.'<br/>'.'<br />';
-    // l boucle qui démarre permet d'afficher les messages ?>
+
+   ?>
 
       </div>
 
