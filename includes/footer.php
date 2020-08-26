@@ -3,10 +3,6 @@
     $category = new Categorie($db);
     //$categorie = $category->categories();
     //var_dump ($categorie);
-
-    if (isset($_POST['newsletter'])) {
-        $user->newsletter_footer($_POST['email']);
-    }
 ?>
 <footer>
     <?php if ($page_selected === 'index'){ ?>
@@ -122,4 +118,6 @@
     <?php 
         } 
     ?>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </footer>

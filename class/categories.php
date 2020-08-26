@@ -157,7 +157,7 @@ public function all_categories()
 	}
 
 // SELECT ARTICLES SIMILAIRES
-	public function similar_article($id_sous_categorie)
+	public function similar_article($id_sous_categorie, $id_item)
     {
         $connexion = $this->db->connectDb();
         $q = $connexion->prepare("SELECT * FROM article as A 
@@ -170,7 +170,7 @@ public function all_categories()
 								  WHERE A.id_sous_categorie =' ".$id_sous_categorie."'
 								  ORDER by A.date_ajout DESC limit 4");
         $q->execute();
-		$similar = ($q->fetch());
+		$similar = ($q->fetchAll());
 
 		//var_dump($similar);
 		return $similar;       
