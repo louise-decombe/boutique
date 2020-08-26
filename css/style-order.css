@@ -4,11 +4,20 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** ORDER ***/
 
+#link-basket{
+    color:black;
+}
+
+#link-basket:hover{
+    transition:1.5s;
+    color: #00FF00;
+}
+
 #container-order{
     display:flex;
     flex-direction:column;
     align-items: center;
-    background-color:whitesmoke;
+    background-color:#eee;
     min-height: 60vh;
     padding-bottom:5%;
 }
@@ -114,15 +123,6 @@
     width:100%;
 }
 
-#container-delivery form h1{
-    display: flex;
-    justify-content: center;
-    width:100%;
-    padding-top:10px;
-    color : gray;
-    font-size : 12px;
-}
-
 #radio-section{
     display: flex;
     align-items: center;
@@ -141,57 +141,143 @@
 }
 
 
-#container-delivery form button{
+#container-delivery button{
     display: flex;
     padding-top:10px;
     padding-bottom:10px;
+    font-size:13px;
+    font-family: 'Exo', sans-serif;
+    letter-spacing:2px;
     width: 100%;
     justify-content: center;
     background-color:white;
     border : 1px solid black;
 }
 
-#container-delivery form button:hover{
-    background-color:greenyellow;
+#container-delivery button:hover{
+    background-color: #00FF00;
     transition : 1s;
 }
 
 #container-infos-order{
     display: flex;
-    width: 100%;
+    flex-direction: column;
+}
+
+#delivery-infos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
     background-color:white;
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    margin-bottom:2.5%;
+    padding-bottom:5%;
+}
+
+#delivery-infos legend{
+    display: flex;
+    justify-content: center;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:2.5%;
+    border-bottom:0.5px solid gray;
+    font-family: 'Exo', sans-serif;
+    font-size: 12px;
+    text-transform:uppercase;
+    letter-spacing: 1.2px;
+}
+#delivery-infos input[type=text]{
+    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    font-size: 16px;
+    background: white;
+    margin-left:2.5%;
+    margin-top: 2.5%;
+}
+
+#delivery-infos #address{
+    padding-bottom : 50px;
+}
+
+#module-paiement{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:white;
+    padding-top:5%;
+    padding-bottom:5%;
+    margin-bottom:2.5%;
+    border:none;
     box-shadow:0 10px 40px rgba(0,0,0,0.08);
 }
 
-#container-infos-order form{
+
+#title-cb{
+    display:flex;
+    background-color:white;
+    align-items:center;
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    margin-bottom:2.5%;
+    text-transform:uppercase;
+    letter-spacing: 1.2px;
+    padding-bottom:10px;
+    border-bottom:0.5px solid gray;
+}
+
+#section-cb{
     display: flex;
-    flex-wrap: wrap;
-    padding-top:2.5%;
+    flex-direction: column;
+    width: 80%;
 }
 
-input[type=text]{
-  padding : 12.5px;
-  margin-bottom : 2.5%;
-  margin-left:2.5%;
+#section-cb label{
+    font-family: 'Exo', sans-serif;
+    font-size: 12px;
 }
 
-#address input[type=text]{
-    padding-bottom : 50px;
-    margin-bottom : 2.5%;
+
+#section-cb input[type=text],#section-cb input[type=password]{
+    border-radius: 6px;
+    margin-bottom: 2.5%;
+    margin-left: 1.5%;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    font-size: 16px;
+    background: white;
+}
+
+#cb-infos{
+    display:flex;
+    align-items: center;
+}
+
+#cb-infos input{
+    margin-right:20px;
 }
 
 #container-infos-order form button{
     display: flex;
-    padding-top:10px;
-    padding-bottom:10px;
+    padding-top:3.5%;
+    padding-bottom:3.5%;
     width: 100%;
     justify-content: center;
-    background-color:white;
-    border : 1px solid black;
+    background-color:#00FF00;
+    transition: all 0.2s ease;
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    border-radius:10px;
+    letter-spacing: 2px;
+    border:none;
 }
 
 #container-infos-order form button:hover{
-    background-color:greenyellow;
+    background-color:black;
+    color:white;
     transition : 1s;
 }
 
@@ -202,6 +288,16 @@ input[type=text]{
     background-color : white;
     box-shadow:0 10px 40px rgba(0,0,0,0.08);
     width : 30%;
+}
+
+#recap-order article span{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid gainsboro;
+    font-weight:200;
+    font-size:13px;
 }
 
 

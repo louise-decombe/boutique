@@ -13,6 +13,13 @@
 
 body{
  width: 100%;
+ -webkit-font-smoothing: antialiased;
+}
+
+#error{
+  display:flex;
+  flex-direction: column;
+  padding-top:2.5%;
 }
 
 
@@ -138,10 +145,13 @@ header{
 
 .dropdown-content {
   display: none;
-  background-color: #f9f9f9;
+  position: absolute;
+  background-color: #F9FDF6;
   min-width: 160px;
+  min-height:60vh;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
+  z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
@@ -870,6 +880,19 @@ footer{
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** NEWS-IN ***/
+
+#before{
+  display:flex;
+  padding-top :1.5%;
+  padding-left:5%;
+}
+
+#before i{
+  display: flex;
+  color:black;
+  font-size:20px;
+}
+
 #container-news-in{
   display: flex;
   flex-direction: column;
@@ -1165,7 +1188,6 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top:5%;
 }
 
 #container-connect form{

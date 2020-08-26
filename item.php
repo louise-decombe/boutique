@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-item.css">
 </head>
@@ -22,9 +24,9 @@
         ?>
     </header>
     <main>
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
         <section id="container-item">
-
-            <section id="box-img-item">
+            <section id="box-img-item">   
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
 
@@ -36,14 +38,12 @@
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
                         <section id="price-item">
-                            <?= //number format permet de formater un nombre ici avec deux zéros
-                            number_format(($item['prix_article']),2,',',' ');
-                        ?>
-                        €
+                            <?= $formatter->formatCurrency($item['prix_article'],'EUR'), PHP_EOL; ?>
                         </section>
-
-                    <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
-                        ajouter au panier
+                
+                        <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
+                      ajouter au panier
+                        <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
                     </a>
 
                     <form class='onglet' method='POST'>
@@ -61,21 +61,35 @@
                 </article>
         </section>
         <aside id="info-category">
-            <b><?= ($item['nom_sous_categorie']); ?></b> /
-            <a href="category.php"><?= ($item['nom_categorie']);?> /
-            <a href="index1.php">home </a>
+            <b><?= ($item['nom_sous_categorie']);?></b> &nbsp; /  &nbsp;
+            <section id="cat-sub-link">
+                <a href="category.php"><?= ($item['nom_categorie']);?> /
+                <a href="index1.php">home </a>
+            </section>
         </aside>
         <section id="similar-article">
             <h3>vous aimerez peut-être...</h3>
-            <section id="selection">
             <?php
-            $similar = $category->similar_article(($item['id_sous_categorie']));
-            //var_dump(($similar['chemin']));
-            //var_dump(($similar['prix_article']));
+            $similar_art = $category->similar_article(($item['id_sous_categorie']),($item['id_article']) );
+            ?>  
+            <section id="selection">
+                <?php
+                
+                foreach ($similar_art as $similar){
+                    if ($similar['id_article'] != $item['id_article']){
+         
+                ?>
+                <section id="selection-article">
+                    <a href="item.php?id=<?=($similar['id_article'])?>"><img src="<?= ($similar['chemin'])?>" width="10%" alt="cover-fanzine">
+                    <a href="item.php?id=<?=($similar['id_article'])?>" class="button">
+                        <span class="text-hover">CONSULTER</span>
+                        <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'],'EUR'), PHP_EOL; ?></span>
+                    </a>
+                </section>
+            
+            <?php } } ?>
+            </section>
 
-            ?>
-
-            </selection>
         </section>
     </main>
     <footer>

@@ -16,7 +16,6 @@
 	include("includes/header.php");
 	require 'class/order.php';
 	$order = new Order($db);
-	$formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
    ?>
 </header>
 <main>

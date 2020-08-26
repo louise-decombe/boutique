@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-$page_selected = 'connexion.php'; 
+$page_selected = 'connexion'; 
 ?>
 
 <!DOCTYPE html>

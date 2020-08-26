@@ -7,12 +7,12 @@ class Users
     private $id_user;
     public $firstname;
     public $lastname;
+    public $gender;
     public $email;
     public $password;
     public $date_registration;
     public $is_admin;
     public $phone;
-    public $gender;
     public $newsletter;
     public $db;
 
@@ -137,7 +137,7 @@ class Users
 
         if (empty($errors)) {
             $q2 = $connexion->prepare(
-                "INSERT INTO utilisateurs (prenom, nom, gender, phone, email, password, is_admin, date_registration) VALUES (:prenom,:nom,:gender,:phone,:email,:password,:is_admin,:date_registration)"
+                "INSERT INTO utilisateurs (prenom, nom, gender, phone, email, password, is_admin, date_registration) VALUES (:prenom,:nom,:gender,:phone,:email,:password,:is_admin,NOW())"
             );
             var_dump($q2);
             $q2->bindParam(':prenom', $firstname, PDO::PARAM_STR);
@@ -147,7 +147,6 @@ class Users
             $q2->bindParam(':email', $email, PDO::PARAM_STR);
             $q2->bindParam(':password', $password_modified, PDO::PARAM_STR);
             $q2->bindValue(':is_admin', 0, PDO::PARAM_INT);
-            $q2->bindValue(':date_registration', date("Y-m-d H:i:s"), PDO::PARAM_STR);
             $q2->execute();
             header('location:connexion.php');
         }else {
@@ -203,6 +202,7 @@ class Users
         $this->id_user = "";
         $this->firstname = "";
         $this->lastname = "";
+        $this->gender = "";
         $this->email = "";
         $this->password = "";
         $this->register_date = "";

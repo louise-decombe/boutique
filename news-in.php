@@ -23,6 +23,7 @@ $current_month = date('F');
         ?>
     </header>
     <main>
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
         <section id="container-news-in">
         <section id="current-month">
             <h1>

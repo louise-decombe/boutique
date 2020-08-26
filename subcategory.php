@@ -17,9 +17,11 @@
     ?>
     </header>
     <main>
+    <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
         <?php
         if(isset($_GET['id'])){
         $id = $_GET['id'];
+        $nbr_article=0;
         $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie FROM sous_categorie INNER JOIN categorie ON sous_categorie.id_categorie = categorie.id_categorie WHERE id_sous_categorie = '$id' ");
         //var_dump($product);
        foreach ( $products as $product ):
@@ -36,7 +38,9 @@
           
             <section id="container-news">
 
-            <?php $article_sub_category  = $category->categorie_article($_GET['id']);
+            <?php
+
+            $article_sub_category  = $category->categorie_article($_GET['id']);
             foreach ($article_sub_category as $article){ 
             ?>
                 <section id="container-article"> 
@@ -65,8 +69,8 @@
                         <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
                     </form> 
                 </section>
-            </section>  
         </section>
+
     </main> 
     <footer>
         <?php include('includes/footer.php'); ?>

@@ -14,7 +14,7 @@ class messages
         if (!empty($message)) {
             $output = "";
             if (count($message) > 1) {
-                $output .= "<ul>";
+                $output .= "<ul id='error'>";
                 foreach ($message as $error) {
                     $output .= "<li>" . $error . "</li>";
                 }
@@ -22,7 +22,7 @@ class messages
             } else {
                 $output = $message[0];
             }
-            return "<div class=\"blockMessage\">"
+            return "<div id='error'>"
                 . $output .
                 "</div>";
         } else {
