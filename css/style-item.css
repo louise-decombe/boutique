@@ -201,6 +201,77 @@
     height: 2.5vh;
 }
 
+#info-category #cat-sub-link a{
+    color:gray;
+    font-size:12px;
+}
+
+#info-category #cat-sub-link a:hover{
+    color:black;
+    transition:1.5s;
+}
+
+#selection{
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    width: 80%;
+    padding-top: 2.5%;
+}
+
+#selection-article{
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    margin-left:3.5%;
+}
+
+#selection-article a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color : #00FF00;
+}
+
+#selection-article a img{
+    width: 100%;
+    height: 300px;
+    margin-bottom:5%;
+    box-shadow: 0 0 15px black;
+}
+
+
+/* On montre le premier texte */
+.text-base{
+   opacity:1;
+   letter-spacing:1.25px;
+}
+/* On cache le second texte */
+.text-hover{
+   display:none;
+   letter-spacing:1.25px;
+}
+/* On fait disparaitre le premier texte au passage de la souris. */
+.button:hover span.text-base{
+   opacity:0;
+}
+/* On fait apparaitre le second texte au passage de la souris. */
+.button:hover span.text-hover{
+   display:inherit;
+   position:absolute;
+}
+.button{
+    display: flex;
+    border: 1px solid #00FF00;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+
+#container-addpanier{
+    display:flex;
+}
+
 /*** ITEM ***/
 
 

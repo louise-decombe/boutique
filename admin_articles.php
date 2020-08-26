@@ -190,7 +190,7 @@ if (isset($_POST['submit_article']))
   $nb_page=$_POST['nb_pages'];
   $annee_parution=$_POST['annee_parution'];
   $prix_article=$_POST['prix_article'];
-  $date_ajout=date("Y-m-d H:i:s");;
+  $date_ajout=date("Y-m-d H:i:s");
 
 
     $ins = array(

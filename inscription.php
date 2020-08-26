@@ -1,4 +1,7 @@
-<?php $page_selected = 'inscription.php'; ?>
+<?php 
+ob_start();
+$page_selected = 'inscription'; 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -28,12 +31,11 @@
             $_POST['password'],
             $_POST['conf_password']
         );
-
-        if (isset($_POST['newsletter'])){
-            $user->newsletter($_POST['email']);
-        }
     }
 
+    if (isset($_POST['submit']) && isset($_POST['newsletter'])){
+        $user->newsletter($_POST['email']);
+    }
 
     ?>
      <section id="container-register">
@@ -44,11 +46,11 @@
                     <section id="box-gender">
                         <label>CIVILITÉ</label>
                         <input type="radio" name="gender" id="female" value="Femme">
-                        <label for="female">madame</label>
+                        <label for="gender">madame</label>
                         <input type="radio" name="gender" id="male" value="Homme">
-                        <label for="male">monsieur</label>
+                        <label for="gender">monsieur</label>
                         <input type="radio" name="gender" id="no_gender" value="Non genré">
-                        <label for="no_gender">non genré</label>
+                        <label for="gender">non genré</label>
                     </section>
 
 
@@ -82,3 +84,6 @@
 </footer>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

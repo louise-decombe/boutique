@@ -20,6 +20,7 @@
     ?>
 </header>
     <main>
+    <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
         <section id="container-category">
             <section id="banner-category">
                 <h1>CATÉGORIES</h1>

@@ -10,20 +10,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/style-panier.css">
-    <link rel="stylesheet" type="text/css" href="css/style-order.css">
+    <link rel="stylesheet" type="text/css" href="css/style-order-payment.css">
     <link rel="stylesheet" href="stripe-card-payment/global.css" />
-    <script type="text/javascript">
-        function modification(X)
-        {
-            if ( X.value.length == 4 ){
-            chaine = X.getAttribute('id') ;
-            indice = chaine.charAt(6) ;
-            indice++ ;
-            document.getElementById("groupe" + indice).focus()
-            }
-        }         
-    </script>
+    
 </head>
 
 <body>
@@ -58,15 +47,16 @@
     <section id="container-order">
 		<nav>
 	   		<ul>
-	   			<li><a id="link-basket" href="panier.php"> 1 - mon panier </a></li>
+	   			<li>1 - mon panier</li>
 				<li><b> 2 - livraison & paiement </b></li>
 				<li> 3 - confirmation </li>
 	   		</ul>
         </nav>
         <section id="sub-order">
+ 
             <section id="container-form-order">
                 <section id="container-delivery">
-                    <form action="" method="POST">
+                    <form id="payment-form" action="" method="POST">
                         <?php if(isset($_POST["submit_delivery"])){
                             $_SESSION['delivery'] = ($_POST['delivery']);
                             $prix_delivery  = $_SESSION['delivery'];
@@ -87,19 +77,10 @@
                     </form> 
                 </section>
 
+                <h1>veuillez compléter le formulaire pour valider votre commande</h1>
 
-                <?php if(isset($_POST["submit_delivery"])){ ?>
                 <section id="container-infos-order">
-                    <form action="" method='POST'>
-                        <section id="delivery-infos">
-                            <legend> - vos informations de livraison - </legend>
-                            <section>
-                                <input type="text" name="firstname" placeholder="prénom*" size="95">
-                                <input type="text" name="lastname" placeholder="nom*" size="95">
-                                <input id="address" type="text" name="address" placeholder="adresse postale*" size="95">
-                                <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95"> 
-                            </section>
-                        </section>
+                    <form id="payment-form" method='POST' action="charge" fa="payment-form">
                         <input type="hidden" name="delivery_choice" value="<?=$prix_delivery?>">
                         <input type="hidden" name="nb_article" value="<?=$panier->count();?>">
                         <input type="hidden" name="sous_total" value="<?=$panier->total()?>">
@@ -110,47 +91,30 @@
                             <input type="hidden" name="article[<?=$product->id_article;?>][qte]" value="<?= $_SESSION['panier'][$product->id_article];?>">
                         <?php } ?>
 
-                        <section id="module-paiement">
-                            <legend id=title-cb>- Paiement sécurisé par 
-                                <i class="far fa-credit-card"></i>
-                                <i class="fab fa-cc-visa"></i>
-                                <i class="fab fa-cc-mastercard"></i>
-                                -
-                            </legend>
-                            <section id="section-cb">
-                                <section>
-                                    <label> nom du titulaire de la carte* </label>
-                                    <input type="text" placeholder="nom du titulaire de la carte*" size="55" required>
-                                </section>
-                                <section>
-                                    <label>numéro de carte bancaire* &nbsp;</label>
-                                    <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe4" type="text" size="4" maxlength="4">
-                                    <section id="cb-infos">
-                                        <label>date d'expiration*</label>
-                                        <input type="text" placeholder="MM/YYYY*" required>
-                                        <label>CVC*</label>
-                                        <input type="password" placeholder="CVC*" required>
-                                    </section>
-                                </section>
-                            </section>
-                        </section>
-                        <button type="submit" name="validation_paiement">PAYER <?= $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;  ?></button>
+                        <div class="form-row">
+                            <label for="card-element"> credit or debit card </label>
+                            <div id="card-element">
+                                <!-- a stripe element will be inserted here. -->
+                            </div>
+                            <!-- used to display form errors -->
+                            <div id="card-errors" role="alert"></div>
+                            <button>submit payment</button>
                     </form>
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script> var stripe = Stripe("pk_test_51HJwrZLT8eXrW46UD5Li0cqJrXY18J9S6hxcTTPakcIde8WGDSaoWHKulWpSlii5gy2BzJEIDZ5Z1w8wWf0yCWnv00HYvLhXaQ"); </script>
                 </section>
             </section>
+           
             <section id="recap-order">
                 <article>
-                    <span id="count">MON PANIER (<?= $panier->count(); ?> article(s))</span>
+                <span id="count">nombre d'articles<?= $panier->count(); ?></span>
                     <?php 
                         foreach($products as $product){
                             $check = $panier->check_stock($product->id_article);
                             if($check[0]->nb_articles_stock > 0 ){
                     ?>
                         <article>
-                            <img src="<?= $product->chemin;?>" height="100">
+                            <span><img src="<?= $product->chemin;?>" height="100"></span>
 			                <span><?= $product->nom_article; ?></span>
                             <span><?= $product->id_article; ?></span>
                             <span class="quantity"> qté  <?= $_SESSION['panier'][$product->id_article]; ?></span>
@@ -170,7 +134,7 @@
                     <?php if(isset($_POST["submit_delivery"])){ ?>
                         <section>
                         <p id="delivery"> livraison <?php echo $formatter->formatCurrency($prix_delivery, 'EUR'), PHP_EOL; ?><p>
-						<h2 id="total-order">MONTANT À REGLER
+						<h2 id="total-order">TOTAL
 							<?php
                             var_dump($_POST['delivery']);
 							echo $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;
@@ -178,7 +142,7 @@
 						</h2>
                         </section>
             </section>
-                        <?php } }?>
+                        <?php } ?>
                 
             <?php }else{ ?>
             <section id="connect-panier">

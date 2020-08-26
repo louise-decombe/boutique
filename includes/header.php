@@ -9,6 +9,7 @@ $db = new DB();
 $panier = new Panier($db);
 $category = new Categorie($db);
 $user = new Users($db);
+$formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
 
 //var_dump($user);
 
@@ -23,7 +24,6 @@ if (isset($_POST["deco"])) {
             <h1>HIGH & CRAFT</h1>
         </a>
         <a id="top-subtitle" href="index1.php"><h2>FANZINE BOOKSTORE</h2></a>
-          
     <?php
         }else{
     ?>
@@ -54,14 +54,14 @@ if (isset($_POST["deco"])) {
                             if(empty($ids)){
                             $products = array();
                             }else{
-                            $products = $db->query('SELECT * FROM article WHERE id_article IN ('.implode(',',$ids).')');
+                            $products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
                             }
                             foreach($products as $product):
                             ?>
                             <div class="row">
-                                <a href="#" class="img"> <img src="img/<?= $product->id_article; ?>.jpg" height="53"></a>
+                                <a href="#" class="img"> <img src="<?= $product->chemin; ?>" height="53"></a>
                                 <span class="name"><?= $product->nom_article; ?></span>
-                                <span class="price">prix : <?= number_format($product->prix_article,2,',',' '); ?> €</span>
+                                <span class="price">prix : <?= $formatter->formatCurrency($product->prix_article,'EUR'), PHP_EOL; ?></span>
                                 <span class="quantity"> quantité  <?= $_SESSION['panier'][$product->id_article]; ?></span>
                                 <span class="action">
                                     <a href="panier.php?delPanier=<?= $product->id_article; ?>" class="del"> supprimer du panier</a>
@@ -76,7 +76,7 @@ if (isset($_POST["deco"])) {
                         </li>
                         <p>   
                             <li class="total">TOTAL
-                                <span><span id="total"><?= number_format($panier->total(),2,',',' '); ?></span> €</span>
+                                <span><span id="total"><?= $formatter->formatCurrency($panier->total(),'EUR'), PHP_EOL; ?></span> €</span>
                             </li>
                             <li> <?php  ?> </li>
                             <button> <a href="panier.php"> Voir mon panier </a></button>
