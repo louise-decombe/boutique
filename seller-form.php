@@ -52,7 +52,6 @@ $email_utilisateur=$_POST['email_utilisateur'];
 $message_vendeur=$_POST['message_vendeur'];
 $description_article_fanzine=$_POST['description_article_fanzine'];
 $date_message_vendeur= date("Y-m-d H:i:s");
-$id=1;
 
 $db->query("INSERT INTO `message_vendeur`( `email_utilisateur`, `message_vendeur`, `description_article_vendeur`, `titre_fanzine`, `date_message_vendeur`)
  VALUES ('$titre_fanzine','$email_utilisateur','$message_vendeur','$description_article_fanzine','$date_message_vendeur')");

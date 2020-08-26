@@ -11,13 +11,13 @@
         </section>
         <?php
             }else{
-        ?> 
+        ?>
     <section id="container-service">
         <ul>
             <li><i class="fas fa-cube"></i> &nbsp; livraison et retours gratuits</li>
             <li><i class="far fa-credit-card"></i> &nbsp; paiement sécurisé</li>
             <li><i class="fas fa-truck"></i> &nbsp; suivi de commande</li>
-            <li> <i class="fas fa-phone"></i> &nbsp; service client 
+            <li> <i class="fas fa-phone"></i> &nbsp; service client
                 <a class="contact" href="tel:0800000000">0800 00 00 00</a>(N° GRATUIT)
             </li>
         </ul>
@@ -30,6 +30,20 @@
                     <input type="text" id="news" name="email" placeholder="Enter your email"></br>
                     <input type="submit" name="newsletter" id="btnnews" value="newsletter">
                 </form>
+
+<?php
+
+                if (isset($_POST['newsletter']))
+                {
+
+
+
+                  echo "vous êtes inscrit(e)!";
+                }
+
+
+?>
+
             </section>
             <section id="end-logo">
                 <a href="index.php">
@@ -64,13 +78,13 @@
                     <li><a href="profil.php">suivi de commande</a></li>
                     <li><a href="profil.php">ma whishlist</a></li>
                     <li><a href="faq.php">F.A.Q.</a></li>
-                                   
+
                 <?php }else{ ?>
-               
+
                     <li><a href="connexion.php">mon compte client</a></li>
                     <li><a href="connexion.php">suivi de commande</a></li>
                     <li><a href="connexion.php">ma whishlist</a></li>
-        
+
                 <?php } ?>
                     <li><a href="faq.php">F.A.Q.</a></li>
                 </ul>
@@ -97,7 +111,7 @@
                     <ul>
                         <?php $categorie = $category->cat(); ?>
                         <li><a href="category.php">Voir tout</a></li>
-             
+
                         <?php if (isset($_SESSION['user']['id_user'])){
                                 if ($_SESSION['user']['is_admin'] == 1) {
                         ?>
@@ -106,8 +120,8 @@
                         <form action="index.php" method="post">
                             <input id="deco-footer" name="deco" value="DECONNEXION" type="submit"/>
                         </form>
-                        <?php 
-                            } 
+                        <?php
+                            }
                         ?>
                     </ul>
                 </nav>
@@ -115,8 +129,8 @@
         </section>
         <p id="copyright">&copy; 2020 HIGH & CRAFT FANZINE BOOKSTORE</p>
     </section>
-    <?php 
-        } 
+    <?php
+        }
     ?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
