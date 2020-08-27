@@ -19,27 +19,31 @@
 <main>
    <section id="container-search">
    <?php
+
    $articles = $db->query('SELECT * FROM article ORDER BY id_article DESC');
    if(isset($_GET['search']) AND !empty($_GET['search'])){
       $search = htmlspecialchars($_GET['search']);
       $articles = $db->query('SELECT * FROM article WHERE nom_article LIKE "%'.$search.'%" ORDER BY id_article DESC');
       if($articles == 0) {
-         $articles = $bdd->query('SELECT * FROM article WHERE CONCAT(nom_article, description_article) LIKE "%'.$search.'%" ORDER BY id DESC');
-      }
+         $articles = $db->query('SELECT * FROM article WHERE nom_article LIKE "%'.$search.'%" ORDER BY id DESC');
+
    }
+
+   var_dump($db);
    ?>
 
-   <?php  var_dump($articles);
-   
+   <?php  //var_dump($articles);
+
    if($articles > 0) { ?>
 
    <ul>
-      <?php while($a = $articles->fetch_object()) { ?>
+      <?php foreach ($articles as $a):
+ ?>
       <a href="img/<?= $a['img'] ?>"></a>
       <a href="item.php?id=<?php echo $a['id_article'] ;?>" > <li><?= $a['nom_article'] ?></li>
       <li><?= $a['prix_article'] ?> euros</li>
 
- <?php } ?>
+ <?php  endforeach;} ?>
  </ul>
 <?php } else { ?>
 Aucun résultat pour: <?= $search ?>...

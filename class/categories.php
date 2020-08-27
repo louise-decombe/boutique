@@ -127,7 +127,7 @@ public function all_categories()
 	public function new()
     {
         $connexion = $this->db->connectDb();
-        $q1 = $connexion->prepare('SELECT article.nom_article, article.id_article, article.prix_article, article.auteur_article, image_article.chemin FROM article INNER JOIN image_article ON article.id_article = image_article.id_article WHERE MONTH(date_ajout) = MONTH(NOW())ORDER by date_ajout DESC limit 8');
+        $q1 = $connexion->prepare('SELECT article.nom_article, article.id_article, article.prix_article, article.auteur_article, image_article.chemin FROM article INNER JOIN image_article ON article.id_article = image_article.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC limit 8');
         $q1->execute();
 		$new_in = $q1->fetchall();
 
@@ -142,8 +142,6 @@ public function all_categories()
         $q = $connexion->prepare("SELECT * FROM article as A
 								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
-								  INNER JOIN categorie as C
-								  ON A.id_categorie = C.id_categorie
 								  INNER JOIN sous_categorie as S
 								  ON A.id_sous_categorie = S.id_sous_categorie
 								  INNER JOIN stock as T
@@ -163,12 +161,11 @@ public function all_categories()
         $q = $connexion->prepare("SELECT * FROM article as A
 								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
-								  INNER JOIN categorie as C
-								  ON A.id_categorie = C.id_categorie
+								  
 								  INNER JOIN sous_categorie as S
 								  ON A.id_sous_categorie = S.id_sous_categorie
 								  WHERE A.id_sous_categorie =' ".$id_sous_categorie."'
-								  ORDER by A.date_ajout DESC limit 4");
+								  ORDER by A.date_registration DESC limit 4");
         $q->execute();
 		$similar = ($q->fetchAll());
 

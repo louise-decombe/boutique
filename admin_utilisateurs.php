@@ -1,6 +1,5 @@
 <?php $page_selected = 'admin_utilisateurs.php'; ?>
 <?php
-require("admin.class.php");
 include("includes/header.php");
 require("admin_nav.php")
 ?>
@@ -32,181 +31,156 @@ require("admin_nav.php")
 
 if (isset($_GET['utilisateurs'])) {
     ?>
-<div class="boucle">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<h3>Chercher un utilisateur dans la liste</h3>
- <form method='post'>
-	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
-	 <input type='submit' value="Rechercher"/>
-	 <input type='submit' value="Afficher tout utilisateurs"/>
-
- </form>
-
-</form>
-<table>
-  <thead>
-    <tr><th>Nom</th><th>Prénom</th><th>Genre</th><th>Email</th><th>Admin</th><th>Date création</th></</tr>
-  </thead>
-  <tbody>
     <?php
-
-    //recherche d'un utilisateur dans la base de donnée
-    $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-    $sql = 'SELECT * FROM utilisateurs';
-    $params = [];
-    if (isset($_POST['recherche_valeur'])) {
-        $sql .= ' where nom like :nom';
-        $params[':nom'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
-    }
-
-    $resultats = $bdd->prepare($sql);
-    $resultats->execute($params);
-    if ($resultats->rowCount() > 0) {
-        while ($d = $resultats->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-<div class="">
- <tr><td><?=$d['nom'] ?></td><td><?=$d['prenom'] ?></td>
-   <td><?=$d['gender'] ?></td><td><?=$d['email'] ?></td>
-   <td><?=$d['is_admin'] ?></td><td><?=$d['date_registration'] ?></td>
-
-     <td><a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $d['id_utilisateur'] ?>">modifier</a></td>
-   <td><a href="admin_utilisateurs.php?utilisateur&supprimer_compte=<?php echo $d['id_utilisateur'] ?>">supprimer</a></td>
-</div>
-        <?php
-        }
-        //fin de la requête
-
-if(isset($_GET['supprimer_compte'])){
-
-$req->delete('user',' id = 1');
-
-}
-
-
-    } else {
-        echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
+    if (!empty($_SESSION['statusMsg'])) {
+        echo '<p>'.$_SESSION['statusMsg'].'</p>';
+        unset($_SESSION['statusMsg']);
     } ?>
-  </div>
+    <div class="row">
+        <div class="panel panel-default users-content">
+            <div class="panel-heading">Utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
+            <table class="table">
+                <tr>
+                    <th width="1%">#</th>
+                    <th width="10%">Name</th>
+                    <th width="10%">Email</th>
+                    <th width="10%">Phone</th>
+                    <th width="10%">Created</th>
+                    <th width="10%"></th>
+                </tr>
+                <?php
 
-  </tbody>
-</table>
-<section id="container-register">
+                $users = $db->getRows('utilisateurs', array('order_by'=>'id_utilisateur DESC'));
+    if (!empty($users)) {
+        $count = 0;
+        foreach ($users as $user) {
+            $count++; ?>
+                <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $user['nom']; ?></td>
+                    <td><?php echo $user['prenom']; ?></td>
+                    <td><?php echo $user['phone']; ?></td>
+                    <td><?php echo $user['email']; ?></td>
+                    <td><?php echo $user['gender']; ?></td>
+                    <td><?php echo $user['is_admin']; ?></td>
 
-<?php if (isset($_GET['modifier_compte'])) {
-
-  $pdoselect = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = :id');
-
-  $pdoselect ->bindValue(':id', $_GET['modifier_compte'], PDO::PARAM_INT);
-
-  $executepdo= $pdoselect->execute();
-
-  $info= $pdoselect->fetch();
-
-  var_dump($info);
-
-
-  ?>
-
-
-  <form action="" method='POST'>
-      <section id="box-gender">
-          <label>CIVILITÉ</label>
-          <input type="radio" name="gender" id="female" value="Femme">
-          <label for="female">madame</label>
-          <input type="radio" name="gender" id="male" value="Homme">
-          <label for="male">monsieur</label>
-          <input type="radio" name="gender" id="no_gender" value="Non genré">
-          <label for="no_gender">non genré</label>
-      </section>
-      <section>
-          <input type="text" name="firstname" placeholder="<?=$db['user']['firstname']?>">
-          <input type="text" name="lastname" placeholder="<?=$db['user']['lastname']?>">
-      </section>
-      <input type="tel" name="phone" placeholder="<?=$db['user']['phone']?>">
-      <button type="submit" name="modify_infos">ENREGISTRER MES NOUVELLES INFORMATIONS</button>
-  </form> <br/>
-  <section>
-      <form action="" method='POST'>
-          <section>
-              <input type="password" name="new_password" placeholder="nouveau password">
-              <input type="password" name="check_password" placeholder="confirmer le password">
-          </section>
-          <button type="submit" name="modify_password">ENREGISTRER LE NOUVEAU MOT DE PASSE</button>
-       </form>
-  </section>
-
-
-<?php
- } ?>
-
-
-<?php
-}
-
-if (isset($_GET['ajouter'])){
-    ?>
-
-    <main>
-        <?php
-        if (isset($_POST['submit'])) {
-            $user->register(
-                $_POST['firstname'],
-                $_POST['lastname'],
-                $_POST['gender'],
-                $_POST['phone'],
-                $_POST['email'],
-                $_POST['password'],
-                $_POST['conf_password']
-            );
-
-            if (isset($_POST['newsletter'])){
-                $user->newsletter($_POST['email']);
-            }
+                    <td>
+                        <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"></a>
+                        <a href="action_utilisateurs.php?action_type=delete&id_utilisateur=<?php echo $user['id_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
+                    </td>
+                </tr>
+                <?php
         }
+    } else { ?>
+                <tr><td colspan="4">Aucun utilisateur trouvé......</td>
+                <?php } ?>
+            </table>
+        </div>
+    </div>
+
+<?php
+} ?>
 
 
-        ?>
-         <section id="container-register">
-            <form action="" method="post">
-                <h3>CRÉER MON COMPTE</h3>
-                <section id="box-form">
-
-                        <section id="box-gender">
-                            <label>CIVILITÉ</label>
-                            <input type="radio" name="gender" id="female" value="Femme">
-                            <label for="female">madame</label>
-                            <input type="radio" name="gender" id="male" value="Homme">
-                            <label for="male">monsieur</label>
-                            <input type="radio" name="gender" id="no_gender" value="Non genré">
-                            <label for="no_gender">non genré</label>
-                        </section>
+<?php
 
 
-                        <input type="text" name="firstname" placeholder="prénom*">
+if (isset($_GET['ajouter'])) {
+    ?>
+    <div class="row">
+        <div class="panel panel-default user-add-edit">
+            <div class="panel-heading">Ajouter un utilisateur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
+            <div class="panel-body">
+                <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
+                    <div class="form-group">
+                        <label>nom</label>
+                        <input type="text" class="form-control" name="nom"/>
+                    </div>
+                    <div class="form-group">
+                        <label>prenom</label>
+                        <input type="text" class="form-control" name="prenom"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" name="phone"/>
+                    </div>
+                    <input type="hidden" name="action_type" value="add"/>
+                    <input type="submit" class="form-control btn-default" name="submit" value="Add User"/>
+                </form>
+            </div>
+        </div>
+    </div>
 
-                        <input type="text" name="lastname" placeholder="nom*">
+<?php
+} ?>
 
-                        <input type="text" name="email" placeholder="email@email.com*">
+<?php if (isset($_GET['id'])) {
+        $userData = $db->getRows('utilisateurs', array('where'=>array('id_utilisateur'=>$_GET['id']),'return_type'=>'single'));
+        if (!empty($userData)) {
+            ?>
+<div class="row">
+    <div class="panel panel-default user-add-edit">
+        <div class="panel-heading">Modifier <a href="admin_utilisateurs.php" class="glyphicon glyphicon-arrow-left"></a></div>
+        <div class="panel-body">
+            <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="nom" value="<?php echo $userData['nom']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>prenom</label>
+                    <input type="text" class="form-control" name="prenom" value="<?php echo $userData['prenom']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" value="<?php echo $userData['email']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" name="phone" value="<?php echo $userData['phone']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>gender</label>
+                    <input type="text" class="form-control" name="gender" value="<?php echo $userData['gender']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>admin</label>
+                    <input type="int" class="form-control" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <input type="int" class="form-control" name="password" value="<?php echo $userData['password']; ?>"/>
+                </div>
+                <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
+                <input type="hidden" name="action_type" value="edit"/>
+                <input type="submit" class="form-control btn-default" name="submit" value="Update User"/>
 
-                        <input type="tel" name="phone" placeholder="0123456789*">
-
-                        <section id="box-password">
-                            <label for="password">password</label>
-                            <input type="password" name="password" placeholder="mot de passe*">
-                            <label for="conf_password">confirmation password</label>
-                            <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
-                        </section>
-
-                </section>
-                <section id="box-newsletter">
-                    <input type="checkbox" name="newsletter" value="newsletter">
-                    <label for="newsletter">je souhaite recevoir votre actualité en avant-première. </label>
-                </section>
-                <button type="submit" name="submit">Enregistrer vos informations</button>
             </form>
-        </section>
+        </div>
+    </div>
+</div>
+<?php
+        }
+    } ?>
 
-<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
 </main>
 </body>
 </html>
