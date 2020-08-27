@@ -39,7 +39,7 @@ if(isset($_GET['clients'])){
   echo  $product->message_utilisateur;
     // l boucle qui démarre permet d'afficher les messages ?>
       <a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $product->id_utilisateur;?>">
-      Voir l'utilisateur  </a>
+      Voir l'utilisateur  </a> <?php
 if(isset($_GET['vendeurs']))
 {
 
@@ -63,7 +63,7 @@ if(isset($_GET['vendeurs']))
 
   <?php endforeach ?>5
 
-<?phpis chercher la machine ce soir c'est : 555
+<?php
 }
 
 if(isset($_GET['vendeurs']))

@@ -24,13 +24,13 @@
       $search = htmlspecialchars($_GET['search']);
       $articles = $db->query('SELECT * FROM article WHERE nom_article LIKE "%'.$search.'%" ORDER BY id_article DESC');
       if($articles == 0) {
-         $articles = $bdd->query('SELECT * FROM article WHERE CONCAT(nom_article, description_article) LIKE "%'.$search.'%" ORDER BY id DESC');
-      }
+         $articles = $bdd->query('SELECT * FROM article WHERE nom_article LIKE "%'.$search.'%" ORDER BY id DESC');
+
    }
    ?>
 
    <?php  var_dump($articles);
-   
+
    if($articles > 0) { ?>
 
    <ul>
