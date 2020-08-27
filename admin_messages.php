@@ -1,6 +1,5 @@
 <?php $page_selected = 'admin_messages.php'; ?>
 <?php
-require("admin.class.php");
 include("includes/header.php");
 require("admin_nav.php")
 ?>
@@ -20,8 +19,8 @@ require("admin_nav.php")
 
    <?php
 
- if($user->is_admin==0) {
-    ?>
+ if ($user->is_admin==0) {
+     ?>
 <main>
 <div class="admin">
 
@@ -29,68 +28,84 @@ require("admin_nav.php")
 <a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
 <?php
 
-if(isset($_GET['clients'])){
+if (isset($_GET['clients'])) { ?>
+  <div class="panel-heading">Message des utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
 
- $products = $db->query('SELECT * FROM message_utilisateurs'); ?>
+  <table class="table">
 
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message.'<br/>';
+      <tr>
 
-  echo  $product->message_utilisateur;
-    // l boucle qui démarre permet d'afficher les messages ?>
-      <a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $product->id_utilisateur;?>">
-      Voir l'utilisateur  </a> <?php
-if(isset($_GET['vendeurs']))
-{
+          <th width="10%">Message</th>
+          <th width="10%">Date</th>
 
- $products = $db->query('SELECT * FROM message_vendeur'); ?>
+          <th width="10%"></th>
 
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message_vendeur.'<br/>';
-    echo  'mail du vendeur  '.$product->email_utilisateur	.'<br/>';
-    echo  'message  '.$product->message_vendeur.'<br/>';
-    echo  'description  '.$product->description_article_vendeur.'<br/>';
-    echo  'titre du zine  '.$product->titre_fanzine.'<br/>'.'<br />';
-
-   ?>
-
-      </div>
-
-  <?php endforeach
-;}
- ?>
-      </div>
-
-  <?php endforeach ?>5
+      </tr>
 
 <?php
+    $users = $db->getRows('message_utilisateurs', array('order_by'=>'id_message_utilisateur DESC'));
+    if (!empty($users)) {
+        $count = 0;
+        foreach ($users as $user) {
+            $count++; ?>
+          <tr>
+              <td><?php echo $user['message_utilisateur']; ?></td>
+              <td><?php echo $user['date_registration']; ?></td>
+              <td>
+                <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"> Voir l'utilisateur</a>
+                  <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
+              </td>
+          </tr>
+
+       <?php
+        }
+    }
 }
 
-if(isset($_GET['vendeurs']))
-{
+     if (isset($_GET['vendeurs'])) { ?>
 
- $products = $db->query('SELECT * FROM message_vendeur'); ?>
+       <div class="panel-heading">Message des utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
 
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message_vendeur.'<br/>';
-    echo  'mail du vendeur  '.$product->email_utilisateur	.'<br/>';
-    echo  'message  '.$product->message_vendeur.'<br/>';
-    echo  'description  '.$product->description_article_vendeur.'<br/>';
-    echo  'titre du zine  '.$product->titre_fanzine.'<br/>'.'<br />';
+       <table class="table">
 
-   ?>
+           <tr>
 
+               <th width="10%">Mail</th>
+               <th width="10%">Description du fanzine</th>
+               <th width="10%">Titre</th>
+               <th width="10%">Date</th>
+
+               <th width="10%"></th>
+
+           </tr>
+
+      <?php   $users = $db->getRows('message_vendeur', array('order_by'=>'id_message_vendeur DESC'));
+         if (!empty($users)) {
+             $count = 0;
+             foreach ($users as $user) {
+                 $count++; ?>
+          <tr>
+            <td><?php echo $user['email_utilisateur']; ?></td>
+            <td><?php echo $user['message_vendeur']; ?></td>
+             <td><?php echo $user['description_article_vendeur']; ?></td>
+              <td><?php echo $user['titre_fanzine']; ?></td>
+              <td><?php echo $user['date_registration']; ?></td>
+              <td>
+                  <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
+              </td>
+          </tr>
+       <?php
+             }
+         }
+     } ?>
       </div>
 
-  <?php endforeach
-;}
- ?>
-
 </div>
-<?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
-  echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+<?php
+ } else {
+     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
+     echo "<a href='index.php'> Retour à l'accueil </a>";
+ }   ?>
 </main>
 </body>
 </html>

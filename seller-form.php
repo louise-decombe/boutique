@@ -21,44 +21,34 @@
     </header>
     <main>
 
-      <div class="boucle">
+      <div class="row">
+          <div class="panel panel-default user-add-edit">
+              <div class="panel-heading">Envoyer un message pour être distributeur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
+              <div class="panel-body">
+                  <form method="post" action="action_seller_form.php" class="form" id="userForm">
+                      <div class="form-group">
+                          <label>message</label>
+                          <input type="textarea" class="form-control" name="message_vendeur"/>
+                      </div>
+                      <div class="form-group">
+                          <label>Titre fanzine</label>
+                          <input type="text" class="form-control" name="titre_fanzine"/>
+                      </div>
+                      <div class="form-group">
+                          <label>description du fanzine</label>
+                          <input type="textarea" class="form-control" name="description_article_vendeur"/>
+                      </div>
+                      <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" name="email_utilisateur"/>
+                      </div>
+                      <input type="hidden" name="action_type" value="add"/>
+                      <input type="submit" class="form-control btn-default" name="submit" value="Envoyer"/>
+                  </form>
+              </div>
+          </div>
+      </div>
 
-        <section id="container-register">
-           <form action="" method="post">
-               <h3>Envoyer un message</h3>
-              <center> <p>Dans ce formulaire vous proposez à la vente sur le site un article, n'hésitez pas à être exhaustif dans la description.</p>
-            Nous vous répondrons rapidement pour savoir si nous vous acceptons comme distributeur.</center><br/>
-
-           <section id="box-form">
-
-  <label for="">Titre du fanzine</label>
-                       <input type="text" name="titre_fanzine" placeholder="Titre du fanzine*">
-  <label for="">Votre mail</label>
-                        <input type="text" name="email_utilisateur" placeholder="Votre mail*">
-  <label for="">Votre message</label>
-                        <input type="textarea" name="message_vendeur" placeholder="Votre message ici*">
-  <label for="">Description de l'article</label>
-                        <input type="textarea" name="description_article_fanzine" placeholder="Description de l'article*">
-     </section>
-               <button type="submit" name="submit_message_vendeur">Envoyer le message</button>
-           </form>
-       </section>
-</div>
-<?php
-if (isset($_POST['submit_message_vendeur']))
-{
-$titre_fanzine=$_POST['titre_fanzine'];
-$email_utilisateur=$_POST['email_utilisateur'];
-$message_vendeur=$_POST['message_vendeur'];
-$description_article_fanzine=$_POST['description_article_fanzine'];
-$date_message_vendeur= date("Y-m-d H:i:s");
-
-$db->query("INSERT INTO `message_vendeur`( `email_utilisateur`, `message_vendeur`, `description_article_vendeur`, `titre_fanzine`, `date_message_vendeur`)
- VALUES ('$titre_fanzine','$email_utilisateur','$message_vendeur','$description_article_fanzine','$date_message_vendeur')");
-
-    echo "Votre message a été envoyé, nous vous répondons rapidement !";
-}
-?>
 
     </main>
     <footer>

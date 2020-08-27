@@ -35,11 +35,10 @@ if (isset($_GET['utilisateurs'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <?php
-    if(!empty($_SESSION['statusMsg'])){
+    if (!empty($_SESSION['statusMsg'])) {
         echo '<p>'.$_SESSION['statusMsg'].'</p>';
         unset($_SESSION['statusMsg']);
-    }
-    ?>
+    } ?>
     <div class="row">
         <div class="panel panel-default users-content">
             <div class="panel-heading">Utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
@@ -54,8 +53,11 @@ if (isset($_GET['utilisateurs'])) {
                 </tr>
                 <?php
 
-                $users = $db->getRows('utilisateurs',array('order_by'=>'id_utilisateur DESC'));
-                if(!empty($users)){ $count = 0; foreach($users as $user){ $count++;?>
+                $users = $db->getRows('utilisateurs', array('order_by'=>'id_utilisateur DESC'));
+    if (!empty($users)) {
+        $count = 0;
+        foreach ($users as $user) {
+            $count++; ?>
                 <tr>
                     <td><?php echo $count; ?></td>
                     <td><?php echo $user['nom']; ?></td>
@@ -70,7 +72,9 @@ if (isset($_GET['utilisateurs'])) {
                         <a href="action_utilisateurs.php?action_type=delete&id_utilisateur=<?php echo $user['id_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php
+        }
+    } else { ?>
                 <tr><td colspan="4">Aucun utilisateur trouvé......</td>
                 <?php } ?>
             </table>
@@ -78,17 +82,17 @@ if (isset($_GET['utilisateurs'])) {
     </div>
 
 <?php
- } ?>
+} ?>
 
 
 <?php
 
 
-if (isset($_GET['ajouter'])){
+if (isset($_GET['ajouter'])) {
     ?>
     <div class="row">
         <div class="panel panel-default user-add-edit">
-            <div class="panel-heading">Add User <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
+            <div class="panel-heading">Ajouter un utilisateur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
             <div class="panel-body">
                 <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
                     <div class="form-group">
@@ -114,12 +118,13 @@ if (isset($_GET['ajouter'])){
         </div>
     </div>
 
-<?php } ?>
-
 <?php
-$userData = $db->getRows('utilisateurs',array('where'=>array('id_utilisateur'=>$_GET['id']),'return_type'=>'single'));
-if(!empty($userData)){
-?>
+} ?>
+
+<?php if (isset($_GET['id'])) {
+        $userData = $db->getRows('utilisateurs', array('where'=>array('id_utilisateur'=>$_GET['id']),'return_type'=>'single'));
+        if (!empty($userData)) {
+            ?>
 <div class="row">
     <div class="panel panel-default user-add-edit">
         <div class="panel-heading">Modifier <a href="admin_utilisateurs.php" class="glyphicon glyphicon-arrow-left"></a></div>
@@ -161,7 +166,9 @@ if(!empty($userData)){
         </div>
     </div>
 </div>
-<?php } ?>
+<?php
+        }
+    } ?>
 
 
 

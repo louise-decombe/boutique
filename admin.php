@@ -23,13 +23,26 @@ require("admin_nav.php");
 <main>
   <?php
 
-if($user->is_admin==0) {
-   ?>
+if ($user->is_admin==0) {
+    ?>
 <div class="admin">
 
 <h2>Derniers messages</h2>
-
-<?php  ?>
+<?php
+$users = $db->getRows('message_utilisateurs', array('order_by'=>'id_message_utilisateur DESC'));
+if (!empty($users)) {
+    $count = 0;
+    foreach ($users as $user) {
+        $count++; ?>
+        <tr>
+            <td><?php echo $user['message_utilisateur']; ?></td>
+            <td><?php echo $user['date_registration']; ?></td>
+            <td>
+              <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"> Voir l'utilisateur</a>
+                <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
+            </td>
+        </tr>
+<?php ; } ?>
 
 
 <h2>Dernière commande </h2>
@@ -39,10 +52,11 @@ if($user->is_admin==0) {
 
 </div>
 
-<?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ";
-  echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+<?php }
+} else {
+        echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ";
+        echo "<a href='index.php'> Retour à l'accueil </a>";
+    } ?>
 </main>
 </body>
 </html>

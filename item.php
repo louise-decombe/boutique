@@ -24,9 +24,9 @@
         ?>
     </header>
     <main>
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
         <section id="container-item">
-            <section id="box-img-item">   
+            <section id="box-img-item">
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
 
@@ -40,7 +40,7 @@
                         <section id="price-item">
                             <?= $formatter->formatCurrency($item['prix_article'],'EUR'), PHP_EOL; ?>
                         </section>
-                
+
                         <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
                       ajouter au panier
                         <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
@@ -63,7 +63,7 @@
         <aside id="info-category">
             <b><?= ($item['nom_sous_categorie']);?></b> &nbsp; /  &nbsp;
             <section id="cat-sub-link">
-                <a href="category.php"><?= ($item['nom_categorie']);?> /
+              
                 <a href="index1.php">home </a>
             </section>
         </aside>
@@ -71,13 +71,13 @@
             <h3>vous aimerez peut-être...</h3>
             <?php
             $similar_art = $category->similar_article(($item['id_sous_categorie']),($item['id_article']) );
-            ?>  
+            ?>
             <section id="selection">
                 <?php
-                
+
                 foreach ($similar_art as $similar){
                     if ($similar['id_article'] != $item['id_article']){
-         
+
                 ?>
                 <section id="selection-article">
                     <a href="item.php?id=<?=($similar['id_article'])?>"><img src="<?= ($similar['chemin'])?>" width="10%" alt="cover-fanzine">
@@ -86,7 +86,7 @@
                         <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'],'EUR'), PHP_EOL; ?></span>
                     </a>
                 </section>
-            
+
             <?php } } ?>
             </section>
 
