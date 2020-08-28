@@ -29,7 +29,6 @@
 	<div class="table">
 		<div class="wrap">
 
-
 			<?php
 
     if (isset($_SESSION['user'])){
@@ -45,7 +44,10 @@
                 <td><?php echo $wishlist->prix_article ; ?> euros</td>
                 <td>
 <a href="item.php?id=<?php echo $wishlist->id_article ;?>">voir l'article</a>
-<a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article ?> "
+<a class="add addpanier" id="add-basket" href="addpanier.php?id=<? echo $wishlist->id_article ?>">
+ajouter au panier
+</a>
+<a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article; ?> "
   onclick="return confirm('Are you sure?');">Supprimer</a>
                 </td>
             </tr>
