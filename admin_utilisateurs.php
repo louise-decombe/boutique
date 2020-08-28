@@ -159,7 +159,7 @@ if (isset($_GET['ajouter'])) {
                 </div>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="form-control btn-default" name="submit" value="Update User"/>
+                <input type="submit" class="form-control btn-default" name="submit" value="Modifier l'utilsateur"/>
 
             </form>
         </div>
