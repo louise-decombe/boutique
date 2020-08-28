@@ -31,9 +31,28 @@
             </section>
 
                 <article id="presentation-item">
-                    <a id="heart-icon" href="addwishlist.php?id=<?= $id_article ?>">
-                        <i class="far fa-heart"></i>
-                    </a>
+
+<p></p>
+
+<?php if(isset($_SESSION['user'])){
+?>
+
+
+<?php
+$id_user= ($_SESSION['user']['id_user']);
+$id_article = $_GET['id'];
+  ?>
+
+<form method="post" action="action_wishlist.php" class="form" id="userForm">
+
+  <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
+  <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
+  <input type="hidden" name="action_type" value="add"/>
+    <input type="submit" class="" name="submit" value="+ wishlist"/>
+
+
+<?php } ?>
+
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
@@ -63,7 +82,7 @@
         <aside id="info-category">
             <b><?= ($item['nom_sous_categorie']);?></b> &nbsp; /  &nbsp;
             <section id="cat-sub-link">
-              
+                <a href="category.php"><?= ($item['nom_categorie']);?> /
                 <a href="index1.php">home </a>
             </section>
         </aside>

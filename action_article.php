@@ -7,6 +7,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
     if ($_REQUEST['action_type'] == 'add') {
         $userData = array(
 'nom_article' => $_POST['nom_article'],
+'id_categorie' => $_POST['id_sous_categorie'],
 'id_sous_categorie' => $_POST['id_sous_categorie'],
 'auteur_article' => $_POST['auteur_article'],
 'editions_article' => $_POST['editions_article'],
@@ -22,9 +23,13 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $_SESSION['statusMsg'] = $statusMsg;
         header("Location:admin_articles.php");
     } elseif ($_REQUEST['action_type'] == 'edit') {
+
+
+
         if (!empty($_POST['id_article'])) {
             $userData = array(
               'nom_article' => $_POST['nom_article'],
+              'id_categorie' => $_POST['id_sous_categorie'],
               'id_sous_categorie' => $_POST['id_sous_categorie'],
               'auteur_article' => $_POST['auteur_article'],
               'editions_article' => $_POST['editions_article'],

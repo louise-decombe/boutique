@@ -142,6 +142,8 @@ public function all_categories()
         $q = $connexion->prepare("SELECT * FROM article as A
 								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
+								  INNER JOIN categorie as C
+								  ON A.id_categorie = C.id_categorie
 								  INNER JOIN sous_categorie as S
 								  ON A.id_sous_categorie = S.id_sous_categorie
 								  INNER JOIN stock as T
@@ -161,7 +163,8 @@ public function all_categories()
         $q = $connexion->prepare("SELECT * FROM article as A
 								  INNER JOIN image_article as I
 								  ON A.id_article = I.id_article
-								  
+								  INNER JOIN categorie as C
+								  ON A.id_categorie = C.id_categorie
 								  INNER JOIN sous_categorie as S
 								  ON A.id_sous_categorie = S.id_sous_categorie
 								  WHERE A.id_sous_categorie =' ".$id_sous_categorie."'

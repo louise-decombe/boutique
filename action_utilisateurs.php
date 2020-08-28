@@ -15,7 +15,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
             'is_admin' => $_POST['is_admin']
         );
         $insert = $db->insert($tblName,$userData);
-        $statusMsg = $insert?'User data has been inserted successfully.':'Some problem occurred, please try again.';
+        $statusMsg = $insert?'Les données ont été insérées.':'Un problème est survenu.';
         $_SESSION['statusMsg'] = $statusMsg;
         header("Location:admin_utilisateurs.php");
     }elseif($_REQUEST['action_type'] == 'edit'){
@@ -31,7 +31,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
             );
             $condition = array('id_utilisateur' => $_POST['id_utilisateur']);
             $update = $db->update($tblName,$userData,$condition);
-            $statusMsg = $update?'User data has been updated successfully.':'Some problem occurred, please try again.';
+            $statusMsg = $update?'Données mises à jour.':'Un problème est survenu, reassayez.';
             $_SESSION['statusMsg'] = $statusMsg;
             header("Location:admin_utilisateurs.php");
         }
@@ -39,7 +39,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
         if(!empty($_GET['id_utilisateur'])){
             $condition = array('id_utilisateur' => $_GET['id_utilisateur']);
             $delete = $db->delete($tblName,$condition);
-            $statusMsg = $delete?'User data has been deleted successfully.':'Some problem occurred, please try again.';
+            $statusMsg = $delete?'Suppression réalisée.':'Un problème est survenu reassayez.';
             $_SESSION['statusMsg'] = $statusMsg;
             header("Location:admin_utilisateurs.php");
         }

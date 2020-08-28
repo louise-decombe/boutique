@@ -233,15 +233,30 @@ if ($user->is_admin==0) {
                       <div class="form-group">
                           <label>catégorie</label>
 
-    <select name="id_sous_categorie">
-    <?php
-    $products = $db->query('SELECT * FROM sous_categorie');
+<form class="" action="" method="post">
+  <?php     $sous_cat = $db->query("SELECT * FROM categorie");
 
-    foreach ($products as $product):
+
+
+   ?>
+</form>
+
+<?php if(isset($_POST[''])) ?>
+
+
+    <select name="id_sous_categorie">
+
+    <?php
+
+    $sous_cat = $db->query("SELECT * FROM sous_categorie");
+
+    foreach ($sous_cat as $sous_categorie):
     // On affiche chaque entrée une à une
 
     ?>
-    <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
+    <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_sous_categorie ."'>" . $sous_categorie->nom_sous_categorie . "</option>";
+  ?>  <strong> catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_categorie . "'>". "</option>";
+
     ?>
     <br />
     <?php endforeach; ?>
@@ -256,8 +271,7 @@ if ($user->is_admin==0) {
 
 
     <?php
-  }
-} else {
+  } } else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>

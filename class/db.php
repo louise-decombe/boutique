@@ -51,7 +51,7 @@ class DB
 	    }
 
     //méthode qui permet de faire une requête  SELECT rapidement, prend en paramètre la requête à faire
-    // pour faire une requête : $DB->query('SELECT * FROM table')
+    // pour faire une requête : $db->query('SELECT * FROM table')
     public function query($sql, $data = array())
     {
         $req =$this->db->prepare($sql);
@@ -117,6 +117,31 @@ class DB
      * @param string nom de la table
      */
     public function insert($table, $data)
+    {
+        if (!empty($data) && is_array($data)) {
+            $columns = '';
+            $values  = '';
+            $i = 0;
+            if (!array_key_exists('date_registration', $data)) {
+                $data['date_registration'] = date("Y-m-d H:i:s");
+            }
+
+
+            $columnString = implode(',', array_keys($data));
+            $valueString = ":".implode(',:', array_keys($data));
+            $sql = "INSERT INTO ".$table." (".$columnString.") VALUES (".$valueString.")";
+            $query = $this->db->prepare($sql);
+            foreach ($data as $key=>$val) {
+                $query->bindValue(':'.$key, $val);
+            }
+            $insert = $query->execute();
+            return $insert?$this->db->lastInsertId():false;
+        } else {
+            return false;
+        }
+    }
+
+    public function insertArticle($table, $data)
     {
         if (!empty($data) && is_array($data)) {
             $columns = '';
