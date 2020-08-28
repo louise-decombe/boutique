@@ -1,3 +1,5 @@
+
+
 <?php $page_selected = 'whishlist.php'; ?>
 <!DOCTYPE html>
 <html>
@@ -31,14 +33,26 @@
 			<?php
 
     if (isset($_SESSION['user'])){
-      $connexion = $this->db->connectDb();
-      $requete = $connexion->prepare('
-                  INSERT INTO wishlist (nom)
-                  VALUES(:nom)'
-              ) or exit(print_r($req->errorInfo()));
-              $requete->execute( array( 'nom' => $_POST['nom'] ) );
-              $requete->closeCursor();
 
+    $wish = $db->query("SELECT * FROM article INNER JOIN wishlist ON article.id_article = wishlist.id_article");
+
+    foreach ($wish as $wishlist) { ?>
+<table>
+            <tr>
+                <td><?php echo $wishlist->nom_article ?></td>
+                <td><?php echo $wishlist->auteur_article ; ?></td>
+                <td><?php echo $wishlist->citation_article ; ?></td>
+                <td><?php echo $wishlist->prix_article ; ?> euros</td>
+                <td>
+<a href="item.php?id=<?php echo $wishlist->id_article ;?>">voir l'article</a>
+<a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article ?> "
+  onclick="return confirm('Are you sure?');">Supprimer</a>
+                </td>
+            </tr>
+          </table>
+
+<?php
+}
 		 ?>
 
 	</div>

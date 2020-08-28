@@ -29,8 +29,8 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
             header('Location: ' . $referer);
         }
     }elseif($_REQUEST['action_type'] == 'delete'){
-        if(!empty($_GET['id_wishlist'])){
-            $condition = array('id_wishlist' => $_GET['id_wishlist']);
+        if(!empty($_GET['id_article'])){
+            $condition = array('id_wishlist' => $_GET['id_article']);
             $delete = $db->delete($tblName,$condition);
             $statusMsg = $delete?'Suppression réalisée.':'Un problème est survenu reassayez.';
             $_SESSION['statusMsg'] = $statusMsg;
