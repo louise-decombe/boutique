@@ -22,7 +22,13 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $_SESSION['statusMsg'] = $statusMsg;
         header("Location:admin_articles.php");
     } elseif ($_REQUEST['action_type'] == 'edit') {
+
+
+
         if (!empty($_POST['id_article'])) {
+
+
+
             $userData = array(
               'nom_article' => $_POST['nom_article'],
               'id_sous_categorie' => $_POST['id_sous_categorie'],

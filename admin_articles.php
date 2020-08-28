@@ -248,6 +248,21 @@ if ($user->is_admin==0) {
       </select>
     </div>
                       <input type="hidden" name="action_type" value="add"/>
+
+
+<?php $a= $db->query("SELECT *
+  FROM article
+  INNER JOIN sous_categorie ON article.id_categorie = sous_categorie.id_categorie");
+
+$b= $a['id_categorie'];
+
+var_dump($db);
+
+
+  ?>
+
+  <input type="hidden" name="action_type" value=<?php $a; ?>/>
+
                       <input type="submit" class="form-control btn-default" name="submit_article" value="Créer l'article"/>
                   </form>
               </div>
