@@ -41,7 +41,7 @@ if (isset($_GET['utilisateurs'])) {
     } ?>
     <div class="row">
         <div class="panel panel-default users-content">
-            <div class="panel-heading">Utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
+            <div class="panel-heading">Utilisateurs <a href="admin_utilisateurs" class="glyphicon glyphicon-plus"></a></div>
             <table class="table">
                 <tr>
                     <th width="1%">#</th>
@@ -112,7 +112,7 @@ if (isset($_GET['ajouter'])) {
                         <input type="text" class="form-control" name="phone"/>
                     </div>
                     <input type="hidden" name="action_type" value="add"/>
-                    <input type="submit" class="form-control btn-default" name="submit" value="Add User"/>
+                    <input type="submit" class="form-control btn-default" name="submit" value="Ajouter l'utilisateur"/>
                 </form>
             </div>
         </div>
@@ -155,8 +155,7 @@ if (isset($_GET['ajouter'])) {
                     <input type="int" class="form-control" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
                 </div>
                 <div class="form-group">
-                    <label>password</label>
-                    <input type="int" class="form-control" name="password" value="<?php echo $userData['password']; ?>"/>
+                    <input type="hidden" class="form-control" name="password" value="<?php echo $userData['password']; ?>"/>
                 </div>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>

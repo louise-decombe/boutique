@@ -233,36 +233,36 @@ if ($user->is_admin==0) {
                       <div class="form-group">
                           <label>catégorie</label>
 
-    <select name="id_sous_categorie">
-    <?php
-    $products = $db->query('SELECT * FROM sous_categorie');
+<form class="" action="" method="post">
+  <?php     $sous_cat = $db->query("SELECT * FROM categorie");
 
-    foreach ($products as $product):
+
+
+   ?>
+</form>
+
+<?php if(isset($_POST[''])) ?>
+
+
+    <select name="id_sous_categorie">
+
+    <?php
+
+    $sous_cat = $db->query("SELECT * FROM sous_categorie");
+
+    foreach ($sous_cat as $sous_categorie):
     // On affiche chaque entrée une à une
 
     ?>
-    <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
+    <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_sous_categorie ."'>" . $sous_categorie->nom_sous_categorie . "</option>";
+  ?>  <strong> catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_categorie . "'>". "</option>";
+
     ?>
     <br />
     <?php endforeach; ?>
       </select>
     </div>
                       <input type="hidden" name="action_type" value="add"/>
-
-
-<?php $a= $db->query("SELECT *
-  FROM article
-  INNER JOIN sous_categorie ON article.id_categorie = sous_categorie.id_categorie");
-
-$b= $a['id_categorie'];
-
-var_dump($db);
-
-
-  ?>
-
-  <input type="hidden" name="action_type" value=<?php $a; ?>/>
-
                       <input type="submit" class="form-control btn-default" name="submit_article" value="Créer l'article"/>
                   </form>
               </div>
@@ -271,8 +271,7 @@ var_dump($db);
 
 
     <?php
-  }
-} else {
+  } } else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
 } ?>
