@@ -43,7 +43,6 @@ $id_user= ($_SESSION['user']['id_user']);
 
 $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
 
-
             if (count($query) > 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
                 echo "Vous avez déjà ajouté cet article à votre wishlist";
             } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
