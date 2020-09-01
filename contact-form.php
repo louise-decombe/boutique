@@ -17,42 +17,27 @@
     <header>
         <?php
         include("includes/header.php");
+        $id_user= ($_SESSION['user']['id_user']);
+
         ?>
+
     </header>
     <main>
 
       <div class="boucle">
 
         <section id="container-register">
-           <form action="" method="post">
-               <h3>Contacter notre équipe</h3>
-
-           <section id="box-form">
-
-
-  <label for="">Votre message</label>
-                        <input type="textarea" name="message_utilisateur" placeholder="Votre message ici*">
-
-     </section>
-               <button type="submit" name="submit_message_utilisateur">Envoyer</button>
-           </form>
+          <form method="post" action="action_contact_form.php" class="form" id="userForm">
+              <div class="form-group">
+                  <label>message</label>
+                  <input type="textarea" class="form-control" name="message_utilisateur"/>
+              </div>
+                <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
+              <input type="hidden" name="action_type" value="add"/>
+              <input type="submit" class="form-control btn-default" name="submit" value="Envoyer"/>
+          </form>
        </section>
   </div>
-  <?php
-  if (isset($_POST['submit_message_utilisateur']))
-  {
-
-$id_utilisateur=$_SESSION['id_user'];
-$message_utilisateur=$_POST['message_utilisateur'];
-$date_message=date("Y-m-d H:i:s");
-
-  $db->query("INSERT INTO `message_utilisateurs`( `message_utilisateur`, `id_utilisateur`, `date_message`)
-  VALUES ('$message_utilisateur','$id_utilisateur','$date_message')");
-
-    echo "Votre message a été envoyé, nous vous répondons rapidement !";
-  }
-  ?>
-
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>
