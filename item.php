@@ -1,4 +1,4 @@
-<?php $page_selected = 'item.php'; ?>
+<?php $page_selected = 'item'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,31 +29,24 @@
             <section id="box-img-item">
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
-
                 <article id="presentation-item">
+                        <?php if (isset($_SESSION['user'])) { ?>
 
-<p></p>
+                        <?php $id_user= ($_SESSION['user']['id_user']);
+                              $id_article = $_GET['id'];
+                              $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
 
-<?php if (isset($_SESSION['user'])) {
-            ?>
+                              if (count($query) > 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
+                              echo "<span id='error-message'>Vous avez déjà ajouté cet article à votre wishlist</span>";
+                              } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
+                        ?>
 
-<?php
-$id_user= ($_SESSION['user']['id_user']);
-            $id_article = $_GET['id'];
-
-$query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
-
-            if (count($query) > 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
-                echo "Vous avez déjà ajouté cet article à votre wishlist";
-            } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
-?>
-
-<form method="post" action="action_wishlist.php" class="form" id="userForm">
-
-  <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
-  <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
-  <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit" value="+ wishlist"/>
+                    <form method="post" action="action_wishlist.php" class="form" id="userForm">
+                        <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
+                        <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
+                        <input type="hidden" name="action_type" value="add"/>
+                        <input type="submit" class="" name="submit" value="+ wishlist"/>
+                    </form>
 
 
 <?php }
