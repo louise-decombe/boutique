@@ -28,7 +28,6 @@ if ($user->is_admin==0) {
     ?>
   <div class="admin">
     <div class="button">
-
   <a href="admin_articles.php?articles">Voir les articles</a><br/>
   <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
   </div>
@@ -41,8 +40,7 @@ if ($user->is_admin==0) {
           unset($_SESSION['statusMsg']);
       } ?>
     <div class="row">
-        <div class="panel panel-default users-content">
-            <div class="panel-heading">Articles <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
+            <div class="panel-heading">Articles </div>
             <table class="table">
                 <tr>
                     <th width="10%">Nom du fanzine</th>
@@ -54,7 +52,6 @@ if ($user->is_admin==0) {
                     <th width="10%">Année de parution</th>
                     <th width="10%">Prix</th>
                     <th width="10%">Date d'ajout</th>
-
                     <th width="10%"></th>
                 </tr>
                 <?php
@@ -68,7 +65,6 @@ if ($user->is_admin==0) {
                     <td><?php echo $user['nom_article']; ?></td>
                     <td><?php echo $user['auteur_article']; ?></td>
                     <td><?php echo $user['editions_article']; ?></td>
-                    <td><?php echo $user['description_article']; ?></td>
                     <td><?php echo $user['citation_article']; ?></td>
                     <td><?php echo $user['nb_pages']; ?></td>
                     <td><?php echo $user['annee_parution']; ?></td>
@@ -95,10 +91,10 @@ if ($user->is_admin==0) {
       $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
       if (!empty($userData)) {
           ?>
-    <div class="row">
-    <div class="panel panel-default user-add-edit">
-        <div class="panel-heading">Modifier l'article <a href="admin_articles.php" class="glyphicon glyphicon-arrow-left"></a></div>
-        <div class="panel-body">
+
+          <section id="container-register">
+
+        <div class="">Modifier l'article <a href="admin_articles.php" class="glyphicon glyphicon-arrow-left"></a></div>
             <form method="post" action="action_article.php" class="form" id="userForm">
 
                 <div class="form-group">
@@ -135,7 +131,7 @@ if ($user->is_admin==0) {
                 </div>
 
                 <div class="form-group">
-                    <label>catégorie</label>
+                    <label>Catégorie</label>
 
   <select name="id_sous_categorie">
   <?php
@@ -153,7 +149,6 @@ if ($user->is_admin==0) {
   </div>
                 <input type="hidden" name="action_type" value="add"/>
                 <input type="submit" class="form-control btn-default" name="submit_article" value="Modifier le fanzine"/>
-            </form>
 
             <section id="modification">
               <h1>Illsutration du fanzine</h1>
@@ -171,12 +166,9 @@ if ($user->is_admin==0) {
                 </div>
                 <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
               </form>
-
-        </div>
-    </div>
-  </div>
-    </div>
-    </div>
+            </form>
+      </section>
+    </section>
   <?php  ?>
 
 
@@ -249,8 +241,21 @@ if ($user->is_admin==0) {
                         </div>
 
     </div>
+
+
                       <input type="hidden" name="action_type" value="add"/>
                       <input type="submit" class="form-control btn-default" name="submit" value="Créer l'article"/>
+                      <form class="" action="admin_articles.php?ajouter" method="post">
+
+
+                      <input type="number" name="nb_articles_stock" value="">
+                      nombre articles<input type="hidden" name="id_article" value="<?php echo "1" ;?>">
+                      <?php
+
+                      
+                      ?>
+                      </form>
+
                   </form>
               </div>
           </div>

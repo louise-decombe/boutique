@@ -35,9 +35,7 @@ $current_month = date('F');
         <section id="container-news">
 
             <?php
-
             // selection des 16 dernières  nouveautés
-
             $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC limit 16');
 
             // la boucle qui démarre permet d'afficher les articles

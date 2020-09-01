@@ -53,7 +53,7 @@ $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND 
   <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
   <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
   <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit" value="+ wishlist"/>
+    <input type="submit" class="" name="submit_wish" value="+ wishlist"/>
 
 
 <?php }

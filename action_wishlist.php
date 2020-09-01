@@ -8,7 +8,6 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
         $userData = array(
             'id_utilisateur' => $_POST['id_utilisateur'],
             'id_article' => $_POST['id_article']
-
         );
         $insert = $db->insert($tblName,$userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Un problème est survenu.';
@@ -16,7 +15,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
         header('Location: ' . $referer);
         $_SESSION['statusMsg'] = $statusMsg;
     }elseif($_REQUEST['action_type'] == 'edit'){
-        if(!empty($_POST['submit'])){
+        if(!empty($_POST['submit_wish'])){
             $userData = array(
               'id_utilisateur' => $_POST['id_utilisateur'],
               'id_article' => $_POST['id_article']
