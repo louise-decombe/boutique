@@ -13,8 +13,8 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-        header("Location:admin_categories.php");
-    }  elseif ($_REQUEST['action_type'] == 'delete') {
+        $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+        header('Location: ' . $referer);    }  elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_categorie'])) {
             $condition = array('id_meesage_utilisateur' => $_GET['id_message_utilisateur']);
             $delete = $db->delete($tblName, $condition);
