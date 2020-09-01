@@ -1143,7 +1143,6 @@ margin-top:5%;
     font-size:1.5em;
   }
 
-
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** NEWS-IN ***/
@@ -1183,10 +1182,11 @@ margin-top:5%;
   padding-bottom: 0.7%;
   border : 1px solid black;
 }
+
 #current-month img{
   width: 8.5%;
   position:absolute;
-  margin-left:12%;
+  margin-left:17.5%;
   margin-top:3%;
 }
 
@@ -1234,45 +1234,34 @@ margin-top:5%;
   font-size:12px;
 }
 
-#add-articles{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-bottom : 5%; 
+
+/*** RESPONSIVE NEWS-IN ***/
+
+@media screen and (max-width:980px){
+
+  #current-month h1{
+    display: flex;
+    font-size: 2em;
+    padding-left:  3.5%;
+    padding-right:  3.5%;
+    padding-top: 0.7%;
+    padding-bottom: 0.7%;
+    border : 1px solid black;
+  }
+
+  #current-month{
+    height:20vh;
+  }
+
+  #current-month img{
+    width: 12.5%;
+    position:absolute;
+    margin-left:30%;
+    margin-top:10%;
+  }
+
 }
 
-#add-articles form input[type=submit]{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color : white;
-  color: black;
-  padding : 5%;
-  font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 12px;
-  border: 1px solid black;
-  margin-bottom : 10%;
-}
-
-#add-articles form input[type=submit1]{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  width:100%;
-  background-color:greenyellow;
-  font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  border-bottom: 1px solid black;
-  border-top:none;
-  border-right:none;
-  border-left:none;
-}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** INSCRIPTION ***/
 
