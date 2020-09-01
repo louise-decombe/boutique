@@ -93,46 +93,67 @@ if (isset($_GET['ajouter'])) {
     <form method='post'>
       <section id="box-form">
             <div class="panel-heading">Ajouter un utilisateur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
-            <div class="panel-body">
-                <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
-                    <div class="form-group">
-                        <label>nom</label>
-                        <input type="text" class="form-control" name="nom"/>
-                    </div>
-                    <div class="form-group">
-                        <label>prenom</label>
-                        <input type="text" class="form-control" name="prenom"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" name="phone"/>
-                    </div>
-                    <section id="box-password">
-                        <label for="password">password</label>
-                        <input type="password" name="password" placeholder="mot de passe*">
-                        <label for="conf_password">confirmation password</label>
-                        <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
-                    </section>
 
-                    <section id="box-gender">
-                        <label>CIVILITÉ</label>
-                        <input type="radio" name="gender" id="female" value="Femme">
-                        <label for="gender">madame</label>
-                        <input type="radio" name="gender" id="male" value="Homme">
-                        <label for="gender">monsieur</label>
-                        <input type="radio" name="gender" id="no_gender" value="Non genré">
-                        <label for="gender">non genré</label>
-                    </section>
+            <?php
+            if (isset($_POST['submit'])) {
+                $user->register(
+                    $_POST['firstname'],
+                    $_POST['lastname'],
+                    $_POST['gender'],
+                    $_POST['phone'],
+                    $_POST['email'],
+                    $_POST['password'],
+                    $_POST['conf_password']
+                );
+            }
 
-                    <input type="hidden" name="action_type" value="add"/>
-                    <input type="submit" class="form-control btn-default" name="submit" value="Ajouter l'utilisateur"/>
+            if (isset($_POST['submit']) && isset($_POST['newsletter'])){
+                $user->newsletter($_POST['email']);
+            }
+
+            ?>
+             <section id="container-register">
+                <form action="inscription.php" method="post">
+                    <h3>CRÉER MON COMPTE</h3>
+                    <section id="box-form">
+
+                            <section id="box-gender">
+                                <label>CIVILITÉ</label>
+                                <input type="radio" name="gender" id="female" value="Femme">
+                                <label for="gender">madame</label>
+                                <input type="radio" name="gender" id="male" value="Homme">
+                                <label for="gender">monsieur</label>
+                                <input type="radio" name="gender" id="no_gender" value="Non genré">
+                                <label for="gender">non genré</label>
+                            </section>
+
+
+                            <input type="text" name="firstname" placeholder="prénom*">
+
+                            <input type="text" name="lastname" placeholder="nom*">
+
+                            <input type="text" name="email" placeholder="email@email.com*">
+
+                            <input type="tel" name="phone" placeholder="0123456789*">
+
+                            <section id="box-password">
+                                <label for="password">password</label>
+                                <input type="password" name="password" placeholder="mot de passe*">
+                                <label for="conf_password">confirmation password</label>
+                                <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
+                            </section>
+
+                    </section>
+                    <section id="box-newsletter">
+                        <input type="checkbox" name="newsletter" value="newsletter">
+                        <label for="newsletter">je souhaite recevoir votre actualité en avant-première. </label>
+                    </section>
+                    <button type="submit" name="submit">Enregistrer vos informations</button>
                 </form>
-            </div>
-</section>
+            </section>
+
+
+
 </section>
 <?php
 } ?>
