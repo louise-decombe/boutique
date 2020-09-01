@@ -1,5 +1,5 @@
-<?php 
-$page_selected = 'news-in.php'; 
+<?php
+$page_selected = 'news-in.php';
 $current_month = date('F');
 
 ?>
@@ -18,12 +18,12 @@ $current_month = date('F');
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         ?>
     </header>
     <main>
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
         <section id="container-news-in">
         <section id="current-month">
             <h1>
@@ -33,14 +33,14 @@ $current_month = date('F');
         </section>
 
         <section id="container-news">
-  	    
-            <?php 
-  
+
+            <?php
+
             // selection des 16 dernières  nouveautés
-            
-            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_ajout) = MONTH(NOW())ORDER by date_ajout DESC limit 16');
-                
-            // la boucle qui démarre permet d'afficher les articles  
+
+            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC limit 16');
+
+            // la boucle qui démarre permet d'afficher les articles
             foreach ($products as $product):
                      //var_dump ($product);
   			?>
@@ -66,16 +66,16 @@ $current_month = date('F');
                             +
                         </a>
                         <?php }?>
-                </section>  					
+                </section>
             </section>
               <?php endforeach ?>
             <section id="add-articles">
                 <form class='onglet' method='POST'>
                     <input id="more_articles" name="more_articles" value="VOIR + D'ARTICLES" type="submit"/>
                     <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
-                </form> 
+                </form>
             </section>
-        </section> 
+        </section>
         </section>
     </main>
     <footer>
