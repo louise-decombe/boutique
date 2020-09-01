@@ -3,22 +3,7 @@ session_start();
 
 
 ?>
-        <section id="modification">
-          <h1>complète ton profil ou modifie tes infos de connexion</h1>
-          <form id="formpic" method="POST">
-            <label> adresse url de l'image </label>
-            <input type="text" id="avatar" name="linkimg" accept="image/png, image/jpeg">
-            <input type="submit" name="submit1" value="Upload">
-          </form>
 
-          <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
-            <label for="fileUpload">ou sélectionner votre fichier:</label>
-            <div id="inputfiles">
-            <input type="file" name="photo" id="fileUpload">
-            <input type="submit" name="submit" value="Upload">
-            </div>
-            <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
-          </form>
 <?php
 $connect = mysqli_connect('localhost','root','','forum');
 
@@ -58,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id utilisateur
 
-                $requestimg = "UPDATE `utilisateurs` SET `avatar`='$file_path' WHERE login = '$_SESSION[login]'";
+                $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_SESSION[login]'";
                 $resultimg = mysqli_query($connect, $requestimg);
 
                 header("location:connexion.php");

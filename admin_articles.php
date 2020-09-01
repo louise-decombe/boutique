@@ -155,18 +155,22 @@ if ($user->is_admin==0) {
                 <input type="submit" class="form-control btn-default" name="submit_article" value="Modifier le fanzine"/>
             </form>
 
-            <fieldset>
-              <label for="image">Changer l'image :</label>
-              <input type="file" name="image_article" id="image_article" />
-              <p>(Taille max : 5 Mo)</p><br />
-              <label><input type="checkbox" name="delete" value="Delete" />
-              Supprimer l'image</label>
-              Image actuelle :
-              <img src="img/<?php echo $avatar; ?>"
-            alt="pas d'image" height = "100px" width = "100px"/> <br />
+            <section id="modification">
+              <h1>Illsutration du fanzine</h1>
+              <form id="formpic" method="POST">
+                <label> adresse url de l'image </label>
+                <input type="text" id="avatar" name="linkimg" accept="image/png, image/jpeg">
+                <input type="submit" name="submit1" value="Upload">
+              </form>
 
-            <input type="submit" name="" value="upload_image">
-            </fieldset>
+              <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+                <label for="fileUpload">ou sélectionner votre fichier:</label>
+                <div id="inputfiles">
+                <input type="file" name="photo" id="fileUpload">
+                <input type="submit" name="submit" value="Upload">
+                </div>
+                <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
+              </form>
 
         </div>
     </div>
@@ -225,7 +229,7 @@ if ($user->is_admin==0) {
                           <label>Prix </label>
                           <input type="number" class="form-control" name="prix_article"/>
                       </div>
-                      
+
                           <div class="form-group">
                               <label>catégorie</label>
 
