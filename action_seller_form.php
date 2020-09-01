@@ -16,6 +16,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $_SESSION['statusMsg'] = $statusMsg;
        header("Location:seller-form.php");
       //  var_dump($insert);
+
     }  elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_message_vendeur'])) {
             $condition = array('id_message_vendeur' => $_GET['id_message_vendeur']);
