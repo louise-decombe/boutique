@@ -48,7 +48,7 @@
 ajouter au panier
 </a>
 <a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article; ?> "
-  onclick="return confirm('Are you sure?');">Supprimer</a>
+  onclick="return confirm('Etes vous sûr?');">Supprimer</a>
                 </td>
             </tr>
           </table>

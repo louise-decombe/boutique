@@ -2,23 +2,21 @@
 session_start();
 include 'class/db.php';
 $db = new DB();
-$tblName = 'message_vendeur';
+$tblName = 'message_utilisateurs';
 if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
     if ($_REQUEST['action_type'] == 'add') {
         $userData = array(
-            'titre_fanzine'=>$_POST['titre_fanzine'],
-            'email_utilisateur'=>$_POST['email_utilisateur'],
-            'message_vendeur'=>$_POST['message_vendeur'],
-            'description_article_vendeur'=>$_POST['description_article_vendeur']
+            'message_utilisateur'=>$_POST['message_utilisateur'],
+            'id_utilisateur'=>$_POST['id_utilisateur'],
+
         );
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-      //  header("Location:seller-form.php");
-        var_dump($insert);
+        header("Location:admin_categories.php");
     }  elseif ($_REQUEST['action_type'] == 'delete') {
-        if (!empty($_GET['id_message_vendeur'])) {
-            $condition = array('id_message_vendeur' => $_GET['id_message_vendeur']);
+        if (!empty($_GET['id_categorie'])) {
+            $condition = array('id_meesage_utilisateur' => $_GET['id_message_utilisateur']);
             $delete = $db->delete($tblName, $condition);
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;

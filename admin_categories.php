@@ -42,7 +42,7 @@ if ($user->is_admin == 0) {
         } ?>
     <div class="row">
         <div class="panel panel-default users-content">
-            <div class="panel-heading">Catégories <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
+            <div class="panel-heading">Catégories <a href="" class="glyphicon glyphicon-plus"></a></div>
             <table class="table">
                 <tr>
                     <th width="10%">Nom de la catégorie</th>
@@ -52,9 +52,8 @@ if ($user->is_admin == 0) {
 
         $users = $db->getRows('categorie', array('order_by'=>'id_categorie DESC'));
         if (!empty($users)) {
-            $count = 0;
             foreach ($users as $user) {
-                $count++; ?>
+         ?>
                 <tr>
                     <td><?php echo $user['nom_categorie']; ?></td>
 

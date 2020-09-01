@@ -34,14 +34,19 @@
 
 <p></p>
 
-<?php if(isset($_SESSION['user'])){
-?>
-
+<?php if (isset($_SESSION['user'])) {
+            ?>
 
 <?php
 $id_user= ($_SESSION['user']['id_user']);
-$id_article = $_GET['id'];
-  ?>
+            $id_article = $_GET['id'];
+
+$query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
+
+            if (count($query) > 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
+                echo "Vous avez déjà ajouté cet article à votre wishlist";
+            } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
+?>
 
 <form method="post" action="action_wishlist.php" class="form" id="userForm">
 
@@ -51,13 +56,14 @@ $id_article = $_GET['id'];
     <input type="submit" class="" name="submit" value="+ wishlist"/>
 
 
-<?php } ?>
+<?php }
+        }?>
 
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
                         <section id="price-item">
-                            <?= $formatter->formatCurrency($item['prix_article'],'EUR'), PHP_EOL; ?>
+                            <?= $formatter->formatCurrency($item['prix_article'], 'EUR'), PHP_EOL; ?>
                         </section>
 
                         <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
@@ -69,7 +75,7 @@ $id_article = $_GET['id'];
                         <input id="more_infos" name="more" value="EN SAVOIR +" type="submit"/>
                     </form>
 
-                    <?php if(isset($_POST['more'])){?>
+                    <?php if (isset($_POST['more'])) {?>
                     <section id="more">
                         <a href="item.php?id=<?=($item['id_article'])?>">x</a>
                         <p><?= ($item['description_article'])?></p>
@@ -89,24 +95,25 @@ $id_article = $_GET['id'];
         <section id="similar-article">
             <h3>vous aimerez peut-être...</h3>
             <?php
-            $similar_art = $category->similar_article(($item['id_sous_categorie']),($item['id_article']) );
+            $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));
             ?>
             <section id="selection">
                 <?php
 
-                foreach ($similar_art as $similar){
-                    if ($similar['id_article'] != $item['id_article']){
-
-                ?>
+                foreach ($similar_art as $similar) {
+                    if ($similar['id_article'] != $item['id_article']) {
+                        ?>
                 <section id="selection-article">
                     <a href="item.php?id=<?=($similar['id_article'])?>"><img src="<?= ($similar['chemin'])?>" width="10%" alt="cover-fanzine">
                     <a href="item.php?id=<?=($similar['id_article'])?>" class="button">
                         <span class="text-hover">CONSULTER</span>
-                        <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'],'EUR'), PHP_EOL; ?></span>
+                        <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'], 'EUR'), PHP_EOL; ?></span>
                     </a>
                 </section>
 
-            <?php } } ?>
+            <?php
+                    }
+                } ?>
             </section>
 
         </section>
