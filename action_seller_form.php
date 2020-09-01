@@ -9,12 +9,13 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             'titre_fanzine'=>$_POST['titre_fanzine'],
             'email_utilisateur'=>$_POST['email_utilisateur'],
             'message_vendeur'=>$_POST['message_vendeur'],
-            'description_article_fanzine'=>$_POST['description_article_fanzine']
+            'description_article_vendeur'=>$_POST['description_article_vendeur']
         );
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-        header("Location:index.php");
+      //  header("Location:seller-form.php");
+        var_dump($insert);
     }  elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_message_vendeur'])) {
             $condition = array('id_message_vendeur' => $_GET['id_message_vendeur']);

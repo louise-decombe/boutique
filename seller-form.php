@@ -23,7 +23,7 @@
 
       <div class="row">
           <div class="panel panel-default user-add-edit">
-              <div class="panel-heading">Envoyer un message pour être distributeur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
+              <div class="panel-heading">Envoyer un message pour être distributeur <a href="seller-form.php" class="glyphicon glyphicon-arrow-left"></a></div>
               <div class="panel-body">
                   <form method="post" action="action_seller_form.php" class="form" id="userForm">
                       <div class="form-group">
