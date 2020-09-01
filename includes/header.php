@@ -6,6 +6,7 @@ require 'class/categories.php';
 
 session_start();
 $db = new DB();
+$panier = new panier($db);
 $panier = new Panier($db);
 $category = new Categorie($db);
 $user = new Users($db);
@@ -69,12 +70,12 @@ if (isset($_POST["deco"])) {
                             </div>
                             <?php endforeach; ?>
                         </li>
-                        <li class="items"> Nombre d'articles  
+                        <li class="items"> Nombre d'articles
                             <span id="count"><?= //retourne la valeur du Panier
                                 $panier->count(); ?>
                             </span>
                         </li>
-                        <p>   
+                        <p>
                             <li class="total">TOTAL
                                 <span><span id="total"><?= $formatter->formatCurrency($panier->total(),'EUR'), PHP_EOL; ?></span> €</span>
                             </li>
@@ -109,7 +110,7 @@ if (isset($_POST["deco"])) {
             </li>
             <?php
                 }else{
-            ?> 
+            ?>
             <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
             <?php } ?>
             </ul>
@@ -129,4 +130,3 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-

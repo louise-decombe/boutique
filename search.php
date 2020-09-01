@@ -28,7 +28,6 @@
 
           	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
           	 <input type='submit' value="Rechercher"/>
-          	 <input type='submit' value="Afficher tout utilisateurs"/>
 </section>
 </section>
            </form>
@@ -40,7 +39,7 @@
               $params = [];
               if (isset($_POST['recherche_valeur'])) {
                   $sql .= ' where nom_article like :nom_article';
-                  $params[':nom_article'] = "%" . addcslashes($_POST['recherche_valeur'], '_') . "%";
+                  $params[':nom_article'] = "%" . addcslashes(trim($_POST['recherche_valeur']), '_') . "%";
               }
               $resultats = $bdd->prepare($sql);
               $resultats->execute($params);
