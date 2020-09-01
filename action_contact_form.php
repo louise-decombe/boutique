@@ -15,6 +15,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $_SESSION['statusMsg'] = $statusMsg;
         $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
         header('Location: ' . $referer);    }  elseif ($_REQUEST['action_type'] == 'delete') {
+
         if (!empty($_GET['id_categorie'])) {
             $condition = array('id_meesage_utilisateur' => $_GET['id_message_utilisateur']);
             $delete = $db->delete($tblName, $condition);
