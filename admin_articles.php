@@ -182,21 +182,17 @@ if ($user->is_admin==0) {
 
 
 
-
-
-
-
-
-
   <?php
+  if (isset($_GET['ajouter'])) {
+     $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single'));
 
-  if (isset($_GET['ajouter'])) { ?>
+ ?>
 
       <div class="row">
           <div class="panel panel-default user-add-edit">
               <div class="panel-heading">Ajouter un article <a href="admin_articles.php" class="glyphicon glyphicon-arrow-left"></a></div>
               <div class="panel-body">
-                  <form method="post" action="action_article.php" class="form" id="userForm">
+                  <form method="post" action="action_article.php" class="form">
                       <div class="form-group">
                           <label>Nom de l'article</label>
                           <input type="text" class="form-control" name="nom_article"/>
@@ -229,41 +225,28 @@ if ($user->is_admin==0) {
                           <label>Prix </label>
                           <input type="number" class="form-control" name="prix_article"/>
                       </div>
+                      
+                          <div class="form-group">
+                              <label>catégorie</label>
 
-                      <div class="form-group">
-                          <label>catégorie</label>
+                        <select name="id_sous_categorie">
+                        <?php
+                        $products = $db->query('SELECT * FROM sous_categorie');
 
-<form class="" action="" method="post">
-  <?php     $sous_cat = $db->query("SELECT * FROM categorie");
+                        foreach ($products as $product):
+                        // On affiche chaque entrée une à une
 
+                        ?>
+                        <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
+                        ?>
+                        <br />
+                        <?php endforeach; ?>
+                        </select>
+                        </div>
 
-
-   ?>
-</form>
-
-<?php if(isset($_POST[''])) ?>
-
-
-    <select name="id_sous_categorie">
-
-    <?php
-
-    $sous_cat = $db->query("SELECT * FROM sous_categorie");
-
-    foreach ($sous_cat as $sous_categorie):
-    // On affiche chaque entrée une à une
-
-    ?>
-    <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_sous_categorie ."'>" . $sous_categorie->nom_sous_categorie . "</option>";
-  ?>  <strong> catégorie</strong> : <?php echo "<option value = '" . $sous_categorie->id_categorie . "'>". "</option>";
-
-    ?>
-    <br />
-    <?php endforeach; ?>
-      </select>
     </div>
                       <input type="hidden" name="action_type" value="add"/>
-                      <input type="submit" class="form-control btn-default" name="submit_article" value="Créer l'article"/>
+                      <input type="submit" class="form-control btn-default" name="submit" value="Créer l'article"/>
                   </form>
               </div>
           </div>
@@ -274,7 +257,7 @@ if ($user->is_admin==0) {
   } } else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+}   ?>
   </main>
   </body>
   </html>

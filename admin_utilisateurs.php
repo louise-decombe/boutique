@@ -90,8 +90,8 @@ if (isset($_GET['utilisateurs'])) {
 
 if (isset($_GET['ajouter'])) {
     ?>
-    <div class="row">
-        <div class="panel panel-default user-add-edit">
+    <form method='post'>
+      <section id="box-form">
             <div class="panel-heading">Ajouter un utilisateur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
             <div class="panel-body">
                 <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
@@ -111,13 +111,29 @@ if (isset($_GET['ajouter'])) {
                         <label>Phone</label>
                         <input type="text" class="form-control" name="phone"/>
                     </div>
+                    <section id="box-password">
+                        <label for="password">password</label>
+                        <input type="password" name="password" placeholder="mot de passe*">
+                        <label for="conf_password">confirmation password</label>
+                        <input type="password" name="conf_password" placeholder="confirmer le mot de passe*">
+                    </section>
+
+                    <section id="box-gender">
+                        <label>CIVILITÉ</label>
+                        <input type="radio" name="gender" id="female" value="Femme">
+                        <label for="gender">madame</label>
+                        <input type="radio" name="gender" id="male" value="Homme">
+                        <label for="gender">monsieur</label>
+                        <input type="radio" name="gender" id="no_gender" value="Non genré">
+                        <label for="gender">non genré</label>
+                    </section>
+
                     <input type="hidden" name="action_type" value="add"/>
                     <input type="submit" class="form-control btn-default" name="submit" value="Ajouter l'utilisateur"/>
                 </form>
             </div>
-        </div>
-    </div>
-
+</section>
+</section>
 <?php
 } ?>
 
@@ -127,7 +143,7 @@ if (isset($_GET['ajouter'])) {
             ?>
 <div class="row">
     <div class="panel panel-default user-add-edit">
-        <div class="panel-heading">Modifier <a href="admin_utilisateurs.php" class="glyphicon glyphicon-arrow-left"></a></div>
+        <div class="panel-heading">Modifier</div>
         <div class="panel-body">
             <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
                 <div class="form-group">

@@ -16,16 +16,12 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
 'nb_pages' => $_POST['nb_pages'],
 'annee_parution' => $_POST['annee_parution'],
 'prix_article' => $_POST['prix_article']
-
         );
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
         header("Location:admin_articles.php");
     } elseif ($_REQUEST['action_type'] == 'edit') {
-
-
-
         if (!empty($_POST['id_article'])) {
             $userData = array(
               'nom_article' => $_POST['nom_article'],
@@ -51,7 +47,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             $delete = $db->delete($tblName, $condition);
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
-            header("Location:admin_articles.php");
+            //header("Location:admin_articles.php");
         }
     }
 }
