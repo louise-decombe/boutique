@@ -16,32 +16,31 @@
     <header>
     <?php
         include("includes/header.php");
-        $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
     ?>
     </header>
     <main>
         <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
             <?php
-                if(isset($_GET['id'])){
-                $id = $_GET['id'];
-                $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie 
-                                        FROM sous_categorie 
-                                        INNER JOIN categorie 
-                                        ON sous_categorie.id_categorie = categorie.id_categorie 
-                                        WHERE id_sous_categorie = '$id' ");
-                //var_dump($product);
-                foreach ( $products as $product ):
+            if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie 
+                                    FROM sous_categorie 
+                                    INNER JOIN categorie 
+                                    ON sous_categorie.id_categorie = categorie.id_categorie 
+                                    WHERE id_sous_categorie = '$id' ");
+            //var_dump($product);
+            foreach ( $products as $product ):
             ?>
-            <section id="container-news-in">
-                <section id="title-subcategory">
-                    <h1><?= $product->nom_sous_categorie;?></h1>
-                    <aside id="current-category">
-                        <b><?= $product->nom_sous_categorie;?></b> /
-                        <a href="category.php"><?= $product->nom_categorie;?></a> /
-                        <a href="index1.php">home</a>
-                    </aside>
-                </section>
-                <section id="container-news">
+        <section id="container-news-in">
+            <section id="title-subcategory">
+                <h1><?= $product->nom_sous_categorie;?></h1>
+                <aside id="current-category">
+                    <b><?= $product->nom_sous_categorie;?></b> /
+                    <a href="category.php"><?= $product->nom_categorie;?></a> /
+                    <a href="index1.php">home</a>
+                </aside>
+            </section>
+            <section id="container-news">
                 <?php
                 $article_sub_category  = $category->categorie_article($_GET['id']);
                 $id_page = $_GET['id'];
@@ -58,44 +57,37 @@
                             <?php //var_dump($article['id_article']);
                             $id = $article['id_article'];
                             ?>
-                            <?php if(isset($_SESSION['user'])){ ?>
-                                <a href="addwishlist.php?id=<?= $id_article ?>">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                                <a class="add addpanier" href="addpanier.php?id=<?= $id_article ?>">
-                                    +
-                                </a>
-                            <?php }?>
                         </section>
                     </section>
                     <?php }; endforeach; }?>
-                    <section id="remove-row">
-                        <button id="load_more" data-id="<?php echo $id;?>" data-id_page="<?php echo $id_page;?>">LOAD MORE</button>
-                    </section>
-
-                    <script type="text/javascript">
-                        $(document).ready(function(){
-                            $(document).on('click','#load_more', function(event){
-                            event.preventDefault();
-
-                            var id = $('#load_more').data('id');
-                            var id_page = $('#load_more').data('id_page');
-                            //alert(id_page);
-                            $.ajax({
-                                url : "load.php",
-                                method : "get",
-                                data:({id_item:id, id_page:id_page}),
-                                success:function(response){
-                                    console.log(response);
-                                    //$('#container-news').html(response);
-                                    $('#remove-row').remove();
-                                    $('#container-news').append(response);
-                                }
-                            });
-                            });
-                        });
-                    </script>
             </section>
+
+            <section id="remove-row">
+                <button id="load_more" data-id="<?= $id;?>" data-id_page="<?= $id_page;?>">LOAD MORE</button>
+            </section>
+           
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $(document).on('click','#load_more', function(event){
+                    event.preventDefault();
+
+                    var id = $('#load_more').data('id');
+                    var id_page = $('#load_more').data('id_page');
+                    //alert(id_page);
+                    $.ajax({
+                        url : "load.php",
+                        method : "get",
+                        data:({id_item:id, id_page:id_page}),
+                            success:function(response){
+                            console.log(response);
+                            //$('#container-news').html(response);
+                            $('#remove-row').remove();
+                            $('#container-news').append(response);
+                            }
+                        });
+                    });
+                });
+            </script>
         </section>
     </main> 
     <footer>
