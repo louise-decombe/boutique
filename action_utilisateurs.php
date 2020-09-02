@@ -33,7 +33,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
             $update = $db->update($tblName,$userData,$condition);
             $statusMsg = $update?'Données mises à jour.':'Un problème est survenu, reassayez.';
             $_SESSION['statusMsg'] = $statusMsg;
-            header("Location:admin_utilisateurs.php");
+          //  header("Location:admin_utilisateurs.php");
         }
     }elseif($_REQUEST['action_type'] == 'delete'){
         if(!empty($_GET['id_utilisateur'])){

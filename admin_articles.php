@@ -23,8 +23,6 @@ require('admin_nav.php');
 </head>
 <body>
 
-<main>  <a href="admin_articles.php?articles">Voir les articles</a><br/>
-  <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
   <?php
 if ($user->is_admin==0) {
     ?>
@@ -90,7 +88,9 @@ if ($user->is_admin==0) {
     </tbody>
   </table>
   <?php
+  //
 //modification d'un article
+//
    if (isset($_GET['id_article'])) {
        $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
        if (!empty($userData)) {
@@ -196,6 +196,9 @@ if ($user->is_admin==0) {
    } ?>
 
   <?php
+//
+//ajout d'une article
+//
   if (isset($_GET['ajouter'])) {
       $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single')); ?>
 
@@ -255,8 +258,7 @@ if (isset($_GET['submit_form1'])) { ?>
 </section>
 </section>
 
-<?php }
-//                      <input type="hidden" name="id_article" value="<?php echo "1" ;?>
+<?php }?>
 
 <?php if (isset($_GET['submit_form2'])) {?>
   <section id="container-register">
