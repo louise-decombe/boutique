@@ -1295,7 +1295,6 @@ margin-top:5%;
 }
 
 #box-form input[type=text],
-
 #box-form input[type=number],
 #box-form input[type=textarea],
 #box-form input[type=tel]{
@@ -1311,6 +1310,31 @@ margin-top:5%;
   width: 100%;
   background: #F9FDF6;
 }
+
+.submit{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.submit:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}
+
+
+
+
+
+
 
 #container-register form button{
   display: flex;
@@ -1330,6 +1354,9 @@ margin-top:5%;
   border: 1px solid white;
   transition: 1.5s;
 }
+
+
+
 
 #box-form{
   display: flex;

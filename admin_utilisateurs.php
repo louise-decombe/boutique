@@ -12,7 +12,7 @@ require("admin_nav.php")
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -20,9 +20,9 @@ require("admin_nav.php")
 
 </header>
 <main>
-<div class="admin">
+<div class="">
 
-<div class="button">
+<div class="">
   <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
   <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
 </div>
@@ -39,17 +39,18 @@ if (isset($_GET['utilisateurs'])) {
         echo '<p>'.$_SESSION['statusMsg'].'</p>';
         unset($_SESSION['statusMsg']);
     } ?>
-    <div class="row">
-        <div class="panel panel-default users-content">
-            <div class="panel-heading">Utilisateurs <a href="admin_utilisateurs" class="glyphicon glyphicon-plus"></a></div>
+
+            UTILISATEURS
             <table class="table">
                 <tr>
-                    <th width="1%">#</th>
-                    <th width="10%">Name</th>
-                    <th width="10%">Email</th>
-                    <th width="10%">Phone</th>
-                    <th width="10%">Created</th>
-                    <th width="10%"></th>
+                    <th>#</th>
+                    <th >Nom</th>
+                    <th>Prénom</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Is admin</th>
+                    <th></th>
                 </tr>
                 <?php
 
@@ -65,7 +66,15 @@ if (isset($_GET['utilisateurs'])) {
                     <td><?php echo $user['phone']; ?></td>
                     <td><?php echo $user['email']; ?></td>
                     <td><?php echo $user['gender']; ?></td>
-                    <td><?php echo $user['is_admin']; ?></td>
+                    <td><?php
+
+$is_admin=$user['is_admin'];
+if($is_admin=1){
+  echo "oui";
+}else{
+  echo "non";
+}
+                ?></td>
 
                     <td>
                         <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"></a>
@@ -79,8 +88,6 @@ if (isset($_GET['utilisateurs'])) {
                 <?php } ?>
             </table>
         </div>
-    </div>
-
 <?php
 } ?>
 
@@ -92,7 +99,9 @@ if (isset($_GET['ajouter'])) {
     ?>
     <form method='post'>
       <section id="box-form">
-            <div class="panel-heading">Ajouter un utilisateur <a href="index.php" class="glyphicon glyphicon-arrow-left"></a></div>
+        </div>
+        <section id="box-form">
+          <section id="box-password">
 
             <?php
             if (isset($_POST['submit'])) {
@@ -151,7 +160,8 @@ if (isset($_GET['ajouter'])) {
                     <button type="submit" name="submit">Enregistrer vos informations</button>
                 </form>
             </section>
-
+</section>
+</section>
 
 
 </section>

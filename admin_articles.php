@@ -16,7 +16,7 @@ require('admin_nav.php');
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -26,8 +26,8 @@ require('admin_nav.php');
 
 if ($user->is_admin==0) {
     ?>
-  <div class="admin">
-    <div class="button">
+  <div class="">
+    <div class="">
   <a href="admin_articles.php?articles">Voir les articles</a><br/>
   <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
   </div>
@@ -39,20 +39,22 @@ if ($user->is_admin==0) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
           unset($_SESSION['statusMsg']);
       } ?>
-    <div class="row">
-            <div class="panel-heading">Articles </div>
+      <div class="container-treatment">
+
+    <div class="treatment-order">
+            <div class="">Articles </div>
             <table class="table">
                 <tr>
-                    <th width="10%">Nom du fanzine</th>
-                    <th width="10%">Auteur</th>
-                    <th width="10%">Editions</th>
-                    <th width="10%">Description</th>
-                    <th width="10%">Citation</th>
-                    <th width="10%">Nbe de pages</th>
-                    <th width="10%">Année de parution</th>
-                    <th width="10%">Prix</th>
-                    <th width="10%">Date d'ajout</th>
-                    <th width="10%"></th>
+                    <th >Nom du fanzine</th>
+                    <th >Auteur</th>
+                    <th >Editions</th>
+                    <th >Citation</th>
+                    <th >Nbe de pages</th>
+                    <th >Année de parution</th>
+                    <th >Prix</th>
+                    <th >Date d'ajout</th>
+                    <th></th>
+
                 </tr>
                 <?php
 
@@ -81,7 +83,8 @@ if ($user->is_admin==0) {
                 <tr><td colspan="4">Aucun article trouvé......</td>
                 <?php }
   } ?>
-    </div>
+    </div>    </div>
+
 
     </tbody>
   </table>
@@ -94,43 +97,46 @@ if ($user->is_admin==0) {
 
           <section id="container-register">
 
-        <div class="">Modifier l'article <a href="admin_articles.php" class="glyphicon glyphicon-arrow-left"></a></div>
-            <form method="post" action="action_article.php" class="form" id="userForm">
+            <form method="post" action="action_article.php" class="" id="">
+              <h3>MODIFIER L'ARTICLE</h3>
 
-                <div class="form-group">
+              <section id="box-form">
+                <section id="box-password">
+
+                <div class="">
                     <label>Nom de l'article</label>
-                    <input type="text" class="form-control" name="nom_article" value="<?php echo $userData['nom_article']; ?>"/>
+                    <input type="text" class="" name="nom_article" value="<?php echo $userData['nom_article']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Auteur de l'article</label>
-                    <input type="text" class="form-control" name="auteur_article" value="<?php echo $userData['auteur_article']; ?>"/>
+                    <input type="text" class="" name="auteur_article" value="<?php echo $userData['auteur_article']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Edition de l'article</label>
-                    <input type="text" class="form-control" name="editions_article" value="<?php echo $userData['editions_article']; ?>"/>
+                    <input type="text" class="" name="editions_article" value="<?php echo $userData['editions_article']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Description</label>
-                    <input type="textarea" class="form-control" name="description_article" value="<?php echo $userData['description_article']; ?>"/>
+                    <input type="textarea" class="" name="description_article" value="<?php echo $userData['description_article']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Citation de l'article</label>
-                    <input type="textarea" class="form-control" name="citation_article" value="<?php echo $userData['citation_article']; ?>"/>
+                    <input type="textarea" class="" name="citation_article" value="<?php echo $userData['citation_article']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Nombre de pages </label>
-                    <input type="number" class="form-control" name="nb_pages" value="<?php echo $userData['nb_pages']; ?>"/>
+                    <input type="number" class="" name="nb_pages" value="<?php echo $userData['nb_pages']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Année de parution </label>
-                    <input type="number" class="form-control" name="annee_parution" value="<?php echo $userData['annee_parution']; ?>"/>
+                    <input type="number" class="" name="annee_parution" value="<?php echo $userData['annee_parution']; ?>"/>
                 </div>
-                <div class="form-group">
+                <div class="">
                     <label>Prix </label>
-                    <input type="number" class="form-control" name="prix_article" value="<?php echo $userData['prix_article']; ?>"/>
+                    <input type="number" class="" name="prix_article" value="<?php echo $userData['prix_article']; ?>"/>
                 </div>
 
-                <div class="form-group">
+                <div class="">
                     <label>Catégorie</label>
 
   <select name="id_sous_categorie">
@@ -148,20 +154,20 @@ if ($user->is_admin==0) {
   </select>
   </div>
                 <input type="hidden" name="action_type" value="add"/>
-                <input type="submit" class="form-control btn-default" name="submit_article" value="Modifier le fanzine"/>
+                <input type="submit" class="submit" name="submit_article" value="Modifier le fanzine"/>
 
             <section id="modification">
-              <h1>Illsutration du fanzine</h1>
-              <form id="formpic" method="POST">
+              <h3>Illustration du fanzine</h3>
+              <form id="" method="POST">
                 <label> adresse url de l'image </label>
-                <input type="text" id="avatar" name="linkimg" accept="image/png, image/jpeg">
+                <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
                 <input type="submit" name="submit1" value="Upload">
               </form>
 
               <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
-                <input type="file" name="photo" id="fileUpload">
+                <input type="file" name="photo" id="">
                 <input type="submit" name="submit" value="Upload">
                 </div>
                 <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
@@ -169,6 +175,8 @@ if ($user->is_admin==0) {
             </form>
       </section>
     </section>
+  </section>
+</section>
   <?php  ?>
 
 
@@ -176,54 +184,36 @@ if ($user->is_admin==0) {
       }
   } ?>
 
-
-
   <?php
   if (isset($_GET['ajouter'])) {
      $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single'));
 
  ?>
+ <section id="container-register">
+   <form method="post" action="action_article.php" class="form">
 
-      <div class="row">
-          <div class="panel panel-default user-add-edit">
-              <div class="panel-heading">Ajouter un article <a href="admin_articles.php" class="glyphicon glyphicon-arrow-left"></a></div>
-              <div class="panel-body">
-                  <form method="post" action="action_article.php" class="form">
-                      <div class="form-group">
+     <section id="box-form">
+       <h3>AJOUTER UN ARTICLE</h3>
+
+       <section id="box-password">
+
                           <label>Nom de l'article</label>
                           <input type="text" class="form-control" name="nom_article"/>
-                      </div>
-                      <div class="form-group">
                           <label>Auteur de l'article</label>
                           <input type="text" class="form-control" name="auteur_article"/>
-                      </div>
-                      <div class="form-group">
                           <label>Edition de l'article</label>
                           <input type="text" class="form-control" name="editions_article"/>
-                      </div>
-                      <div class="form-group">
                           <label>Description</label>
                           <input type="textarea" class="form-control" name="description_article"/>
-                      </div>
-                      <div class="form-group">
                           <label>Citation de l'article</label>
                           <input type="textarea" class="form-control" name="citation_article"/>
-                      </div>
-                      <div class="form-group">
                           <label>Nombre de pages </label>
                           <input type="number" class="form-control" name="nb_pages"/>
-                      </div>
-                      <div class="form-group">
                           <label>Année de parution </label>
                           <input type="number" class="form-control" name="annee_parution"/>
-                      </div>
-                      <div class="form-group">
                           <label>Prix </label>
                           <input type="number" class="form-control" name="prix_article"/>
-                      </div>
-
-                          <div class="form-group">
-                              <label>catégorie</label>
+                          <label>catégorie</label>
 
                         <select name="id_sous_categorie">
                         <?php
@@ -238,13 +228,12 @@ if ($user->is_admin==0) {
                         <br />
                         <?php endforeach; ?>
                         </select>
-                        </div>
 
     </div>
 
 
                       <input type="hidden" name="action_type" value="add"/>
-                      <input type="submit" class="form-control btn-default" name="submit" value="Créer l'article"/>
+                      <input type="submit" class="submit" name="submit" value="Créer l'article"/>
                       <form class="" action="admin_articles.php?ajouter" method="post">
 
 
@@ -252,15 +241,13 @@ if ($user->is_admin==0) {
                       nombre articles<input type="hidden" name="id_article" value="<?php echo "1" ;?>">
                       <?php
 
-                      
+
                       ?>
                       </form>
-
                   </form>
-              </div>
-          </div>
-      </div>
-
+</section>
+</section>
+</section>
 
     <?php
   } } else {
