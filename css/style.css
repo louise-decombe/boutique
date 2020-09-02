@@ -112,6 +112,7 @@ header{
   color: #000;
   text-transform: none;
   font-size:12px;
+  padding-top:10px;
 }
 
 .wrapper nav ul.menu-area ul li a:hover{
@@ -132,30 +133,166 @@ header{
 }
 
 #deco1{
+  display:flex;
+  border:none;
+  background-color:white;
   margin-top:11px;
   font-size : 12px;
   font-weight:600;
 }
 
+#deco1:hover{
+  color:#00FF00;
+  transition:1.5s;
+}
+
 /******* AJOUT LOUISE DROPDOWN PANIER HEADER *********/
-.dropdown {
-  position: relative;
-  display: inline-block;
+#basket{
+  display: flex;
+  justify-content:flex-end;
+  width:250px;
+}
+#profile{
+  display: flex;
+  width:50px;
+  justify-content: center;
+  align-items:center;
+  justify-content:flex-end;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
+  position:absolute;
   background-color: #F9FDF6;
-  min-width: 160px;
-  min-height:60vh;
+  min-width: 250px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
   z-index: 1;
+  font-family: 'Exo', sans-serif;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.dropdown-content span{
+  font-family: 'Exo', sans-serif;
+  font-size:11px;
+}
+
+.dropdown-content2 {
+  display: none;
+  position:absolute;
+  background-color: #F9FDF6;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: 'Exo', sans-serif;
+  margin-left:-120px;
+}
+
+.dropdown:hover .dropdown-content2 {
+  display: block;
+  transition:1.5;
+}
+
+.dropdown-content2 span{
+  font-family: 'Exo', sans-serif;
+  font-size:11px;
+}
+
+#dropdown-title{
+  display: flex;
+  background-color: black;
+  color: #F9FDF6;
+  justify-content: center;
+  font-family: 'Exo', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dropdownlist{
+  display:flex;
+  padding: 10px;
+  border:0.5px solid #EEF3E9;
+  font-family: 'Exo', sans-serif;
+  font-size: 10px;
+  color:black;
+  letter-spacing: 1px;
+}
+
+.dropdownlist:hover{
+  color:#00FF00;
+  background-color:black;
+  transition: 1.5s;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  border:0.5px solid black;
+  padding:10px;
+  margin-bottom:5%;
+}
+
+.mini-article{
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+}
+
+#name_article{
+  font-weight:600;
+}
+
+#total-header{
+  display: flex;
+  letter-spacing:2px;
+  font-family: 'Exo', sans-serif;
+}
+
+#basket-header{
+  display:flex;
+  justify-content:center;
+  background-color:#00FF00;
+  border:0.5px solid black;
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  margin-top:2.5%;
+}
+
+#basket-header a{
+  color:black;
+  text-transform:uppercase;
+}
+
+#basket-header:hover{
+  color:#00FF00;
+  background-color:black;
+  transition:1.5s;
+}
+
+#basket-header a:hover{
+  color:#00FF00;
+}
+
+#dropdown-deco{
+  display: flex;
+  width:100%;
+  border:none;
+  padding:10px;
+  font-size:10px;
+  font-family: 'Exo', sans-serif;
+  background-color:white;
+  border:0.5px solid black;
+}
+
+#dropdown-deco:hover{
+  font-weight:600;
+  transition:1.5s;
 }
 /****** FIN AJOUT DROPDOWN PANIER ****/
 
@@ -199,7 +336,6 @@ header{
   letter-spacing: 1px;
   color: black;
   width: 100%;
-
 }
 
 #first-nav nav ul{
@@ -245,6 +381,7 @@ header{
   padding: 10px;
   width: 42.5px;
   height: 42.5px;
+  margin-left:-1.5%;
   position: absolute;
   top: 0;
   right: 0;
@@ -262,6 +399,7 @@ header{
 
 #search-form:hover input{
   display: block;
+  margin-left:2.5%;
 }
 
 #search-form:hover .fa{
@@ -269,78 +407,9 @@ header{
   color: white;
 }
 
-/*menu-profile*/
-.boutonmenuprincipal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  width: 100%;
-  background-color: white;
-  padding-bottom: 20px;
-  }
-  .boutonmenuprincipal:hover {
-  display: none;
-  }
-
-  .bottom-child {
-  display: none;
-  background-color: white;
-  border:1px solid #EEF3E9;
-  min-width: 50px;
-  margin-right: 20px;
-  }
-
-  .bottom-child a {
-  padding: 15px;
-  text-decoration: none;
-  display: block;
-  font-size: 9px;
-  color: gray;
-  border-bottom: 1px solid #EEF3E9;
-  }
-
-  .bottom-child a:hover{
-    color: black;
-    background-color: #F9FDF6;
-    transition: 2s;
-  }
-  .bottom:hover .bottom-child {
-  display: block;
-  }
-
-  .bottom li{
-    list-style-type: none;
-  }
-
-  #bottom-title{
-    display: flex;
-    background-color: black;
-    color: #F9FDF6;
-    justify-content: center;
-    font-family: 'Exo', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  #deco{
-    border:none;
-    display: flex;
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    background-color: white;
-    color: gray;
-  }
-
-  #deco:hover{
-    color: black;
-    transition: 1.5s;
-    background-color: #F9FDF6;
-  }
+#loupe input[type=submit]{
+  display:none;
+}
 
 /***RESPONSIVE HEADER ***/
 @media (max-width: 780px) {
@@ -349,6 +418,20 @@ header{
 }
 
 @media (max-width: 980px){
+  .dropdown{
+    padding-right:0;
+  }
+
+  #basket{
+    width:30px;
+  }
+  #profile{
+    display: flex;
+    width:30px;
+    justify-content: center;
+    align-items:center;
+    justify-content:flex-end;
+  }
 
   #toplogo h1{
     margin-top: 2.5%;
@@ -365,19 +448,19 @@ header{
 
   #first-nav nav ul i{
     font-size: 15px;
-    padding-right: 12.5px;
+    padding-right: 10px;
   }
 
   #loupe{
-    margin-top: -2%;
+    margin-top: -1%;
   }
 
   .fa{
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
 
   .wrapper{
-    margin-bottom:45%;
+    margin-bottom:55%;
   }
 
   .wrapper nav > ul > li >a{
@@ -396,7 +479,7 @@ header{
 
   .wrapper nav ul.menu-area{
     padding-top: 5%;
-    padding-left: 2.5%;
+    padding-left: 0;
     justify-content: center;
     width: 100%;
   }
@@ -421,9 +504,27 @@ header{
     margin-right: 0;
   }
 
-  .wrapper nav ul.menu-area{
-
+  .search{
+    width: 70%;
+    height: 30px;
+    outline: none;
+    border: 0;
+    display: none;
+    font-size: 0.5em;
   }
+
+  #search-form:hover{
+    width: 200px;
+  }
+
+  #search-form:hover input{
+    margin-left:20%;
+  }
+
+  #loupe{
+    margin-top: -7.5%;
+  }
+
 
 }
 
@@ -1294,8 +1395,8 @@ margin-top:5%;
   margin-bottom: 1.5%;
 }
 
-
 #box-form input[type=text],
+
 #box-form input[type=number],
 #box-form input[type=textarea],
 #box-form input[type=tel]{
@@ -1311,31 +1412,6 @@ margin-top:5%;
   width: 100%;
   background: #F9FDF6;
 }
-
-.submit{
-  display: flex;
-  background-color: #00FF00;
-  justify-content: center;
-  width: 75%;
-  border: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  text-transform: uppercase;
-  font-size: 1em;
-}
-
-.submit:hover{
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  transition: 1.5s;
-}
-
-
-
-
-
-
 
 #container-register form button{
   display: flex;
@@ -1355,9 +1431,6 @@ margin-top:5%;
   border: 1px solid white;
   transition: 1.5s;
 }
-
-
-
 
 #box-form{
   display: flex;

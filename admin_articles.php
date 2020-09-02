@@ -188,14 +188,15 @@ if ($user->is_admin==0) {
   <?php
   if (isset($_GET['ajouter'])) {
       $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single')); ?>
+
+
  <section id="container-register">
    <form method="post" action="action_article.php" class="form">
-
      <section id="box-form">
-       <h3>AJOUTER UN ARTICLE</h3>
+       <h3>AJOUTER UN ARTICLE 1/3</h3>
+       <h3>Informations principales</h3>
 
        <section id="box-password">
-
                           <label>Nom de l'article</label>
                           <input type="text" class="form-control" name="nom_article"/>
                           <label>Auteur de l'article</label>
@@ -207,62 +208,66 @@ if ($user->is_admin==0) {
                           <label>Citation de l'article</label>
                           <input type="textarea" class="form-control" name="citation_article"/>
                           <label>Nombre de pages </label>
-                          <input type="number" class="form-control" name="nb_pages value="0" min="0" max="9000""/>
+                          <input type="number" class="form-control" name="nb_pages" value="0" min="0" max="9000"/>
                           <label>Année de parution </label>
                           <input type="number" class="form-control" name="annee_parution" value="2020" min="1900" max="2050"/>
                           <label>Prix </label>
                           <input type="number" class="form-control" name="prix_article" value="0" min="0" max="100000"/>
                           <label>catégorie</label>
-
                         <select name="id_sous_categorie">
                         <?php
                         $products = $db->query('SELECT * FROM sous_categorie');
-
       foreach ($products as $product):
-                        // On affiche chaque entrée une à une
-
                         ?>
                         <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>"; ?>
                         <br />
                         <?php endforeach; ?>
-                        </select>
-                          </div>
-
+                        </select></div>
                       <input type="hidden" name="action_type" value="add"/>
-
-                      <form class="" action="admin_articles.php?ajouter" method="post">
-                        <h3>Stock</h3>
-                      <input type="number" name="nb_articles_stock" value="0" min="0" max="10000">
+                      <input type="submit" class="submit" name="submit_form1" value="Valider"/>
+                    </form>
+                  </section>
+                  </section>
+                  </section>
+<?php } ?>
                       <?php
-//                      <input type="hidden" name="id_article" value="<?php echo "1" ; ?>
-                      </form>
+if (isset($_GET['submit_form1'])) { ?>
+  <section id="container-register">
+  <form class="" action="action_stock.php" method="post">
+    <h3>AJOUTER UN ARTICLE 2/3</h3>
+    <h3>Stock</h3>
+     <section id="box-form">
 
-                      <section id="modification">
+  <input type="number" name="nb_articles_stock" value="0" min="0" max="10000">
+  <input type="submit" name="submit_form2" value="Valider">
+  </form>
+</section>
+</section>
+
+<?php }
+//                      <input type="hidden" name="id_article" value="<?php echo "1" ;?>
+
+<?php if (isset($_GET['submit_form2'])) {?>
+  <section id="container-register">
+
+                        <h3>AJOUTER UN ARTICLE 3/3</h3>
                         <h3>Illustration du fanzine</h3>
                         <form id="" method="POST">
+                          <section id="box-form">
                           <label> adresse url de l'image </label>
                           <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
-                          <input type="submit" name="submit1" value="Upload">
+                          <input type="submit" name="submit_form3" value="Upload">
                         </form>
-
                         <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
                           <label for="fileUpload">ou sélectionner votre fichier:</label>
                           <div id="inputfiles">
                           <input type="file" name="photo" id="">
-                          <input type="submit" name="submit" value="Upload">
                           </div>
                           <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
                         </form>
-                      </form>
                 </section>
-
-
-                      <input type="submit" class="submit" name="submit" value="Créer l'article"/>
-
                   </form>
-</section>
-</section>
-</section>
+
 
     <?php
   }
