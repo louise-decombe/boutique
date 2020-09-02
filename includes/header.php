@@ -38,6 +38,18 @@ if (isset($_POST["deco"])) {
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
             <ul>
+              <?php
+
+               if($_SESSION['user']['is_admin'] >= 1)
+
+              {
+                  ?>
+              <ul>
+               <li>
+                   <a href="admin.php"><img src="https://img.icons8.com/material-sharp/48/000000/maintenance.png"/>admin</a>
+               </li>
+             </ul>
+           <?php } ?>
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -73,9 +85,12 @@ if (isset($_POST["deco"])) {
                         </ul>
                     </li>
                 </div>
+
+
                 <?php
                 if (isset($_SESSION['user'])){
                 ?>
+
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -103,7 +118,7 @@ if (isset($_POST["deco"])) {
                 }else{
             ?>
             <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
-            <?php } ?>
+            <?php }  ?>
             </ul>
         </nav>
     </section>
