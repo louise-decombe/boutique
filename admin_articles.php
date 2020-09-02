@@ -97,10 +97,8 @@ if ($user->is_admin==0) {
            ?>
 
           <section id="container-register">
-
             <form method="post" action="action_article.php" class="" id="">
               <h3>MODIFIER L'ARTICLE</h3>
-
               <section id="box-form">
                 <section id="box-password">
 
