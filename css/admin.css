@@ -1,42 +1,82 @@
-.admin ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+
+/* navbar admin avec dropdown */
+h3 {
+  display: flex;
+  padding-top: 5%;
+  padding-bottom: 1.5%;
+  font-family: 'Exo', sans-serif;
+  letter-spacing: 1px;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1.5%;
+}
+
+ form input[type=submit]{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+form input[type=submit]:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}
+
+
+
+.navbar {
   overflow: hidden;
-  background-color: none;
-  text-align: center;
+  background-color: #333;
 }
 
-.admin li {
+.navbar a {
   float: left;
-}
-
-.admin li a, .dropbtn {
-  display: inline-block;
-  color: black;
+  font-size: 16px;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-.admin li a:hover, .dropdown:hover .dropbtn {
-  background-color: grey;
+.dropdown_nav {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown_nav .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
   color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-.admin li.dropdown {
-  display: inline-block;
+.navbar a:hover, .dropdown_nav:hover .dropbtn {
+  background-color: lightgray;
 }
 
-.dropdown-content {
+.dropdown-content-nav {
   display: none;
-  background-color: white;
+  position: absolute;
+  background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content-nav a {
+  float: none;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -44,40 +84,10 @@
   text-align: left;
 }
 
-.dropdown-content a:hover {
-  background-color: white;
-  color: black;
+.dropdown-content-nav a:hover {
+  background-color: lightgray;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown_nav:hover .dropdown-content-nav {
   display: block;
-}
-
-table tr:nth-child(odd) {
-  background-color: #00FF00;
-  padding: 2%;
-  margin: 1%;
-}
-
-tr td {
-  padding: 1%;
-  margin: 0.5%;
-}
-
-.button a {
-  color: white;
-  background-color: black;
-  padding: 2px;
-  margin: 2px;
-}
-
-.boucle {
-  display: flex;
-  flex-direction: column;
-  padding-top: 5%;
-  padding-bottom: 1.5%;
-  font-family: 'Exo', sans-serif;
-  letter-spacing: 1px;
-  justify-content: center;
-  margin-bottom: 1.5%;
 }

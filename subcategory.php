@@ -16,9 +16,11 @@
     <header>
     <?php
         include("includes/header.php");
+        $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
     ?>
     </header>
     <main>
+
         <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
             <?php
             if(isset($_GET['id'])){
@@ -45,6 +47,7 @@
                 $article_sub_category  = $category->categorie_article($_GET['id']);
                 $id_page = $_GET['id'];
                 //var_dump($id_page);
+
                 foreach ($article_sub_category as $article){ 
                 ?>
                     <section id="container-article"> 
@@ -57,6 +60,7 @@
                             <?php //var_dump($article['id_article']);
                             $id = $article['id_article'];
                             ?>
+
                         </section>
                     </section>
                     <?php }; endforeach; }?>

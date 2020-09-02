@@ -179,13 +179,13 @@ public function all_categories()
 
 	// SELECT LA CATEGORIE ASSOCIÉE À UN ARTICLE
 	public function count_article($id_sub){
-	
-	
+
 	// counting total number of posts
 	$connexion = $this->db->connectDb();
 	$q = $connexion->prepare("SELECT count(*) FROM article as allcount INNER JOIN image_article as I ON allcount.id_article = I.id_article WHERE allcount.id_sous_categorie = $id_sub");
 	$q->execute();
 	$count_article = $q->fetchAll();
+
 
 	return $count_article;       
 	}
@@ -196,6 +196,7 @@ public function all_categories()
 	$q = $connexion->prepare("SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_sous_categorie = $id_sub ORDER by A.date_ajout DESC limit 2");
 	$q->execute();
 	$select_articles = $q->fetchAll();
+
 
 	return $select_articles;  
 	}

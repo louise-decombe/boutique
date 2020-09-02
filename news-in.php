@@ -1,3 +1,4 @@
+
 <?php 
 $page_selected = 'news-in'; 
 $current_month = date('F');
@@ -18,12 +19,12 @@ $current_month = date('F');
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         ?>
     </header>
     <main>
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
         <section id="container-news-in">
         <section id="current-month">
             <h1>
@@ -33,10 +34,11 @@ $current_month = date('F');
         </section>
 
         <section id="container-news">
-  	    
-            <?php 
-  
+
+            <?php
+
             // selection des 16 dernières  nouveautés
+
             
             $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC');
                 
@@ -64,9 +66,10 @@ $current_month = date('F');
                             +
                         </a>
                         <?php }?>
-                </section>  					
+                </section>
             </section>
               <?php endforeach ?>
+
         </section> 
         </section>
     </main>

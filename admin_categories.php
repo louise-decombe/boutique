@@ -17,6 +17,8 @@ require('admin_nav.php');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
           <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" href="css/admin-nad.css">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -26,38 +28,34 @@ require('admin_nav.php');
 if ($user->is_admin == 0) {
     ?>
 
-  <div class="admin">
-    <div class="button">
+
 
   <a href="admin_categories.php?categorie">Voir les catégories</a><br/>
   <a href="admin_categories.php?sous_categorie">Voir les sous catégories</a><br/>
   <a href="admin_categories.php?ajouter">ajouter une catégorie ou sous catégorie</a><br/>
   </div>
 
+  <div class="container-treatment">
+<div class="treatment-order">
   <?php
     if (isset($_GET['categorie'])) {
         if (!empty($_SESSION['statusMsg'])) {
             echo '<p>'.$_SESSION['statusMsg'].'</p>';
             unset($_SESSION['statusMsg']);
         } ?>
-    <div class="row">
-        <div class="panel panel-default users-content">
-            <div class="panel-heading">Catégories <a href="" class="glyphicon glyphicon-plus"></a></div>
-            <table class="table">
+        <h3>  Catégories<h3>
+            <table>
                 <tr>
-                    <th width="10%">Nom de la catégorie</th>
-                    <th width="10%"></th>
+                    <th>Nom de la catégorie</th>
+                    <th></th>
                 </tr>
                 <?php
-
         $users = $db->getRows('categorie', array('order_by'=>'id_categorie DESC'));
         if (!empty($users)) {
             foreach ($users as $user) {
          ?>
                 <tr>
                     <td><?php echo $user['nom_categorie']; ?></td>
-
-
                     <td>
                         <a href="admin_categories.php?id_categorie=<?php echo $user['id_categorie']; ?>" class="glyphicon glyphicon-edit"></a>
                         <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_categorie']; ?> " onclick="return confirm('Are you sure?');">X</a>
@@ -65,24 +63,24 @@ if ($user->is_admin == 0) {
                 </tr>
                 <?php
             }
-        } else { ?>
-                <tr><td colspan="4">Aucune catégorie trouvée......</td>
-                <?php }
-    }
-
-
-    if (isset($_GET['sous_categorie'])) {
+        }
+    } ?>
+</table>
+</div>
+</div>
+<div class="container-treatment">
+<div class="treatment-order">
+    <?php if (isset($_GET['sous_categorie'])) {
         if (!empty($_SESSION['statusMsg'])) {
             echo '<p>'.$_SESSION['statusMsg'].'</p>';
             unset($_SESSION['statusMsg']);
         } ?>
-<div class="row">
-  <div class="panel panel-default users-content">
-      <div class="panel-heading">Sous catégories <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
-      <table class="table">
+
+    <h3>  Sous catégories</h3>
+      <table>
           <tr>
-              <th width="10%">Nom de la sous catégorie</th>
-              <th width="10%"></th>
+              <th>Nom de la sous catégorie</th>
+              <th></th>
           </tr>
           <?php
 
@@ -102,34 +100,35 @@ if ($user->is_admin == 0) {
           </tr>
           <?php
             }
-        } else { ?>
-          <tr><td colspan="4">Aucune catégorie trouvée......</td>
-          <?php }
+        }
     }
 
+?>
+</table>
+
+</div>
+</div>
+<?php
     if (isset($_GET['id_categorie'])) {
         $userData = $db->getRows('categorie', array('where'=>array('id_categorie'=>$_GET['id_categorie']),'return_type'=>'single'));
         if (!empty($userData)) {
             ?>
-    <div class="row">
-    <div class="panel panel-default user-add-edit">
-        <div class="panel-heading">Modifier la  catégorie <a href="admin_categories.php" class="glyphicon glyphicon-arrow-left"></a></div>
-        <div class="panel-body">
-            <form method="post" action="action_categorie.php" class="form" id="userForm">
-                <div class="form-group">
+
+            <section id="container-register">
+              <form method="post" action="action_categorie.php" class="form" id="">
+                <h3>MODIFIER LA CATEGORIE</h3>
+                <section id="box-form">
+                  <section id="box-password">
+
                     <label>Nom  catégorie</label>
-                    <input type="text" class="form-control" name="nom_categorie" value="<?php echo $userData['nom_categorie']; ?>"/>
-                </div>
-
-
+                    <input type="text" class="" name="nom_categorie" value="<?php echo $userData['nom_categorie']; ?>"/>
                 <input type="hidden" name="id_categorie" value="<?php echo $userData['id_categorie']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="form-control btn-default" name="submit" value="Mettre à jour"/>
-
+                <input type="submit" class="" name="submit" value="Mettre à jour"/>
             </form>
-        </div>
-    </div>
-    </div>
+          </section>
+        </section>
+      </section>
     <?php
         }
     } ?>
@@ -139,59 +138,58 @@ if ($user->is_admin == 0) {
         $userData = $db->getRows('sous_categorie', array('where'=>array('id_sous_categorie'=>$_GET['id']),'return_type'=>'single'));
         if (!empty($userData)) {
             ?>
-<div class="row">
-    <div class="panel panel-default user-add-edit">
-        <div class="panel-heading">Modifier la sous catégorie <a href="admin_categories.php" class="glyphicon glyphicon-arrow-left"></a></div>
-        <div class="panel-body">
-            <form method="post" action="action_sous_categorie.php" class="form" id="userForm">
-                <div class="form-group">
-                    <label>Nom sous catégorie</label>
-                    <input type="text" class="form-control" name="nom_sous_categorie" value="<?php echo $userData['nom_sous_categorie']; ?>"/>
-                </div>
 
+
+            <section id="container-register">
+              <form method="post" action="action_sous_categorie.php" class="" id="userForm">
+                <h3>MODIFIER LA SOUS CATEGORIE</h3>
+                <section id="box-form">
+                  <section id="box-password">
+
+                    <label>Nom sous catégorie</label>
+                    <input type="text" class="" name="nom_sous_categorie" value="<?php echo $userData['nom_sous_categorie']; ?>"/>
 
                 <input type="hidden" name="id_sous_categorie" value="<?php echo $userData['id_sous_categorie']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="form-control btn-default" name="submit" value="Mettre à jour"/>
-
+                <input type="submit" class="" name="submit" value="Mettre à jour"/>
             </form>
-        </div>
-    </div>
-</div>
+          </section>
+        </section>
+      </section>
+
 <?php
         }
     } ?>
 
 <?php if (isset($_GET['ajouter'])) { ?>
 
-  <div class="row">
-      <div class="panel panel-default user-add-edit">
-          <div class="panel-heading">Ajouter une catégorie <a href="admin_categories.php" class="glyphicon glyphicon-arrow-left"></a></div>
-          <div class="panel-body">
-              <form method="post" action="action_categorie.php" class="form" id="userForm">
-                  <div class="form-group">
+
+
+
+              <section id="container-register">
+                <form method="post" action="action_categorie.php" class="" id="userForm">
+                  <h3>AJOUTER UNE CATEGORIE</h3>
+                  <section id="box-form">
+                    <section id="box-password">
+
                       <label>Nom de la catégorie</label>
-                      <input type="text" class="form-control" name="nom_categorie"/>
-                  </div>
+                      <input type="text" class="" name="nom_categorie"/>
 
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="form-control btn-default" name="submit" value="Ajouter une catégorie"/>
+                  <input type="submit" class="" name="submit" value="Ajouter une catégorie"/>
               </form>
-          </div>
-      </div>
-  </div>
+            </section>
+          </section>
+        </section>
 
-  <div class="row">
-      <div class="panel panel-default user-add-edit">
-          <div class="panel-heading">Ajouter une sous catégorie <a href="admin_categories.php" class="glyphicon glyphicon-arrow-left"></a></div>
-          <div class="panel-body">
-              <form method="post" action="action_sous_categorie.php" class="form" id="userForm">
-                  <div class="form-group">
+
+        <section id="container-register">
+          <form method="post" action="action_sous_categorie.php" class="" id="userForm">
+            <h3>AJOUTER UNE SOUS CATEGORIE</h3>
+            <section id="box-form">
+              <section id="box-password">
                       <label>Nom de la sous catégorie</label>
-                      <input type="text" class="form-control" name="nom_sous_categorie"/>
-                  </div>
-
-                  <div class="form-group">
+                      <input type="text" class="" name="nom_sous_categorie"/>
                       <label>catégorie</label>
 
 <select name="categorie">
@@ -207,28 +205,18 @@ foreach ($products as $product):
 <br />
 <?php endforeach; ?>
   </select>
-</div>
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="form-control btn-default" name="submit" value="Ajouter une sous-catégorie"/>
+                  <input type="submit" class="" name="submit" value="Ajouter une sous-catégorie"/>
               </form>
-          </div>
-      </div>
-  </div>
-
-
-
+</section>
+</section>
+</section>
 <?php
 } ?>
 
 
 <?php
 } ?>
-            </table>
-        </div>
-    </div>
-
-
-
     </main>
     <footer>
       <?php include('includes/footer.php'); ?>

@@ -203,7 +203,7 @@ class DB
 
     /*
      * Supprime les données DELETE
-     * @param string nom de la table
+     * string nom de la table
      */
     public function delete($table, $conditions)
     {

@@ -38,6 +38,19 @@ if (isset($_POST["deco"])) {
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
             <ul>
+              <?php
+
+               if($_SESSION['user']['is_admin'] >= 1)
+
+              {
+                  ?>
+              <ul>
+               <li>
+                   <a href="admin.php"><img src="https://img.icons8.com/material-sharp/48/000000/maintenance.png"/>admin</a>
+               </li>
+             </ul>
+           <?php } ?>
+
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -49,6 +62,7 @@ if (isset($_POST["deco"])) {
                             $ids = array_keys($_SESSION['panier']);
                             //si le tableau est vide les infos envoyées sont vides
                             if(empty($ids)){
+
                             $products = array(); 
                             ?>   
                                 <span> votre panier est vide</span>
@@ -73,6 +87,7 @@ if (isset($_POST["deco"])) {
                         </ul>
                     </li>
                 </div>
+
                 <?php
                 if (isset($_SESSION['user'])){
                 ?>
@@ -94,16 +109,16 @@ if (isset($_POST["deco"])) {
                                     <input id="dropdown-deco" name="deco" value="DECONNEXION" type="submit"/>
                                 </form>
                             </li>
-                           
+
                             </div>
                         </ul>
                     </li>
                 </div>
             <?php
                 }else{
-            ?> 
+            ?>
             <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
-            <?php } ?>
+            <?php }  ?>
             </ul>
         </nav>
     </section>
@@ -121,5 +136,4 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-
 

@@ -13,23 +13,22 @@ require("admin_nav.php");
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<header>
-
-</header>
 <main>
   <?php
 
 if ($user->is_admin==0) {
     ?>
-<div class="admin">
+    <center><h1>ADMINISTRATION DU SITE</h1></center>
 
-<h2>Derniers messages</h2>
+<h3>Derniers messages</h3>
+<div class="container-treatment">
+<div class="treatment-order">
 <?php
-$users = $db->getRows('message_utilisateurs', array('order_by'=>'id_message_utilisateur DESC'));
+$users = $db->getRows('message_utilisateurs', array('order_by'=>'id_message_utilisateur DESC LIMIT 5'));
 if (!empty($users)) {
     $count = 0;
     foreach ($users as $user) {
@@ -43,14 +42,10 @@ if (!empty($users)) {
             </td>
         </tr>
 <?php ; } ?>
-
-
-<h2>Dernière commande </h2>
-
-
-
-
 </div>
+</div>
+
+<h3>Dernière commande </h3>
 
 <?php }
 } else {

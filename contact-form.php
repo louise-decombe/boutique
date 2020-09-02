@@ -18,26 +18,23 @@
         <?php
         include("includes/header.php");
         $id_user= ($_SESSION['user']['id_user']);
-
         ?>
 
     </header>
     <main>
-
-      <div class="boucle">
-
-        <section id="container-register">
-          <form method="post" action="action_contact_form.php" class="form" id="userForm">
-              <div class="form-group">
-                  <label>message</label>
-                  <input type="textarea" class="form-control" name="message_utilisateur"/>
-              </div>
+      <section id="container-register">
+        <form method="post" action="action_contact_form.php" class="form" id="userForm">
+          <h3>Envoyer un message </h3>
+          <section id="box-form">
+            <section id="box-password">
+                  <input type="textarea" name="message_utilisateur"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
               <input type="hidden" name="action_type" value="add"/>
-              <input type="submit" class="form-control btn-default" name="submit" value="Envoyer"/>
+              <input type="submit" name="submit" value="Envoyer"/>
           </form>
        </section>
-  </div>
+     </section>
+     </section>
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>
