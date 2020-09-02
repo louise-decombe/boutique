@@ -5,7 +5,7 @@ session_start();
 ?>
 
 <?php
-$connect = mysqli_connect('localhost','root','','forum');
+$connect = mysqli_connect('localhost','root','','boutique');
 
 $profiledefault = ("https://i.ibb.co/mG6M0f5/empty-profile-picture.jpg"); //variable pour insérer une photo de profil par défaut à l'inscription
 
@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $_FILES["photo"]["name"]);
                 echo "Votre fichier a été téléchargé avec succès.";
 
-                $file_path="upload/" . $_FILES["photo"]["name"];
+                $file_path="uploads/" . $_FILES["photo"]["name"];
 
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_SESSION[login]'";
                 $resultimg = mysqli_query($connect, $requestimg);
 
-                header("location:connexion.php");
+        //        header("location:admin_articles.php");
 
             }
         } else{

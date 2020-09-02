@@ -22,7 +22,7 @@ require("admin_nav.php")
 <main>
 <div class="">
 
-<div class="">
+<div class="button-category">
   <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
   <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
 </div>
@@ -69,16 +69,15 @@ if (isset($_GET['utilisateurs'])) {
                     <td><?php
 
 $is_admin=$user['is_admin'];
-if($is_admin=1){
-  echo "oui";
-}else{
-  echo "non";
-}
-                ?></td>
+            if ($is_admin=1) {
+                echo "oui";
+            } else {
+                echo "non";
+            } ?></td>
 
                     <td>
                         <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"></a>
-                        <a href="action_utilisateurs.php?action_type=delete&id_utilisateur=<?php echo $user['id_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
+                        <a href="action_utilisateurs.php?action_type=delete&id_utilisateur=<?php echo $user['id_utilisateur']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée ?');">X</a>
                     </td>
                 </tr>
                 <?php
@@ -116,11 +115,9 @@ if (isset($_GET['ajouter'])) {
                 );
             }
 
-            if (isset($_POST['submit']) && isset($_POST['newsletter'])){
-                $user->newsletter($_POST['email']);
-            }
-
-            ?>
+    if (isset($_POST['submit']) && isset($_POST['newsletter'])) {
+        $user->newsletter($_POST['email']);
+    } ?>
              <section id="container-register">
                 <form action="inscription.php" method="post">
                     <h3>CRÉER MON COMPTE</h3>
@@ -172,34 +169,39 @@ if (isset($_GET['ajouter'])) {
         $userData = $db->getRows('utilisateurs', array('where'=>array('id_utilisateur'=>$_GET['id']),'return_type'=>'single'));
         if (!empty($userData)) {
             ?>
-<div class="row">
-    <div class="panel panel-default user-add-edit">
-        <div class="panel-heading">Modifier</div>
-        <div class="panel-body">
-            <form method="post" action="action_utilisateurs.php" class="form" id="userForm">
-                <div class="form-group">
+<div class="">
+    <div class="">
+        <div class="">Modifier</div>
+        <div class="">
+            <form method="post" action="action_utilisateurs.php" class="" id="">
+                <div class="">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="nom" value="<?php echo $userData['nom']; ?>"/>
+                    <input type="text" class="" name="nom" value="<?php echo $userData['nom']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label>prenom</label>
-                    <input type="text" class="form-control" name="prenom" value="<?php echo $userData['prenom']; ?>"/>
+                    <input type="text" class="" name="prenom" value="<?php echo $userData['prenom']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $userData['email']; ?>"/>
+                    <input type="text" class="" name="email" value="<?php echo $userData['email']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label>Phone</label>
-                    <input type="text" class="form-control" name="phone" value="<?php echo $userData['phone']; ?>"/>
+                    <input type="text" class="" name="phone" value="<?php echo $userData['phone']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label>gender</label>
-                    <input type="text" class="form-control" name="gender" value="<?php echo $userData['gender']; ?>"/>
+                    <input type="text" class="" name="gender" value="<?php echo $userData['gender']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label>admin</label>
-                    <input type="int" class="form-control" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
+                    <input type="select" class="" name="is_admin" value="<?php $is_admin=$user['is_admin'];
+                                if ($is_admin=1) {
+                                    echo "oui";
+                                } else {
+                                    echo "non";
+                                }echo $userData['is_admin']; ?>"/>
                 </div>
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="password" value="<?php echo $userData['password']; ?>"/>

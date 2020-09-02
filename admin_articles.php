@@ -42,7 +42,9 @@ if ($user->is_admin==0) {
       <div class="container-treatment">
 
     <div class="treatment-order">
-            <div class="">Articles </div>
+          <div class="titre">
+<h3>ARTICLES </h3>
+          </div>
             <table class="table">
                 <tr>
                     <th >Nom du fanzine</th>
@@ -74,7 +76,7 @@ if ($user->is_admin==0) {
                     <td><?php echo $user['date_registration']; ?></td>
                     <td>
                         <a href="admin_articles.php?id_article=<?php echo $user['id_article']; ?>" class="glyphicon glyphicon-edit"></a>
-                        <a href="action_article.php?action_type=delete&id_article=<?php echo $user['id_article']; ?> " onclick="return confirm('Are you sure?');">X</a>
+                        <a href="action_article.php?action_type=delete&id_article=<?php echo $user['id_article']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée?');">X</a>
                     </td>
                 </tr>
                 <?php
@@ -91,9 +93,9 @@ if ($user->is_admin==0) {
   <?php
 //modification d'un article
    if (isset($_GET['id_article'])) {
-      $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
-      if (!empty($userData)) {
-          ?>
+       $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
+       if (!empty($userData)) {
+           ?>
 
           <section id="container-register">
 
@@ -143,12 +145,11 @@ if ($user->is_admin==0) {
   <?php
   $products = $db->query('SELECT * FROM sous_categorie');
 
-  foreach ($products as $product):
+           foreach ($products as $product):
   // On affiche chaque entrée une à une
 
   ?>
-  <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
-  ?>
+  <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>"; ?>
   <br />
   <?php endforeach; ?>
   </select>
@@ -181,14 +182,12 @@ if ($user->is_admin==0) {
 
 
     <?php
-      }
-  } ?>
+       }
+   } ?>
 
   <?php
   if (isset($_GET['ajouter'])) {
-     $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single'));
-
- ?>
+      $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['ajouter']),'return_type'=>'single')); ?>
  <section id="container-register">
    <form method="post" action="action_article.php" class="form">
 
@@ -208,49 +207,66 @@ if ($user->is_admin==0) {
                           <label>Citation de l'article</label>
                           <input type="textarea" class="form-control" name="citation_article"/>
                           <label>Nombre de pages </label>
-                          <input type="number" class="form-control" name="nb_pages"/>
+                          <input type="number" class="form-control" name="nb_pages value="0" min="0" max="9000""/>
                           <label>Année de parution </label>
-                          <input type="number" class="form-control" name="annee_parution"/>
+                          <input type="number" class="form-control" name="annee_parution" value="2020" min="1900" max="2050"/>
                           <label>Prix </label>
-                          <input type="number" class="form-control" name="prix_article"/>
+                          <input type="number" class="form-control" name="prix_article" value="0" min="0" max="100000"/>
                           <label>catégorie</label>
 
                         <select name="id_sous_categorie">
                         <?php
                         $products = $db->query('SELECT * FROM sous_categorie');
 
-                        foreach ($products as $product):
+      foreach ($products as $product):
                         // On affiche chaque entrée une à une
 
                         ?>
-                        <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>";
-                        ?>
+                        <strong>Sous catégorie</strong> : <?php echo "<option value = '" . $product->id_sous_categorie . "'>" . $product->nom_sous_categorie . "</option>"; ?>
                         <br />
                         <?php endforeach; ?>
                         </select>
-
-    </div>
-
+                          </div>
 
                       <input type="hidden" name="action_type" value="add"/>
-                      <input type="submit" class="submit" name="submit" value="Créer l'article"/>
+
                       <form class="" action="admin_articles.php?ajouter" method="post">
-
-
-                      <input type="number" name="nb_articles_stock" value="">
-                      nombre articles<input type="hidden" name="id_article" value="<?php echo "1" ;?>">
+                        <h3>Stock</h3>
+                      <input type="number" name="nb_articles_stock" value="0" min="0" max="10000">
                       <?php
-
-
-                      ?>
+//                      <input type="hidden" name="id_article" value="<?php echo "1" ; ?>
                       </form>
+
+                      <section id="modification">
+                        <h3>Illustration du fanzine</h3>
+                        <form id="" method="POST">
+                          <label> adresse url de l'image </label>
+                          <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
+                          <input type="submit" name="submit1" value="Upload">
+                        </form>
+
+                        <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+                          <label for="fileUpload">ou sélectionner votre fichier:</label>
+                          <div id="inputfiles">
+                          <input type="file" name="photo" id="">
+                          <input type="submit" name="submit" value="Upload">
+                          </div>
+                          <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
+                        </form>
+                      </form>
+                </section>
+
+
+                      <input type="submit" class="submit" name="submit" value="Créer l'article"/>
+
                   </form>
 </section>
 </section>
 </section>
 
     <?php
-  } } else {
+  }
+} else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
 }   ?>
