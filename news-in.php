@@ -1,5 +1,5 @@
 <?php
-$page_selected = 'news-in.php';
+$page_selected = 'news-in';
 $current_month = date('F');
 
 ?>
@@ -35,8 +35,10 @@ $current_month = date('F');
         <section id="container-news">
 
             <?php
+
             // selection des 16 dernières  nouveautés
-            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC limit 16');
+
+            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC');
 
             // la boucle qui démarre permet d'afficher les articles
             foreach ($products as $product):
@@ -52,9 +54,7 @@ $current_month = date('F');
   			    </a>
   				<section id="description">
                     <a href="item.php?id=<?= $product->id_article; ?>">
-                      <?= //number format permet de formater un nombre ici avec deux zéros
-                       number_format($product->prix_article,2,',',' '); ?>
-                       €
+                      <?= $formatter->formatCurrency($product->prix_article,'EUR'), PHP_EOL;?>
                     </a></br>
                     <?php if(isset($_SESSION['user'])){ ?>
                         <a href="addwishlist.php?id=<?= $id_article ?>">
@@ -67,12 +67,6 @@ $current_month = date('F');
                 </section>
             </section>
               <?php endforeach ?>
-            <section id="add-articles">
-                <form class='onglet' method='POST'>
-                    <input id="more_articles" name="more_articles" value="VOIR + D'ARTICLES" type="submit"/>
-                    <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
-                </form>
-            </section>
         </section>
         </section>
     </main>
