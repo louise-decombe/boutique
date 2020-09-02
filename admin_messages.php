@@ -12,8 +12,9 @@ require("admin_nav.php")
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/admin.css">
+      <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 
@@ -22,24 +23,20 @@ require("admin_nav.php")
  if ($user->is_admin==0) {
      ?>
 <main>
-<div class="admin">
 
 <a href="admin_messages.php?clients">Messages clients</a><br/>
 <a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
+<div class="container-treatment">
+<div class="treatment-order">
 <?php
 
 if (isset($_GET['clients'])) { ?>
-  <div class="panel-heading">Message des utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
-
-  <table class="table">
-
+<h3>Message des utilisateurs<h3>
+  <table>
       <tr>
-
-          <th width="10%">Message</th>
-          <th width="10%">Date</th>
-
-          <th width="10%"></th>
-
+          <th>Message</th>
+          <th>Date</th>
+          <th></th>
       </tr>
 
 <?php
@@ -61,21 +58,26 @@ if (isset($_GET['clients'])) { ?>
         }
     }
 }
+?>
+</table>
+</div>
+</div>
 
+<?php
      if (isset($_GET['vendeurs'])) { ?>
+       <div class="container-treatment">
+       <div class="treatment-order">
+    <h3>Message des utilisateurs</h3>
 
-       <div class="panel-heading">Message des utilisateurs <a href="add.php" class="glyphicon glyphicon-plus"></a></div>
-
-       <table class="table">
-
+       <table>
            <tr>
+               <th>Mail</th>
+               <th>Message</th>
 
-               <th width="10%">Mail</th>
-               <th width="10%">Description du fanzine</th>
-               <th width="10%">Titre</th>
-               <th width="10%">Date</th>
-
-               <th width="10%"></th>
+               <th>Description du fanzine</th>
+               <th>Titre</th>
+               <th>Date</th>
+               <th></th>
 
            </tr>
 
@@ -98,8 +100,8 @@ if (isset($_GET['clients'])) { ?>
              }
          }
      } ?>
+   </table>
       </div>
-
 </div>
 <?php
  } else {

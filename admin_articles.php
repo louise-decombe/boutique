@@ -37,7 +37,6 @@ if ($user->is_admin==0) {
           unset($_SESSION['statusMsg']);
       } ?>
       <div class="container-treatment">
-
     <div class="treatment-order">
           <div class="titre">
 <h3>ARTICLES </h3>
@@ -95,7 +94,6 @@ if ($user->is_admin==0) {
        $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
        if (!empty($userData)) {
            ?>
-
           <section id="container-register">
             <form method="post" action="action_article.php" class="" id="">
               <h3>MODIFIER L'ARTICLE</h3>
@@ -256,7 +254,7 @@ if (isset($_GET['submit_form1'])) { ?>
 </section>
 </section>
 
-<?php }?>
+<?php } ?>
 
 <?php if (isset($_GET['submit_form2'])) {?>
   <section id="container-register">
@@ -281,10 +279,10 @@ if (isset($_GET['submit_form1'])) { ?>
                   </form>
 
     <?php     if (isset($_POST['submit1'])) {
-    $link = addslashes($_POST['linkimg']);
-    $request2 = "UPDATE `image_article` SET `chemin`='$link' WHERE id_article = '$_SESSION[login]'";
-    $result2 = mysqli_query($connect, $request2);
-}
+      $link = addslashes($_POST['linkimg']);
+      $request2 = "UPDATE `image_article` SET `chemin`='$link' WHERE id_article = '$_SESSION[login]'";
+      $result2 = mysqli_query($connect, $request2);
+  }
 ?>
 
 
