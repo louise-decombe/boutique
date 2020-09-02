@@ -1,9 +1,10 @@
+
 <?php
 class Admin_options{
 
     private $db;
 
-
+   
     public function __construct($db)
     {
         $this->db = $db;

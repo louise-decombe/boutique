@@ -1,4 +1,4 @@
-<?php $page_selected = 'item.php'; ?>
+<?php $page_selected = 'item'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,19 +29,12 @@
             <section id="box-img-item">
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
-
                 <article id="presentation-item">
+                        <?php if (isset($_SESSION['user'])) { ?>
 
-<p></p>
-
-<?php if (isset($_SESSION['user'])) {
-            ?>
-
-<?php
-$id_user= ($_SESSION['user']['id_user']);
-            $id_article = $_GET['id'];
-
-$query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
+                        <?php $id_user= ($_SESSION['user']['id_user']);
+                              $id_article = $_GET['id'];
+                              $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
 
             if (count($query) >= 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
                 echo "Vous avez  ajouté cet article à votre wishlist";
@@ -56,6 +49,7 @@ $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND 
     <input type="submit" class="" name="submit_wish" value="+ wishlist"/>
 
 
+
 <?php }
         }?>
 
@@ -66,10 +60,9 @@ $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND 
                             <?= $formatter->formatCurrency($item['prix_article'], 'EUR'), PHP_EOL; ?>
                         </section>
 
-                        <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
-                      ajouter au panier
-                        <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
-                    </a>
+                        <a class="add addpanier" onclick="window.location.reload()" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
+                            ajouter au panier
+                        </a>
 
                     <form class='onglet' method='POST'>
                         <input id="more_infos" name="more" value="EN SAVOIR +" type="submit"/>

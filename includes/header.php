@@ -50,6 +50,7 @@ if (isset($_POST["deco"])) {
                </li>
              </ul>
            <?php } ?>
+
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -61,8 +62,9 @@ if (isset($_POST["deco"])) {
                             $ids = array_keys($_SESSION['panier']);
                             //si le tableau est vide les infos envoyées sont vides
                             if(empty($ids)){
-                            $products = array();
-                            ?>
+
+                            $products = array(); 
+                            ?>   
                                 <span> votre panier est vide</span>
                             <?php }else{
                             $products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
@@ -86,11 +88,9 @@ if (isset($_POST["deco"])) {
                     </li>
                 </div>
 
-
                 <?php
                 if (isset($_SESSION['user'])){
                 ?>
-
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -136,3 +136,4 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
+

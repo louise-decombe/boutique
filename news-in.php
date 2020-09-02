@@ -1,5 +1,6 @@
-<?php
-$page_selected = 'news-in';
+
+<?php 
+$page_selected = 'news-in'; 
 $current_month = date('F');
 
 ?>
@@ -38,9 +39,10 @@ $current_month = date('F');
 
             // selection des 16 dernières  nouveautés
 
+            
             $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC');
-
-            // la boucle qui démarre permet d'afficher les articles
+                
+            // la boucle qui démarre permet d'afficher les articles  
             foreach ($products as $product):
                      //var_dump ($product);
   			?>
@@ -67,7 +69,8 @@ $current_month = date('F');
                 </section>
             </section>
               <?php endforeach ?>
-        </section>
+
+        </section> 
         </section>
     </main>
     <footer>
@@ -75,3 +78,5 @@ $current_month = date('F');
     </footer>
 </body>
 </html>
+
+
