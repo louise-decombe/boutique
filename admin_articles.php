@@ -17,20 +17,19 @@ require('admin_nav.php');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
           <link rel="stylesheet" href="css/admin-nad.css">
+          <link rel="stylesheet" href="css/admin.css">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-<main>
+<main>  <a href="admin_articles.php?articles">Voir les articles</a><br/>
+  <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
   <?php
-
 if ($user->is_admin==0) {
     ?>
-  <div class="">
-    <div class="">
   <a href="admin_articles.php?articles">Voir les articles</a><br/>
   <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
-  </div>
 
   <?php
 
@@ -157,19 +156,30 @@ if ($user->is_admin==0) {
                 <input type="hidden" name="action_type" value="add"/>
                 <input type="submit" class="submit" name="submit_article" value="Modifier le fanzine"/>
 
+
             <section id="modification">
+
+
               <h3>Illustration du fanzine</h3>
               <form id="" method="POST">
+                <?php
+
+    $id_article = $_GET['id_article'];
+           $item = $category->article_infos($id_article);
+
+           $img = $db->query("SELECT chemin FROM image_article WHERE id_article='$id_article'"); ?>
+                    <center> <img src="<?= ($item['chemin'])?>" width="30%" alt="cover-fanzine"></center><br/>
+
                 <label> adresse url de l'image </label>
                 <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
-                <input type="submit" name="submit1" value="Upload">
+                <input type="submit" name="submit1" value="Mettre à jour">
               </form>
 
               <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
                 <input type="file" name="photo" id="">
-                <input type="submit" name="submit" value="Upload">
+                <input type="submit" name="submit" value="Mettre à jour">
                 </div>
                 <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
               </form>
@@ -229,7 +239,8 @@ if ($user->is_admin==0) {
                   </section>
                   </section>
                   </section>
-<?php } ?>
+<?php
+  } ?>
                       <?php
 if (isset($_GET['submit_form1'])) { ?>
   <section id="container-register">
@@ -249,24 +260,32 @@ if (isset($_GET['submit_form1'])) { ?>
 
 <?php if (isset($_GET['submit_form2'])) {?>
   <section id="container-register">
+    <form id="" method="POST">
 
                         <h3>AJOUTER UN ARTICLE 3/3</h3>
                         <h3>Illustration du fanzine</h3>
-                        <form id="" method="POST">
                           <section id="box-form">
-                          <label> adresse url de l'image </label>
-                          <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
-                          <input type="submit" name="submit_form3" value="Upload">
-                        </form>
-                        <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
-                          <label for="fileUpload">ou sélectionner votre fichier:</label>
-                          <div id="inputfiles">
-                          <input type="file" name="photo" id="">
-                          </div>
-                          <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
-                        </form>
+                            <form id="formpic" method="POST">
+            <label> adresse url de l'image </label>
+            <input type="text" id="avatar" name="linkimg" accept="image/png, image/jpeg">
+            <input type="submit" name="submit1" value="Upload">
+          </form>
+
+          <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="fileUpload">ou sélectionner votre fichier:</label>
+            <div id="inputfiles">
+            <input type="file" name="photo" id="fileUpload">
+            <input type="submit" name="submit" value="Upload">
+            </div>
                 </section>
                   </form>
+
+    <?php     if (isset($_POST['submit1'])) {
+    $link = addslashes($_POST['linkimg']);
+    $request2 = "UPDATE `image_article` SET `chemin`='$link' WHERE id_article = '$_SESSION[login]'";
+    $result2 = mysqli_query($connect, $request2);
+}
+?>
 
 
     <?php

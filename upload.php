@@ -5,7 +5,12 @@ session_start();
 ?>
 
 <?php
-$connect = mysqli_connect('localhost','root','','boutique');
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "boutique";
+$db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 $profiledefault = ("https://i.ibb.co/mG6M0f5/empty-profile-picture.jpg"); //variable pour insérer une photo de profil par défaut à l'inscription
 
@@ -30,10 +35,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Vérifie le type MIME du fichier
         if(in_array($filetype, $allowed)){
             // Vérifie si le fichier existe avant de le télécharger.
-            if(file_exists("upload/" . $_FILES["photo"]["name"])){
+            if(file_exists("uploads/" . $_FILES["photo"]["name"])){
                 echo $_FILES["photo"]["name"] . " existe déjà.";
             } else{
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $_FILES["photo"]["name"]);
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "uploads/" . $_FILES["photo"]["name"]);
                 echo "Votre fichier a été téléchargé avec succès.";
 
                 $file_path="uploads/" . $_FILES["photo"]["name"];
@@ -43,8 +48,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id utilisateur
 
-                $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_SESSION[login]'";
-                $resultimg = mysqli_query($connect, $requestimg);
+                $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_GET[id_article]'";
+                $resultimg = mysqli_query($db, $requestimg);
 
         //        header("location:admin_articles.php");
 
