@@ -59,10 +59,9 @@
                             <?= $formatter->formatCurrency($item['prix_article'], 'EUR'), PHP_EOL; ?>
                         </section>
 
-                        <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
-                      ajouter au panier
-                        <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
-                    </a>
+                        <a class="add addpanier" onclick="window.location.reload()" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
+                            ajouter au panier
+                        </a>
 
                     <form class='onglet' method='POST'>
                         <input id="more_infos" name="more" value="EN SAVOIR +" type="submit"/>
