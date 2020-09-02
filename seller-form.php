@@ -20,35 +20,25 @@
         ?>
     </header>
     <main>
-
-      <div class="row">
-          <div class="panel panel-default user-add-edit">
-              <div class="panel-heading">Envoyer un message pour être distributeur <a href="seller-form.php" class="glyphicon glyphicon-arrow-left"></a></div>
-              <div class="panel-body">
-                  <form method="post" action="action_seller_form.php" class="form" id="userForm">
-                      <div class="form-group">
+      <section id="container-register">
+        <form method="post" action="action_seller_form.php" class="form" id="userForm">
+          <h3>Envoyer un message pour être distributeur</h3>
+          <section id="box-form">
+            <section id="box-password">
                           <label>message</label>
-                          <input type="textarea" class="form-control" name="message_vendeur"/>
-                      </div>
-                      <div class="form-group">
+                          <input type="textarea" class="" name="message_vendeur"/>
                           <label>Titre fanzine</label>
-                          <input type="text" class="form-control" name="titre_fanzine"/>
-                      </div>
-                      <div class="form-group">
+                          <input type="text" class="" name="titre_fanzine"/>
                           <label>description du fanzine</label>
-                          <input type="textarea" class="form-control" name="description_article_vendeur"/>
-                      </div>
-                      <div class="form-group">
+                          <input type="textarea" class="" name="description_article_vendeur"/>
                           <label>Email</label>
-                          <input type="text" class="form-control" name="email_utilisateur"/>
-                      </div>
+                          <input type="text" class="" name="email_utilisateur"/>
                       <input type="hidden" name="action_type" value="add"/>
-                      <input type="submit" class="form-control btn-default" name="submit" value="Envoyer"/>
+                      <input type="submit" class="" name="submit" value="Envoyer"/>
                   </form>
-              </div>
-          </div>
-      </div>
-
+</section>
+</section>
+</section>
 
     </main>
     <footer>

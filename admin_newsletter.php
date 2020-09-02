@@ -22,22 +22,31 @@ require('admin_nav.php');
 <body>
 
 <main>
-<?php
-  $news = $db->query("SELECT * FROM newsletter ");
-    foreach ($news as $newsletter) {
-        ?>
-<table>
-          <tr>
-              <td><?php echo $newsletter->email_utilisateur; ?></td>
-              <td>
-<a href="admin_newsletter?supprimer">Supprimer </a>
-              </td>
-          </tr>
+
+        <div class="container-treatment">
+        <div class="treatment-order">
           <?php
-    } ?>
-</table>
-<?php if (isset($_GET['supprimer'])) {
-    } ?>
+      $users = $db->getRows('newsletter', array('order_by'=>'id_newsletter DESC'));
+              if (!empty($users)) {
+                  $count = 0;
+                  foreach ($users as $user) {
+                      $count++; ?>
+                    <tr>
+                        <td><?php echo $user['email_utilisateur']; ?></td>
+                        <td>
+        <a href="action_newsletter.php?action_type=delete&id_newsletter =<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+
+                        </td>
+                    </tr>
+                 <?php
+
+
+
+
+                  }
+              }
+?>
+
 
 </main>
 

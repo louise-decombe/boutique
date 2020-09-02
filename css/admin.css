@@ -1,5 +1,36 @@
 
 /* navbar admin avec dropdown */
+h3 {
+  display: flex;
+  padding-top: 5%;
+  padding-bottom: 1.5%;
+  font-family: 'Exo', sans-serif;
+  letter-spacing: 1px;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1.5%;
+}
+
+ form input[type=submit]{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+form input[type=submit]:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}
+
+
 
 .navbar {
   overflow: hidden;
