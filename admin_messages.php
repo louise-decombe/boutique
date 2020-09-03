@@ -50,7 +50,7 @@ if (isset($_GET['clients'])) { ?>
               <td><?php echo $user['date_registration']; ?></td>
               <td>
                 <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"> Voir l'utilisateur</a>
-                  <a href="admin_messages.php?delete=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+                  <a href="admin_messages.php?clients&delete=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
               </td>
           </tr>
 <?php var_dump($user['id_message_utilisateur']); ?>
