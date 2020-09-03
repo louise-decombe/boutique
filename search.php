@@ -19,7 +19,6 @@
 <main>
   <?php
   $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-
 ?>
 <section id="container-register">
 

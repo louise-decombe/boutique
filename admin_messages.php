@@ -53,16 +53,7 @@ if (isset($_GET['clients'])) { ?>
                   <a href="admin_messages.php?clients&delete=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
               </td>
           </tr>
-<?php var_dump($user['id_message_utilisateur']); ?>
        <?php
-
-if(isset($_GET['delete'])){
-  echo "123";
-
-
-
-}
-
 
         }
     }

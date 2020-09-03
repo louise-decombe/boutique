@@ -38,7 +38,6 @@
       </nav>
 
 <section id="profile-infos">
-
 	<form method="post" action="wishlist.php">
       <h2>Wish List</h2>
       <p>Retouvez ici les articles que vous aimez</p>
@@ -56,31 +55,35 @@
     foreach ($wish as $wishlist) {
 
        ?>
-<table>
-
   <section>
-    <tr>
-      <td><img src="<?php echo $wishlist->chemin;
-    ?>" alt="IMAGE" width="20%" >
-        <?php echo $wishlist->nom_article ?></td>
+    <div class="container-treatment">
+  <div class="treatment-order">
+    <table>
+      <tr>
 
-        <td><?php echo $wishlist->nom_article ?></td>
-        <td><?php echo $wishlist->auteur_article ; ?></td>
-        <td><?php echo $wishlist->citation_article ; ?></td>
-        <td><?php echo $wishlist->prix_article ; ?> euros</td>
-        <td>
-<a href="item.php?id=<?php echo $wishlist->id_article ;?>">voir l'article</a>
+          <td><h2><?php echo $wishlist->nom_article ?></h2></td>
+
+      </tr>
+<tr>
+  <td><img src="<?php echo $wishlist->chemin;
+?>" alt="IMAGE" width="20%"></td>
+<td><?php echo $wishlist->prix_article ; ?>euros</td><br/>
+
+<td>
+<a href="item.php?id=<?php echo $wishlist->id_article ;?>">Voir</a><br/>
 <a class="add addpanier" id="add-basket" href="addpanier.php?id=<? echo $wishlist->id_article ?>">
-ajouter au panier
+Acheter
 </a>
 <a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article; ?> "
 onclick="return confirm('Etes vous sûr?');">Supprimer</a>
-        </td>
-    </tr>
+</td>
+</tr>
+
   </section>
 
           </table>
-
+</div>
+</div>
 <?php
 }
 		 ?>
