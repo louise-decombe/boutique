@@ -1,6 +1,4 @@
 
-
-
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** PANIER ***/
 
@@ -42,7 +40,7 @@
 
 #sub-panier form{
     display: flex;
-    width: 67.5%;
+    width: 70%;
 }
 
 #sub-panier form input[type=text]{
@@ -235,6 +233,73 @@
 
 @media (max-width: 980px){
 
+    #container-panier nav ul{
+        font-size:10px;
+    }
+    
+    #container-panier nav ul li{
+        padding : 10px;
+    }
+    
+    #sub-panier{
+        display:flex;
+        width:80%;
+        justify-content: space-between;
+        margin-top : 2.5%;
+    }
+
+    #sub-panier{
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sub-panier form{
+       display: flex;
+       justify-content: center;
+       width:100%;
+    }
+
+    #sub-panier form table{
+        width: 90%;
+        margin:0;
+    }
+
+    #sub-panier form input[type=text]{
+        width: 20px;
+    }
+    
+    #sub-panier form input[type=submit]{
+        width:20px;
+        height: 20px;
+    }
+    
+    #sub-panier form thead th {
+        font-size: 8px;
+    }
+    
+    #supp{
+        padding-right:10px;
+        padding-left:10px;
+    }
+
+    #sub-panier img{
+        width:20px;
+        height: 30px;
+    }
+
+    #sub-panier form th, td {
+        font-weight: 400;
+        font-size: 9px;
+        width: 16%;
+    }
+
+    #recap-order{
+        width:90%;
+        margin-top:5%;
+    }
+
 
   
 }
@@ -246,6 +311,8 @@
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
 
 
 
