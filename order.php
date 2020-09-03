@@ -93,10 +93,10 @@
                             <section id="delivery-infos">
                                 <legend> - vos informations de livraison - </legend>
                                 <section>
-                                    <input type="text" name="firstname" placeholder="prénom*" size="95">
-                                    <input type="text" name="lastname" placeholder="nom*" size="95">
-                                    <input id="address" type="text" name="address" placeholder="adresse postale*" size="95">
-                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95"> 
+                                    <input type="text" name="firstname" placeholder="prénom*">
+                                    <input type="text" name="lastname" placeholder="nom*">
+                                    <input id="address" type="text" name="address" placeholder="adresse postale*">
+                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur"> 
                                 </section>
                             </section>
 
@@ -124,10 +124,12 @@
                                     </section>
                                     <section>
                                         <label>numéro de carte bancaire* &nbsp;</label>
-                                        <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                        <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                        <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                        <input id="groupe4" type="text" size="4" maxlength="4">
+                                        <section id="input-cb">
+                                            <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe4" type="text" size="4" maxlength="4">
+                                        </section>
                                         <section id="cb-infos">
                                             <label>date d'expiration*</label>
                                             <input type="text" placeholder="MM/YYYY*" required>

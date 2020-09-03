@@ -1,6 +1,3 @@
-
-
-
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** ORDER ***/
 
@@ -127,11 +124,13 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding-top:1.5%;
+    padding-bottom:1.5%;
 }
 
 #container-delivery form input[type=radio]{
-    width : 50px;
-    height: 50px;
+    width : 30px;
+    height: 30px;
 }
 
 #container-delivery form label{
@@ -197,6 +196,7 @@
     background: white;
     margin-left:2.5%;
     margin-top: 2.5%;
+    width: 90%;
 }
 
 #delivery-infos #address{
@@ -283,14 +283,21 @@
 
 #recap-order{
     display: flex;
-    margin-top:2.5%;
+    margin-top:3.5%;
     flex-direction:column;
-    background-color : white;
-    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    align-items:center;
     width : 30%;
 }
 
-#recap-order article span{
+#recap-order-container1{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    margin-bottom : 5%;
+    width:100%;
+}
+
+#recap-order-container1 span{
     display: flex;
     padding-left: 20px;
     padding-top: 20px;
@@ -298,13 +305,172 @@
     border-bottom: 0.5px solid gainsboro;
     font-weight:200;
     font-size:13px;
+    font-family: 'Exo', sans-serif;
 }
+
+#recap-article{
+    display: flex;
+    padding:20px;
+    border: 0.5px solid gray;
+    justify-content: space-between;
+    background-color:white;
+    align-items: center;
+    margin:2.5%;
+}
+
+#recap-article img{
+    width:50px;
+    height: 70px;
+}
+
+#recap-order-container2 span a{
+    display:flex;
+    justify-content: center;
+    padding-bottom:5px;
+    border-bottom: 0.5px solid gray;
+    color:black;
+    font-weight:600;
+    font-size:16px;
+}
+
+#recap-order-container2 span a:hover{
+    color:#00FF00;
+    transition:1.5s;
+    border-bottom: 0.5px solid #00FF00;
+}
+
+#delivery-charging{
+    display:flex;
+    padding-left : 20px;
+    font-size:13px;
+    letter-spacing: 1.2px;;
+    font-family: 'Exo', sans-serif;
+}
+
+#total-order{
+    display:flex;
+    background-color:black;
+    color:white;
+    padding:20px;
+    font-size:14px;
+    letter-spacing: 1.2px;;
+    font-family: 'Exo', sans-serif;
+}
+
+#recap-order-container3{
+    display:flex;
+    flex-direction:column;
+    background-color: #eee;
+}
+
+#recap-order-container3 span{
+    display: flex;
+    font-size : 14px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1.3px;
+    padding-bottom : 5%;
+    font-weight:600;
+}
+
+#recap-order-container3 a{
+    display: flex;
+    font-size : 12px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px;
+    padding-bottom : 5%;
+    color:black;
+}
+
+#recap-order-container3 a:hover{
+    color:#00FF00;
+    transition:1.5s;
+}
+
+#recap-order-container3 p{
+    text-align: justify;
+    font-size : 11px;
+    letter-spacing: 0.9px;
+    font-family: 'Open Sans', sans-serif;
+}
+
 
 
 /*** ORDER ***/
 
 
 @media (max-width: 980px){
+
+    #container-order nav ul{
+        display: flex;
+        font-size:10px;
+    }
+    
+    #container-order nav ul li{
+        padding : 10px;
+    }
+
+    #container-delivery{
+        flex-direction: column;
+        align-items: center;
+  
+    }
+    
+    #radio-section{
+        flex-direction: row;
+        padding-top:5%;
+        padding-bottom:5%;
+    }
+    
+    #container-delivery form input[type=radio]{
+        width : 15px;
+        height: 15px;
+    }
+    
+    #container-delivery form label{
+        margin-left: 2.5%;
+        font-size : 9px;
+    }
+    
+    
+    #container-delivery button{
+
+        font-size:12px;
+    }
+
+    #sub-order{
+        flex-direction:column;
+        align-items: center;
+        width: 100%;
+    }
+
+    #container-form-order{
+        width:90%;
+    }
+
+    #delivery-infos input[type="text"]{
+        width: 80%;
+    }
+
+    #section-cb input[type=text],#section-cb input[type=password]{
+        width:90%;
+    }
+
+    #recap-order{
+        width : 90%;
+    }
+
+    #recap-article img{
+        box-shadow: 0 0 15px #00FF00;
+    }
+
+    #input-cb{
+        display:flex;
+        margin-right:20px;
+        width:100%;
+        font-size:11px;
+    }
+
+
 
 
   
@@ -317,6 +483,7 @@
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 
 
 
