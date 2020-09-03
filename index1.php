@@ -20,12 +20,10 @@
      //var_dump($select_news);
      $title_1 = ($select_news[0]['nom_article']);
      $title_2 = ($select_news[1]['nom_article']);
-
      $form_index = new Admin_options($db);
      $news_index = $form_index->news();
      $quote_index = $form_index->quote();
-
-    ?>
+        ?>
 </header>
 <main>
     <section id="container-new">
@@ -177,6 +175,7 @@
             </p>
         </section>
     </section>
+
 </main>
 <footer>
     <?php
