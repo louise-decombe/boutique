@@ -30,11 +30,15 @@
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
                 <article id="presentation-item">
-                        <?php if (isset($_SESSION['user'])) { ?>
+                        <?php if (isset($_SESSION['user'])) {
+
+
+                          ?>
 
                         <?php $id_user= ($_SESSION['user']['id_user']);
                               $id_article = $_GET['id'];
                               $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
+
 
             if (count($query) >= 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
                 echo "Vous avez  ajouté cet article à votre wishlist";
@@ -51,7 +55,7 @@
 
 
 <?php }
-        }?>
+} ?>
 
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
