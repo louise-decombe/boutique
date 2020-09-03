@@ -19,8 +19,8 @@ $output = '';
     $output .='
         <section id="container-article"> 
             <a href="item.php?id='.$dat['id_article'].'"><img src="'.$dat['chemin'].'"></a>
-            <a id="title-article" href="item.php?id='.$dat['id_article'].'">'.$dat['nom_article'].'</a>
             <section id="description">
+                <a id="title-article" href="item.php?id='.$dat['id_article'].'">'.$dat['nom_article'].'</a>
                 <a href="item.php?id='.$dat['id_article'].'">'.$dat['prix_article'].',00€</a>
             </section>
         </section>';

@@ -52,15 +52,14 @@
                 ?>
                     <section id="container-article"> 
                         <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
-                        <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
                         <section id="description">
+                            <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
                             <a href="item.php?id=<?= $article['id_article'];?>">
                                 <?= $formatter->formatCurrency($article['prix_article'],'EUR'), PHP_EOL; ?>
                             </a>
                             <?php //var_dump($article['id_article']);
                             $id = $article['id_article'];
                             ?>
-
                         </section>
                     </section>
                     <?php }; endforeach; }?>
