@@ -84,7 +84,7 @@ if ($user->is_admin == 0) {
           </tr>
           <?php
 
-  $users = $db->getRows('sous_categorie', array('order_by'=>'id_categorie DESC'));
+  $users = $db->getRows('sous_categorie', array('order_by'=>'id_sous_categorie DESC'));
         if (!empty($users)) {
             $count = 0;
             foreach ($users as $user) {
@@ -150,6 +150,20 @@ if ($user->is_admin == 0) {
                     <input type="text" class="" name="nom_sous_categorie" value="<?php echo $userData['nom_sous_categorie']; ?>"/>
 
                 <input type="hidden" name="id_sous_categorie" value="<?php echo $userData['id_sous_categorie']; ?>"/>
+
+                <select name="categorie">
+                <?php
+                $products = $db->query('SELECT * FROM categorie');
+
+                foreach ($products as $product):
+                // On affiche chaque entrée une à une
+
+                ?>
+                <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>";
+                ?>
+                <br />
+                <?php endforeach; ?>
+                  </select>
                 <input type="hidden" name="action_type" value="edit"/>
                 <input type="submit" class="" name="submit" value="Mettre à jour"/>
             </form>

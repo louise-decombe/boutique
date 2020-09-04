@@ -21,7 +21,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
         var_dump("$insert");
-       header("Location:admin_articles.php?submit_form1");
+        header("Location:admin_articles.php?submit_form1");
     } elseif ($_REQUEST['action_type'] == 'edit') {
         if (!empty($_POST['id_article'])) {
             $itemData = array(
@@ -47,8 +47,8 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             $condition = array('id_article' => $_GET['id_article']);
             $delete = $db->delete($tblName, $condition);
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
-            $_SESSION['statusMsg'] = $statusMsg;
-            //header("Location:admin_articles.php");
+            $_SESSION['statusMsg  '] = $statusMsg;
+            header("Location:admin_articles.php");
         }
     }
 }
