@@ -22,9 +22,14 @@
 
     </header>
     <main>
+      <?php if (!empty($_SESSION['statusMsg'])) {
+          echo '<p>'.$_SESSION['statusMsg'].'</p>';
+          unset($_SESSION['statusMsg']);
+       ?>
       <section id="container-register">
         <form method="post" action="action_contact_form.php" class="form" id="userForm">
           <h3>Envoyer un message </h3>
+          <p>Contactez notre service client et nous vous répondrons dès que possible</p><br/>
           <section id="box-form">
             <section id="box-password">
                   <input type="textarea" name="message_utilisateur"/>
@@ -32,9 +37,13 @@
               <input type="hidden" name="action_type" value="add"/>
               <input type="submit" name="submit" value="Envoyer"/>
           </form>
-       </section>
+
+       </section><br/>
+       <a href="profil.php">retour au profil</a>
+
      </section>
      </section>
+<?php } ?>
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>

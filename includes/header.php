@@ -63,8 +63,8 @@ if (isset($_POST["deco"])) {
                             //si le tableau est vide les infos envoyées sont vides
                             if(empty($ids)){
 
-                            $products = array(); 
-                            ?>   
+                            $products = array();
+                            ?>
                                 <span> votre panier est vide</span>
                             <?php }else{
                             $products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
@@ -103,7 +103,7 @@ if (isset($_POST["deco"])) {
                             <li><a class="dropdownlist" href="orders.php">MES COMMANDES</a></li>
                             <li><a class="dropdownlist" href="deliveries.php">MES LIVRAISONS</a></li>
                             <li><a class="dropdownlist" href="profil.php">CHANGER LE PASSWORD</a></li>
-                            <li><a class="dropdownlist" href="whishlist.php">WHISHLIST</a></li>
+                            <li><a class="dropdownlist" href="wishlist.php">WHISHLIST</a></li>
                             <li>
                                 <form action="index.php" method="post">
                                     <input id="dropdown-deco" name="deco" value="DECONNEXION" type="submit"/>
@@ -136,4 +136,3 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-

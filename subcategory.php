@@ -21,14 +21,14 @@
     </header>
     <main>
 
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
             <?php
             if(isset($_GET['id'])){
             $id = $_GET['id'];
-            $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie 
-                                    FROM sous_categorie 
-                                    INNER JOIN categorie 
-                                    ON sous_categorie.id_categorie = categorie.id_categorie 
+            $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie
+                                    FROM sous_categorie
+                                    INNER JOIN categorie
+                                    ON sous_categorie.id_categorie = categorie.id_categorie
                                     WHERE id_sous_categorie = '$id' ");
             //var_dump($product);
             foreach ( $products as $product ):
@@ -48,9 +48,9 @@
                 $id_page = $_GET['id'];
                 //var_dump($id_page);
 
-                foreach ($article_sub_category as $article){ 
+                foreach ($article_sub_category as $article){
                 ?>
-                    <section id="container-article"> 
+                    <section id="container-article">
                         <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
                         <section id="description">
                             <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
@@ -68,7 +68,7 @@
             <section id="remove-row">
                 <button id="load_more" data-id="<?= $id;?>" data-id_page="<?= $id_page;?>">LOAD MORE</button>
             </section>
-           
+
             <script type="text/javascript">
                 $(document).ready(function(){
                     $(document).on('click','#load_more', function(event){
@@ -92,7 +92,7 @@
                 });
             </script>
         </section>
-    </main> 
+    </main>
     <footer>
         <?php include('includes/footer.php'); ?>
     </footer>

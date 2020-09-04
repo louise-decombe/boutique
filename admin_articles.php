@@ -202,7 +202,7 @@ if ($user->is_admin==0) {
  <section id="container-register">
    <form method="post" action="action_article.php" class="form">
      <section id="box-form">
-       <h3>AJOUTER UN ARTICLE 1/3</h3>
+       <h3>AJOUTER UN ARTICLE 1/2</h3>
        <h3>Informations principales</h3>
 
        <section id="box-password">
@@ -244,7 +244,7 @@ if ($user->is_admin==0) {
 if (isset($_GET['submit_form1'])) { ?>
   <section id="container-register">
   <form class="" action="action_stock.php" method="post">
-    <h3>AJOUTER UN ARTICLE 2/3</h3>
+    <h3>AJOUTER UN ARTICLE 2/2</h3>
     <h3>Stock</h3>
      <section id="box-form">
 

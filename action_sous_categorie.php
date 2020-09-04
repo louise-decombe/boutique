@@ -12,7 +12,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-        header("Location:admin_categories.php");
+        //header("Location:admin_categories.php");
     } elseif ($_REQUEST['action_type'] == 'edit') {
         if (!empty($_POST['id_sous_categorie'])) {
             $userData = array(
@@ -23,7 +23,8 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             $update = $db->update($tblName, $userData, $condition);
             $statusMsg = $update?'Les données ont été mises à jour.':'un problème est survenu, essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
-            header("Location:admin_categories.php");
+            var_dump($update);
+            //header("Location:admin_categories.php");
         }
     } elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_sous_categorie'])) {
@@ -31,7 +32,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             $delete = $db->delete($tblName, $condition);
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
-            header("Location:admin_categories.php");
+            //header("Location:admin_categories.php");
         }
     }
 }
