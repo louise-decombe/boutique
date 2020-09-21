@@ -1,7 +1,6 @@
 <?php $page_selected = 'admin_commandes.php'; ?>
 
 <?php
-require("admin.class.php");
 include("includes/header.php");
 require("admin_nav.php")
 ?>
@@ -24,7 +23,7 @@ require("admin_nav.php")
 <main>
   <?php
 
-if($users->is_admin==1) {
+if($user->is_admin==1) {
    ?>
 <div class="admin">
 
