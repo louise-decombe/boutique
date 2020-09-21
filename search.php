@@ -28,7 +28,7 @@
              <section id="box-form">
 
           	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
-             <button type="submit" name="button" id="container-delivery">Rechercher</button>
+             <button type="submit" name="search" id="container-delivery">Rechercher</button>
 </section>
 </section>
          </form>
@@ -38,6 +38,9 @@
 
           	 <tbody>
           		 <?php
+
+if(isset($_GET['search'])){
+
               $sql = 'SELECT * FROM article';
               $params = [];
               if (isset($_POST['recherche_valeur'])) {
@@ -59,7 +62,8 @@
                   $resultats->closeCursor();
               } else {
                   echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
-              } ?>
+              }
+            } ?>
 </table><br/></center>
 
 </main>
