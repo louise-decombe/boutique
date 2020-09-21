@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="style-order.css">
 </head>
 <body>
 <header>
@@ -23,14 +24,15 @@
 <section id="container-register">
 
            <form method='post'>
+             <h1>Chercher un article</h1>
              <section id="box-form">
 
           	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
-          	 <input type='submit' value="Rechercher"/>
+             <button type="submit" name="button" id="container-delivery">Rechercher</button>
 </section>
 </section>
-           </form>
-           <table>
+         </form>
+<center>             <table>
 
           	 <tbody>
           		 <?php
@@ -56,8 +58,37 @@
               } else {
                   echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
               } ?>
-</table><br/>
+</table><br/></center>
+
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <footer>
    <?php
     include("includes/footer.php");

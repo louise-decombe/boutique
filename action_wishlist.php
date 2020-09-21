@@ -10,7 +10,7 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
             'id_article' => $_POST['id_article']
         );
         $insert = $db->insert($tblName,$userData);
-        $statusMsg = $insert?'Les données ont été insérées.':'Un problème est survenu.';
+        $statusMsg = $insert?'Article ajouté.':'Un problème est survenu réessayez';
         $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
         header('Location: ' . $referer);
         $_SESSION['statusMsg'] = $statusMsg;

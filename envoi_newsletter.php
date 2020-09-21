@@ -39,11 +39,13 @@ require('admin_nav.php');
         <input type="text" class="" name="email_utilisateur" value="<?php
 
 $mail= $db->query("SELECT * FROM newsletter");
-        echo $mail[""]; ?>"/>
+foreach ($mail as $news) {
+echo $news['email_utilisateur'];
+}         ?>"/>
         <label for="">Message</label>
         <input type="text" class="" name="nom_categorie"/>
     <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit" value="Ajouter une catégorie"/>
+    <input type="submit" class="" name="submit" value="Envoyer"/>
 </form>
 </section>
 </section>
