@@ -3,7 +3,6 @@
 
 .container_nav_admin {
 
-  margin-top: 200px;
 }
 
 h3 {
@@ -39,7 +38,6 @@ form input[type=submit]:hover{
 
 
 .navbar {
-  overflow: hidden;
   background-color: #333;
 }
 
@@ -54,7 +52,6 @@ form input[type=submit]:hover{
 
 .dropdown_nav {
   float: left;
-  overflow: hidden;
 }
 
 .dropdown_nav .dropbtn {

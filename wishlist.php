@@ -21,7 +21,6 @@
    ?>
 </header>
 
-
   <section id="container-profile">
       <nav>
           <li><a id="selected_page" href="profil.php"> <i class="far fa-user-circle"></i>  &nbsp; MES INFORMATIONS</a></li>
@@ -50,7 +49,9 @@
 
     if (isset($_SESSION['user'])){
 
-    $wish = $db->query("SELECT * FROM article INNER JOIN wishlist ON article.id_article = wishlist.id_article INNER JOIN image_article ON image_article.id_article = article.id_article");
+  $id_utilisateur= $_SESSION['user']['id_user'];
+
+    $wish = $db->query("SELECT * FROM article INNER JOIN wishlist ON article.id_article = wishlist.id_article INNER JOIN image_article ON image_article.id_article = article.id_article WHERE id_utilisateur = $id_utilisateur");
 
     foreach ($wish as $wishlist) {
 
