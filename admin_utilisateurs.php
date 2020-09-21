@@ -173,7 +173,7 @@ if (isset($_GET['ajouter'])) {
                   <h3>MODIFIER LE COMPTE</h3>
 
                   <section id="box-password">
-                           <section id="box-gender">
+                           <section id="box-gender" required>
                                <label>CIVILITÉ</label>
                                <input type="radio" name="gender" id="female" value="Femme">
                                <label for="gender">madame</label>
@@ -183,7 +183,7 @@ if (isset($_GET['ajouter'])) {
                                <label for="gender">non genré</label>
                            </section>
 
-                           <section id="box-gender">
+                           <section id="box-gender" required>
                                <label>ADMIN</label>
                                <input type="radio" name="is_admin" id="is_admin" value="1">
                                <label for="is_admin" value="1">Oui</label>
@@ -202,7 +202,6 @@ if (isset($_GET['ajouter'])) {
                     <input type="text"  name="phone" value="<?php echo $userData['phone']; ?>"/>
                     <label>gender</label>
                     <input type="text"  name="gender" value="<?php echo $userData['gender']; ?>"/>
-                    <label>admin</label>
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
