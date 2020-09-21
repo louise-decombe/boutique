@@ -40,7 +40,7 @@ if (isset($_POST["deco"])) {
             <ul>
               <?php
 
-               if($_SESSION['user']['is_admin'] >= 1)
+               if(isset ($_SESSION['user']) && ($_SESSION['user']['is_admin'] == 1))
 
               {
                   ?>
@@ -136,3 +136,4 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
+
