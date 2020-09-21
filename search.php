@@ -32,7 +32,9 @@
 </section>
 </section>
          </form>
-<center>             <table>
+<center>
+
+    <table>
 
           	 <tbody>
           		 <?php
@@ -61,33 +63,6 @@
 </table><br/></center>
 
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <footer>
    <?php

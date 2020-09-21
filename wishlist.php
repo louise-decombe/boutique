@@ -21,7 +21,6 @@
    ?>
 </header>
 
-
   <section id="container-profile">
       <nav>
           <li><a id="selected_page" href="profil.php"> <i class="far fa-user-circle"></i>  &nbsp; MES INFORMATIONS</a></li>
