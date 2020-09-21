@@ -28,11 +28,12 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         }
     } elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_sous_categorie'])) {
-            $condition = array('id_categorie' => $_GET['id_sous_categorie']);
+            $condition = array('id_sous_categorie' => $_GET['id_sous_categorie']);
             $delete = $db->delete($tblName, $condition);
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
-            //header("Location:admin_categories.php");
+            header("Location:admin_categories.php");
+
         }
     }
 }

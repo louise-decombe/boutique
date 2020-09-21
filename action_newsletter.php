@@ -10,6 +10,9 @@ $tblName = 'newsletter';
             $statusMsg = $delete?'Les données ont été supprimées.':'Des problèmes sont survenus essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
             var_dump($delete);
-            header("Location:admin_newsletter.php");
+            var_dump($condition);
+
+echo "123";
+            //header("Location:admin_newsletter.php");
         }
     }
