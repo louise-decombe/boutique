@@ -32,7 +32,12 @@ if (isset($_POST["deco"])) {
         <section id="loupe">
 
             <form id="search-form" action="search.php" method="post">
+
+              <input type='text'  placeholder='recherche' name="recherche_valeur"/>
+              <button type="submit" name="search">Rechercher</button>
+
                <input class=search type="search" name="search" placeholder="Recherche..." />
+
                <input type="submit" name="search"><i class="fa fa-search"></i></input>
             </form>
         </section>
