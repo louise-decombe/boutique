@@ -34,7 +34,8 @@ require('admin_nav.php');
                     <tr>
                         <td><?php echo $user['email_utilisateur']; ?></td>
                         <td>
-        <a href="action_newsletter.php?action_type=delete&id_newsletter =<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+        <a href="action_newsletter.php?action_type=delete&id_newsletter=1 " onclick="return confirm('Êtes vous sure?');">X</a>
+<?php var_dump($user['id_newsletter']) ?>
 
                         </td>
                     </tr>
