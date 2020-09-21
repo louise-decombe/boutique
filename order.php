@@ -10,7 +10,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/style-panier.css">
     <link rel="stylesheet" type="text/css" href="css/style-order.css">
     <link rel="stylesheet" href="stripe-card-payment/global.css" />
     <script type="text/javascript">
@@ -55,138 +54,143 @@
         ?>
     </header>
     <main>
-    <section id="container-order">
-		<nav>
-	   		<ul>
-	   			<li><a id="link-basket" href="panier.php"> 1 - mon panier </a></li>
-				<li><b> 2 - livraison & paiement </b></li>
-				<li> 3 - confirmation </li>
-	   		</ul>
-        </nav>
-        <section id="sub-order">
-            <section id="container-form-order">
-                <section id="container-delivery">
-                    <form action="" method="POST">
+        <section id="container-order">
+		    <nav>
+	   		    <ul>
+	   			    <li><a id="link-basket" href="panier.php"> 1 - mon panier </a></li>
+				    <li><b> 2 - livraison & paiement </b></li>
+				    <li> 3 - confirmation </li>
+	   		    </ul>
+            </nav>
+            <section id="sub-order">
+                <section id="container-form-order">
+                    <section id="container-delivery">
+                        <form action="" method="POST">
                         <?php if(isset($_POST["submit_delivery"])){
                             $_SESSION['delivery'] = ($_POST['delivery']);
                             $prix_delivery  = $_SESSION['delivery'];
                             }else{
                         ?>
                             <h1>veuillez sélectionner un mode de livraison</h1>
-                           
                         <?php } ?>
-                        <section id="radio-section">
+                            <section id="radio-section">
                             <?php $delivery = $order->delivery();
                             foreach ($delivery as $deliver){ ?>
-                            <input type="radio" name="delivery" id="<?= $deliver->prix_livraison ?>" value="<?= $deliver->prix_livraison ?>"<?php if(isset($_POST['submit_delivery']) && $_POST['delivery'] == $deliver->prix_livraison ){echo "checked";}?>>
-                            <label for="<?= $deliver->nom_livraison ?>"><?= $deliver->nom_livraison ?> à <?= $formatter->formatCurrency($deliver->prix_livraison,'EUR'), PHP_EOL; ?></label>
+
+                                <input type="radio" name="delivery" id="<?= $deliver->prix_livraison ?>" value="<?= $deliver->prix_livraison ?>"<?php if(isset($_POST['submit_delivery']) && $_POST['delivery'] == $deliver->prix_livraison ){echo "checked";}?>>
+                                <label for="<?= $deliver->nom_livraison ?>"><?= $deliver->nom_livraison ?> à <?= $formatter->formatCurrency($deliver->prix_livraison,'EUR'), PHP_EOL; ?></label>
+
                             <?php } 
                             ?> 
-                        </section>
-                        <section><button type="submit" name="submit_delivery">SÉLECTIONNER</button></section>
-                    </form> 
-                </section>
-
-
-                <?php if(isset($_POST["submit_delivery"])){ ?>
-                <section id="container-infos-order">
-                    <form action="" method='POST'>
-                        <section id="delivery-infos">
-                            <legend> - vos informations de livraison - </legend>
-                            <section>
-                                <input type="text" name="firstname" placeholder="prénom*" size="95">
-                                <input type="text" name="lastname" placeholder="nom*" size="95">
-                                <input id="address" type="text" name="address" placeholder="adresse postale*" size="95">
-                                <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95"> 
                             </section>
-                        </section>
-                        <input type="hidden" name="delivery_choice" value="<?=$prix_delivery?>">
-                        <input type="hidden" name="nb_article" value="<?=$panier->count();?>">
-                        <input type="hidden" name="sous_total" value="<?=$panier->total()?>">
-                        <input type="hidden" name="prix_total" value="<?=$order->estimation($panier->total(), $prix_delivery);?>">
-                        <?php foreach($products as $product){ ?>
+                            <section><button type="submit" name="submit_delivery">SÉLECTIONNER</button></section>
+                        </form> 
+                    </section>
+
+                    <?php if(isset($_POST["submit_delivery"])){ ?>
+                    <section id="container-infos-order">
+                        <form action="" method='POST'>
+                            <section id="delivery-infos">
+                                <legend> - vos informations de livraison - </legend>
+                                <section>
+                                    <input type="text" name="firstname" placeholder="prénom*">
+                                    <input type="text" name="lastname" placeholder="nom*">
+                                    <input id="address" type="text" name="address" placeholder="adresse postale*">
+                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur"> 
+                                </section>
+                            </section>
+
+                            <input type="hidden" name="delivery_choice" value="<?=$prix_delivery?>">
+                            <input type="hidden" name="nb_article" value="<?=$panier->count();?>">
+                            <input type="hidden" name="sous_total" value="<?=$panier->total()?>">
+                            <input type="hidden" name="prix_total" value="<?=$order->estimation($panier->total(), $prix_delivery);?>">
+                            <?php foreach($products as $product){ ?>
                             <input type="hidden" name="article[<?=$product->id_article;?>][titre]" value="<?= $product->nom_article; ?>">
                             <input type="hidden" name="article[<?=$product->id_article;?>][id]" value="<?= $product->id_article; ?>">
                             <input type="hidden" name="article[<?=$product->id_article;?>][qte]" value="<?= $_SESSION['panier'][$product->id_article];?>">
-                        <?php } ?>
+                            <?php } ?>
 
-                        <section id="module-paiement">
-                            <legend id=title-cb>- Paiement sécurisé par 
-                                <i class="far fa-credit-card"></i>
-                                <i class="fab fa-cc-visa"></i>
-                                <i class="fab fa-cc-mastercard"></i>
-                                -
-                            </legend>
-                            <section id="section-cb">
-                                <section>
-                                    <label> nom du titulaire de la carte* </label>
-                                    <input type="text" placeholder="nom du titulaire de la carte*" size="55" required>
-                                </section>
-                                <section>
-                                    <label>numéro de carte bancaire* &nbsp;</label>
-                                    <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                    <input id="groupe4" type="text" size="4" maxlength="4">
-                                    <section id="cb-infos">
-                                        <label>date d'expiration*</label>
-                                        <input type="text" placeholder="MM/YYYY*" required>
-                                        <label>CVC*</label>
-                                        <input type="password" placeholder="CVC*" required>
+                            <section id="module-paiement">
+                                <legend id=title-cb>- Paiement sécurisé par 
+                                    <i class="far fa-credit-card"></i>
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    -
+                                </legend>
+                                <section id="section-cb">
+                                    <section>
+                                        <label> nom du titulaire de la carte* </label>
+                                        <input type="text" placeholder="nom du titulaire de la carte*" size="55" required>
+                                    </section>
+                                    <section>
+                                        <label>numéro de carte bancaire* &nbsp;</label>
+                                        <section id="input-cb">
+                                            <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                            <input id="groupe4" type="text" size="4" maxlength="4">
+                                        </section>
+                                        <section id="cb-infos">
+                                            <label>date d'expiration*</label>
+                                            <input type="text" placeholder="MM/YYYY*" required>
+                                            <label>CVC*</label>
+                                            <input type="password" placeholder="CVC*" required>
+                                        </section>
                                     </section>
                                 </section>
                             </section>
-                        </section>
-                        <button type="submit" name="validation_paiement">PAYER <?= $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;  ?></button>
-                    </form>
+                            <button type="submit" name="validation_paiement">PAYER <?= $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;  ?></button>
+                        </form>
+                    </section>
                 </section>
-            </section>
-            <section id="recap-order">
-                <article>
-                    <span id="count">MON PANIER (<?= $panier->count(); ?> article(s))</span>
-                    <?php 
-                        foreach($products as $product){
+
+                <section id="recap-order">
+                    <section id="recap-order-container1">
+                        <span id="count">Mon panier (<?= $panier->count(); ?> article(s))</span>
+                        <?php 
+                            foreach($products as $product){
                             $check = $panier->check_stock($product->id_article);
                             if($check[0]->nb_articles_stock > 0 ){
-                    ?>
-                        <article>
-                            <img src="<?= $product->chemin;?>" height="100">
-			                <span><?= $product->nom_article; ?></span>
-                            <span><?= $product->id_article; ?></span>
-                            <span class="quantity"> qté  <?= $_SESSION['panier'][$product->id_article]; ?></span>
-                            <span>
+                        ?>
+                        <section id="recap-article">
+                            <img src="<?= $product->chemin;?>">
+			                <p><?= $product->nom_article; ?>&nbsp; qté : 
+                               <?= $_SESSION['panier'][$product->id_article]; ?>&nbsp;
                                 <?php 
 									$sub_total = $panier->sub_total($product->prix_article, $_SESSION['panier'][$product->id_article]);
                                     echo $formatter->formatCurrency($sub_total,'EUR'), PHP_EOL;
 								?>
-                            </span>
-			                <span><a href="panier.php">modifier</a></span>
-                        </article>
-					    <?php } else{ ?>
-                        
-                        <span> Un des articles sélectionné n'est plus disponible en stock <span>
-                    <?php }} ?>
-                        </article>
-                    <?php if(isset($_POST["submit_delivery"])){ ?>
-                        <section>
-                        <p id="delivery"> livraison <?php echo $formatter->formatCurrency($prix_delivery, 'EUR'), PHP_EOL; ?><p>
-						<h2 id="total-order">MONTANT À REGLER
-							<?php
-                            var_dump($_POST['delivery']);
-							echo $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;
-							?>
-						</h2>
+                            </p>
                         </section>
+					    <?php } else{ ?>
+                        <span> Un ou plusieurs articles sélectionnés ne sont plus disponibles en stock <span>
+                    </section>   
+
+                    <?php } } ?>
+                    <?php if(isset($_POST["submit_delivery"])){ ?>
+
+                    <section id="recap-order-container2">
+                        <span><a href="panier.php">modifier</a></span>
+                        <span id="delivery-charging"> Livraison <?= $formatter->formatCurrency($prix_delivery, 'EUR'), PHP_EOL; ?></span>
+                        <h2 id="total-order">MONTANT TOTAL <?= $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;?></h2>
+                    </section>
+                </section>  
+                <aside id="recap-order-container3">
+					<span> PAIEMENT SÉCURISÉ & RETOURS GRATUITS </span>
+					<a href="tel:0800 00 00 00">SERVICE CLIENT : 0800 00 00 00 (N° GRATUIT)</a>
+					<p>Le service client est joignable du Lundi au Vendredi de 9h à 19h et le Samedi de 10h à 17h ou via notre rubrique contact.
+					   En raison des circonstances exceptionnelles, les délais de réponse du service client peuvent être impactés. Nous en sommes désolés et vous remercions pour votre patience.
+					   L’équipe High & Craft !
+					</p>
+				</aside> 
+                    <?php } }?>
+                <?php }else{ ?>
+                <section id="connect-panier">
+                    <a id="white-box" href="connexion.php">Connecte-toi pour valider ton panier !</a>
+                    <a id="black-box" href="inscription.php">ou crée ton compte en quelques clics.</a>
+                </section>
+                <?php } ?>
             </section>
-                        <?php } }?>
-                
-            <?php }else{ ?>
-            <section id="connect-panier">
-                <a id="white-box" href="connexion.php">Connecte-toi pour valider ton panier !</a>
-                <a id="black-box" href="inscription.php">ou crée ton compte en quelques clics.</a>
-            </section>
-            <?php } ?>
-        </section>
         </section>
     </main>
     <footer>
@@ -194,3 +198,4 @@
     </footer>
 </body>
 </html>
+

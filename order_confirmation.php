@@ -1,4 +1,4 @@
-<?php $page_selected = 'order'; ?>
+<?php $page_selected = 'order-confirmation'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -20,17 +20,37 @@
         require 'class/order.php';
         $order = new Order($db);
         $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
+        $last_order = $order->recap_order($_SESSION['user']['id_user']);
+        $detail_order = $order->detail_order($last_order->id_commande );
+        var_dump($last_order);
+        var_dump($detail_order);
         ?>
     </header>
     <main>
         <section id="container-order">
-		<nav>
-	   		<ul>
-	   			<li>1 - mon panier</li>
-				<li> 2 - livraison & paiement </b></li>
-				<li><b> 3 - confirmation <b></li>
-	   		</ul>
-        </nav>
+		    <nav>
+	   		    <ul>
+	   			    <li>1 - mon panier</li>
+				    <li> 2 - livraison & paiement </b></li>
+				    <li><b> 3 - confirmation <b></li>
+	   		    </ul>
+            </nav>
+            <section id="sub-confirmation">
+                <h1>confirmation de paiement d'un montant de <?= $formatter->formatCurrency($last_order->prix_total_articles,'EUR'), PHP_EOL;?></h1>
+                <article>
+                    <span>Merci pour votre commande #0000 <?= $last_order->id_commande ?> @ <?= $_SESSION['user']['lastname']?></span>
+                    <ul>
+                        <?php foreach ($detail_order as $details){ ?>
+                        <li>titre article : <?=$details -> titre_article ?>, QTÉ <?=$details -> quantite_article ?></li>
+                        <?php } ?>
+                        <li>Nbre d'articles commandés : <?= $last_order->nbr_total_articles?></li>
+                    </ul>
+                </article>
+                <p> Vous allez prochainement recevoir un email de confirmation </p>
+                <a href="profil.php">consultez votre profil pour suivre l'avancement de votre commande</a>
+                <a href="index1.php">retour à l'accueil de notre site</a>
+
+            </section>
         </section>
     </main>
     <footer>
@@ -38,3 +58,4 @@
     </footer>
 </body>
 </html>
+
