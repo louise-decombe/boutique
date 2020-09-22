@@ -26,7 +26,6 @@
            <form method='post'>
              <h1>Chercher un article</h1>
              <section id="box-form">
-
           	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
              <button type="submit" name="search" id="container-delivery">Rechercher</button>
 </section>
@@ -39,7 +38,7 @@
           	 <tbody>
           		 <?php
 
-if(isset($_GET['search'])){
+
 
               $sql = 'SELECT * FROM article';
               $params = [];
@@ -63,7 +62,7 @@ if(isset($_GET['search'])){
               } else {
                   echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
               }
-            } ?>
+             ?>
 </table><br/></center>
 
 </main>
