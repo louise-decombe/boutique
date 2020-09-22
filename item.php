@@ -31,8 +31,6 @@
             </section>
                 <article id="presentation-item">
                         <?php if (isset($_SESSION['user'])) {
-
-
                           ?>
 
                         <?php $id_user= ($_SESSION['user']['id_user']);
@@ -45,12 +43,11 @@
 ?>
 
 <form method="post" action="action_wishlist.php" class="form" id="userForm">
-
   <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
   <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
   <input type="hidden" name="action_type" value="add"/>
     <input type="submit" class="" name="submit_wish" value="+ wishlist"/>
-
+</form>
 <?php }
 } ?>
 

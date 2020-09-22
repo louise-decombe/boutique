@@ -18,6 +18,8 @@ require('admin_nav.php');
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
           <link rel="stylesheet" href="css/admin-nad.css">
           <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" type="text/css" href="css/style-item.css">
+
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -26,8 +28,8 @@ require('admin_nav.php');
   <?php
 if ($user->is_admin==0) {
     ?>
-  <a href="admin_articles.php?articles">Voir les articles</a><br/>
-  <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
+  <a href="admin_articles.php?articles" id="presentation_item">Voir les articles</a><br/>
+  <a href="admin_articles.php?ajouter" id="more_infos">ajouter un article</a><br/>
 
   <?php
 
@@ -93,6 +95,8 @@ if ($user->is_admin==0) {
    if (isset($_GET['id_article'])) {
        $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
        if (!empty($userData)) {
+
+
            ?>
           <section id="container-register">
             <form method="post" action="action_article.php" class="" id="">
@@ -171,7 +175,7 @@ if ($user->is_admin==0) {
                 <input type="submit" name="submit1" value="Mettre à jour">
               </form>
 
-              <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+              <form id="formfiles" action="upload.php?article=<?php echo $id_article ?>" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
                 <input type="file" name="photo" id="">
@@ -207,15 +211,15 @@ if ($user->is_admin==0) {
 
        <section id="box-password">
                           <label>Nom de l'article</label>
-                          <input type="text" class="form-control" name="nom_article"/>
+                          <input type="text" class="form-control" name="nom_article" required/>
                           <label>Auteur de l'article</label>
-                          <input type="text" class="form-control" name="auteur_article"/>
+                          <input type="text" class="form-control" name="auteur_article" required/>
                           <label>Edition de l'article</label>
-                          <input type="text" class="form-control" name="editions_article"/>
+                          <input type="text" class="form-control" name="editions_article" required/>
                           <label>Description</label>
-                          <input type="textarea" class="form-control" name="description_article"/>
+                          <input type="textarea" class="form-control" name="description_article" required/>
                           <label>Citation de l'article</label>
-                          <input type="textarea" class="form-control" name="citation_article"/>
+                          <input type="textarea" class="form-control" name="citation_article" required/>
                           <label>Nombre de pages </label>
                           <input type="number" class="form-control" name="nb_pages" value="0" min="0" max="9000"/>
                           <label>Année de parution </label>
@@ -269,7 +273,7 @@ if (isset($_GET['submit_form1'])) { ?>
             <input type="submit" name="submit1" value="Upload">
           </form>
 
-          <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+          <form id="formfiles" action="upload.php?id=<?php ?>" method="post" enctype="multipart/form-data">
             <label for="fileUpload">ou sélectionner votre fichier:</label>
             <div id="inputfiles">
             <input type="file" name="photo" id="fileUpload">
@@ -280,7 +284,7 @@ if (isset($_GET['submit_form1'])) { ?>
 
     <?php     if (isset($_POST['submit1'])) {
       $link = addslashes($_POST['linkimg']);
-      $request2 = "UPDATE `image_article` SET `chemin`='$link' WHERE id_article = '$_SESSION[login]'";
+      $request2 = "UPDATE `image_article` SET `chemin`='$link'  WHERE id_article = ''";
       $result2 = mysqli_query($connect, $request2);
   }
 ?>

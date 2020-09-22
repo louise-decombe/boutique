@@ -17,22 +17,26 @@ if (isset($_POST["deco"])) {
 ?>
 <header>
     <?php
-        if ($page_selected === 'index' OR $page_selected === 'panier' OR $page_selected === 'order'){ ?>
+        if ($page_selected === 'index' or $page_selected === 'panier' or $page_selected === 'order') { ?>
         <a id="toplogo" href="index1.php">
             <h1>HIGH & CRAFT</h1>
         </a>
         <a id="top-subtitle" href="index1.php"><h2>FANZINE BOOKSTORE</h2></a>
     <?php
-        }else{
-    ?>
+        } else {
+            ?>
     <a id="toplogo" href="index.php">
         <h1>HIGH & CRAFT</h1>
     </a>
     <section id="first-nav">
         <section id="loupe">
-            <form id="search-form" action="search.php" method="GET">
-               <input class=search type="search" name="search" placeholder="Recherche..." />
-               <input type="submit" value="Valider"><i class="fa fa-search"></i> </input>
+
+            <form id="search-form" action="search.php" method="post">
+
+              <input type='text'   class=search placeholder='recherche' name="recherche_valeur"/>
+              <button type="submit" name="search">Rechercher</button>
+
+               <i class="fa fa-search"><input type="submit" name="search"></i>
             </form>
         </section>
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
@@ -40,16 +44,15 @@ if (isset($_POST["deco"])) {
             <ul>
               <?php
 
-               if(isset ($_SESSION['user']) && ($_SESSION['user']['is_admin'] == 1))
-
-              {
-                  ?>
+               if (isset($_SESSION['user']) && ($_SESSION['user']['is_admin'] == 1)) {
+                   ?>
               <ul>
                <li>
                    <a href="admin.php"><img src="https://img.icons8.com/material-sharp/48/000000/maintenance.png"/>admin</a>
                </li>
              </ul>
-           <?php } ?>
+           <?php
+               } ?>
 
                 <div class="dropdown">
                     <li>
@@ -60,37 +63,37 @@ if (isset($_POST["deco"])) {
                             <div class="dropdown-content">
                             <?php // récupération des informations de session pour le panier avec array_keys qui sont les clés du tableau
                             $ids = array_keys($_SESSION['panier']);
-                            //si le tableau est vide les infos envoyées sont vides
-                            if(empty($ids)){
-
-                            $products = array();
-                            ?>
+            //si le tableau est vide les infos envoyées sont vides
+            if (empty($ids)) {
+                $products = array(); ?>
                                 <span> votre panier est vide</span>
-                            <?php }else{
-                            $products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
-                            foreach($products as $product):
+                            <?php
+            } else {
+                $products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',', $ids).')');
+                foreach ($products as $product):
                             ?>
                                 <li>
                                     <div class="row">
                                         <a href="#" class="img"> <img src="<?= $product->chemin; ?>" height="53"></a>
                                         <div class="mini-article">
                                             <span id="name_article"><?= $product->nom_article; ?></span>
-                                            <span>prix : <?= $formatter->formatCurrency($product->prix_article,'EUR'), PHP_EOL; ?></span>
+                                            <span>prix : <?= $formatter->formatCurrency($product->prix_article, 'EUR'), PHP_EOL; ?></span>
                                             <span> quantité  <?= $_SESSION['panier'][$product->id_article]; ?></span>
                                         </div>
                                 </li>
                                 <?php endforeach; ?>
-                                <li id="total-header">TOTAL <?= $formatter->formatCurrency($panier->total(),'EUR'), PHP_EOL; ?></li>
+                                <li id="total-header">TOTAL <?= $formatter->formatCurrency($panier->total(), 'EUR'), PHP_EOL; ?></li>
                                 <button id="basket-header"> <a href="panier.php"> Voir le panier </a></button>
-                                <?php } ?>
+                                <?php
+            } ?>
                                     </div>
                         </ul>
                     </li>
                 </div>
 
                 <?php
-                if (isset($_SESSION['user'])){
-                ?>
+                if (isset($_SESSION['user'])) {
+                    ?>
                 <div class="dropdown">
                     <li>
                         <ul>
@@ -115,25 +118,26 @@ if (isset($_POST["deco"])) {
                     </li>
                 </div>
             <?php
-                }else{
-            ?>
+                } else {
+                    ?>
             <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
-            <?php }  ?>
+            <?php
+                } ?>
             </ul>
         </nav>
     </section>
     <section class="wrapper">
         <nav>
             <ul>
-                <?php $categorie = $category->categories();?>
+                <?php $categorie = $category->categories(); ?>
                 <li><a href="about.php">QUI SOMMES NOUS ?</a></li>
-                <?php if (isset($_SESSION['user'])){ ?>
+                <?php if (isset($_SESSION['user'])) { ?>
                 <form action="index.php" method="post">
                     <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
                 </form>
-                <?php } } ?>
+                <?php }
+        } ?>
             </ul>
         </nav>
     </section>
 </header>
-

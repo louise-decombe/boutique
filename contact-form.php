@@ -24,7 +24,7 @@
     <main>
       <?php if (!empty($_SESSION['statusMsg'])) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
-          unset($_SESSION['statusMsg']);
+          unset($_SESSION['statusMsg']); }
        ?>
       <section id="container-register">
         <form method="post" action="action_contact_form.php" class="form" id="userForm">
@@ -43,7 +43,6 @@
 
      </section>
      </section>
-<?php } ?>
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>
