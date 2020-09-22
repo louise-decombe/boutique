@@ -24,7 +24,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
             $statusMsg = $update?'Les données ont été mises à jour.':'un problème est survenu, essayez encore.';
             $_SESSION['statusMsg'] = $statusMsg;
             var_dump($update);
-            //header("Location:admin_categories.php");
+            header("Location:admin_categories.php");
         }
     } elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_sous_categorie'])) {
