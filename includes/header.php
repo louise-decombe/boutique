@@ -36,7 +36,7 @@ if (isset($_POST["deco"])) {
               <input type='text'   class=search placeholder='recherche' name="recherche_valeur"/>
               <button type="submit" name="search">Rechercher</button>
 
-               <input type="submit" name="search"><i class="fa fa-search"></i></input>
+               <i class="fa fa-search"><input type="submit" name="search"></i>
             </form>
         </section>
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
