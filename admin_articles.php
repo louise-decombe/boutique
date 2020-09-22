@@ -18,6 +18,8 @@ require('admin_nav.php');
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
           <link rel="stylesheet" href="css/admin-nad.css">
           <link rel="stylesheet" href="css/admin.css">
+          <link rel="stylesheet" type="text/css" href="css/style-item.css">
+
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -26,8 +28,8 @@ require('admin_nav.php');
   <?php
 if ($user->is_admin==0) {
     ?>
-  <a href="admin_articles.php?articles">Voir les articles</a><br/>
-  <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
+  <a href="admin_articles.php?articles" id="presentation_item">Voir les articles</a><br/>
+  <a href="admin_articles.php?ajouter" id="more_infos">ajouter un article</a><br/>
 
   <?php
 
@@ -207,15 +209,15 @@ if ($user->is_admin==0) {
 
        <section id="box-password">
                           <label>Nom de l'article</label>
-                          <input type="text" class="form-control" name="nom_article"/>
+                          <input type="text" class="form-control" name="nom_article" required/>
                           <label>Auteur de l'article</label>
-                          <input type="text" class="form-control" name="auteur_article"/>
+                          <input type="text" class="form-control" name="auteur_article" required/>
                           <label>Edition de l'article</label>
-                          <input type="text" class="form-control" name="editions_article"/>
+                          <input type="text" class="form-control" name="editions_article" required/>
                           <label>Description</label>
-                          <input type="textarea" class="form-control" name="description_article"/>
+                          <input type="textarea" class="form-control" name="description_article" required/>
                           <label>Citation de l'article</label>
-                          <input type="textarea" class="form-control" name="citation_article"/>
+                          <input type="textarea" class="form-control" name="citation_article" required/>
                           <label>Nombre de pages </label>
                           <input type="number" class="form-control" name="nb_pages" value="0" min="0" max="9000"/>
                           <label>Année de parution </label>

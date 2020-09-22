@@ -45,7 +45,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
-
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id utilisateur
 
                 $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_GET[id_article]'";

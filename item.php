@@ -31,7 +31,6 @@
             </section>
                 <article id="presentation-item">
                         <?php if (isset($_SESSION['user'])) {
-
                           ?>
 
                         <?php $id_user= ($_SESSION['user']['id_user']);
