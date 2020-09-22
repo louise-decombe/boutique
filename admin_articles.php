@@ -95,6 +95,8 @@ if ($user->is_admin==0) {
    if (isset($_GET['id_article'])) {
        $userData = $db->getRows('article', array('where'=>array('id_article'=>$_GET['id_article']),'return_type'=>'single'));
        if (!empty($userData)) {
+
+
            ?>
           <section id="container-register">
             <form method="post" action="action_article.php" class="" id="">
@@ -173,7 +175,7 @@ if ($user->is_admin==0) {
                 <input type="submit" name="submit1" value="Mettre à jour">
               </form>
 
-              <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+              <form id="formfiles" action="upload.php?article=<?php echo $id_article ?>" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
                 <input type="file" name="photo" id="">
@@ -271,7 +273,7 @@ if (isset($_GET['submit_form1'])) { ?>
             <input type="submit" name="submit1" value="Upload">
           </form>
 
-          <form id="formfiles" action="upload.php" method="post" enctype="multipart/form-data">
+          <form id="formfiles" action="upload.php?id=<?php ?>" method="post" enctype="multipart/form-data">
             <label for="fileUpload">ou sélectionner votre fichier:</label>
             <div id="inputfiles">
             <input type="file" name="photo" id="fileUpload">
@@ -282,7 +284,7 @@ if (isset($_GET['submit_form1'])) { ?>
 
     <?php     if (isset($_POST['submit1'])) {
       $link = addslashes($_POST['linkimg']);
-      $request2 = "UPDATE `image_article` SET `chemin`='$link' WHERE id_article = '$_SESSION[login]'";
+      $request2 = "UPDATE `image_article` SET `chemin`='$link'  WHERE id_article = ''";
       $result2 = mysqli_query($connect, $request2);
   }
 ?>
