@@ -1,4 +1,4 @@
-<?php $page_selected = 'order'; ?>
+<?php $page_selected = 'order-payment'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-order-payment.css">
-    <link rel="stylesheet" href="stripe-card-payment/global.css" />
+    <link rel="stylesheet" href="stripe-card-payment/global.css"/>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     
 </head>
 

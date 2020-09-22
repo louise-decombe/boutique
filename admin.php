@@ -1,9 +1,4 @@
 <?php $page_selected = 'admin';?>
-
-<?php
-include("includes/header.php");
-require("admin_nav.php");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +12,15 @@ require("admin_nav.php");
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<header>
+<?php
+include("includes/header.php");
+?>
+</header>
 <main>
+    <section id="nav-admin-pages">
+        <?php require("admin_nav.php"); ?>
+    </section>
   <?php
 
 if ($user->is_admin==0) {

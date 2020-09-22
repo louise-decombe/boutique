@@ -3,13 +3,17 @@
     padding-top:2.5%;
 
 }
-
 #container-treatment{
     display:flex;
     padding-top:2.5%;
     padding-bottom:2.5%;
     background-color:whitesmoke;
     justify-content:center;
+}
+
+#container-link{
+    display: flex;
+    background-color: whitesmoke;
 }
 
 #container-treatment nav{
@@ -180,6 +184,43 @@
     transition: 1s;
    }
 
+.input-nb{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:none;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(background/arrow-icon.png);
+}
+
+.input-qte{
+    width: 40px;
+    height: 30px;
+}
+
+#news-index-form{
+    display: flex;
+    min-height: 30vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#news-index-form button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+    color:white;
+    border:none;
+}
+
+#news-index-form input[type=text]{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
 
 
 /*** RESPONSIVE ADMIN-ORDERS ***/
@@ -212,13 +253,11 @@
         margin-left: 10px;
     }
 
-    
-   
 }
 
 @media screen and (min-width:680px) and (max-width:979px){
     #nav-admin-pages{
-        margin-top: 15%;
+        margin-top: 18%;
     }
 
 

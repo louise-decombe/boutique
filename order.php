@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-order.css">
     <link rel="stylesheet" href="stripe-card-payment/global.css" />
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script type="text/javascript">
         function modification(X)
         {

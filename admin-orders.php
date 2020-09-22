@@ -5,18 +5,21 @@ $page_selected = 'admin-orders';?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - admin nad</title>
+    <title>boutique - admin-orders</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-nad.css">
+    <link rel="stylesheet" type="text/css" href="css/style-admin-general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 
 <body>
     <header>
-        <?php include("includes/header.php"); 
+        <?php 
+        include("includes/header.php");
         require 'class/admin.php';
         $admin_orders = new Admin_orders($db);
         $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
@@ -34,7 +37,11 @@ $page_selected = 'admin-orders';?>
         ?>
     </header>
     <main>
-        <section id=container-treatment>
+        <section id="nav-admin-pages">
+        <?php require("admin_nav.php"); ?>
+        </section>
+
+        <section id="container-treatment">
             <nav>
                 <li>
                     <form action="" method="post">
@@ -105,7 +112,7 @@ $page_selected = 'admin-orders';?>
                             <td><?=$preparation->nbr_total_articles?></td>
                             <td><?= (new DateTime($preparation->date_commande))->format('d-m-Y')?></td>
                             <td><?=$preparation->statut_commande?></td>
-                            <td><a href="order_details.php?id=<?=$preparation->id_commande?>">modifier</a></td>
+                            <td><a  href="order_details.php?id=<?=$preparation->id_commande?>">modifier</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -269,3 +276,4 @@ $page_selected = 'admin-orders';?>
 <?php
 ob_end_flush();
 ?>
+
