@@ -28,9 +28,17 @@ require('admin_nav.php');
   <?php
 if ($user->is_admin==0) {
     ?>
-  <a href="admin_articles.php?articles" id="presentation_item">Voir les articles</a><br/>
+    <center>
+    <div class="container-valider">
+    <div class="valider">
+      <a href="admin_articles.php?articles" id="presentation_item">Voir les articles</a><br/>
+    </div>
+<div class="valider">
   <a href="admin_articles.php?ajouter" id="more_infos">ajouter un article</a><br/>
 
+</div>
+</div>
+</center>
   <?php
 
   if (isset($_GET['articles'])) {
@@ -43,6 +51,8 @@ if ($user->is_admin==0) {
           <div class="titre">
 <h3>ARTICLES </h3>
           </div>
+          <div class="rtable">
+
             <table class="table">
                 <tr>
                     <th >Nom du fanzine</th>
@@ -83,11 +93,12 @@ if ($user->is_admin==0) {
                 <tr><td colspan="4">Aucun article trouvé......</td>
                 <?php }
   } ?>
-    </div>    </div>
 
 
     </tbody>
   </table>
+</div>
+
   <?php
   //
 //modification d'un article

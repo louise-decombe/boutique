@@ -25,10 +25,24 @@
   <?php
   if ($user->is_admin == 0) {
   ?>
+
+
+  <center>
+  <div class="container-valider">
+  <div class="valider">
+
   <a href="admin_categories.php?categorie">Voir les catégories</a><br/>
+</div>
+<div class="valider">
   <a href="admin_categories.php?sous_categorie">Voir les sous catégories</a><br/>
+
+</div>
+<div class="valider">
   <a href="admin_categories.php?ajouter">ajouter une catégorie ou sous catégorie</a><br/>
-  </div>
+
+</div>
+</div>
+</center>
 
   <div class="container-treatment">
 <div class="treatment-order">
