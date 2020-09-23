@@ -1,36 +1,48 @@
-<?php $page_selected = 'admin_utilisateurs.php'; ?>
-<?php
-include("includes/header.php");
-require("admin_nav.php")
-?>
+<?php $page_selected = 'admin_utilisateurs'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - homepage</title>
+    <title>boutique - admin - utilisateurs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin-nad.css">
+    <link rel="stylesheet" href="css/style-admin-general.css">
+    <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
 <header>
-
+    <?php
+        include("includes/header.php");
+    ?>
 </header>
 <main>
+    <section id="nav-admin-pages">
+        <?php require("admin_nav.php"); ?>
+    </section>
+    <section>
+      <center>
+<div class="container-valider">
+<div class="valider">
   <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
+
+</div>
+<div class="valider">
   <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
 
-<?php
+</div>
 
-if (isset($_GET['utilisateurs'])) {
+
+</div>
+</center>
+
+    <?php
+    if (isset($_GET['utilisateurs'])) {
     ?>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <div class="container-treatment">
-
     <div class="treatment-order">
     <?php
     if (!empty($_SESSION['statusMsg'])) {
@@ -39,6 +51,7 @@ if (isset($_GET['utilisateurs'])) {
     } ?>
 
             UTILISATEURS
+            <div class="rtable">
             <table>
                 <tr>
                     <th>#</th>
@@ -75,7 +88,7 @@ $is_admin=$user['is_admin'];
           </div>
           </div>
                     <td>
-                        <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"></a>
+                        <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>"><i class="far fa-edit"></i></a>
                         <a href="action_utilisateurs.php?action_type=delete&id_utilisateur=<?php echo $user['id_utilisateur']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée ?');">X</a>
                     </td>
                 </tr>
@@ -86,6 +99,7 @@ $is_admin=$user['is_admin'];
                 <?php } ?>
 
             </table>
+          </div>
 
 
 <?php
@@ -173,7 +187,7 @@ if (isset($_GET['ajouter'])) {
                   <h3>MODIFIER LE COMPTE</h3>
 
                   <section id="box-password">
-                           <section id="box-gender" required>
+                           <section id="box-gender">
                                <label>CIVILITÉ</label>
                                <input type="radio" name="gender" id="female" value="Femme">
                                <label for="gender">madame</label>
@@ -182,15 +196,6 @@ if (isset($_GET['ajouter'])) {
                                <input type="radio" name="gender" id="no_gender" value="Non genré">
                                <label for="gender">non genré</label>
                            </section>
-
-                           <section id="box-gender" required>
-                               <label>ADMIN</label>
-                               <input type="radio" name="is_admin" id="is_admin" value="1">
-                               <label for="is_admin" value="1">Oui</label>
-                               <input type="radio" name="is_admin" id="is_admin" value="2">
-                               <label for="is_admin" value="2">Non</label>
-                           </section>
-
 
                     <label>Name</label>
                     <input type="text"  name="nom" value="<?php echo $userData['nom']; ?>"/>
@@ -202,9 +207,11 @@ if (isset($_GET['ajouter'])) {
                     <input type="text"  name="phone" value="<?php echo $userData['phone']; ?>"/>
                     <label>gender</label>
                     <input type="text"  name="gender" value="<?php echo $userData['gender']; ?>"/>
+                    <label>admin</label>
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
+                <input type="hidden" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
                 <input type="submit"  name="submit" value="Modifier l'utilsateur"/>
             </form>
           </section>
@@ -216,15 +223,7 @@ if (isset($_GET['ajouter'])) {
 
 
 
-
-
-
-
-
-
-
-
-
+</section>
 </main>
 </body>
 </html>
