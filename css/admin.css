@@ -164,3 +164,25 @@ padding: 1%;
 	border: 1px solid gray;
 	text-decoration:none;
 }
+
+
+
+
+.submit-bouton{
+  display: flex;
+  background-color: #00FF00;
+  justify-content: center;
+  width: 75%;
+  font-size: 1em;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.submit-bouton:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 1.5s;
+}

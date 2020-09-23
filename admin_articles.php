@@ -165,7 +165,7 @@ if ($user->is_admin==0) {
   </select>
   </div>
                 <input type="hidden" name="action_type" value="add"/>
-                <input type="submit" class="submit" name="submit_article" value="Modifier le fanzine"/>
+                <input type="submit" class="submit-bouton" name="submit_article" value="Modifier le fanzine"/>
 
 
             <section id="modification">
@@ -183,14 +183,14 @@ if ($user->is_admin==0) {
 
                 <label> adresse url de l'image </label>
                 <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
-                <input type="submit" name="submit1" value="Mettre à jour">
+                <input type="submit" class="submit-bouton" name="submit1" value="Mettre à jour">
               </form>
 
               <form id="formfiles" action="upload.php?article=<?php echo $id_article ?>" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
                 <input type="file" name="photo" id="">
-                <input type="submit" name="submit" value="Mettre à jour">
+                <input type="submit" class="submit-bouton" name="submit" value="Mettre à jour">
                 </div>
                 <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
               </form>

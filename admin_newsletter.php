@@ -36,7 +36,9 @@ include("includes/header.php");
                     <tr>
                         <td><?php echo $user['email_utilisateur']; ?></td>
                         <td>
-        <a href="action_newsletter.php?action_type=delete&id_newsletter =<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+
+      <a href="action_newsletter.php?action_type=delete&id_newsletter=<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée?');">X</a>
+
 
                         </td>
                     </tr>
