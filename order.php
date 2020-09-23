@@ -22,6 +22,8 @@
            document.getElementById("groupe" + indice).focus()
            }
        }
+
+
    </script>
 </head>
 <body>
