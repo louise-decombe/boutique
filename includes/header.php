@@ -1,4 +1,3 @@
-
 <?php
 require 'class/db.php';
 require 'class/panier.php';
@@ -44,11 +43,11 @@ if (isset($_POST["deco"])) {
 
               {
                   ?>
-
+              
                <li>
                    <a href="admin.php"><ion-icon name="construct-outline"></ion-icon></a>
                </li>
-
+            
            <?php }else{?>
 
                 <div class="dropdown">
@@ -134,3 +133,4 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
+

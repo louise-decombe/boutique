@@ -58,6 +58,35 @@
     line-height: 30px;
 }
 
+#admin-select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1.5%;
+}
+
+#form-status-order{
+    display:flex;
+}
+
+#form-status-order select{
+    padding: 10px;
+}
+
+#form-status-order button{
+   display: flex;
+
+   border:none;
+   background-color: black;
+   padding: 10px;
+   color:white;
+}
+
+#form-status-order button:hover{
+    background-color: #00FF00;
+    color:black;
+ }
+
 
 /*** ORDER - DETAILS RESPONSIVE ***/
 
@@ -100,6 +129,10 @@
     }
     #infos-details-order ul li{
         font-size: 10px;
+    }
+    #form-status-order{
+        flex-direction: column;
+        width: 80%;
     }
 }
 
