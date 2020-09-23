@@ -149,90 +149,90 @@ header{
 
 /******* AJOUT LOUISE DROPDOWN PANIER HEADER *********/
 #basket{
-  display: flex !important;
-  justify-content:flex-end !important;
-  width:250px !important;
+  display: flex;
+  justify-content:flex-end;
+  width:250px;
 }
 ion-icon{
-  color:#D0D0D0 !important;
-  font-size: 30px !important;
-  margin-right: 20px !important;
+  color:#D0D0D0;
+  font-size: 30px;
+  margin-right: 20px;
 }
 #profile{
-  display: flex !important;
-  width:50px !important;
-  justify-content: center !important;
-  align-items:center !important;
-  justify-content:flex-end !important;
+  display: flex;
+  width:50px;
+  justify-content: center;
+  align-items:center;
+  justify-content:flex-end;
 }
 
 .dropdown-content {
-  display: none !important;
-  position:absolute !important;
-  background-color: #F9FDF6 !important;
-  min-width: 250px !important;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
-  padding: 12px 16px !important;
-  z-index: 1 !important;
-  font-family: 'Exo', sans-serif !important;
+  display: none ;
+  position:absolute;
+  background-color: #F9FDF6;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1 ;
+  font-family: 'Exo', sans-serif;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block !important;
+  display: block;
 }
 
 .dropdown-content span{
-  font-family: 'Exo', sans-serif !important;
-  font-size:11px !important;
+  font-family: 'Exo', sans-serif;
+  font-size:11px;
 }
 
 .dropdown-content2 {
-  display: none !important;
-  position:absolute !important;
-  background-color: #F9FDF6 !important;
-  min-width: 150px !important;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
-  z-index: 1 !important;
-  font-family: 'Exo', sans-serif !important;
-  margin-left:-120px !important;
+  display: none;
+  position:absolute;
+  background-color: #F9FDF6;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: 'Exo', sans-serif;
+  margin-left:-120px;
 }
 
 .dropdown:hover .dropdown-content2 {
-  display: block !important;
-  transition:1.5 !important;
+  display: block;
+  transition:1.5;
 }
 
 .dropdown-content2 span{
-  font-family: 'Exo', sans-serif !important;
-  font-size:11px !important;
+  font-family: 'Exo', sans-serif;
+  font-size:11px;
 }
 
 #dropdown-title{
-  display: flex !important;
-  background-color: black !important;
-  color: #F9FDF6 !important;
-  justify-content: center !important;
-  font-family: 'Exo', sans-serif !important;
-  font-size: 12px !important;
-  letter-spacing: 1px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+  display: flex;
+  background-color: black;
+  color: #F9FDF6;
+  justify-content: center;
+  font-family: 'Exo', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .dropdownlist{
-  display:flex !important;
-  padding: 10px !important;
-  border:0.5px solid #EEF3E9 !important;
-  font-family: 'Exo', sans-serif !important;
-  font-size: 10px !important;
-  color:black !important;
-  letter-spacing: 1px !important;
+  display:flex;
+  padding: 10px;
+  border:0.5px solid #EEF3E9;
+  font-family: 'Exo', sans-serif;
+  font-size: 10px;
+  color:black;
+  letter-spacing: 1px;
 }
 
 .dropdownlist:hover{
-  color:#00FF00 !important;
-  background-color:black !important;
-  transition: 1.5s !important;
+  color:#00FF00;
+  background-color:black;
+  transition: 1.5s;
 }
 
 .row{
@@ -2507,130 +2507,3 @@ padding-top: 5px;
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-/*** CGV ***/
-h3 {
-  text-align: center;
-}
-
-/*Container*/
-.container {
-  position: relative;
-  z-index: 1;
-  width: 80%;
-  margin: 20px auto;
-  padding: 10px;
-  min-height: 150px;
-  height: auto;
-  -webkit-box-shadow: 7px 13px 8px -8px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 7px 13px 8px -8px rgba(0, 0, 0, 0.75);
-  box-shadow: 7px 13px 8px -8px rgba(0, 0, 0, 0.75);
-  border: 1px solid black;
-  text-align: justify;
-}
-
-.box {
-  position: relative;
-  width: 70%;
-  background: #fff;
-  margin: 20px auto;
-  text-align: justify;
-}
-
-/*** FAQ ***/
-.container-faq h2 {
-  color: #282F35;
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.container-faq p {
-  color: #666666;
-  font-family: 'Malgun Gothic', Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 20px;
-}
-
-.container-faq {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.acc {
-  margin: 90px 0;
-  overflow: hidden;
-  padding: 0;
-}
-
-.acc li {
-  list-style-type: none;
-  padding: 0;
-}
-
-.acc_ctrl {
-  background: #FFFFFF;
-  border: none;
-  border-bottom: solid 1px #F2F2F2;
-  cursor: pointer;
-  display: block;
-  outline: none;
-  padding: 2em;
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
-
-.acc_ctrl:before {
-  background: #44596B;
-  content: '';
-  height: 2px;
-  margin-right: 37px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  width: 14px;
-}
-
-.acc_ctrl:after {
-  background: #44596B;
-  content: '';
-  height: 2px;
-  margin-right: 37px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 14px;
-}
-
-.acc_ctrl.active:before {
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-.acc_ctrl.active h2, .acc_ctrl:focus h2 {
-  position: relative;
-}
-
-.acc_panel {
-  background: #F2F2F2;
-  display: none;
-  overflow: hidden;
-}
