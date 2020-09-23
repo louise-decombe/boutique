@@ -17,7 +17,7 @@
 <body>
 <header>
 <?php
-    include("includes/header.php"); 
+    include("includes/header.php");
 ?>
 </header>
 <main>
@@ -36,15 +36,12 @@
          ?>
 
         <label>Envoi d'une newsletter</label>
-<label for="">Mail</label>
-        <input type="text" class="" name="email_utilisateur" value="<?php
+<label for="">@ tout les clients</label>
 
-$mail= $db->query("SELECT * FROM newsletter");
-        echo $mail[""]; ?>"/>
         <label for="">Message</label>
         <input type="text" class="" name="nom_categorie"/>
     <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit" value="Ajouter une catégorie"/>
+    <input type="submit" class="" name="submit" value="Envoyer"/>
 </form>
 </section>
 </section>
