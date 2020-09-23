@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <?php $page_selected = 'admin_nav.php';
 ?>
 

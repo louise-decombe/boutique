@@ -24,9 +24,20 @@
         <?php require("admin_nav.php"); ?>
     </section>
     <section>
+      <center>
+<div class="container-valider">
+<div class="valider">
+  <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
 
-        <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
-        <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
+</div>
+<div class="valider">
+  <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
+
+</div>
+
+
+</div>
+</center>
 
     <?php
     if (isset($_GET['utilisateurs'])) {
@@ -40,6 +51,7 @@
     } ?>
 
             UTILISATEURS
+            <div class="rtable">
             <table>
                 <tr>
                     <th>#</th>
@@ -87,6 +99,7 @@ $is_admin=$user['is_admin'];
                 <?php } ?>
 
             </table>
+          </div>
 
 
 <?php

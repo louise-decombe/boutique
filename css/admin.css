@@ -22,7 +22,7 @@
 	list-style: none;
 	position: relative;
 	}
-	
+
   #container-nav nav ul li {
 	display:inline-block;
 	background-color: black;
@@ -30,29 +30,29 @@
 
   #container-nav nav a {
 	display:block;
-	padding:0 10px;	
+	padding:0 10px;
 	color:#FFF;
 	font-size:16px;
 	line-height: 60px;
 	text-decoration:none;
 }
 
-#container-nav nav a:hover { 
-	background-color: #000000; 
+#container-nav nav a:hover {
+	background-color: #000000;
 }
 
 /* Hide Dropdowns by Default */
 #container-nav nav ul ul {
 	display: none;
-	position: absolute; 
+	position: absolute;
 	top: 60px; /* the height of the main nav */
 }
-	
+
 /* Display Dropdowns on Hover */
 #container-nav nav ul li:hover > ul {
 	display:inherit;
 }
-	
+
 /* Fisrt Tier Dropdown */
 #container-nav nav ul ul li {
 	width:170px;
@@ -64,14 +64,92 @@
 /* Second, Third and more Tiers	*/
 #container-nav nav ul ul ul li {
 	position: relative;
-	top:-60px; 
+	top:-60px;
 	left:170px;
 }
 
-	
+
 /* Change this in order to change the Dropdown symbol */
 #container-nav li > a:after { content:  ' +'; }
 #container-nav li > a:only-child:after { content: ''; }
 
 
 /**** RESPONSIVE NAV BAR ADMIN ****/
+
+
+
+.rtable {
+
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  // optional - looks better for small cell values
+  white-space: nowrap;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.rtable tbody {
+  -webkit-overflow-scrolling: touch;
+  background-size: 10px 100%, 10px 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+}
+
+.rtable td:first-child
+ {
+  background-repeat: no-repeat;
+  background-size: 20px 100%;
+}
+
+.rtable td:last-child
+{
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 20px 100%;
+}
+
+.rtable th {
+  font-size: 11px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.rtable th,
+.rtable td {
+  padding: 6px 12px;
+}
+
+.container-valider{
+}
+
+.valider  {
+	background-color: white;
+	color: black;
+	width: 30%;
+	margin: 1%;
+padding: 1%;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	border: 1px solid gray;
+	text-decoration:none;
+
+}
+
+.valider:hover {
+	background-color: black;
+	color: white;
+	width: 30%;
+	margin: 1%;
+	padding:1%;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	border: 1px solid gray;
+	text-decoration:none;
+}
