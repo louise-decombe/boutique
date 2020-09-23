@@ -45,7 +45,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id article
 
-
                 $requestimg = "UPDATE `image_article` SET `chemin`='$file_path' WHERE id_article = '$id_article'";
                 $resultimg = mysqli_query($db, $requestimg);
 

@@ -101,9 +101,7 @@
                 <h4>Mentions légales</h4>
                 <ul>
                     <li><a href="cgv.php">c.g.v.</a></li>
-                    <li><a href="confidentialite.php">politique de confidentialité</a></li>
                     <li><a href="mentions-legales.php">mentions légales</a></li>
-                    <li><a href="cookies.php">charte cookies</a></li>
                 </ul>
             </section>
             <section id="footer-nav">
