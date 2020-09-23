@@ -24,7 +24,7 @@
         <?php require("admin_nav.php"); ?>
     </section>
     <section>
-    
+
         <a href="admin_utilisateurs.php?utilisateurs">Voir les utilisateurs</a><br/>
         <a href="admin_utilisateurs.php?ajouter">ajouter un utilisateur</a><br/>
 
@@ -184,15 +184,6 @@ if (isset($_GET['ajouter'])) {
                                <label for="gender">non genré</label>
                            </section>
 
-                           <section id="box-gender">
-                               <label>ADMIN</label>
-                               <input type="radio" name="is_admin" id="is_admin" value="1">
-                               <label for="is_admin" value="1">Oui</label>
-                               <input type="radio" name="is_admin" id="is_admin" value="2">
-                               <label for="is_admin" value="2">Non</label>
-                           </section>
-
-
                     <label>Name</label>
                     <input type="text"  name="nom" value="<?php echo $userData['nom']; ?>"/>
                     <label>prenom</label>
@@ -207,6 +198,7 @@ if (isset($_GET['ajouter'])) {
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
+                <input type="hidden" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
                 <input type="submit"  name="submit" value="Modifier l'utilsateur"/>
             </form>
           </section>
