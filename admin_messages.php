@@ -28,14 +28,24 @@
     <?php require("admin_nav.php"); ?>
 </section>
 
-<a href="admin_messages.php?clients">Messages clients</a><br/>
+<center>
+<div class="container-valider">
+<div class="valider">  <a href="admin_messages.php?clients">Messages clients</a><br/>
+
+</div>
+<div class="valider">
 <a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
+</div>
+</div>
+</center>
 <div class="container-treatment">
 <div class="treatment-order">
 <?php
 
 if (isset($_GET['clients'])) { ?>
 <h3>Message des utilisateurs<h3>
+  <div class="rtable">
+
   <table>
       <tr>
           <th>Message</th>
@@ -66,12 +76,15 @@ if (isset($_GET['clients'])) { ?>
 </table>
 </div>
 </div>
+</div>
+
 
 <?php
      if (isset($_GET['vendeurs'])) { ?>
        <div class="container-treatment">
        <div class="treatment-order">
     <h3>Message des utilisateurs</h3>
+<div class="rtable">
 
        <table>
            <tr>
@@ -115,4 +128,3 @@ if (isset($_GET['clients'])) { ?>
 </main>
 </body>
 </html>
-
