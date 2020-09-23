@@ -1,3 +1,4 @@
+
 <?php
 require 'class/db.php';
 require 'class/panier.php';
@@ -43,11 +44,11 @@ if (isset($_POST["deco"])) {
 
               {
                   ?>
-              
+
                <li>
                    <a href="admin.php"><ion-icon name="construct-outline"></ion-icon></a>
                </li>
-            
+
            <?php }else{?>
 
                 <div class="dropdown">
@@ -99,9 +100,7 @@ if (isset($_POST["deco"])) {
                             <div class="dropdown-content2">
                             <li id="dropdown-title">bonjour @ <?= $_SESSION['user']['firstname'] ?></li>
                             <li><a class="dropdownlist" href="profil.php">MES INFORMATIONS</a></li>
-                            <li><a class="dropdownlist" href="orders.php">MES COMMANDES</a></li>
-                            <li><a class="dropdownlist" href="deliveries.php">MES LIVRAISONS</a></li>
-                            <li><a class="dropdownlist" href="profil.php">CHANGER LE PASSWORD</a></li>
+                            <li><a class="dropdownlist" href="orders_track.php">MES COMMANDES</a></li>
                             <li><a class="dropdownlist" href="wishlist.php">WHISHLIST</a></li>
                             <li>
                                 <form action="index.php" method="post">

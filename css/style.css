@@ -362,7 +362,7 @@ ion-icon{
   width: 50px;
   height: 50px;
   box-sizing: border-box;
-  border-radius: 25px;
+  border-radius: 25px; 
 }
 
 #loupe{
@@ -452,7 +452,7 @@ ion-icon{
     align-items:center;
     justify-content:flex-end;
   }
-
+  
   #toplogo h1{
     margin-top: 2.5%;
     font-size: 1em;
@@ -503,18 +503,18 @@ ion-icon{
     justify-content: center;
     width: 100%;
   }
-
+  
   .wrapper nav ul.menu-area ul{
     width: 95%;
     color:#262626;
   }
-
+  
   .wrapper nav ul.menu-area a{
     margin-bottom: 15px;
     text-transform: uppercase;
-
+    
   }
-
+ 
   .wrapper nav ul.menu-area ul li a{
     flex-direction: column;
     font-size:10px;
@@ -523,7 +523,7 @@ ion-icon{
   #all_categories{
     margin-right: 0;
   }
-
+  
   .search{
     width: 70%;
     height: 30px;
@@ -532,11 +532,11 @@ ion-icon{
     display: none;
     font-size: 0.5em;
   }
-
+  
   #search-form:hover{
     width: 200px;
   }
-
+  
   #search-form:hover input{
     margin-left:20%;
   }
@@ -544,8 +544,8 @@ ion-icon{
   #loupe{
     margin-top: -7.5%;
   }
-
-
+  
+  
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -1213,24 +1213,24 @@ footer{
     width: 225px;
     height: 270px;
   }
-
+  
   .front, .back{
     margin-left:20px;
     margin-right:20px;
     width: 98%;
     height: 98%;
   }
-
-
+  
+  
   .back{
     width: 225px;
     height: 270px;
   }
-
+  
   .back-content{
     width: 90%;
   }
-
+  
   .back-content img{
     width: 130px;
     height: 180px;
@@ -1282,15 +1282,15 @@ footer{
     margin-top:0%;
   }
 
-
+  
   #superposition-title{
     display: none;
   }
-
+  
   .selection{
     flex-direction: column;
   }
-
+  
   .card img{
     width: 375px;
     height: 410px;
@@ -1310,13 +1310,13 @@ footer{
     width: 200px;
     height: 250px;
   }
-
-  #link_news a{
+  
+  #link_news a{ 
     width: 50%;
     margin-left : 25%;
   }
-
-
+  
+  
   #index-part2{
     width: 90%;
     margin-top: 5%;
@@ -1327,9 +1327,9 @@ footer{
     flex-direction: column;
     margin-bottom:5%;
 
-   }
-
-
+   }   
+  
+  
   #index-part2 article{
     display: flex;
     flex-direction:column;
@@ -1339,11 +1339,11 @@ footer{
     margin-right: 0;
   }
 
-
+  
   #index-part2 article p{
     font-size:10px;
   }
-
+  
   #index-part2 img{
     width: 100%;
     height: 100%;
@@ -1372,14 +1372,14 @@ footer{
     padding: 25px;
     position:relative;
   }
-
+  
   #inner-container h4{
     margin-bottom:25px;
     font-size:30px;
     font-weight: 900;
   }
-
-
+  
+  
   #about{
     display: flex;
     flex-direction: column-reverse;
@@ -1387,12 +1387,12 @@ footer{
     justify-content: center;
     background-color: white;
   }
-
+  
   #SLIDE_BG{
     width: 100%;
     height:300px;
   }
-
+  
 
 }
 
@@ -1435,15 +1435,15 @@ footer{
     margin-top:1.5%;
   }
 
-
+  
   #superposition-title{
     display: none;
   }
-
+  
   .selection{
     flex-direction: column;
   }
-
+  
   .card img{
     width: 275px;
     height: 310px;
@@ -1467,15 +1467,15 @@ footer{
   main{
     padding-top:
       2.5%;
-
+    
   }
-
-  #link_news a{
+  
+  #link_news a{ 
     width: 50%;
     margin-left : 25%;
   }
-
-
+  
+  
   #index-part2{
     width: 90%;
     margin-top: 5%;
@@ -1486,9 +1486,9 @@ footer{
     flex-direction: column;
     margin-bottom:5%;
 
-   }
-
-
+   }   
+  
+  
   #index-part2 article{
     display: flex;
     flex-direction:column;
@@ -1498,11 +1498,11 @@ footer{
     margin-right: 0;
   }
 
-
+  
   #index-part2 article p{
     font-size:10px;
   }
-
+  
   #index-part2 img{
     width: 100%;
     height: 100%;
@@ -1531,14 +1531,14 @@ footer{
     position:relative;
     overflow: scroll;
   }
-
+  
   #inner-container h4{
     margin-bottom:25px;
     font-size:30px;
     font-weight: 900;
   }
-
-
+  
+  
   #about{
     display: flex;
     flex-direction: column-reverse;
@@ -1546,12 +1546,12 @@ footer{
     justify-content: center;
     background-color: white;
   }
-
+  
   #SLIDE_BG{
     width: 100%;
     height:300px;
   }
-
+  
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** NEWS-IN + SUBCATEGORY ***/
@@ -1719,7 +1719,7 @@ footer{
   #container-article{
     height: 40vh;
   }
-
+  
   #container-article img{
     width: 150px;
     height: 220px;
@@ -2495,16 +2495,16 @@ padding-top: 5px;
     font-size: 10px;
     letter-spacing: 1px;
   }
-
+  
   #table-order th, td {
     font-size: 10px;
     width: 15%;
     }
-
+  
   #table-order th, td a{
     font-size: 11px;
   }
-
+  
 
 }
 
@@ -2610,7 +2610,9 @@ padding-top: 5px;
 }
 
 @media screen and (max-width:700px){
-
+ 
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+

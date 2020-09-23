@@ -80,7 +80,7 @@
           
                 </article>
             </section>
-            
+            <section id="admin-select">
             <?php if(isset ($_SESSION['user']) && ($_SESSION['user']['is_admin']) == 1){ ?>
 
                 <form id="form-status-order" method="POST" action="">
@@ -103,6 +103,7 @@
                 echo '<a href="javascript:history.go(-2)">retour aux commandes</a>';
                 }
             ?>
+            </section>
             
         </section>
     </main>

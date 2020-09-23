@@ -21,10 +21,9 @@
         require 'class/order.php';
         $order = new Order($db);
         $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
-        $last_order = $order->recap_order($_SESSION['user']['id_user']);
-        $detail_order = $order->detail_order($last_order->id_commande );
-        $delivery = $order->delivery_id($last_order->prix_livraison);
-        $all_orders = $order->all_order($_SESSION['user']['id_user']);
+     
+        $all_order = $order->all_order($_SESSION['user']['id_user']);
+
 
         ?>
     </header>
@@ -57,7 +56,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                            <?php foreach ($all_orders as $details){ //var_dump($preparation);
+                            <?php foreach ($all_order as $details){ //var_dump($preparation);
 
                                 $status_order = $details->statut_commande;
                                     if ($status_order == 1){
