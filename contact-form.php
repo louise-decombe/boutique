@@ -11,20 +11,23 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 
 <body>
     <header>
         <?php
         include("includes/header.php");
-        $id_user= ($_SESSION['user']['id_user']);
         ?>
 
     </header>
     <main>
-      <?php if (!empty($_SESSION['statusMsg'])) {
+      <?php  if (isset($_SESSION['user'])) {
+        $id_user= ($_SESSION['user']['id_user']);
+
+   if (!empty($_SESSION['statusMsg'])) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
-          unset($_SESSION['statusMsg']);
+          unset($_SESSION['statusMsg']); }
        ?>
       <section id="container-register">
         <form method="post" action="action_contact_form.php" class="form" id="userForm">
@@ -43,10 +46,12 @@
 
      </section>
      </section>
-<?php } ?>
     </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); }
+        else{
+          echo "vous n'avez pas accès à cette page";
+        }?>
     </footer>
 </body>
 </html>

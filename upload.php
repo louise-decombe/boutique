@@ -11,9 +11,7 @@ $username = "root";
 $password = "";
 $dbname = "boutique";
 $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-$profiledefault = ("https://i.ibb.co/mG6M0f5/empty-profile-picture.jpg"); //variable pour insérer une photo de profil par défaut à l'inscription
-
+$id_article = $_GET['article'];
 
 // Vérifier si le formulaire a été soumis
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,10 +43,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
+               // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id article
 
-               // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id utilisateur
 
-                $requestimg = "UPDATE `image` SET `chemin`='$file_path' WHERE id_article = '$_GET[id_article]'";
+                $requestimg = "UPDATE `image_article` SET `chemin`='$file_path' WHERE id_article = '$id_article'";
                 $resultimg = mysqli_query($db, $requestimg);
 
         //        header("location:admin_articles.php");

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
 <header>
@@ -173,6 +174,18 @@
                 <?= $quote_index['nom_article'] ?>
                 de <?= $quote_index['auteur_article']?>
             </p>
+        </section>
+
+        <section id="about">
+        <div id="SLIDE_BG"></div>
+          <div id="inner-container">
+            <h4 id="section-title">A PROPOS DE NOUS</h4>
+            <p id="section-text">Nous sélectionnons des fanzines avec &nbsp; <ion-icon name="heart"></ion-icon>
+                Nous chinons les concerts et expos du monde entier pour vous faire découvrir ces oeuvres marginales et autenthiques.
+                Vous trouverez en vous baladant ici, des découvertes (rookies), des histoires, des univers et des oeuvres singulières.
+                Les fanzines, le DIY sont la chose la plus utile et la plus futile au monde mais indispensables.
+            </p>
+       </div>
         </section>
     </section>
 

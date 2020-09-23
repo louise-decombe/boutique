@@ -1,12 +1,5 @@
-<?php $page_selected = 'admin_categories.php'; ?>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<?php $page_selected = 'admin_categories'; ?>
 
-<?php
-include("includes/header.php");
-require('admin_nav.php');
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,24 +9,42 @@ require('admin_nav.php');
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin.css">
-          <link rel="stylesheet" href="css/admin-nad.css">
-
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/style-admin-general.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
-
+<header>
+  <?php include("includes/header.php"); ?>
+</header>
+<?php
+if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 1) {
+        ?>
 <main>
-  <?php
-if ($user->is_admin == 0) {
-    ?>
+  <section id="nav-admin-pages">
+    <?php require("admin_nav.php"); ?>
+  </section>
 
 
+
+  <center>
+  <div class="container-valider">
+  <div class="valider">
 
   <a href="admin_categories.php?categorie">Voir les catégories</a><br/>
+</div>
+<div class="valider">
   <a href="admin_categories.php?sous_categorie">Voir les sous catégories</a><br/>
+
+</div>
+<div class="valider">
   <a href="admin_categories.php?ajouter">ajouter une catégorie ou sous catégorie</a><br/>
-  </div>
+
+</div>
+</div>
+</center>
 
   <div class="container-treatment">
 <div class="treatment-order">
@@ -53,11 +64,11 @@ if ($user->is_admin == 0) {
         $users = $db->getRows('categorie', array('order_by'=>'id_categorie DESC'));
         if (!empty($users)) {
             foreach ($users as $user) {
-         ?>
+                ?>
                 <tr>
                     <td><?php echo $user['nom_categorie']; ?></td>
                     <td>
-                        <a href="admin_categories.php?id_categorie=<?php echo $user['id_categorie']; ?>" class="glyphicon glyphicon-edit"></a>
+                        <a href="admin_categories.php?id_categorie=<?php echo $user['id_categorie']; ?>"><i class="far fa-edit"></i></a>
                         <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_categorie']; ?> " onclick="return confirm('Are you sure?');">X</a>
                     </td>
                 </tr>
@@ -94,16 +105,14 @@ if ($user->is_admin == 0) {
 
 
               <td>
-                  <a href="admin_categories.php?id=<?php echo $user['id_sous_categorie']; ?>" class="glyphicon glyphicon-edit"></a>
+                  <a href="admin_categories.php?id=<?php echo $user['id_sous_categorie']; ?>"><i class="far fa-edit"></i></a>
                   <a href="action_sous_categorie.php?action_type=delete&id_sous_categorie=<?php echo $user['id_sous_categorie']; ?> " onclick="return confirm('Are you sure?');">X</a>
               </td>
           </tr>
           <?php
             }
         }
-    }
-
-?>
+    } ?>
 </table>
 
 </div>
@@ -155,12 +164,11 @@ if ($user->is_admin == 0) {
                 <?php
                 $products = $db->query('SELECT * FROM categorie');
 
-                foreach ($products as $product):
+            foreach ($products as $product):
                 // On affiche chaque entrée une à une
 
                 ?>
-                <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>";
-                ?>
+                <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>"; ?>
                 <br />
                 <?php endforeach; ?>
                   </select>
@@ -176,9 +184,6 @@ if ($user->is_admin == 0) {
     } ?>
 
 <?php if (isset($_GET['ajouter'])) { ?>
-
-
-
 
               <section id="container-register">
                 <form method="post" action="action_categorie.php" class="" id="userForm">
@@ -230,6 +235,9 @@ foreach ($products as $product):
 
 
 <?php
+    }
+} else {
+    echo "vous n'avez pas le droit d'accéder à cette page";
 } ?>
     </main>
     <footer>

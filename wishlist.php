@@ -12,12 +12,14 @@
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-profile.css">
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
 <header>
     <?php
     include("includes/header.php");
+    if (isset($_SESSION['user'])) {
    ?>
 </header>
 
@@ -46,8 +48,6 @@
 		<div class="wrap">
 
 			<?php
-
-    if (isset($_SESSION['user'])){
 
   $id_utilisateur= $_SESSION['user']['id_user'];
 
@@ -102,4 +102,4 @@ onclick="return confirm('Etes vous sûr?');">Supprimer</a>
 echo "vous ne pouvez pas accéder à cette page sans vous <a href='connexion.php'> connecter </a> ou bien vous
 <a href='subscription.php'> inscrire </a>";
 
-} ?>
+  }  ?>

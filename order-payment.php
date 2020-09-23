@@ -1,4 +1,4 @@
-<?php $page_selected = 'order'; ?>
+<?php $page_selected = 'order-payment'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,24 +11,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-order-payment.css">
-    <link rel="stylesheet" href="stripe-card-payment/global.css" />
-    
+    <link rel="stylesheet" href="stripe-card-payment/global.css"/>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
 </head>
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
+        if (isset($_SESSION['user'])) {
+
         require 'class/order.php';
         $order = new Order($db);
 
-        if(isset($_SESSION['user'])){ 
+        if(isset($_SESSION['user'])){
 			$ids = array_keys($_SESSION['panier']);
 			if(empty($ids)){
 			$products = array();
 			}else{
 			$products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
-            } 
+            }
 
         if (isset($_POST['validation_paiement'])) {
             $order->register_order(
@@ -53,7 +56,7 @@
 	   		</ul>
         </nav>
         <section id="sub-order">
- 
+
             <section id="container-form-order">
                 <section id="container-delivery">
                     <form id="payment-form" action="" method="POST">
@@ -63,18 +66,18 @@
                             }else{
                         ?>
                             <h1>veuillez sélectionner un mode de livraison</h1>
-                           
+
                         <?php } ?>
                         <section id="radio-section">
                             <?php $delivery = $order->delivery();
                             foreach ($delivery as $deliver){ ?>
                             <input type="radio" name="delivery" id="<?= $deliver->prix_livraison ?>" value="<?= $deliver->prix_livraison ?>"<?php if(isset($_POST['submit_delivery']) && $_POST['delivery'] == $deliver->prix_livraison ){echo "checked";}?>>
                             <label for="<?= $deliver->nom_livraison ?>"><?= $deliver->nom_livraison ?> à <?= $formatter->formatCurrency($deliver->prix_livraison,'EUR'), PHP_EOL; ?></label>
-                            <?php } 
-                            ?> 
+                            <?php }
+                            ?>
                         </section>
                         <section><button type="submit" name="submit_delivery">SÉLECTIONNER</button></section>
-                    </form> 
+                    </form>
                 </section>
 
                 <h1>veuillez compléter le formulaire pour valider votre commande</h1>
@@ -104,11 +107,11 @@
                     <script> var stripe = Stripe("pk_test_51HJwrZLT8eXrW46UD5Li0cqJrXY18J9S6hxcTTPakcIde8WGDSaoWHKulWpSlii5gy2BzJEIDZ5Z1w8wWf0yCWnv00HYvLhXaQ"); </script>
                 </section>
             </section>
-           
+
             <section id="recap-order">
                 <article>
                 <span id="count">nombre d'articles<?= $panier->count(); ?></span>
-                    <?php 
+                    <?php
                         foreach($products as $product){
                             $check = $panier->check_stock($product->id_article);
                             if($check[0]->nb_articles_stock > 0 ){
@@ -119,7 +122,7 @@
                             <span><?= $product->id_article; ?></span>
                             <span class="quantity"> qté  <?= $_SESSION['panier'][$product->id_article]; ?></span>
                             <span>
-                                <?php 
+                                <?php
 									$sub_total = $panier->sub_total($product->prix_article, $_SESSION['panier'][$product->id_article]);
                                     echo $formatter->formatCurrency($sub_total,'EUR'), PHP_EOL;
 								?>
@@ -127,7 +130,7 @@
 			                <span><a href="panier.php">modifier</a></span>
                         </article>
 					    <?php } else{ ?>
-                        
+
                         <span> Un des articles sélectionné n'est plus disponible en stock <span>
                     <?php }} ?>
                         </article>
@@ -143,13 +146,15 @@
                         </section>
             </section>
                         <?php } ?>
-                
+
             <?php }else{ ?>
             <section id="connect-panier">
                 <a id="white-box" href="connexion.php">Connecte-toi pour valider ton panier !</a>
                 <a id="black-box" href="inscription.php">ou crée ton compte en quelques clics.</a>
             </section>
-            <?php } ?>
+          <?php } }else{
+            echo "vous n'avez pas le droit d'accéder à cette page";
+          } ?>
         </section>
         </section>
     </main>

@@ -22,9 +22,9 @@ require("admin_nav.php")
 </header>
 <main>
   <?php
-
-if($user->is_admin==1) {
-   ?>
+  if (isset($_SESSION['user'])) {
+      if ($user->is_admin == 1) {
+          ?>
 <div class="admin">
 
 
@@ -32,7 +32,7 @@ if($user->is_admin==1) {
 <?php }else{
   echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
   echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+} } ?>
 </main>
 </body>
 </html>

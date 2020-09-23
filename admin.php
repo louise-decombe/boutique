@@ -1,9 +1,4 @@
 <?php $page_selected = 'admin';?>
-
-<?php
-include("includes/header.php");
-require("admin_nav.php");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +12,19 @@ require("admin_nav.php");
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<header>
+<?php
+include("includes/header.php");
+?>
+</header>
+<?php  if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 1) { ?>
 <main>
+    <section id="nav-admin-pages">
+        <?php require("admin_nav.php"); ?>
+    </section>
   <?php
 
-if ($user->is_admin==0) {
     ?>
     <center><h1>ADMINISTRATION DU SITE</h1></center>
 
@@ -41,17 +45,20 @@ if (!empty($users)) {
                 <a href="action_contact_form.php?action_type=delete&id_message_utilisateur=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Are you sure?');">X</a>
             </td>
         </tr>
-<?php ; } ?>
+<?php ;
+    } ?>
 </div>
 </div>
 
 <h3>Dernière commande </h3>
 
-<?php }
+<?php
+}
+}
 } else {
-        echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ";
-        echo "<a href='index.php'> Retour à l'accueil </a>";
-    } ?>
+    echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ";
+    echo "<a href='index.php'> Retour à l'accueil </a>";
+} ?>
 </main>
 </body>
 </html>

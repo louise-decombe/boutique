@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="style-order.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
 <header>
@@ -26,9 +28,8 @@
            <form method='post'>
              <h1>Chercher un article</h1>
              <section id="box-form">
-
           	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
-             <button type="submit" name="button" id="container-delivery">Rechercher</button>
+             <button type="submit" name="search" id="container-delivery">Rechercher</button>
 </section>
 </section>
          </form>
@@ -38,6 +39,9 @@
 
           	 <tbody>
           		 <?php
+
+
+
               $sql = 'SELECT * FROM article';
               $params = [];
               if (isset($_POST['recherche_valeur'])) {
@@ -59,7 +63,8 @@
                   $resultats->closeCursor();
               } else {
                   echo '<tr><td>aucun résultat trouvé</td></tr>' . $connect = null;
-              } ?>
+              }
+             ?>
 </table><br/></center>
 
 </main>

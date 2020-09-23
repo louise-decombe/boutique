@@ -19,6 +19,8 @@
         include("includes/header.php");
     ?>
 </header>
+<?php  if (isset($_SESSION['user'])) {
+      if ($user->is_admin == 1) { ?>
 <main>
     <section id="nav-admin-pages">
         <?php require("admin_nav.php"); ?>
@@ -219,7 +221,13 @@ if (isset($_GET['ajouter'])) {
       </section>
 <?php
         }
-    } ?>
+    }
+  }
+}else{
+
+echo "vous n'avez pas le droit d'accéder à cette page";
+
+} ?>
 
 
 

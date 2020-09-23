@@ -1,8 +1,4 @@
-<?php $page_selected = 'admin_messages.php'; ?>
-<?php
-include("includes/header.php");
-require("admin_nav.php")
-?>
+<?php $page_selected = 'admin_messages'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,26 +8,44 @@ require("admin_nav.php")
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="css/style-admin-general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
+<header>
+    <?php include("includes/header.php"); ?>
+</header>
 
-   <?php
+<?php
+if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 1) {
+        ?>
 
- if ($user->is_admin==0) {
-     ?>
 <main>
+<section id="nav-admin-pages">
+    <?php require("admin_nav.php"); ?>
+</section>
 
-<a href="admin_messages.php?clients">Messages clients</a><br/>
+<center>
+<div class="container-valider">
+<div class="valider">  <a href="admin_messages.php?clients">Messages clients</a><br/>
+
+</div>
+<div class="valider">
 <a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
+</div>
+</div>
+</center>
 <div class="container-treatment">
 <div class="treatment-order">
 <?php
 
 if (isset($_GET['clients'])) { ?>
 <h3>Message des utilisateurs<h3>
+  <div class="rtable">
+
   <table>
       <tr>
           <th>Message</th>
@@ -62,12 +76,15 @@ if (isset($_GET['clients'])) { ?>
 </table>
 </div>
 </div>
+</div>
+
 
 <?php
      if (isset($_GET['vendeurs'])) { ?>
        <div class="container-treatment">
        <div class="treatment-order">
     <h3>Message des utilisateurs</h3>
+<div class="rtable">
 
        <table>
            <tr>
@@ -104,7 +121,8 @@ if (isset($_GET['clients'])) { ?>
       </div>
 </div>
 <?php
- } else {
+}
+ }else {
      echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
      echo "<a href='index.php'> Retour à l'accueil </a>";
  }   ?>
