@@ -395,6 +395,19 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+#adress-box{
+    display: flex;
+}
+
+#zip-input{
+    width: 20% !important;
+}
+
+#city-input{
+    width: 40% !important;
+}
+
+
 
 
 

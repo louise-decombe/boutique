@@ -56,7 +56,7 @@ class Order{
         return $calcul;
     }
 
-    public function register_order( $firstname, $lastname, $address, $delivery_choice, $nb_article, $sous_total, $prix_total)
+    public function register_order( $firstname, $lastname, $address, $delivery_choice, $id_livraison, $nb_article, $sous_total, $prix_total)
     {
         $connexion = $this->db->connectDb();
 

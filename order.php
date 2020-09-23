@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-order.css">
-    <link rel="stylesheet" href="stripe-card-payment/global.css" />
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script type="text/javascript">
         function modification(X)
         {
@@ -42,11 +40,13 @@
             } 
 
         if (isset($_POST['validation_paiement'])) {
+            $_POST['address'] = $_POST['street'].' '.$_POST['zip'].' '.$_POST['city'];
             $order->register_order(
                 $_POST['firstname'],
                 $_POST['lastname'],
                 $_POST['address'],
                 $_POST['delivery_choice'],
+                $_POST['id_delivery'],
                 $_POST['nb_article'],
                 $_POST['sous_total'],
                 $_POST['prix_total']
@@ -76,8 +76,8 @@
                         <?php } ?>
                             <section id="radio-section">
                             <?php $delivery = $order->delivery();
-                            foreach ($delivery as $deliver){ ?>
-
+                            foreach ($delivery as $deliver){ //var_dump($deliver);?>
+                            
                                 <input type="radio" name="delivery" id="<?= $deliver->prix_livraison ?>" value="<?= $deliver->prix_livraison ?>"<?php if(isset($_POST['submit_delivery']) && $_POST['delivery'] == $deliver->prix_livraison ){echo "checked";}?>>
                                 <label for="<?= $deliver->nom_livraison ?>"><?= $deliver->nom_livraison ?> à <?= $formatter->formatCurrency($deliver->prix_livraison,'EUR'), PHP_EOL; ?></label>
 
@@ -88,19 +88,28 @@
                         </form> 
                     </section>
 
-                    <?php if(isset($_POST["submit_delivery"])){ ?>
+                    <?php if(isset($_POST["submit_delivery"])){ 
+                       $id_del = $order->delivery_id($prix_delivery);
+                       $id_delivery = $id_del['id_livraison'];
+                       //var_dump($id_delivery);
+                    ?>
                     <section id="container-infos-order">
                         <form action="" method='POST'>
                             <section id="delivery-infos">
                                 <legend> - vos informations de livraison - </legend>
                                 <section>
-                                    <input type="text" name="firstname" placeholder="prénom*">
-                                    <input type="text" name="lastname" placeholder="nom*">
-                                    <input id="address" type="text" name="address" placeholder="adresse postale*">
-                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur"> 
+                                    <input type="text" name="firstname" placeholder="prénom*" size="95" required>
+                                    <input type="text" name="lastname" placeholder="nom*" size="95" required>
+                                    <input id="address" type="text" name="street" placeholder="adresse postale*" size="95" required>
+                                    <section id="adress-box">
+                                        <input id="city-input" type="text" name="city" placeholder="ville*" required>
+                                        <input id="zip-input" type="text" name="zip" placeholder="code postal*" required>
+                                    </section>
+                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95"> 
                                 </section>
                             </section>
 
+                            <input type="hidden" name="id_delivery" value="<?=$id_delivery?>">
                             <input type="hidden" name="delivery_choice" value="<?=$prix_delivery?>">
                             <input type="hidden" name="nb_article" value="<?=$panier->count();?>">
                             <input type="hidden" name="sous_total" value="<?=$panier->total()?>">
@@ -125,17 +134,15 @@
                                     </section>
                                     <section>
                                         <label>numéro de carte bancaire* &nbsp;</label>
-                                        <section id="input-cb">
-                                            <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                            <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                            <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
-                                            <input id="groupe4" type="text" size="4" maxlength="4">
-                                        </section>
+                                        <input id="groupe1" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                        <input id="groupe2" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                        <input id="groupe3" type="text" size="4" maxlength="4" onkeyup="modification(this)" required>
+                                        <input id="groupe4" type="text" size="4" maxlength="4">
                                         <section id="cb-infos">
                                             <label>date d'expiration*</label>
-                                            <input type="text" placeholder="MM/YYYY*" required>
+                                            <input type="text" placeholder="MM/YYYY*"  maxlength="5" required>
                                             <label>CVC*</label>
-                                            <input type="password" placeholder="CVC*" required>
+                                            <input type="password" placeholder="CVC*"  size="3" maxlength="3" required>
                                         </section>
                                     </section>
                                 </section>
@@ -199,4 +206,3 @@
     </footer>
 </body>
 </html>
-
