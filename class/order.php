@@ -3,8 +3,8 @@ class Order{
 
     private $db;
     public $id_commande;
-   
-    
+
+
     public function __construct($db)
     {
         $this->db = $db;
@@ -22,7 +22,7 @@ class Order{
         $prix_delivery = $delivery[0]['prix_livraison'];
 
         echo  $prix_delivery.'0';
-        
+
 		return $delivery;
 	}
 
@@ -33,9 +33,9 @@ class Order{
         $q = $connexion->prepare("SELECT * FROM livraison ORDER by prix_livraison ASC ");
         $q->execute();
 		$delivery = $q->fetchAll(PDO::FETCH_OBJ);
-		
-		return $delivery; 
-			
+
+		return $delivery;
+
     }
 
     public function delivery_id($prix_delivery){
@@ -43,20 +43,20 @@ class Order{
         $q = $connexion->prepare("SELECT * FROM livraison WHERE prix_livraison = $prix_delivery ");
         $q->execute();
 		$selected_delivery = $q->fetch();
-		
-		return $selected_delivery; 
-			
+
+		return $selected_delivery;
+
     }
-    
+
     // ESTIMATION PRIX TOTAL AVANT VALIDATION COMMANDE
     public function estimation($total_panier, $default_delivery) {
 
         $calcul = $total_panier + $default_delivery;
-        
+
         return $calcul;
     }
 
-    public function register_order( $firstname, $lastname, $address, $delivery_choice, $id_livraison, $nb_article, $sous_total, $prix_total)
+    public function register_order( $firstname, $lastname, $address, $delivery_choice, $id_delivery, $nb_article, $sous_total, $prix_total)
     {
         $connexion = $this->db->connectDb();
 
@@ -77,7 +77,7 @@ class Order{
         //if (!$address_required) {
             //$errors[] = "Le code postal doit:<br>- Comporter 5 chiffres.";
         //}
-      
+
         //date
         date_default_timezone_set("Europe/Paris");
 
@@ -142,14 +142,14 @@ class Order{
                 $q1->bindParam(':quantite_article', $qte_article, PDO::PARAM_INT);
                 $q1->bindParam(':id_commande', $id_commande, PDO::PARAM_INT);
                 $q1->execute();
-  
+
             }
 
             // CHECK QTÉ EN STOCK PUIS ENREGISTREMENT DU NOUVEAU STOCK DANS LA TABLE STOCK
-            $qte_check = $connexion->prepare("SELECT detail_commande.id_commande, detail_commande.id_article, detail_commande.quantite_article, stock.nb_articles_stock 
-                                              FROM detail_commande 
-                                              INNER JOIN stock 
-                                              ON detail_commande.id_article = stock.id_article 
+            $qte_check = $connexion->prepare("SELECT detail_commande.id_commande, detail_commande.id_article, detail_commande.quantite_article, stock.nb_articles_stock
+                                              FROM detail_commande
+                                              INNER JOIN stock
+                                              ON detail_commande.id_article = stock.id_article
                                               WHERE detail_commande.id_commande = $id_commande");
             $qte_check->execute();
             $q_check = $qte_check->fetchAll();
@@ -170,7 +170,7 @@ class Order{
             }
             unset($_SESSION['panier']);
             header('location:order_confirmation.php');
-        
+
         }else {
             $message = new messages($errors);
             echo $message->renderMessage();
@@ -213,7 +213,7 @@ class Order{
         return $all_orders;
     }
 
-    
+
     public function all_order($id_user){
 
         $connexion = $this->db->connectDb();
