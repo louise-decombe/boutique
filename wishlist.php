@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="css/style-profile.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -71,9 +74,15 @@
 
 <td>
 <a href="item.php?id=<?php echo $wishlist->id_article ;?>">Voir</a><br/>
-<a class="add addpanier" id="add-basket" href="addpanier.php?id=<? echo $wishlist->id_article ?>">
+
+<!---
+<a class="add addpanier" onclick="window.location.reload()" id="add-basket" href="addpanier.php?id=<? echo $wishlist->id_article ?>">
 Acheter
 </a>
+ --->
+
+
+
 <a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article; ?> "
 onclick="return confirm('Etes vous sûr?');">Supprimer</a>
 </td>

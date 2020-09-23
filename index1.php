@@ -175,6 +175,18 @@
                 de <?= $quote_index['auteur_article']?>
             </p>
         </section>
+
+        <section id="about">
+        <div id="SLIDE_BG"></div>
+          <div id="inner-container">
+            <h4 id="section-title">A PROPOS DE NOUS</h4>
+            <p id="section-text">Nous sélectionnons des fanzines avec &nbsp; <ion-icon name="heart"></ion-icon>
+                Nous chinons les concerts et expos du monde entier pour vous faire découvrir ces oeuvres marginales et autenthiques.
+                Vous trouverez en vous baladant ici, des découvertes (rookies), des histoires, des univers et des oeuvres singulières.
+                Les fanzines, le DIY sont la chose la plus utile et la plus futile au monde mais indispensables.
+            </p>
+       </div>
+        </section>
     </section>
 
 </main>
