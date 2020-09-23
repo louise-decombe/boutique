@@ -1,4 +1,3 @@
-
 <?php
 require 'class/db.php';
 require 'class/panier.php';
