@@ -1,0 +1,116 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** ORDER - DETAILS***/
+
+#header-order-details{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    margin-top: 5%;
+    background: url(background/banner1.jpg);
+    background-size: cover;
+    color:black;
+    letter-spacing: 2px;
+}
+
+#header-order-details h1{
+    display: flex;
+    background-color: rgba(208, 208, 208, 0.7);
+}
+
+#container-order-details{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#before-details{
+    display: flex;
+    width: 80%;
+    padding: 1.5%;
+}
+
+#before-details a{
+    color:black;
+}
+
+#sub-details-order{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+#infos-details-order{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:0.5px solid gray;
+    padding: 2.5%;
+    
+}
+
+#infos-details-order ul li{
+    line-height: 30px;
+}
+
+
+/*** ORDER - DETAILS RESPONSIVE ***/
+
+
+@media (max-width: 980px){
+
+    #header-order-details{
+        margin-top: 25%;
+
+    }
+
+    #container-order-details{
+        padding-bottom:10%;
+    }
+
+    #infos-details-order{
+        width: 57.5%;
+        padding: 2.5%;
+        
+    }
+}
+
+@media screen and (max-width:480px){
+
+    #header-order-details{
+        margin-top: 40%;
+        height: 10vh;
+        letter-spacing: 1px;
+    }
+    #header-order-details h1{
+        font-size: 13px;
+    }
+    #before-details{
+        width: 30%;
+        margin-left: -45%;
+    }
+    #infos-details-order{
+        width: 70%;
+        padding: 2.5%; 
+    }
+    #infos-details-order ul li{
+        font-size: 10px;
+    }
+}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
+
+
+
+
+

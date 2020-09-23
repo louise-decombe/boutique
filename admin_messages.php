@@ -1,8 +1,4 @@
-<?php $page_selected = 'admin_messages.php'; ?>
-<?php
-include("includes/header.php");
-require("admin_nav.php")
-?>
+<?php $page_selected = 'admin_messages'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +8,25 @@ require("admin_nav.php")
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/admin-nad.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="css/style-admin-general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
+<header>
+    <?php include("includes/header.php"); ?>
+</header>
+
 
    <?php
 
  if ($user->is_admin==0) {
      ?>
 <main>
+<section id="nav-admin-pages">
+    <?php require("admin_nav.php"); ?>
+</section>
 
 <a href="admin_messages.php?clients">Messages clients</a><br/>
 <a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
@@ -111,3 +115,4 @@ if (isset($_GET['clients'])) { ?>
 </main>
 </body>
 </html>
+

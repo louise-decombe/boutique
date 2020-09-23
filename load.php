@@ -8,7 +8,7 @@ try
 $connexion=new PDO("mysql:host=localhost;dbname=boutique",'root','root');
 $connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 //echo($_GET['id_page']);
-$data = $connexion->prepare("SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_sous_categorie = '".$_GET['id_page']."' AND A.id_article > '".$_GET['id_item']."' order by A.id_article LIMIT 8");
+$data = $connexion->prepare("SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_sous_categorie = '".$_GET['id_page']."' AND A.id_article > '".$_GET['id_item']."' order by A.id_article LIMIT 12");
 $data->execute();
 $datas = $data->fetchAll();
 
