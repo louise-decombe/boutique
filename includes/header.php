@@ -3,7 +3,6 @@ require 'class/db.php';
 require 'class/panier.php';
 require 'class/users.php';
 require 'class/categories.php';
-
 session_start();
 $db = new DB();
 $panier = new Panier($db);
@@ -44,11 +43,11 @@ if (isset($_POST["deco"])) {
 
               {
                   ?>
-
+              
                <li>
                    <a href="admin.php"><ion-icon name="construct-outline"></ion-icon></a>
                </li>
-
+            
            <?php }else{?>
 
                 <div class="dropdown">
