@@ -65,7 +65,7 @@
             <li><a href="#">NEWSLETTER</a>
             <!-- First Tier Drop Down -->
             <ul>
-                <li><a href="admin_messages.php?clients">voir les inscrits</a></li>
+                <li><a href="admin_newsletter.php">voir les inscrits</a></li>
                 <li><a href="envoi_newsletter.php?">Envoyer une newsletter</a></li>
 
             	<!-- Second Tier Drop Down -->

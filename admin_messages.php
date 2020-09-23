@@ -110,7 +110,7 @@ if (isset($_GET['clients'])) { ?>
               <td><?php echo $user['titre_fanzine']; ?></td>
               <td><?php echo $user['date_registration']; ?></td>
               <td>
-                  <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
+                  <a href="action_seller_form.php?action_type=delete&id_message_vendeur=<?php echo $user['id_message_vendeur']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
               </td>
           </tr>
        <?php

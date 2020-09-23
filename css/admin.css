@@ -127,6 +127,17 @@
 .container-valider{
 }
 
+.valider a{
+	text-decoration: none;
+	color:black;
+}
+
+.valider a:hover{
+	text-decoration: none;
+	color:white;
+}
+
+
 .valider  {
 	background-color: white;
 	color: black;
