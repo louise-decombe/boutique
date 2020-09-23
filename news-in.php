@@ -58,8 +58,7 @@ $current_month = date('F');
   				<section id="description">
                     <a href="item.php?id=<?= $product->id_article; ?>">
                       <?= $formatter->formatCurrency($product->prix_article,'EUR'), PHP_EOL;?>
-                    </a></br>
-                
+                    </a></br>                
                 </section>
             </section>
               <?php endforeach ?>
