@@ -3,7 +3,6 @@ require 'class/db.php';
 require 'class/panier.php';
 require 'class/users.php';
 require 'class/categories.php';
-
 session_start();
 $db = new DB();
 $panier = new Panier($db);
