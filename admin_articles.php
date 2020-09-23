@@ -16,8 +16,6 @@ require('admin_nav.php');
           <link rel="stylesheet" href="css/admin-nad.css">
           <link rel="stylesheet" href="css/admin.css">
           <link rel="stylesheet" type="text/css" href="css/style-item.css">
-
-
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
