@@ -12,7 +12,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Message envoyé !':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-        $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+      //  $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
         header('Location: ' . $referer);
     } elseif ($_REQUEST['action_type'] == 'delete') {
         if (!empty($_GET['id_message_utilisateur'])) {
