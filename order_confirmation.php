@@ -38,39 +38,45 @@
         </section>
         
         <section id="sub-confirmation">
-            <h1>confirmation de paiement d'un montant de <?= $formatter->formatCurrency($last_order->prix_total,'EUR'), PHP_EOL;?></h1>
+            <section id="header-order-details">
+                <h1>confirmation de paiement d'un montant de <?= $formatter->formatCurrency($last_order->prix_total,'EUR'), PHP_EOL;?></h1>
+            </section>
              
-            <section id="infos-confirmation">
-                <article id="infos-box1">
-                    <div id="sub-box">
-                    <ul>
-                        <?php foreach ($detail_order as $details){ 
-                         
-                         $infos_article = $category->article_infos($details -> id_article); //var_dump($infos_article); 
-                            
-                        ?>
-                        <li>titre article : <?=$details -> titre_article ?></li>
-                        <li>quantité <?=$details -> quantite_article ?></li>
-                        <li>auteur : <?= $infos_article['auteur_article']?></li>
-                        <li>editions : <?= $infos_article['editions_article']?></li>
-                        <li><?= $infos_article['nb_pages']?> pages</li>
-                    </ul>
-                    <div><img id="recap-img" src="<?= $infos_article['chemin']?>"></div>
-                        
-                        <?php } ?>
-                    </div>
+            <section id="sub-details-order">
+                <article id="infos-details-order">
                     
+                    <h2>Merci pour votre commande #0000 <?= $last_order->id_commande ?> @ <?= $_SESSION['user']['lastname']?></h2>
+                    <h3> votre commande en date du <td><?= (new DateTime($last_order->date_commande))->format('d-m-Y')?></td> a bien été prise en compte</h3>
+
+                    <article id="infos-box1">
+                        <ul>
+                            <li>prix total : <?= $formatter->formatCurrency($last_order->prix_total_articles,'EUR'), PHP_EOL;?></li>
+                            <li>frais de livraison : <?= $formatter->formatCurrency($last_order->prix_livraison,'EUR'), PHP_EOL;?><li>
+                            <li>Nbre d'articles commandés : <?= $last_order->nbr_total_articles?></li>
+                            <li>Mode de livraison : <?= $delivery['nom_livraison'] ?></li>
+                        </ul>
+                    </article>
+                    </hr>
+                    <article id="infos-box2">
+                        <h4><b>Récapitulatif de commande</b></h4>
+                        <div id="infos-box2-details">
+                        <ul>
+                        <?php foreach ($detail_order as $details){ 
+                            $infos_article = $category->article_infos($details -> id_article); //var_dump($infos_article); 
+                        ?>
+                            <li><?=$details -> titre_article ?></li>
+                            <li>quantité <?=$details -> quantite_article ?></li>
+                            <li>auteur : <?= $infos_article['auteur_article']?></li>
+                            <li>editions : <?= $infos_article['editions_article']?></li>
+                            <li><?= $infos_article['nb_pages']?> pages</li>
+                        </ul>
+                        <div><img id="recap-img" src="<?= $infos_article['chemin']?>"></div>
+                        <?php } ?>
+                        </div>
+                    <article>
+    
                 </article>
-                <article id="infos-box2">
-                    <span id="infos-box-title">Merci pour votre commande #0000 <?= $last_order->id_commande ?> @ <?= $_SESSION['user']['lastname']?></span>
-                    <span> votre commande en date du <td><?= (new DateTime($last_order->date_commande))->format('d-m-Y')?></td> a bien été prise en compte</span>
-                    <ul id="infos-box-order">
-                        <li>prix total : <?= $formatter->formatCurrency($last_order->prix_total_articles,'EUR'), PHP_EOL;?></li>
-                        <li>frais de livraison : <?= $formatter->formatCurrency($last_order->prix_livraison,'EUR'), PHP_EOL;?><li>
-                        <li>Nbre d'articles commandés : <?= $last_order->nbr_total_articles?></li>
-                        <li>Mode de livraison : <?= $delivery['nom_livraison'] ?></li>
-                    </ul>
-                </article>
+                
             </section>
             <section id="link-confirmation-message">
             <p> Vous allez prochainement recevoir un email de confirmation </p>
@@ -89,4 +95,3 @@
     </footer>
 </body>
 </html>
-
