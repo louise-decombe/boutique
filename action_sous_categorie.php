@@ -12,7 +12,7 @@ if (isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])) {
         $insert = $db->insert($tblName, $userData);
         $statusMsg = $insert?'Les données ont été insérées.':'Des problèmes sont survenus, reassayez.';
         $_SESSION['statusMsg'] = $statusMsg;
-        header("Location:admin_categories.php");
+        //header("Location:admin_categories.php");
     } elseif ($_REQUEST['action_type'] == 'edit') {
         if (!empty($_POST['id_sous_categorie'])) {
             $userData = array(

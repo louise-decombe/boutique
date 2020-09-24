@@ -80,6 +80,10 @@
 			<section id="recap-order">
 				<article>
 					<h1>Récapitulatif ( <?= $panier->count(); ?> article(s)) </h1>
+					<?php if($panier->count() == 0){
+						header('location:index1.php');
+					}
+				    ?>
 						<p>sous-total
 						<?= number_format($panier->total(),2,',',' '); ?>€
 						</p>
