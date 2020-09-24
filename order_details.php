@@ -110,10 +110,8 @@
         </section>
     </main>
     <footer>
-        <?php}
-        else{
-          echo "vous n'avez pas le droit d'accéder à cette page";
-        }
+        <?php
+      }
          include('includes/footer.php'); ?>
     </footer>
 </body>
