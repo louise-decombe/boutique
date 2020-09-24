@@ -1,4 +1,4 @@
-<?php $page_selected = 'subcategory.php'; ?>
+<?php $page_selected = 'subcategory'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +9,30 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-category.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
     <header>
     <?php
         include("includes/header.php");
+        $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
     ?>
     </header>
     <main>
-    <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
-        <?php
-        if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $nbr_article=0;
-        $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie FROM sous_categorie INNER JOIN categorie ON sous_categorie.id_categorie = categorie.id_categorie WHERE id_sous_categorie = '$id' ");
-        //var_dump($product);
-       foreach ( $products as $product ):
-        ?>
+
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
+            <?php
+            if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $products = $db->query("SELECT sous_categorie.nom_sous_categorie, categorie.nom_categorie
+                                    FROM sous_categorie
+                                    INNER JOIN categorie
+                                    ON sous_categorie.id_categorie = categorie.id_categorie
+                                    WHERE id_sous_categorie = '$id' ");
+            //var_dump($product);
+            foreach ( $products as $product ):
+            ?>
         <section id="container-news-in">
             <section id="title-subcategory">
                 <h1><?= $product->nom_sous_categorie;?></h1>
@@ -35,43 +42,57 @@
                     <a href="index1.php">home</a>
                 </aside>
             </section>
-          
             <section id="container-news">
+                <?php
+                $article_sub_category  = $category->categorie_article($_GET['id']);
+                $id_page = $_GET['id'];
+                //var_dump($id_page);
 
-            <?php
-
-            $article_sub_category  = $category->categorie_article($_GET['id']);
-            foreach ($article_sub_category as $article){ 
-            ?>
-                <section id="container-article"> 
-                    <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
-                    <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
-                    <section id="description">
-                        <a href="#" >
-                        <?= //number format permet de formater un nombre ici avec deux zéros
-                        number_format($article['prix_article'],2,',',' ');
-                        ?>
-                        €</a>
-                        <?php if(isset($_SESSION['user'])){ ?>
-                        <a href="addwishlist.php?id=<?= $id_article ?>">
-                            <i class="far fa-heart"></i>
-                        </a>
-                        <a class="add addpanier" href="addpanier.php?id=<?= $id_article ?>">
-                            +
-                        </a>
-                        <?php }?>
+                foreach ($article_sub_category as $article){
+                ?>
+                    <section id="container-article">
+                        <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
+                        <section id="description">
+                            <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
+                            <a href="item.php?id=<?= $article['id_article'];?>">
+                                <?= $formatter->formatCurrency($article['prix_article'],'EUR'), PHP_EOL; ?>
+                            </a>
+                            <?php //var_dump($article['id_article']);
+                            $id = $article['id_article'];
+                            ?>
+                        </section>
                     </section>
-                </section>
-            <?php }; endforeach; }?>
-                <section id="add-articles">
-                    <form class='onglet' method='POST'>
-                        <input id="more_articles" name="more_articles" value="VOIR + D'ARTICLES" type="submit"/>
-                        <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
-                    </form> 
-                </section>
-        </section>
+                    <?php }; endforeach; }?>
+            </section>
 
-    </main> 
+            <section id="remove-row">
+                <button id="load_more" data-id="<?= $id;?>" data-id_page="<?= $id_page;?>">LOAD MORE</button>
+            </section>
+
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $(document).on('click','#load_more', function(event){
+                    event.preventDefault();
+
+                    var id = $('#load_more').data('id');
+                    var id_page = $('#load_more').data('id_page');
+                    //alert(id_page);
+                    $.ajax({
+                        url : "load.php",
+                        method : "get",
+                        data:({id_item:id, id_page:id_page}),
+                            success:function(response){
+                            console.log(response);
+                            //$('#container-news').html(response);
+                            $('#remove-row').remove();
+                            $('#container-news').append(response);
+                            }
+                        });
+                    });
+                });
+            </script>
+        </section>
+    </main>
     <footer>
         <?php include('includes/footer.php'); ?>
     </footer>

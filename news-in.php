@@ -1,5 +1,6 @@
+
 <?php 
-$page_selected = 'news-in.php'; 
+$page_selected = 'news-in'; 
 $current_month = date('F');
 
 ?>
@@ -14,16 +15,17 @@ $current_month = date('F');
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         ?>
     </header>
     <main>
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
         <section id="container-news-in">
         <section id="current-month">
             <h1>
@@ -33,12 +35,13 @@ $current_month = date('F');
         </section>
 
         <section id="container-news">
-  	    
-            <?php 
-  
+
+            <?php
+
             // selection des 16 dernières  nouveautés
+
             
-            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_ajout) = MONTH(NOW())ORDER by date_ajout DESC limit 16');
+            $products = $db->query('SELECT * FROM article as A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE MONTH(date_registration) = MONTH(NOW())ORDER by date_registration DESC');
                 
             // la boucle qui démarre permet d'afficher les articles  
             foreach ($products as $product):
@@ -54,9 +57,7 @@ $current_month = date('F');
   			    </a>
   				<section id="description">
                     <a href="item.php?id=<?= $product->id_article; ?>">
-                      <?= //number format permet de formater un nombre ici avec deux zéros
-                       number_format($product->prix_article,2,',',' '); ?>
-                       €
+                      <?= $formatter->formatCurrency($product->prix_article,'EUR'), PHP_EOL;?>
                     </a></br>
                     <?php if(isset($_SESSION['user'])){ ?>
                         <a href="addwishlist.php?id=<?= $id_article ?>">
@@ -66,15 +67,10 @@ $current_month = date('F');
                             +
                         </a>
                         <?php }?>
-                </section>  					
+                </section>
             </section>
               <?php endforeach ?>
-            <section id="add-articles">
-                <form class='onglet' method='POST'>
-                    <input id="more_articles" name="more_articles" value="VOIR + D'ARTICLES" type="submit"/>
-                    <input name="more_articles" value="AFFICHER TOUT" type="submit1"/>
-                </form> 
-            </section>
+
         </section> 
         </section>
     </main>
@@ -83,3 +79,5 @@ $current_month = date('F');
     </footer>
 </body>
 </html>
+
+

@@ -1,0 +1,388 @@
+#container-admin{
+    display:flex;
+    padding-top:2.5%;
+
+}
+#container-treatment{
+    display:flex;
+    padding-top:2.5%;
+    padding-bottom:2.5%;
+    background-color:whitesmoke;
+    justify-content:center;
+}
+
+#container-link{
+    display: flex;
+    background-color: whitesmoke;
+}
+
+#container-treatment nav{
+    display: flex;
+    flex-direction: column;
+    width:25%;
+    margin-right:2.5%;
+}
+
+.button-category{
+    display: flex;
+    width:100%;
+    background-color: white;
+    color: gray;
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    border-bottom:0.5px solid gray;
+    padding: 15px 30px;
+}
+
+.button-category:hover{
+    background-color: black;
+    color: #00FF00;
+    transition: 1.5s;
+  }
+
+.disconnect{
+    display:flex;
+    width:100%;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:30px;
+    border:none;
+    background-color: white;
+}
+
+.disconnect:hover{
+    font-weight: 600;
+    transition: 1s;
+}
+
+#profile-infos h1{
+    display: flex;
+    justify-content: center;
+    padding-top:15px;
+    padding-bottom:15px;
+    width : 100%;
+    border-bottom:0.5px solid gray;
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 2px;
+}
+
+#profile-infos ul{
+    display: flex;
+    flex-direction:column;
+    margin-top:2.5%;
+}
+
+#profile-infos ul li{
+    font-family: 'Exo', sans-serif;
+    padding-bottom:10px;
+}
+
+#profile-infos span{
+   font-weight: 600;
+   color: #00FF00;
+}
+
+.treatment-order{
+    display:flex;
+    flex-direction: column;
+    background-color:whitesmoke;
+    align-items: center;
+    justify-content: center;
+}
+
+.treatment-order a{
+    display: flex;
+    width: 50%;
+    padding-right:30px;
+    justify-content: flex-end;
+    color:black;
+    font-size: 20px;
+}
+
+.treatment-order a:hover{
+    color:#00FF00;
+    transition:1.5s;
+}
+
+.treatment-order h2{
+    display: flex;
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 2px;
+    border:0.5px solid gray;
+    background-color:black;
+    color:#00FF00;
+    padding:15px 20px;
+}
+
+.treatment-order table {
+    margin: 2.5% auto;
+    overflow-y: scroll;
+    position: static;
+    width: 70%;
+    color: black;
+    background-color:whitesmoke;
+  }
+
+.treatment-order thead th {
+    background: #F9FDF6;
+    color: gray;
+    font-size: 13px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Exo', sans-serif;
+  }
+
+.treatment-order tr {
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 5px;
+    background-color: white;
+  }
+
+
+.treatment-order th, td {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px;
+    font-size: 12px;
+    text-align: center;
+    width: 20%;
+    text-transform: uppercase;
+    font-family: 'Exo', sans-serif;
+  }
+
+#order-nb{
+    font-size:12px;
+    font-family: 'Exo', sans-serif;
+}
+
+.treatment-order th, td a{
+    border:none;
+}
+
+
+
+.deletebutton{
+    color: transparent;
+    display: flex;
+    background-image: url(background/delete1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 2px black;
+    border: 1px solid lightgray;
+    cursor: pointer;
+  }
+
+  .deletebutton:hover{
+    background-color: #00FF00;
+    border: 1px solid #00FF00;
+    transition: 1s;
+   }
+
+.input-nb{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:none;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(background/arrow-icon.png);
+}
+
+.input-qte{
+    width: 40px;
+    height: 30px;
+}
+
+#news-index-form{
+    display: flex;
+    min-height: 30vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#news-index-form button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+    color:white;
+    border:none;
+}
+
+#news-index-form input[type=text]{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+
+
+/*** RESPONSIVE ADMIN-ORDERS ***/
+
+
+@media screen and (min-width:980px) and (max-width:1180px){
+
+
+    .treatment-order table {
+        margin: 1.5% auto;
+        width: 70%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 12px;
+        font-weight: 100;
+        letter-spacing: 1px;
+      }
+    
+    
+    .treatment-order th, td {
+        font-weight: 400;
+        padding: 15px;
+        font-size: 11px;
+        width: 18%;
+      }
+    
+    #order-nb{
+        font-size:12px;
+        margin-left: 10px;
+    }
+
+}
+
+@media screen and (min-width:680px) and (max-width:979px){
+    #nav-admin-pages{
+        margin-top: 18%;
+    }
+
+
+    .treatment-order table {
+        margin: 1% auto;
+        width: 80%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 10px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        font-weight: 400;
+        padding: 5px;
+        font-size: 11px;
+        width: 10%;
+      }
+    
+    #order-nb{
+        font-size:11px;
+        margin-left: 20px;
+    }
+
+}
+
+@media screen and (min-width:480px)and (max-width:679px){
+    #nav-admin-pages{
+        margin-top: 20%;
+
+    }
+
+    #order-nb{
+        font-size:8px;
+        margin-left: 10px;
+    }
+
+
+    .treatment-order table {
+        margin: 1% auto;
+        width: 50%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 8px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        padding: 1.5px;
+        font-size: 8px;
+        width: 6.5%;
+      }
+    
+    #order-nb{
+        font-size:10px;
+        font-family: 'Exo', sans-serif;
+    }
+
+    .button-category{
+        font-size: 10px;
+    }
+    .disconnect{
+        font-size: 10px;
+    }
+    .deletebutton{
+        width: 2vh;
+        height: 2vh;
+    
+    }
+
+}
+
+@media screen and (max-width:479px){
+    #nav-admin-pages{
+        margin-top: 30%;
+
+    }
+
+    #order-nb{
+        font-size:7px;
+        margin-left: 10px;
+    }
+
+
+    .treatment-order table {
+        margin: 0.2% auto;
+        width: 30%;
+        overflow: scroll;
+      }
+    
+    .treatment-order thead th {
+        font-size: 7px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        padding: 0.5px;
+        font-size: 7px;
+        width: 4%;
+      }
+    
+    #order-nb{
+        font-size:7px;
+        font-family: 'Exo', sans-serif;
+    }
+
+    .button-category{
+        font-size: 10px;
+    }
+    .disconnect{
+        font-size: 10px;
+    }
+
+
+.deletebutton{
+    width: 1vh;
+    height: 1vh;
+
+  }
+
+}
+
+

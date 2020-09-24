@@ -2,6 +2,7 @@
 class Order{
 
     private $db;
+    public $id_commande;
    
     
     public function __construct($db)
@@ -36,6 +37,16 @@ class Order{
 		return $delivery; 
 			
     }
+
+    public function delivery_id($prix_delivery){
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM livraison WHERE prix_livraison = $prix_delivery ");
+        $q->execute();
+		$selected_delivery = $q->fetch();
+		
+		return $selected_delivery; 
+			
+    }
     
     // ESTIMATION PRIX TOTAL AVANT VALIDATION COMMANDE
     public function estimation($total_panier, $default_delivery) {
@@ -45,7 +56,7 @@ class Order{
         return $calcul;
     }
 
-    public function register_order( $firstname, $lastname, $address, $delivery_choice, $nb_article, $sous_total, $prix_total)
+    public function register_order( $firstname, $lastname, $address, $delivery_choice, $id_delivery, $nb_article, $sous_total, $prix_total)
     {
         $connexion = $this->db->connectDb();
 
@@ -92,16 +103,26 @@ class Order{
 
              // ENREGISTREMENT DANS LA TABLE FACTURE
             $q2 = $connexion->prepare(
-                "INSERT INTO facture (id_commande, nbr_total_articles, prix_total_articles, prix_livraison, adresse_facturation, prix_total, id_utilisateur, date_facturation) VALUES (:id_commande, :nbr_total_articles, :prix_total_articles, :prix_livraison, :adresse_facturation, :prix_total, :id_utilisateur, NOW())"
+                "INSERT INTO facture (id_commande, nbr_total_articles, prix_total_articles, prix_livraison, id_livraison, adresse_facturation, prix_total, id_utilisateur, date_facturation) VALUES (:id_commande, :nbr_total_articles, :prix_total_articles, :prix_livraison, :id_livraison, :adresse_facturation, :prix_total, :id_utilisateur, NOW())"
             );
             $q2->bindParam(':id_commande', $id_commande, PDO::PARAM_INT);
             $q2->bindParam(':nbr_total_articles', $nb_article, PDO::PARAM_INT);
             $q2->bindParam(':prix_total_articles', $sous_total, PDO::PARAM_STR);
             $q2->bindParam(':prix_livraison', $delivery_choice, PDO::PARAM_STR);
+            $q2->bindParam(':id_livraison', $id_delivery, PDO::PARAM_INT);
             $q2->bindParam(':adresse_facturation', $address, PDO::PARAM_STR);
             $q2->bindParam(':prix_total', $prix_total, PDO::PARAM_STR);
             $q2->bindParam(':id_utilisateur', $id_user, PDO::PARAM_INT);
             $q2->execute();
+
+              // ENREGISTREMENT DANS LA TABLE TRANSACTIONS
+            $q3 = $connexion->prepare(
+                "INSERT INTO transactions (id_utilisateur,id_commande, total_transaction, date_transaction) VALUES (:id_utilisateur, :id_commande, :total_transaction , NOW())"
+            );
+            $q3->bindParam(':id_utilisateur', $id_user, PDO::PARAM_INT);
+            $q3->bindParam(':id_commande', $id_commande, PDO::PARAM_INT);
+            $q3->bindParam(':total_transaction', $prix_total, PDO::PARAM_STR);
+            $q3->execute();
 
              // ENREGISTREMENT DANS LA TABLE DETAIL_COMMANDE
             //var_dump($_POST['article']);
@@ -147,7 +168,7 @@ class Order{
                 $update_article->bindParam(':nb_articles_stock', $new_stock, PDO::PARAM_INT);
                 $update_article->execute();
             }
-
+            unset($_SESSION['panier']);
             header('location:order_confirmation.php');
         
         }else {
@@ -156,4 +177,80 @@ class Order{
         }
     }
 
+    public function recap_order($id_user){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande AS C
+                                  INNER JOIN facture AS F
+                                  ON C.id_commande = F.id_commande
+                                  WHERE C.id_utilisateur = $id_user ORDER by date_commande DESC");
+        $q->execute();
+        $last_order = $q->fetch(PDO::FETCH_OBJ);
+
+        $this->id_commande = $last_order->id_commande;
+        //var_dump($this->commande);
+
+        return $last_order;
+    }
+
+    public function detail_order($commande){
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM detail_commande WHERE id_commande = $commande");
+        $q->execute();
+        $detail_order = $q->fetchAll(PDO::FETCH_OBJ);
+
+        return $detail_order;
+    }
+
+
+    public function all_orders($id_user){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande WHERE commande.id_utilisateur = $id_user ORDER by date_commande DESC");
+        $q->execute();
+        $all_orders = $q->fetchAll();
+
+        return $all_orders;
+    }
+
+    
+    public function all_order($id_user){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande INNER JOIN facture ON commande.id_commande = facture.id_commande WHERE commande.id_utilisateur = $id_user ORDER by date_commande DESC");
+        $q->execute();
+        $all_orders = $q->fetchAll(PDO::FETCH_OBJ);
+
+        return $all_orders;
+    }
+
+    public function recap($id_commande){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande AS C
+                                  INNER JOIN facture AS F
+                                  ON C.id_commande = F.id_commande
+                                  WHERE C.id_commande = $id_commande ");
+        $q->execute();
+        $recap = $q->fetchAll();
+
+        return $recap;
+    }
+
+    public function test_recap($id_commande){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande AS C
+                                  INNER JOIN facture AS F
+                                  ON C.id_commande = F.id_commande
+                                  INNER  JOIN transactions AS T
+                                  ON C.id_commande = T.id_commande
+                                  WHERE C.id_commande = $id_commande ");
+        $q->execute();
+        $recap = $q->fetchAll();
+
+        return $recap;
+    }
+
 }
+?>

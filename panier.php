@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/style-panier.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
 <header>
     <?php
 	include("includes/header.php");
+  if (isset($_SESSION['user'])) {
+
+
 	require 'class/order.php';
 	$order = new Order($db);
    ?>
@@ -78,6 +83,10 @@
 			<section id="recap-order">
 				<article>
 					<h1>Récapitulatif ( <?= $panier->count(); ?> article(s)) </h1>
+					<?php if($panier->count() == 0){
+						header('location:index1.php');
+					}
+				    ?>
 						<p>sous-total
 						<?= number_format($panier->total(),2,',',' '); ?>€
 						</p>
@@ -104,7 +113,11 @@
 	</section>
 </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php
+
+}else{
+  echo "vous n'avez pas le droit d'accéder à cette page";
+}        include('includes/footer.php'); ?>
     </footer>
 </body>
 </html>

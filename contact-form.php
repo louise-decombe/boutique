@@ -11,18 +11,48 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         ?>
+
     </header>
     <main>
+      <?php  if (isset($_SESSION['user'])) {
+        $id_user= ($_SESSION['user']['id_user']);
+
+   if (!empty($_SESSION['statusMsg'])) {
+          echo '<p>'.$_SESSION['statusMsg'].'</p>';
+          unset($_SESSION['statusMsg']); }
+       ?>
+      <section id="container-register">
+        <form method="post" action="action_contact_form.php" class="form" id="userForm">
+          <h3>Envoyer un message </h3>
+          <p>Contactez notre service client et nous vous répondrons dès que possible</p><br/>
+          <section id="box-form">
+            <section id="box-password">
+                  <input type="textarea" name="message_utilisateur"/>
+                <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
+              <input type="hidden" name="action_type" value="add"/>
+              <input type="submit" class="bouton-admin" name="submit" value="Envoyer"/>
+          </form>
+
+       </section><br/>
+       <a href="profil.php">retour au profil</a>
+
+     </section>
+     </section>
     </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); }
+        else{
+          echo "vous n'avez pas accès à cette page";
+        }?>
     </footer>
 </body>
 </html>

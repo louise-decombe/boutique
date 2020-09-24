@@ -1,4 +1,4 @@
-<?php $page_selected = 'item.php'; ?>
+<?php $page_selected = 'item'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-item.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<style media="screen">
+button {
+    border:none;
+    background-color:white;
+    outline:none;
+}
+</style>
+
 </head>
 
 <body>
@@ -24,33 +33,51 @@
         ?>
     </header>
     <main>
-        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section> 
+        <section id="before"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
         <section id="container-item">
-            <section id="box-img-item">   
+            <section id="box-img-item">
                 <img src="<?= ($item['chemin'])?>" width="10%" alt="cover-fanzine">
             </section>
-
                 <article id="presentation-item">
-                    <a id="heart-icon" href="addwishlist.php?id=<?= $id_article ?>">
-                        <i class="far fa-heart"></i>
-                    </a>
+                        <?php if (isset($_SESSION['user'])) {
+                          ?>
+
+                        <?php $id_user= ($_SESSION['user']['id_user']);
+                              $id_article = $_GET['id'];
+                              $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
+
+            if (count($query) >= 1 ) {?>
+<ion-icon name="heart-sharp"></ion-icon> <?php    } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
+?>
+
+<form method="post" action="action_wishlist.php" class="form" id="userForm">
+  <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
+  <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
+  <input type="hidden" name="action_type" value="add"/>
+  <button type="submit" class="" name="submit_wish"><ion-icon name="heart-outline">
+  </ion-icon></button>
+
+
+</form>
+<?php }
+} ?>
+
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
                         <section id="price-item">
-                            <?= $formatter->formatCurrency($item['prix_article'],'EUR'), PHP_EOL; ?>
+                            <?= $formatter->formatCurrency($item['prix_article'], 'EUR'), PHP_EOL; ?>
                         </section>
-                
-                        <a class="add addpanier" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
-                      ajouter au panier
-                        <a href="javascript:popupBasique('addpanier.php?id=<?= $id_article ?>')">Ouverture popup basique</a>
-                    </a>
+
+                        <a class="add addpanier" onclick="window.location.reload()" id="add-basket" href="addpanier.php?id=<?= $id_article ?>">
+                            ajouter au panier
+                        </a>
 
                     <form class='onglet' method='POST'>
                         <input id="more_infos" name="more" value="EN SAVOIR +" type="submit"/>
                     </form>
 
-                    <?php if(isset($_POST['more'])){?>
+                    <?php if (isset($_POST['more'])) {?>
                     <section id="more">
                         <a href="item.php?id=<?=($item['id_article'])?>">x</a>
                         <p><?= ($item['description_article'])?></p>
@@ -70,24 +97,25 @@
         <section id="similar-article">
             <h3>vous aimerez peut-être...</h3>
             <?php
-            $similar_art = $category->similar_article(($item['id_sous_categorie']),($item['id_article']) );
-            ?>  
+            $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));
+            ?>
             <section id="selection">
                 <?php
-                
-                foreach ($similar_art as $similar){
-                    if ($similar['id_article'] != $item['id_article']){
-         
-                ?>
+
+                foreach ($similar_art as $similar) {
+                    if ($similar['id_article'] != $item['id_article']) {
+                        ?>
                 <section id="selection-article">
                     <a href="item.php?id=<?=($similar['id_article'])?>"><img src="<?= ($similar['chemin'])?>" width="10%" alt="cover-fanzine">
                     <a href="item.php?id=<?=($similar['id_article'])?>" class="button">
                         <span class="text-hover">CONSULTER</span>
-                        <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'],'EUR'), PHP_EOL; ?></span>
+                        <span class="text-base"><?= $formatter->formatCurrency($similar['prix_article'], 'EUR'), PHP_EOL; ?></span>
                     </a>
                 </section>
-            
-            <?php } } ?>
+
+            <?php
+                    }
+                } ?>
             </section>
 
         </section>

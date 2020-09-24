@@ -1,9 +1,4 @@
-<?php $page_selected = 'admin_messages.php'; ?>
-<?php
-require("admin.class.php");
-include("includes/header.php");
-require("admin_nav.php")
-?>
+<?php $page_selected = 'admin_messages'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,84 +8,122 @@ require("admin_nav.php")
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style-admin-general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
-
-   <?php
-
- if($user->is_admin==0) {
-    ?>
-<main>
-<div class="admin">
-
-<a href="admin_messages.php?clients">Messages clients</a><br/>
-<a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
+<header>
+    <?php include("includes/header.php"); ?>
+</header>
 <?php
+  if (isset($_SESSION['user'])) {
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
+<main>
+<section id="nav-admin-pages">
+    <?php require("admin_nav.php"); ?>
+</section>
 
-if(isset($_GET['clients'])){
-
- $products = $db->query('SELECT * FROM message_utilisateurs'); ?>
-
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message.'<br/>';
-
-  echo  $product->message_utilisateur;
-    // l boucle qui démarre permet d'afficher les messages ?>
-      <a href="admin_utilisateurs.php?utilisateurs&modifier_compte=<?php echo $product->id_utilisateur;?>">
-      Voir l'utilisateur  </a>
-if(isset($_GET['vendeurs']))
-{
-
- $products = $db->query('SELECT * FROM message_vendeur'); ?>
-
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message_vendeur.'<br/>';
-    echo  'mail du vendeur  '.$product->email_utilisateur	.'<br/>';
-    echo  'message  '.$product->message_vendeur.'<br/>';
-    echo  'description  '.$product->description_article_vendeur.'<br/>';
-    echo  'titre du zine  '.$product->titre_fanzine.'<br/>'.'<br />';
-
-   ?>
-
-      </div>
-
-  <?php endforeach
-;}
- ?>
-      </div>
-
-  <?php endforeach ?>5
-
-<?phpis chercher la machine ce soir c'est : 555
-}
-
-if(isset($_GET['vendeurs']))
-{
-
- $products = $db->query('SELECT * FROM message_vendeur'); ?>
-
-  <?php foreach ( $products as $product ):
-    echo  'reçu le  '.$product->date_message_vendeur.'<br/>';
-    echo  'mail du vendeur  '.$product->email_utilisateur	.'<br/>';
-    echo  'message  '.$product->message_vendeur.'<br/>';
-    echo  'description  '.$product->description_article_vendeur.'<br/>';
-    echo  'titre du zine  '.$product->titre_fanzine.'<br/>'.'<br />';
-
-   ?>
-
-      </div>
-
-  <?php endforeach
-;}
- ?>
+<center>
+<div class="container-valider">
+<div class="valider">  <a href="admin_messages.php?clients">Messages clients</a><br/>
 
 </div>
-<?php }else{
-  echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
-  echo "<a href='index.php'> Retour à l'accueil </a>";
-} ?>
+<div class="valider">
+<a href="admin_messages.php?vendeurs">Messages vendeurs</a><br/>
+</div>
+</div>
+</center>
+<div class="container-treatment">
+<div class="treatment-order">
+<?php
+
+if (isset($_GET['clients'])) { ?>
+<h3>Message des utilisateurs<h3>
+  <div class="rtable">
+
+  <table>
+      <tr>
+          <th>Message</th>
+          <th>Date</th>
+          <th></th>
+      </tr>
+
+<?php
+    $users = $db->getRows('message_utilisateurs', array('order_by'=>'id_message_utilisateur DESC'));
+    if (!empty($users)) {
+        $count = 0;
+        foreach ($users as $user) {
+            $count++; ?>
+          <tr>
+              <td><?php echo $user['message_utilisateur']; ?></td>
+              <td><?php echo $user['date_registration']; ?></td>
+              <td>
+                <a href="admin_utilisateurs.php?id=<?php echo $user['id_utilisateur']; ?>" class="glyphicon glyphicon-edit"> Voir l'utilisateur</a>
+                  <a href="admin_messages.php?clients&delete=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+              </td>
+          </tr>
+       <?php
+
+        }
+    }
+}
+?>
+</table>
+</div>
+</div>
+</div>
+
+
+<?php
+     if (isset($_GET['vendeurs'])) { ?>
+       <div class="container-treatment">
+       <div class="treatment-order">
+    <h3>Message des utilisateurs</h3>
+<div class="rtable">
+
+       <table>
+           <tr>
+               <th>Mail</th>
+               <th>Message</th>
+
+               <th>Description du fanzine</th>
+               <th>Titre</th>
+               <th>Date</th>
+               <th></th>
+
+           </tr>
+
+      <?php   $users = $db->getRows('message_vendeur', array('order_by'=>'id_message_vendeur DESC'));
+         if (!empty($users)) {
+             $count = 0;
+             foreach ($users as $user) {
+                 $count++; ?>
+          <tr>
+            <td><?php echo $user['email_utilisateur']; ?></td>
+            <td><?php echo $user['message_vendeur']; ?></td>
+             <td><?php echo $user['description_article_vendeur']; ?></td>
+              <td><?php echo $user['titre_fanzine']; ?></td>
+              <td><?php echo $user['date_registration']; ?></td>
+              <td>
+                  <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
+              </td>
+          </tr>
+       <?php
+             }
+         }
+     } ?>
+   </table>
+      </div>
+</div>
+<?php
+}
+ }else {
+     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
+     echo "<a href='index.php'> Retour à l'accueil </a>";
+ }   ?>
 </main>
 </body>
 </html>

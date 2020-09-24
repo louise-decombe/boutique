@@ -89,7 +89,7 @@
 
 .treatment-order a{
     display: flex;
-    width: 90%;
+    width: 50%;
     padding-right:30px;
     justify-content: flex-end;
     color:black;
@@ -115,11 +115,11 @@
     margin: 2.5% auto;
     overflow-y: scroll;
     position: static;
-    width: 80%;
+    width: 70%;
     color: black;
     background-color:whitesmoke;
   }
-  
+
 .treatment-order thead th {
     background: #F9FDF6;
     color: gray;
@@ -129,14 +129,13 @@
     text-transform: uppercase;
     font-family: 'Exo', sans-serif;
   }
-  
 .treatment-order tr {
     border-bottom: 1px solid #FFF;
     margin-bottom: 5px;
     background-color: white;
   }
- 
-  
+
+
 .treatment-order th, td {
     font-size: 18px;
     font-weight: 400;
@@ -153,6 +152,12 @@
     font-family: 'Exo', sans-serif;
 }
 
+.treatment-order th, td a{
+    border:none;
+}
+
+
+
 .deletebutton{
     color: transparent;
     display: flex;
@@ -167,9 +172,176 @@
     border: 1px solid lightgray;
     cursor: pointer;
   }
-  
   .deletebutton:hover{
     background-color: #00FF00;
     border: 1px solid #00FF00;
     transition: 1s;
    }
+
+
+
+/*** RESPONSIVE ADMIN-ORDERS ***/
+
+
+@media screen and (min-width:980px) and (max-width:1180px){
+
+
+    .treatment-order table {
+        margin: 1.5% auto;
+        width: 70%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 12px;
+        font-weight: 100;
+        letter-spacing: 1px;
+      }
+    
+    
+    .treatment-order th, td {
+        font-weight: 400;
+        padding: 15px;
+        font-size: 11px;
+        width: 18%;
+      }
+    
+    #order-nb{
+        font-size:12px;
+        margin-left: 10px;
+    }
+
+    
+   
+}
+
+@media screen and (min-width:680px) and (max-width:979px){
+    #nav-admin-pages{
+        margin-top: 15%;
+    }
+
+
+    .treatment-order table {
+        margin: 1% auto;
+        width: 80%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 10px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        font-weight: 400;
+        padding: 5px;
+        font-size: 11px;
+        width: 10%;
+      }
+    
+    #order-nb{
+        font-size:11px;
+        margin-left: 20px;
+    }
+
+}
+
+@media screen and (min-width:480px)and (max-width:679px){
+    #nav-admin-pages{
+        margin-top: 20%;
+
+    }
+
+    #order-nb{
+        font-size:8px;
+        margin-left: 10px;
+    }
+
+
+    .treatment-order table {
+        margin: 1% auto;
+        width: 50%;
+      }
+    
+    .treatment-order thead th {
+        font-size: 8px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        padding: 1.5px;
+        font-size: 8px;
+        width: 6.5%;
+      }
+    
+    #order-nb{
+        font-size:10px;
+        font-family: 'Exo', sans-serif;
+    }
+
+    .button-category{
+        font-size: 10px;
+    }
+    .disconnect{
+        font-size: 10px;
+    }
+    .deletebutton{
+        width: 2vh;
+        height: 2vh;
+    
+    }
+
+}
+
+@media screen and (max-width:479px){
+    #nav-admin-pages{
+        margin-top: 30%;
+
+    }
+
+    #order-nb{
+        font-size:7px;
+        margin-left: 10px;
+    }
+
+
+    .treatment-order table {
+        margin: 0.2% auto;
+        width: 30%;
+        overflow: scroll;
+      }
+    
+    .treatment-order thead th {
+        font-size: 7px;
+        letter-spacing: 0;
+      }
+    
+    
+    .treatment-order th, td {
+        padding: 0.5px;
+        font-size: 7px;
+        width: 4%;
+      }
+    
+    #order-nb{
+        font-size:7px;
+        font-family: 'Exo', sans-serif;
+    }
+
+    .button-category{
+        font-size: 10px;
+    }
+    .disconnect{
+        font-size: 10px;
+    }
+
+
+.deletebutton{
+    width: 1vh;
+    height: 1vh;
+
+  }
+
+}
+
+
