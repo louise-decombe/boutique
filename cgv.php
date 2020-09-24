@@ -120,8 +120,6 @@
                         </div>
                         </section>
 
-
-
                         <section class="container">
                           <h3>Article 6 - Rétractation
                           </h3>
