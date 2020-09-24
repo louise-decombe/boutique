@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="css/faq.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
-
 <body>
     <header>
         <?php

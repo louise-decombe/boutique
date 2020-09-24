@@ -44,11 +44,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id article
+var_dump($id_article);
+
+
+if (!empty($_FILES['avatar']['size']))
+{
+    # Transporte l'avatar et retourne son nom
+    $nomavatar = move_avatar($_FILES['avatar']);
+    $query = $db->prepare('UPDATE image_article SET avatar = :avatar
+  WHERE id = :id');
+    $query->bindValue(':avatar', $nomavatar, PDO::PARAM_STR);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $query->CloseCursor();
+
+}
+
 
 
                 $requestimg = "UPDATE `image_article` SET `chemin`='$file_path' WHERE id_article = '$id_article'";
                 $resultimg = mysqli_query($db, $requestimg);
-
+var_dump($resultimg);
         //        header("location:admin_articles.php");
 
             }

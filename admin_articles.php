@@ -1,36 +1,31 @@
-<?php $page_selected = 'admin_articles'; ?>
+<?php $page_selected = 'admin_articles.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>boutique - admin_articles</title>
+    <title>boutique - admin_categories</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/admin-nad.css">
-          <link rel="stylesheet" href="css/admin.css">
-          <link rel="stylesheet" type="text/css" href="css/style-item.css">
-
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/style-admin-general.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
 <body>
-  <header>
-  <?php
-  include("includes/header.php");
-  ?>
+<header>
+  <?php include("includes/header.php"); ?>
 </header>
-  <main>
-
+<?php
+if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 0) {
+        ?>
+<main>
   <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
   </section>
-
-
-  <?php
-if($user->is_admin==0) {
-    ?>
     <center>
     <div class="container-valider">
     <div class="valider">
@@ -42,24 +37,18 @@ if($user->is_admin==0) {
 </div>
 </div>
 </center>
-
-<?php  if ($user->is_admin==1) { ?>
-  <a href="admin_articles.php?articles">Voir les articles</a><br/>
-  <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
-
   <?php
+
   if (isset($_GET['articles'])) {
       if (!empty($_SESSION['statusMsg'])) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
           unset($_SESSION['statusMsg']);
-      }
-  ?>
-  <div class="container-treatment">
+      } ?>
+      <div class="container-treatment">
     <div class="treatment-order">
           <div class="titre">
-            <h3>ARTICLES </h3>
+<h3>ARTICLES </h3>
           </div>
-<<<<<<< Updated upstream
           <div class="rtable">
 
             <table class="table">
@@ -73,7 +62,6 @@ if($user->is_admin==0) {
                     <th >Prix</th>
                     <th >Date d'ajout</th>
                     <th></th>
-
                 </tr>
                 <?php
 
@@ -92,45 +80,12 @@ if($user->is_admin==0) {
                     <td><?php echo $user['prix_article']; ?>   euros</td>
                     <td><?php echo $user['date_registration']; ?></td>
                     <td>
-                        <a href="admin_articles.php?id_article=<?php echo $user['id_article']; ?>" class="glyphicon glyphicon-edit"></a>
+                        <a href="admin_articles.php?id_article=<?php echo $user['id_article']; ?>" class="glyphicon glyphicon-edit">M</a>
                         <a href="action_article.php?action_type=delete&id_article=<?php echo $user['id_article']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée?');">X</a>
                     </td>
-=======
-          <table class="table">
-              <tr>
-                  <th >Nom du fanzine</th>
-                  <th >Auteur</th>
-                  <th >Editions</th>
-                  <th >Citation</th>
-                  <th >Nbe de pages</th>
-                  <th >Année de parution</th>
-                  <th >Prix</th>
-                  <th >Date d'ajout</th>
-                  <th></th>
->>>>>>> Stashed changes
                 </tr>
-  <?php
-    $users = $db->getRows('article', array('order_by'=>'id_article DESC'));
-    if (!empty($users)) {
-      $count = 0;
-      foreach ($users as $user) {
-              $count++;
-  ?>
-              <tr>
-                  <td><?php echo $user['nom_article']; ?></td>
-                  <td><?php echo $user['auteur_article']; ?></td>
-                  <td><?php echo $user['editions_article']; ?></td>
-                  <td><?php echo $user['citation_article']; ?></td>
-                  <td><?php echo $user['nb_pages']; ?></td>
-                  <td><?php echo $user['annee_parution']; ?></td>
-                  <td><?php echo $user['prix_article']; ?>   euros</td>
-                  <td><?php echo $user['date_registration']; ?></td>
-                  <td>
-                      <a href="admin_articles.php?id_article=<?php echo $user['id_article']; ?>"><i class="far fa-edit"></i></a>
-                      <a href="action_article.php?action_type=delete&id_article=<?php echo $user['id_article']; ?> " onclick="return confirm('Voulez vous vraiment supprimer cette entrée?');">X</a>
-                  </td>
-              </tr>
-  <?php }
+                <?php
+          }
       } else { ?>
                 <tr><td colspan="4">Aucun article trouvé......</td>
                 <?php }
@@ -345,10 +300,14 @@ if (isset($_GET['submit_form1'])) { ?>
 
     <?php
   }
-} } } }else {
+} }else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
 }   ?>
+  </main>
+  </body>
+  </html>
+
 </main>
 </body>
 </html>
