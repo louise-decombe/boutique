@@ -21,23 +21,26 @@
             indice++ ;
             document.getElementById("groupe" + indice).focus()
             }
-        }         
+        }
     </script>
 </head>
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
+
+        if (isset($_SESSION['user'])) {
+
         require 'class/order.php';
         $order = new Order($db);
 
-        if(isset($_SESSION['user'])){ 
+        if(isset($_SESSION['user'])){
 			$ids = array_keys($_SESSION['panier']);
 			if(empty($ids)){
 			$products = array();
 			}else{
 			$products = $db->query('SELECT * FROM article AS A INNER JOIN image_article as I ON A.id_article = I.id_article WHERE A.id_article IN ('.implode(',',$ids).')');
-            } 
+            }
 
         if (isset($_POST['validation_paiement'])) {
             $_POST['address'] = $_POST['street'].' '.$_POST['zip'].' '.$_POST['city'];
@@ -77,18 +80,18 @@
                             <section id="radio-section">
                             <?php $delivery = $order->delivery();
                             foreach ($delivery as $deliver){ //var_dump($deliver);?>
-                            
+
                                 <input type="radio" name="delivery" id="<?= $deliver->prix_livraison ?>" value="<?= $deliver->prix_livraison ?>"<?php if(isset($_POST['submit_delivery']) && $_POST['delivery'] == $deliver->prix_livraison ){echo "checked";}?>required>
                                 <label for="<?= $deliver->nom_livraison ?>"><?= $deliver->nom_livraison ?> à <?= $formatter->formatCurrency($deliver->prix_livraison,'EUR'), PHP_EOL; ?></label>
 
-                            <?php } 
-                            ?> 
+                            <?php }
+                            ?>
                             </section>
                             <section><button type="submit" name="submit_delivery">SÉLECTIONNER</button></section>
-                        </form> 
+                        </form>
                     </section>
 
-                    <?php if(isset($_POST["submit_delivery"])){ 
+                    <?php if(isset($_POST["submit_delivery"])){
                        $id_del = $order->delivery_id($prix_delivery);
                        $id_delivery = $id_del['id_livraison'];
                        //var_dump($id_delivery);
@@ -105,7 +108,7 @@
                                         <input id="city-input" type="text" name="city" placeholder="ville*" required>
                                         <input id="zip-input" type="text" name="zip" placeholder="code postal*" required>
                                     </section>
-                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95"> 
+                                    <input type="text" name="infos-delivery" placeholder="informations complémentaires pour le livreur" size="95">
                                 </section>
                             </section>
 
@@ -121,7 +124,7 @@
                             <?php } ?>
 
                             <section id="module-paiement">
-                                <legend id=title-cb>- Paiement sécurisé par 
+                                <legend id=title-cb>- Paiement sécurisé par
                                     <i class="far fa-credit-card"></i>
                                     <i class="fab fa-cc-visa"></i>
                                     <i class="fab fa-cc-mastercard"></i>
@@ -155,16 +158,16 @@
                 <section id="recap-order">
                     <section id="recap-order-container1">
                         <span id="count">Mon panier (<?= $panier->count(); ?> article(s))</span>
-                        <?php 
+                        <?php
                             foreach($products as $product){
                             $check = $panier->check_stock($product->id_article);
                             if($check[0]->nb_articles_stock > 0 ){
                         ?>
                         <section id="recap-article">
                             <img src="<?= $product->chemin;?>">
-			                <p><?= $product->nom_article; ?>&nbsp; qté : 
+			                <p><?= $product->nom_article; ?>&nbsp; qté :
                                <?= $_SESSION['panier'][$product->id_article]; ?>&nbsp;
-                                <?php 
+                                <?php
 									$sub_total = $panier->sub_total($product->prix_article, $_SESSION['panier'][$product->id_article]);
                                     echo $formatter->formatCurrency($sub_total,'EUR'), PHP_EOL;
 								?>
@@ -172,7 +175,7 @@
                         </section>
 					    <?php } else{ ?>
                         <span> Un ou plusieurs articles sélectionnés ne sont plus disponibles en stock <span>
-                    </section>   
+                    </section>
 
                     <?php } } ?>
                     <?php if(isset($_POST["submit_delivery"])){ ?>
@@ -182,7 +185,7 @@
                         <span id="delivery-charging"> Livraison <?= $formatter->formatCurrency($prix_delivery, 'EUR'), PHP_EOL; ?></span>
                         <h2 id="total-order">MONTANT TOTAL <?= $formatter->formatCurrency($order->estimation($panier->total(), $prix_delivery), 'EUR'), PHP_EOL;?></h2>
                     </section>
-                </section>  
+                </section>
                 <aside id="recap-order-container3">
 					<span> PAIEMENT SÉCURISÉ & RETOURS GRATUITS </span>
 					<a href="tel:0800 00 00 00">SERVICE CLIENT : 0800 00 00 00 (N° GRATUIT)</a>
@@ -190,14 +193,16 @@
 					   En raison des circonstances exceptionnelles, les délais de réponse du service client peuvent être impactés. Nous en sommes désolés et vous remercions pour votre patience.
 					   L’équipe High & Craft !
 					</p>
-				</aside> 
+				</aside>
                     <?php } }?>
                 <?php }else{ ?>
                 <section id="connect-panier">
                     <a id="white-box" href="connexion.php">Connecte-toi pour valider ton panier !</a>
                     <a id="black-box" href="inscription.php">ou crée ton compte en quelques clics.</a>
                 </section>
-                <?php } ?>
+              <?php } }else{
+                echo "vous n'avez pas le droit d'accéder à cette page";
+              }?>
             </section>
         </section>
     </main>

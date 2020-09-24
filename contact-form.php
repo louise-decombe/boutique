@@ -18,12 +18,14 @@
     <header>
         <?php
         include("includes/header.php");
-        $id_user= ($_SESSION['user']['id_user']);
         ?>
 
     </header>
     <main>
-      <?php if (!empty($_SESSION['statusMsg'])) {
+      <?php  if (isset($_SESSION['user'])) {
+        $id_user= ($_SESSION['user']['id_user']);
+
+   if (!empty($_SESSION['statusMsg'])) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
           unset($_SESSION['statusMsg']); }
        ?>
@@ -46,7 +48,10 @@
      </section>
     </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); }
+        else{
+          echo "vous n'avez pas accès à cette page";
+        }?>
     </footer>
 </body>
 </html>

@@ -19,6 +19,7 @@
 <header>
     <?php
     include("includes/header.php");
+    if (isset($_SESSION['user'])) {
    ?>
 </header>
 
@@ -47,8 +48,6 @@
 		<div class="wrap">
 
 			<?php
-
-    if (isset($_SESSION['user'])){
 
   $id_utilisateur= $_SESSION['user']['id_user'];
 
@@ -103,4 +102,4 @@ onclick="return confirm('Etes vous sûr?');">Supprimer</a>
 echo "vous ne pouvez pas accéder à cette page sans vous <a href='connexion.php'> connecter </a> ou bien vous
 <a href='subscription.php'> inscrire </a>";
 
-} ?>
+  }  ?>

@@ -8,16 +8,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/0mKd0xT/icon-round-fanzine.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<<<<<<< Updated upstream
           <link rel="stylesheet" href="css/admin-nad.css">
           <link rel="stylesheet" href="css/admin.css">
           <link rel="stylesheet" type="text/css" href="css/style-item.css">
 
-
-=======
-    <link rel="stylesheet" href="css/style-admin-general.css">
-    <link rel="stylesheet" href="css/admin.css">
->>>>>>> Stashed changes
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
@@ -35,8 +29,7 @@
 
 
   <?php
-<<<<<<< Updated upstream
-if ($user->is_admin==0) {
+if($user->is_admin==0) {
     ?>
     <center>
     <div class="container-valider">
@@ -46,23 +39,20 @@ if ($user->is_admin==0) {
 <div class="valider">
   <a href="admin_articles.php?ajouter" id="more_infos">ajouter un article</a><br/>
 
-<<<<<<< Updated upstream
 </div>
 </div>
 </center>
-=======
-=======
-  if ($user->is_admin==0) { ?>
+
+<?php  if ($user->is_admin==1) { ?>
   <a href="admin_articles.php?articles">Voir les articles</a><br/>
   <a href="admin_articles.php?ajouter">ajouter un article</a><br/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
   <?php
   if (isset($_GET['articles'])) {
       if (!empty($_SESSION['statusMsg'])) {
           echo '<p>'.$_SESSION['statusMsg'].'</p>';
           unset($_SESSION['statusMsg']);
-      } 
+      }
   ?>
   <div class="container-treatment">
     <div class="treatment-order">
@@ -124,7 +114,7 @@ if ($user->is_admin==0) {
     if (!empty($users)) {
       $count = 0;
       foreach ($users as $user) {
-              $count++; 
+              $count++;
   ?>
               <tr>
                   <td><?php echo $user['nom_article']; ?></td>
@@ -355,7 +345,7 @@ if (isset($_GET['submit_form1'])) { ?>
 
     <?php
   }
-} else {
+} } } }else {
     echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
     echo "<a href='index.php'> Retour à l'accueil </a>";
 }   ?>

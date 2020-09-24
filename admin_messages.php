@@ -18,11 +18,11 @@
     <?php include("includes/header.php"); ?>
 </header>
 
+<?php
+if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 1) {
+        ?>
 
-   <?php
-
- if ($user->is_admin==0) {
-     ?>
 <main>
 <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
@@ -121,7 +121,8 @@ if (isset($_GET['clients'])) { ?>
       </div>
 </div>
 <?php
- } else {
+}
+ }else {
      echo "vous n'avez pas le droit d'accéder à cette page, bien essayé ;)";
      echo "<a href='index.php'> Retour à l'accueil </a>";
  }   ?>
