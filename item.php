@@ -61,7 +61,8 @@ button {
 </form>
 <?php }
 } ?>
-
+<a href="connexion.php"><ion-icon name="heart-outline">
+</ion-icon></a>
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>

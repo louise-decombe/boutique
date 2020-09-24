@@ -23,20 +23,13 @@
   <?php
   $bdd = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 ?>
-<section id="container-register">
 
-           <form method='post'>
-             <h1>Chercher un article</h1>
-             <section id="box-form">
-          	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
-             <button type="submit" name="search" id="container-delivery">Rechercher</button>
-</section>
-</section>
-         </form>
 <center>
 
     <table>
-
+<thead>
+  <h1>Résultat(s)</h1>
+</thead>
           	 <tbody>
           		 <?php
 
@@ -66,6 +59,17 @@
               }
              ?>
 </table><br/></center>
+
+<section id="container-register">
+
+           <form method='post'>
+             <h1>Chercher un autre article</h1>
+             <section id="box-form">
+          	 <input type='text' placeholder='recherche' name="recherche_valeur"/>
+             <button type="submit" name="search" id="container-delivery">Rechercher</button>
+</section>
+</section>
+         </form>
 
 </main>
 

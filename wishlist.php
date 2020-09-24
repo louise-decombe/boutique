@@ -24,19 +24,17 @@
 </header>
 
   <section id="container-profile">
-      <nav>
-          <li><a id="selected_page" href="profil.php"> <i class="far fa-user-circle"></i>  &nbsp; MES INFORMATIONS</a></li>
-          <li><a href="order.php"> <i class="fas fa-shopping-bag"></i> MES COMMANDES</a></li>
-          <li><a href="returns.php"> <i class="fas fa-truck"></i> MES LIVRAISONS</a></li>
-          <li><a href="wallet.php"> <i class="far fa-credit-card"></i> MES MODES DE PAIEMENT</a></li>
-          <li><a href="wishlist.php"> <i class="far fa-heart"></i> WHISHLIST</a></li>
-          <li><a href="contact-form.php"> <i class="far fa-envelope"></i> NOUS CONTACTER</a></li>
-          <li>
-              <form action="index.php" method="post">
-                  <input id="deco" name="deco" value="SE DECONNECTER" type="submit"/>
-              </form>
-          </li>
-      </nav>
+    <nav>
+        <li><a id="selected_page" href="profil.php"> <i class="far fa-user-circle"></i>  &nbsp; MES INFORMATIONS</a></li>
+        <li><a href="order_track.php"> <i class="fas fa-shopping-bag"></i> MES COMMANDES</a></li>
+        <li><a href="wishlist.php"> <i class="far fa-heart"></i> WHISHLIST</a></li>
+        <li><a href="contact-form.php"> <i class="far fa-envelope"></i> NOUS CONTACTER</a></li>
+        <li>
+            <form action="index.php" method="post">
+                <input id="deco-profile" name="deco" value="SE DECONNECTER" type="submit"/>
+            </form>
+        </li>
+    </nav>
 
 <section id="profile-infos">
 	<form method="post" action="wishlist.php">
@@ -62,7 +60,7 @@
     <table>
       <tr>
 
-          <td><h2><?php echo $wishlist->nom_article ?></h2></td>
+          <td><h3><?php echo $wishlist->nom_article ?></h3></td>
 
       </tr>
 <tr>
@@ -72,9 +70,6 @@
 
 <td>
 <a href="item.php?id=<?php echo $wishlist->id_article ;?>">Voir</a><br/>
-<a class="add addpanier" id="add-basket" href="addpanier.php?id=<? echo $wishlist->id_article ?>">
-Acheter
-</a>
 <a href="action_wishlist.php?action_type=delete&id_article=<?php echo $wishlist->id_article; ?> "
 onclick="return confirm('Etes vous sûr?');">Supprimer</a>
 </td>
