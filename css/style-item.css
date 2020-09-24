@@ -197,7 +197,6 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    height: 60vh;
 }
 
 #similar-article h3{
@@ -227,6 +226,7 @@
     align-items:center;
     width: 80%;
     padding-top: 2.5%;
+    padding-bottom: 5%;
 }
 
 #selection-article{
@@ -245,7 +245,7 @@
 
 #selection-article a img{
     width: 100%;
-    height: 310px;
+    height: 350px;
     margin-bottom:5%;
     box-shadow: 0 0 15px black;
 }
@@ -283,69 +283,73 @@
 }
 
 /*** ITEM ***/
-@media screen and(min-width:981px) and (max-width:1280px){
+@media screen and (min-width:981px) and (max-width:1280px){
 
     #selection-article a img{
-        width: 80%;
-        height: 200px;
-        margin-bottom:5%;
-        box-shadow: 0 0 15px black;
+        width: 95%;
+        height: 95%;
+        padding-bottom: 0;
     }
+
+    
     
 }
 
 
 @media screen and (min-width: 681px) and (max-width: 980px){
-
-
-#container-page-item{
-    margin-top: 15%;
-}
-
-#presentation-item{
-    padding-left : 2.5%;
-    width: 50%;
-    min-height: 30%;
-}
-
-#selection-article{
-    width:30%;
-    margin-left:2.5%;
-}
-
-#selection-article a img{
-    width: 100%;
-    height: 210px;
-}
-
-
-@media screen and(max-width: 680px){
-
-    #container-page-item{
-        margin-top: 75%;
-    }
+    #container-item{
+     
+        padding-top: 15%;
     
+    }
+    #selection-article a img{
+        width: 95%;
+        height: 95%;
+    }
+
+    #selection-article a {
+        width: 70%;
+    }
+
+}
+
+
+@media (max-width: 681px){
+    #container-item{
+        display: flex;
+        flex-direction: column;
+        padding-top: 30%;
+        padding-bottom: 2.5%;
+    }
+
+    #box-img-item{
+        height: 95%;
+        width : 65%;
+        padding-top: 3.5%;
+        padding-bottom: 3.5%;
+    }
+
     #presentation-item{
         padding-left : 2.5%;
-        width: 50%;
-        min-height: 30%;
+        width: 70%;
     }
     
-    #selection-article a img{
-        width: 100%;
-        height: 200px;
-        margin-bottom:5%;
-        box-shadow: 0 0 15px black;
-    }
 
     #selection{
-        flex-direction: column;
-        justify-content: center;
-        align-items:center;
-        width: 80%;
-        padding-top: 2.5%;
+        padding-top: 5%;
     }
 
+    #selection-article a img{
+        width: 95%;
+        height: 95%;
+    }
+
+    #selection-article a {
+        width: 100%;
+        font-size: 8px;
+    }
+
+    
   
 }
 
@@ -353,6 +357,9 @@
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
 
 
 

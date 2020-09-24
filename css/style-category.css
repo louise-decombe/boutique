@@ -155,15 +155,21 @@
   
 }
 
-@media screen and (max-width:700px){
+@media (max-width:700px){
+
+    #title-subcategory h1{
+        font-size: 28px;
+    }
+
+    #title-subcategory aside{
+        margin-left:0;
+    }
    
 }
 
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-
 
 
 
