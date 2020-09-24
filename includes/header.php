@@ -29,10 +29,12 @@ if (isset($_POST["deco"])) {
     </a>
     <section id="first-nav">
         <section id="loupe">
-            <form id="search-form" action="search.php" method="GET">
-               <input class=search type="search" name="search" placeholder="Recherche..." />
-               <input type="submit" value="Valider"><i class="fa fa-search"></i> </input>
-            </form>
+          <form id="search-form" action="search.php" method="post">
+
+           <input type='text'   class=search placeholder='recherche' name="recherche_valeur"/>
+
+            <i class="fa fa-search"><button type="submit" name="search"></button></i>
+         </form>
         </section>
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
@@ -43,11 +45,11 @@ if (isset($_POST["deco"])) {
 
               {
                   ?>
-              
+
                <li>
                    <a href="admin.php"><ion-icon name="construct-outline"></ion-icon></a>
                </li>
-            
+
            <?php }else{?>
 
                 <div class="dropdown">
@@ -133,4 +135,3 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-
