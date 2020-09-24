@@ -126,6 +126,7 @@ if (isset($_POST["deco"])) {
         <nav>
             <ul>
                 <?php $categorie = $category->categories();?>
+                <li><a href="category.php">voir tout</a></li>
                 <?php if (isset($_SESSION['user'])){ ?>
                 <form action="index.php" method="post">
                     <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
