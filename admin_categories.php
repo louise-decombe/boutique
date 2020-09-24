@@ -26,9 +26,6 @@ if (isset($_SESSION['user'])) {
   <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
   </section>
-
-
-
   <center>
   <div class="container-valider">
   <div class="valider">
