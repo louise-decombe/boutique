@@ -115,8 +115,6 @@ $is_admin=$user['is_admin'];
 
 if (isset($_GET['ajouter'])) {
     ?>
-
-
             <?php
             if (isset($_POST['submit'])) {
                 $user->register(
@@ -209,8 +207,7 @@ if (isset($_GET['ajouter'])) {
                     <input type="text"  name="email" value="<?php echo $userData['email']; ?>"/>
                     <label>Phone</label>
                     <input type="text"  name="phone" value="<?php echo $userData['phone']; ?>"/>
-                    <label>gender</label>
-                    <input type="text"  name="gender" value="<?php echo $userData['gender']; ?>"/>
+                  
                     <label>admin</label>
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
