@@ -10,8 +10,10 @@
     <title></title>
   </head>
   <body>
-  <?php  if (isset($_SESSION['user'])) {
-        if ($user->is_admin == 1) { ?>
+    <?php
+      if (isset($_SESSION['user'])) {
+    if($_SESSION['user']['is_admin'] == 1)
+         { ?>
 <div id="container-nav">
     <nav>
         <ul>

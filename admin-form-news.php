@@ -14,11 +14,12 @@ $page_selected = 'admin-form-news';?>
     <link rel="stylesheet" type="text/css" href="css/admin.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
-<?php  if (isset($_SESSION['user'])) {
-      if ($user->is_admin == 1) { ?>
 <body>
     <header>
         <?php include("includes/header.php");
+          if (isset($_SESSION['user'])) {
+        if($_SESSION['user']['is_admin'] == 1)
+             {
         require 'class/admin-options.php';
         $form_index = new Admin_options($db);
         if(isset($_POST['add_news']) && isset($_POST['index_news'])){
@@ -34,7 +35,7 @@ $page_selected = 'admin-form-news';?>
             <article id="profile-infos">
                 <h1>TABLEAU DE BORD INDEX - NEWS</h1>
                     <form action="" method='POST' id="news-index-form">
-                        <input type="text" name="index_news" placeholder="actualité du site*" maxlenght="200">
+                        <input type="text" name="index_news" placeholder="actualité du site*" maxlenght="200" required>
                         <button type="submit" name="add_news">AFFICHER SUR LE SITE</button>
                     </form>
             </article>

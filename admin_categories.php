@@ -19,9 +19,9 @@
   <?php include("includes/header.php"); ?>
 </header>
 <?php
-if (isset($_SESSION['user'])) {
-    if ($user->is_admin == 1) {
-        ?>
+  if (isset($_SESSION['user'])) {
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
 <main>
   <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
@@ -130,7 +130,7 @@ if (isset($_SESSION['user'])) {
                     <input type="text" class="" name="nom_categorie" value="<?php echo $userData['nom_categorie']; ?>"/>
                 <input type="hidden" name="id_categorie" value="<?php echo $userData['id_categorie']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="" name="submit" value="Mettre à jour"/>
+                <input type="submit" class="bouton-admin" name="submit" value="Mettre à jour"/>
             </form>
           </section>
         </section>
@@ -170,7 +170,7 @@ if (isset($_SESSION['user'])) {
                 <?php endforeach; ?>
                   </select>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="" name="submit" value="Mettre à jour"/>
+                <input type="submit" class="bouton-admin" name="submit" value="Mettre à jour"/>
             </form>
           </section>
         </section>
@@ -192,7 +192,7 @@ if (isset($_SESSION['user'])) {
                       <input type="text" class="" name="nom_categorie"/>
 
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="" name="submit" value="Ajouter une catégorie"/>
+                  <input type="submit" class="bouton-admin" name="submit" value="Ajouter une catégorie"/>
               </form>
             </section>
           </section>
@@ -222,7 +222,7 @@ foreach ($products as $product):
 <?php endforeach; ?>
   </select>
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="" name="submit" value="Ajouter une sous-catégorie"/>
+                  <input type="submit" class="bouton-admin" name="submit" value="Ajouter une sous-catégorie"/>
               </form>
 </section>
 </section>

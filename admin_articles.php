@@ -19,9 +19,11 @@
   <?php include("includes/header.php"); ?>
 </header>
 <?php
-if (isset($_SESSION['user'])) {
-    if ($user->is_admin == 0) {
-        ?>
+  if (isset($_SESSION['user'])) {
+
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
+
 <main>
   <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
@@ -162,7 +164,7 @@ if (isset($_SESSION['user'])) {
   </select>
   </div>
                 <input type="hidden" name="action_type" value="add"/>
-                <input type="submit" class="submit" name="submit_article" value="Modifier le fanzine"/>
+                <input type="submit" class="bouton-admin" name="submit_article" value="Modifier le fanzine"/>
 
 
             <section id="modification">
@@ -177,17 +179,13 @@ if (isset($_SESSION['user'])) {
 
            $img = $db->query("SELECT chemin FROM image_article WHERE id_article='$id_article'"); ?>
                     <center> <img src="<?= ($item['chemin'])?>" width="30%" alt="cover-fanzine"></center><br/>
-
-                <label> adresse url de l'image </label>
-                <input type="text" id="" name="linkimg" accept="image/png, image/jpeg">
-                <input type="submit" name="submit1" value="Mettre à jour">
               </form>
 
               <form id="formfiles" action="upload.php?article=<?php echo $id_article ?>" method="post" enctype="multipart/form-data">
                 <label for="fileUpload">ou sélectionner votre fichier:</label>
                 <div id="inputfiles">
                 <input type="file" name="photo" id="">
-                <input type="submit" name="submit" value="Mettre à jour">
+                <input type="submit" name="submit" class="bouton-admin" value="Mettre à jour">
                 </div>
                 <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
               </form>
@@ -245,7 +243,7 @@ if (isset($_SESSION['user'])) {
                         <?php endforeach; ?>
                         </select></div>
                       <input type="hidden" name="action_type" value="add"/>
-                      <input type="submit" class="submit" name="submit_form1" value="Valider"/>
+                      <input type="submit" class="bouton-admin" name="submit_form1" value="Valider"/>
                     </form>
                   </section>
                   </section>
@@ -261,7 +259,7 @@ if (isset($_GET['submit_form1'])) { ?>
      <section id="box-form">
 
   <input type="number" name="nb_articles_stock" value="0" min="0" max="10000">
-  <input type="submit" name="submit_form2" value="Valider">
+  <input type="submit" class="bouton-admin" name="submit_form2" value="Valider">
   </form>
 </section>
 </section>
@@ -278,14 +276,14 @@ if (isset($_GET['submit_form1'])) { ?>
                             <form id="formpic" method="POST">
             <label> adresse url de l'image </label>
             <input type="text" id="avatar" name="linkimg" accept="image/png, image/jpeg">
-            <input type="submit" name="submit1" value="Upload">
+            <input type="submit" class="bouton-admin" name="submit1" value="Upload">
           </form>
 
           <form id="formfiles" action="upload.php?id=<?php ?>" method="post" enctype="multipart/form-data">
             <label for="fileUpload">ou sélectionner votre fichier:</label>
             <div id="inputfiles">
             <input type="file" name="photo" id="fileUpload">
-            <input type="submit" name="submit" value="Upload">
+            <input type="submit" class="bouton-admin" name="submit" value="Upload">
             </div>
                 </section>
                   </form>

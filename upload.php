@@ -44,8 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id article
-var_dump($id_article);
-
+//var_dump($id_article);
 
     # Transporte l'avatar et retourne son nom
     $query = $db->prepare('UPDATE image_article SET chemin = :chemin
@@ -55,15 +54,20 @@ var_dump($id_article);
     $query->execute();
     $query->CloseCursor();
 
+    header("location:".  $_SERVER['HTTP_REFERER']);
 
         //        header("location:admin_articles.php");
 
             }
         } else{
             echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
+            header("location:".  $_SERVER['HTTP_REFERER']);
+
         }
     } else{
         echo "Error: " . $_FILES["photo"]["error"];
+        header("location:".  $_SERVER['HTTP_REFERER']);
+
     }
 }
 
