@@ -1005,6 +1005,14 @@ footer{
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** INDEX  ***/
+#index-annonce{
+  display: flex;
+  width: 70%;
+  padding: 1.5%;
+  font-size:16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
 #container-banner{
   display: flex;
