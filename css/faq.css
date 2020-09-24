@@ -1,17 +1,17 @@
 
 h2 {
-  color: #282F35;
-  font-size: 18px;
-  letter-spacing: 1px;
+  color: black;
+  font-size: 20px;
+  letter-spacing: 2px;
   margin: 0;
   text-transform: uppercase;
 }
 
 p {
-  color: #666666;
+  color: black;
   font-size: 14px;
   line-height: 1.5;
-  margin: 20px;
+  margin: 25px;
 }
 
 .container {
