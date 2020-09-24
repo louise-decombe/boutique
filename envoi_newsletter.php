@@ -18,8 +18,10 @@
 <header>
 <?php
     include("includes/header.php");
-    if (isset($_SESSION['user'])) {
-        if ($user->is_admin == 1) {
+
+      if (isset($_SESSION['user'])) {
+    if($_SESSION['user']['is_admin'] == 1)
+         {
 ?>
 </header>
 <main>
@@ -43,7 +45,7 @@
         <label for="">Message</label>
         <input type="text" class="" name="nom_categorie"/>
     <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit" value="Envoyer"/>
+    <input type="submit" class="bouton-admin" name="submit" value="Envoyer"/>
 </form>
 </section>
 </section>

@@ -1,94 +1,92 @@
-#nav-admin-pages{
-	display: flex;
-	width: 100%;
-	background-color: black;
+#nav-admin-pages {
+  display: flex;
+  width: 100%;
+  background-color: black;
 }
+
 #container-nav {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 #container-navp {
-	text-align: center;
+  text-align: center;
 }
 
 #container-nav nav {
-	margin: 50px 0;
-	background-color: black;
+  margin: 50px 0;
+  background-color: black;
 }
 
 #container-nav nav ul {
-	padding: 0;
+  padding: 0;
   margin: 0;
-	list-style: none;
-	position: relative;
-	}
+  list-style: none;
+  position: relative;
+}
 
-  #container-nav nav ul li {
-	display:inline-block;
-	background-color: black;
-	}
+#container-nav nav ul li {
+  display: inline-block;
+  background-color: black;
+}
 
-  #container-nav nav a {
-	display:block;
-	padding:0 10px;
-	color:#FFF;
-	font-size:16px;
-	line-height: 60px;
-	text-decoration:none;
+#container-nav nav a {
+  display: block;
+  padding: 0 10px;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 60px;
+  text-decoration: none;
 }
 
 #container-nav nav a:hover {
-	background-color: #000000;
+  background-color: #000000;
 }
 
 /* Hide Dropdowns by Default */
 #container-nav nav ul ul {
-	display: none;
-	position: absolute;
-	top: 60px; /* the height of the main nav */
+  display: none;
+  position: absolute;
+  top: 60px;
+  /* the height of the main nav */
 }
 
 /* Display Dropdowns on Hover */
-#container-nav nav ul li:hover > ul {
-	display:inherit;
+#container-nav nav ul li:hover>ul {
+  display: inherit;
 }
 
 /* Fisrt Tier Dropdown */
 #container-nav nav ul ul li {
-	width:170px;
-	float:none;
-	display:list-item;
-	position: relative;
+  width: 170px;
+  float: none;
+  display: list-item;
+  position: relative;
 }
 
 /* Second, Third and more Tiers	*/
 #container-nav nav ul ul ul li {
-	position: relative;
-	top:-60px;
-	left:170px;
+  position: relative;
+  top: -60px;
+  left: 170px;
 }
 
-
 /* Change this in order to change the Dropdown symbol */
-#container-nav li > a:after { content:  ' +'; }
-#container-nav li > a:only-child:after { content: ''; }
+#container-nav li>a:after {
+  content: ' +';
+}
 
+#container-nav li>a:only-child:after {
+  content: '';
+}
 
 /**** RESPONSIVE NAV BAR ADMIN ****/
-
-
-
 .rtable {
-
   display: inline-block;
   vertical-align: top;
   max-width: 100%;
-
   overflow-x: auto;
-
   // optional - looks better for small cell values
   white-space: nowrap;
-
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -100,14 +98,12 @@
   background-repeat: no-repeat;
 }
 
-.rtable td:first-child
- {
+.rtable td:first-child {
   background-repeat: no-repeat;
   background-size: 20px 100%;
 }
 
-.rtable td:last-child
-{
+.rtable td:last-child {
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: 20px 100%;
@@ -124,33 +120,76 @@
   padding: 6px 12px;
 }
 
-.container-valider{
-}
+.container-valider {}
 
-.valider  {
-	background-color: white;
-	color: black;
-	width: 30%;
-	margin: 1%;
-padding: 1%;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-size: 12px;
-	border: 1px solid gray;
-	text-decoration:none;
-
+.valider {
+	text-decoration: none;
+  background-color: white;
+  color: black;
+  width: 30%;
+  margin: 1%;
+  padding: 1%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  border: 1px solid gray;
 }
 
 .valider:hover {
-	background-color: black;
-	color: white;
-	width: 30%;
-	margin: 1%;
-	padding:1%;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-size: 12px;
-	border: 1px solid gray;
-	text-decoration:none;
+	text-decoration: none;
+  background-color: black;
+  color: white;
+  width: 30%;
+  margin: 1%;
+  padding: 1%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  border: 1px solid gray;
 }
 
+.valider a{
+	text-decoration: none;
+  color: black;
+  width: 30%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.valider a:hover {
+	text-decoration: none;
+  color: white;
+  width: 30%;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+
+
+.bouton-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: gray;
+  width: 100%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  padding-bottom: 3.5%;
+  padding-top: 3.5%;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  border: 1px solid gray;
+}
+
+.bouton-admin:hover {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  transition: 1.5s;
+}
