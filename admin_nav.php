@@ -10,7 +10,8 @@
     <title></title>
   </head>
   <body>
-
+  <?php  if (isset($_SESSION['user'])) {
+        if ($user->is_admin == 1) { ?>
 <div id="container-nav">
     <nav>
         <ul>
@@ -81,3 +82,4 @@
         </ul>
     </nav>
 </div>
+<?php } } ?>

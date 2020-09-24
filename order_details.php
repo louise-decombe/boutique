@@ -18,8 +18,10 @@
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
+        if (isset($_SESSION['user'])) {
+
         require 'class/order.php';
         require 'class/admin.php';
         $order = new Order($db);
@@ -48,7 +50,7 @@
             $delivery  = 'Colissimo';
         }else if($delivery_choice == 3){
             $delivery  = 'Chronopost';
-        } 
+        }
         ?>
     </header>
     <main>
@@ -57,7 +59,7 @@
         </section>
         <section id="container-order-details">
             <section id="before-details"><a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a></section>
-           
+
             <section id="sub-details-order">
                 <article id="infos-details-order">
                     <ul>
@@ -69,15 +71,15 @@
                         <li>N° facture : #0000<?= $detail_order[0]['id_facture'] ?></li>
                         <li>Mode de livraison : <?= $delivery ?></li>
                         <li><?php //var_dump($detail_order); ?></li>
-                  
+
 
                     <hr>
-             
+
                     <?php foreach ($detail_articles as $details){ //var_dump($details); ?>
                         <li>titre article : <?=$details -> titre_article ?> ,qté : <?=$details -> quantite_article ?></li>
                     <?php } ?>
                     </ul>
-          
+
                 </article>
             </section>
             <section id="admin-select">
@@ -94,8 +96,8 @@
                                     </select>
                                     <button type="submit" name="submit">modifier le statut </button>
                 </form>
-           
-            <?php } 
+
+            <?php }
 
                 if(isset ($_POST['submit'])){
                 var_dump($_POST['statut']);
@@ -104,11 +106,15 @@
                 }
             ?>
             </section>
-            
+
         </section>
     </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php}
+        else{
+          echo "vous n'avez pas le droit d'accéder à cette page";
+        }
+         include('includes/footer.php'); ?>
     </footer>
 </body>
 </html>

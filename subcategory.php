@@ -41,9 +41,7 @@
                     <a href="category.php"><?= $product->nom_categorie;?></a> /
                     <a href="index1.php">home</a>
                 </aside>
-
             </section>
-
             <section id="container-news">
                 <?php
                 $article_sub_category  = $category->categorie_article($_GET['id']);
@@ -52,26 +50,20 @@
 
                 foreach ($article_sub_category as $article){
                 ?>
-
                     <section id="container-article">
                         <a href="item.php?id=<?= $article['id_article'];?>"><img src="<?= $article['chemin']; ?>"></a>
                         <section id="description">
                             <a id="title-article" href="item.php?id=<?= $article['id_article'];?>"><?= $article['nom_article']; ?></a>
                             <a href="item.php?id=<?= $article['id_article'];?>">
-                              <span class="price">
-                                 <?= $formatter->formatCurrency($article['prix_article'],'EUR'), PHP_EOL; ?>
-                               </span>
-
+                                <?= $formatter->formatCurrency($article['prix_article'],'EUR'), PHP_EOL; ?>
                             </a>
                             <?php //var_dump($article['id_article']);
                             $id = $article['id_article'];
                             ?>
                         </section>
                     </section>
-
                     <?php }; endforeach; }?>
             </section>
-          </div>
 
             <section id="remove-row">
                 <button id="load_more" data-id="<?= $id;?>" data-id_page="<?= $id_page;?>">LOAD MORE</button>
@@ -99,31 +91,6 @@
                     });
                 });
             </script>
-
-
-<script type="text/javascript">
-var ascending = false;
-
-$('.tab-content').on('click','.sortByPrice',function(){
-
-var sorted = $('#container-news').sort(function(a,b){
-  return (ascending ==
-         (convertToNumber($(a).find('.price').html()) <
-          convertToNumber($(b).find('.price').html()))) ? 1 : -1;
-});
-ascending = ascending ? false : true;
-
-$('#container-news-in').html(sorted);
-});
-
-var convertToNumber = function(value){
-return parseFloat(value.replace('$',''));
-}
-
-</script>
-
-
-
         </section>
     </main>
     <footer>

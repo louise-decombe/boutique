@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 $page_selected = 'admin-stock';?>
 
@@ -15,10 +15,11 @@ $page_selected = 'admin-stock';?>
     <link rel="stylesheet" type="text/css" href="css/admin.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
-
+<?php  if (isset($_SESSION['user'])) {
+      if ($user->is_admin == 1) { ?>
 <body>
     <header>
-        <?php include("includes/header.php"); 
+        <?php include("includes/header.php");
         require 'class/admin.php';
         require 'class/admin-stock.php';
         $admin_stock = new Stock($db);
@@ -56,7 +57,7 @@ $page_selected = 'admin-stock';?>
                                 <input class="input-qte" type='text' name='qte_article'/>
                                 <input class="input-nb" id="recalc" type='submit' value='<?=$stock['id_article']?>' name='qte'/>
                             </form>
-                            <?php 
+                            <?php
 
                             if(isset($_POST['qte']) && $_POST['qte'] == $stock['id_article']){
                                 $add_stock = ($_POST['qte_article']);
@@ -70,7 +71,7 @@ $page_selected = 'admin-stock';?>
                     </tr>
                     <?php } ?>
                 </tbody>
-            </table> 
+            </table>
         </section>
     </main>
     <footer>
@@ -80,4 +81,6 @@ $page_selected = 'admin-stock';?>
 </html>
 <?php
 ob_end_flush();
+}
+}
 ?>

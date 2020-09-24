@@ -16,12 +16,14 @@
 
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
+        if (isset($_SESSION['user'])) {
+
         require 'class/order.php';
         $order = new Order($db);
         $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);
-     
+
         $all_order = $order->all_order($_SESSION['user']['id_user']);
 
 
@@ -69,7 +71,7 @@
                                     $status = 'demande de retoour en cours';
                                     }else if($status_order == 5){
                                     $status = 'terminée';
-                                } 
+                                }
                             ?>
                                 <td><?= (new DateTime($details->date_commande))->format('d-m-Y')?></td>
                                 <td><a href="order_details.php?id=<?=$details->id_commande?>">#0000<?=$details->id_commande?></a></td>
@@ -79,7 +81,7 @@
                             </tr>
                         <?php } ?>
                     </tbody>
-                </table> 
+                </table>
                 </section>
             </article>
 
@@ -87,11 +89,13 @@
         <?php //var_dump($last_order);
               //var_dump($detail_order);
                //var_dump($all_orders);
-
+}else{
+  echo "vous n'avez pas le droit d'éccéder à cette page";
+}
         ?>
 
 
-       
+
     </main>
     <footer>
         <?php include('includes/footer.php'); ?>

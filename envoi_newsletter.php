@@ -18,6 +18,8 @@
 <header>
 <?php
     include("includes/header.php");
+    if (isset($_SESSION['user'])) {
+        if ($user->is_admin == 1) {
 ?>
 </header>
 <main>
@@ -48,5 +50,7 @@
 </section>
 
 </main>
+<?php }
+    } ?>
 </body>
 </html>

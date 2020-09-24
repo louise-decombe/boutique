@@ -18,13 +18,15 @@
 <header>
   <?php include("includes/header.php"); ?>
 </header>
+<?php
+if (isset($_SESSION['user'])) {
+    if ($user->is_admin == 1) {
+        ?>
 <main>
   <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
   </section>
-  <?php
-  if ($user->is_admin == 0) {
-  ?>
+
 
 
   <center>
@@ -62,7 +64,7 @@
         $users = $db->getRows('categorie', array('order_by'=>'id_categorie DESC'));
         if (!empty($users)) {
             foreach ($users as $user) {
-         ?>
+                ?>
                 <tr>
                     <td><?php echo $user['nom_categorie']; ?></td>
                     <td>
@@ -110,9 +112,7 @@
           <?php
             }
         }
-    }
-
-?>
+    } ?>
 </table>
 
 </div>
@@ -133,7 +133,7 @@
                     <input type="text" class="" name="nom_categorie" value="<?php echo $userData['nom_categorie']; ?>"/>
                 <input type="hidden" name="id_categorie" value="<?php echo $userData['id_categorie']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="submit-bouton" name="submit" value="Mettre à jour"/>
+                <input type="submit" class="" name="submit" value="Mettre à jour"/>
             </form>
           </section>
         </section>
@@ -164,17 +164,16 @@
                 <?php
                 $products = $db->query('SELECT * FROM categorie');
 
-                foreach ($products as $product):
+            foreach ($products as $product):
                 // On affiche chaque entrée une à une
 
                 ?>
-                <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>";
-                ?>
+                <strong>catégorie</strong> : <?php echo "<option value = '" . $product->id_categorie . "'>" . $product->nom_categorie . "</option>"; ?>
                 <br />
                 <?php endforeach; ?>
                   </select>
                 <input type="hidden" name="action_type" value="edit"/>
-                <input type="submit" class="submit-bouton" name="submit" value="Mettre à jour"/>
+                <input type="submit" class="" name="submit" value="Mettre à jour"/>
             </form>
           </section>
         </section>
@@ -196,7 +195,7 @@
                       <input type="text" class="" name="nom_categorie"/>
 
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="submit-bouton" name="submit" value="Ajouter une catégorie"/>
+                  <input type="submit" class="" name="submit" value="Ajouter une catégorie"/>
               </form>
             </section>
           </section>
@@ -226,7 +225,7 @@ foreach ($products as $product):
 <?php endforeach; ?>
   </select>
                   <input type="hidden" name="action_type" value="add"/>
-                  <input type="submit" class="submit-bouton" name="submit" value="Ajouter une sous-catégorie"/>
+                  <input type="submit" class="" name="submit" value="Ajouter une sous-catégorie"/>
               </form>
 </section>
 </section>
@@ -236,6 +235,9 @@ foreach ($products as $product):
 
 
 <?php
+    }
+} else {
+    echo "vous n'avez pas le droit d'accéder à cette page";
 } ?>
     </main>
     <footer>

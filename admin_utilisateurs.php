@@ -19,6 +19,8 @@
         include("includes/header.php");
     ?>
 </header>
+<?php  if (isset($_SESSION['user'])) {
+      if ($user->is_admin == 1) { ?>
 <main>
     <section id="nav-admin-pages">
         <?php require("admin_nav.php"); ?>
@@ -207,18 +209,25 @@ if (isset($_GET['ajouter'])) {
                     <input type="text"  name="phone" value="<?php echo $userData['phone']; ?>"/>
                     <label>gender</label>
                     <input type="text"  name="gender" value="<?php echo $userData['gender']; ?>"/>
+                    <label>admin</label>
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
                 <input type="hidden" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
-                <input type="submit" class="submit-bouton" name="submit" value="Modifier l'utilsateur"/>
+                <input type="submit"  name="submit" value="Modifier l'utilsateur"/>
             </form>
           </section>
         </section>
       </section>
 <?php
         }
-    } ?>
+    }
+  }
+}else{
+
+echo "vous n'avez pas le droit d'accéder à cette page";
+
+} ?>
 
 
 

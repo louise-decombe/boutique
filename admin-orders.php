@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 $page_selected = 'admin-orders';?>
 
@@ -15,10 +15,11 @@ $page_selected = 'admin-orders';?>
     <link rel="stylesheet" type="text/css" href="css/admin.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
-
+<?php  if (isset($_SESSION['user'])) {
+      if ($user->is_admin == 1) { ?>
 <body>
     <header>
-        <?php 
+        <?php
         include("includes/header.php");
         require 'class/admin.php';
         $admin_orders = new Admin_orders($db);
@@ -74,7 +75,7 @@ $page_selected = 'admin-orders';?>
                     </form>
                 </li>
             </nav>
-               
+
             <article id="profile-infos">
                 <h1>TABLEAU DE BORD - COMMANDES</h1>
                     <ul>
@@ -116,7 +117,7 @@ $page_selected = 'admin-orders';?>
                         </tr>
                         <?php } ?>
                     </tbody>
-                </table> 
+                </table>
         </section>
         <?php } ?>
         <?php if(isset($_POST['livraison'])){?>
@@ -150,7 +151,7 @@ $page_selected = 'admin-orders';?>
                         </tr>
                         <?php } ?>
                     </tbody>
-                </table> 
+                </table>
         </section>
         <?php } ?>
         <?php if(isset($_POST['retour'])){?>
@@ -184,7 +185,7 @@ $page_selected = 'admin-orders';?>
                         </tr>
                         <?php } ?>
                     </tbody>
-                </table> 
+                </table>
         </section>
         <?php } ?>
         <?php if(isset($_POST['terminee'])){?>
@@ -218,7 +219,7 @@ $page_selected = 'admin-orders';?>
                         </tr>
                         <?php } ?>
                     </tbody>
-                </table> 
+                </table>
         </section>
         <?php } ?>
         <section class="treatment-order">
@@ -259,13 +260,13 @@ $page_selected = 'admin-orders';?>
                                     }
                                 ?>
                             </td>
-                            
-                           
+
+
                         </tr>
                         <?php } ?>
-                 
+
                     </tbody>
-                </table> 
+                </table>
         </section>
     </main>
     <footer>
@@ -275,5 +276,6 @@ $page_selected = 'admin-orders';?>
 </html>
 <?php
 ob_end_flush();
+}
+}
 ?>
-

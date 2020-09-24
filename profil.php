@@ -18,6 +18,7 @@
         <?php
         include("includes/header.php");
 
+        if (isset($_SESSION['user'])) {
         //var_dump($infos);
         //var_dump($_SESSION['user']);
 
@@ -104,11 +105,16 @@
                      </form>
                 </section>
 
-                <?php } ?>
+              <?php } }else{
+                echo "vous n'avez pas le droit d'accéder à cette page";
+              }?>
         </section>
     </main>
     <footer>
-        <?php include('includes/footer.php'); ?>
+        <?php
+
+
+        include('includes/footer.php'); ?>
     </footer>
 </body>
 </html>
