@@ -96,6 +96,11 @@ button {
             </section>
         </aside>
         <section id="similar-article">
+            <?php
+            $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));
+            //var_dump ($similar_art[0]['id_article']);
+            if (!empty($similar_art) && ($similar_art[0]['id_article'])!= $item['id_article']){
+            ?>
             <h3>vous aimerez peut-être...</h3>
             <?php
             $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));

@@ -133,7 +133,38 @@
         align-items: center;
         justify-content: center;
         padding-top:2.5%;
-        padding-bottom:10%;
+        padding-bottom:2.5%;
+    }
+    #banner-category h1{
+        font-size:30px;
+    }
+
+    #sub-category-container{
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+
+    }
+    #name_sub_category{
+        font-size:10px;
+    }
+    #box-category{
+        width : 75%;
+    }
+
+  
+}
+
+@media (max-width: 780px){
+    #container-category{
+        padding-top: 2.5%;
+    }
+    #banner-category{
+        align-items: center;
+        justify-content: center;
+        padding-top:2.5%;
+        padding-bottom:2.5%;
+        margin-top: 24%;
     }
     #banner-category h1{
         font-size:30px;
@@ -163,6 +194,30 @@
 
     #title-subcategory aside{
         margin-left:0;
+    }
+
+    #banner-category{
+        align-items: center;
+        justify-content: center;
+        padding-top:2.5%;
+        padding-bottom:2.5%;
+        margin-top: 35%;
+    }
+
+   
+}
+
+@media (max-width:380px){
+    #banner-category{
+        align-items: center;
+        justify-content: center;
+        padding-top:2.5%;
+        padding-bottom:2.5%;
+        margin-top: 50%;
+    }
+
+    #title-subcategory{
+        padding-top: 15%;
     }
    
 }
