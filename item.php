@@ -14,6 +14,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style-item.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<style media="screen">
+button {
+    border:none;
+    background-color:white;
+    outline:none;
+}
+</style>
+
 </head>
 
 <body>
@@ -38,20 +46,23 @@
                               $id_article = $_GET['id'];
                               $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
 
-            if (count($query) >= 1 ) { # On vérifie si l'utilisateur n'a pas déja ajouté l'objet à sa wishlist
-                echo "Vous avez  ajouté cet article à votre wishlist";
-            } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
+            if (count($query) >= 1 ) {?>
+<ion-icon name="heart-sharp"></ion-icon> <?php    } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
 ?>
 
 <form method="post" action="action_wishlist.php" class="form" id="userForm">
   <input type="hidden" name="id_utilisateur" value="<?php echo $id_user; ?>"/>
   <input type="hidden" name="id_article" value="<?php echo $id_article ?>"/>
   <input type="hidden" name="action_type" value="add"/>
-    <input type="submit" class="" name="submit_wish" value="+ wishlist"/>
+  <button type="submit" class="" name="submit_wish"><ion-icon name="heart-outline">
+  </ion-icon></button>
+
+
 </form>
 <?php }
 } ?>
-
+<a href="connexion.php"><ion-icon name="heart-outline">
+</ion-icon></a>
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
@@ -85,6 +96,11 @@
             </section>
         </aside>
         <section id="similar-article">
+            <?php
+            $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));
+            //var_dump ($similar_art[0]['id_article']);
+            if (!empty($similar_art) && ($similar_art[0]['id_article'])!= $item['id_article']){
+            ?>
             <h3>vous aimerez peut-être...</h3>
             <?php
             $similar_art = $category->similar_article(($item['id_sous_categorie']), ($item['id_article']));

@@ -19,8 +19,10 @@
         include("includes/header.php");
     ?>
 </header>
-<?php  if (isset($_SESSION['user'])) {
-      if ($user->is_admin == 1) { ?>
+<?php
+  if (isset($_SESSION['user'])) {
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
 <main>
     <section id="nav-admin-pages">
         <?php require("admin_nav.php"); ?>
@@ -113,8 +115,6 @@ $is_admin=$user['is_admin'];
 
 if (isset($_GET['ajouter'])) {
     ?>
-
-
             <?php
             if (isset($_POST['submit'])) {
                 $user->register(
@@ -167,7 +167,7 @@ if (isset($_GET['ajouter'])) {
                         <input type="checkbox" name="newsletter" value="newsletter">
                         <label for="newsletter">Inscrire à la newsletter </label>
                     </section>
-                    <button type="submit" name="submit">Enregistrer Les informations</button>
+                    <button type="submit"  name="submit">Enregistrer Les informations</button>
                 </form>
               </form>
             </section>
@@ -207,14 +207,13 @@ if (isset($_GET['ajouter'])) {
                     <input type="text"  name="email" value="<?php echo $userData['email']; ?>"/>
                     <label>Phone</label>
                     <input type="text"  name="phone" value="<?php echo $userData['phone']; ?>"/>
-                    <label>gender</label>
-                    <input type="text"  name="gender" value="<?php echo $userData['gender']; ?>"/>
+                  
                     <label>admin</label>
                     <input type="hidden" name="password" value="<?php echo $userData['password']; ?>"/>
                 <input type="hidden" name="id_utilisateur" value="<?php echo $userData['id_utilisateur']; ?>"/>
                 <input type="hidden" name="action_type" value="edit"/>
                 <input type="hidden" name="is_admin" value="<?php echo $userData['is_admin']; ?>"/>
-                <input type="submit"  name="submit" value="Modifier l'utilsateur"/>
+                <input type="submit" class="bouton-admin"  name="submit" value="Modifier l'utilsateur"/>
             </form>
           </section>
         </section>

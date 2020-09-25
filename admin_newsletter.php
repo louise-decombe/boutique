@@ -20,8 +20,10 @@
 include("includes/header.php");
 ?>
 </header>
-<?php  if (isset($_SESSION['user'])) {
-      if ($user->is_admin == 1) { ?>
+<?php
+  if (isset($_SESSION['user'])) {
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
 <main>
     <section id="nav-admin-pages">
         <?php require("admin_nav.php"); ?>
@@ -38,7 +40,8 @@ include("includes/header.php");
                     <tr>
                         <td><?php echo $user['email_utilisateur']; ?></td>
                         <td>
-        <a href="action_newsletter.php?action_type=delete&id_newsletter =<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Êtes vous sure?');">X</a>
+  <a href="action_newsletter.php?action_type=delete&id_newsletter=<?php echo $user['id_newsletter']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
+
 
                         </td>
                     </tr>

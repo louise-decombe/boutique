@@ -164,7 +164,7 @@
 
         <section id="index-part2">
             <article>
-                <?= $news_index['text_news']; //var_dump($news_index) ?>
+            <p id='index-annonce'><?= $news_index['text_news']; //var_dump($news_index) ?></p>
             </article>
             <img src="src/fanzine-saturation.jpg" alt="presentation of a stand with multiple different fanzines">
         </section>

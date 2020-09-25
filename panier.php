@@ -16,7 +16,7 @@
 <header>
     <?php
 	include("includes/header.php");
-  if (isset($_SESSION['user'])) {
+
 
 
 	require 'class/order.php';
@@ -115,9 +115,7 @@
     <footer>
         <?php
 
-}else{
-  echo "vous n'avez pas le droit d'accéder à cette page";
-}        include('includes/footer.php'); ?>
+      include('includes/footer.php'); ?>
     </footer>
 </body>
 </html>

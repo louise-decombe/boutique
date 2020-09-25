@@ -15,12 +15,16 @@ $page_selected = 'admin-orders';?>
     <link rel="stylesheet" type="text/css" href="css/admin.css">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </head>
-<?php  if (isset($_SESSION['user'])) {
-      if ($user->is_admin == 1) { ?>
+
 <body>
     <header>
         <?php
         include("includes/header.php");
+
+          if (isset($_SESSION['user'])) {
+        if($_SESSION['user']['is_admin'] == 1)
+
+             {
         require 'class/admin.php';
         $admin_orders = new Admin_orders($db);
         $formatter = new NumberFormatter('fr_FR', NumberFormatter::CURRENCY);

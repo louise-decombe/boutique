@@ -17,12 +17,10 @@
 <header>
     <?php include("includes/header.php"); ?>
 </header>
-
 <?php
-if (isset($_SESSION['user'])) {
-    if ($user->is_admin == 1) {
-        ?>
-
+  if (isset($_SESSION['user'])) {
+if($_SESSION['user']['is_admin'] == 1)
+     { ?>
 <main>
 <section id="nav-admin-pages">
     <?php require("admin_nav.php"); ?>
@@ -110,7 +108,7 @@ if (isset($_GET['clients'])) { ?>
               <td><?php echo $user['titre_fanzine']; ?></td>
               <td><?php echo $user['date_registration']; ?></td>
               <td>
-                  <a href="action_categorie.php?action_type=delete&id_categorie=<?php echo $user['id_message_utilisateur']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
+                  <a href="action_seller_form.php?action_type=delete&id_message_vendeur=<?php echo $user['id_message_vendeur']; ?> " onclick="return confirm('Êtes vous sûr?');">X</a>
               </td>
           </tr>
        <?php

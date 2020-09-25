@@ -44,19 +44,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //récupérer le chemin du serveur soit avec une super globale SERVER ou le taper en dur
 
                // "UPDATE utilisateurs SET avatar='$file_path'"; //ajouter id article
+//var_dump($id_article);
 
+    # Transporte l'avatar et retourne son nom
+    $query = $db->prepare('UPDATE image_article SET chemin = :chemin
+  WHERE id_article = :id_article');
+    $query->bindValue(':chemin', $file_path, PDO::PARAM_STR);
+    $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+    $query->execute();
+    $query->CloseCursor();
 
-                $requestimg = "UPDATE `image_article` SET `chemin`='$file_path' WHERE id_article = '$id_article'";
-                $resultimg = mysqli_query($db, $requestimg);
+    header("location:".  $_SERVER['HTTP_REFERER']);
 
         //        header("location:admin_articles.php");
 
             }
         } else{
             echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
+            header("location:".  $_SERVER['HTTP_REFERER']);
+
         }
     } else{
         echo "Error: " . $_FILES["photo"]["error"];
+        header("location:".  $_SERVER['HTTP_REFERER']);
+
     }
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 23, 2020 at 08:10 AM
+-- Generation Time: Sep 24, 2020 at 01:31 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.7
 
@@ -61,7 +61,28 @@ INSERT INTO `article` (`id_article`, `id_distributeur`, `id_categorie`, `id_sous
 (12, 2, 2, 1, 'Project issue 2', 'multi auteurs', 'project journal', 'Featuring: Amale Andraos & Dan Wood, Becher & Howland (Architectural Association), Kelly Bair, Daniel Berlin, Kyla Chevrier, Joe Day, Amy DeDonato, FreelandBuck, Nathan Hume & Abigail Coover, Keith Johns, Parsa Khalili, Daniel Markiewicz, Caroline O’Donnell, Michael Osman, Dwayne Oyler, Albert Pope, Peter Trummer, Jason Payne, Leah Pires, Productora, Andrew Zago', 'none', 108, 2013, '16', '2020-08-14 15:22:15'),
 (13, 2, 2, 1, 'Project issue 1', 'multi auteurs', 'project journal', 'Featuring: Andrew Atwood & Anna Neimark, Pier Vittorio Aureli, John Houck, Bernard Khoury, Andrew Kovacs, Jimenez Lai, Michael Meredith & Hilary Sample, Emmanuel Petit, Jesse Reiser, Soriano y Asociados arquitectos, Xefirotarch, and more', 'none', 108, 2012, '16', '2020-08-14 15:22:15'),
 (14, 5, 1, 10, 'Une autre histoire du DIY', 'Adrien Durand', 'Le Gospel', '\"Le faire soi même\" \r\nOdd Future \r\nLil B & Clams Casino \r\nArthur Russell \r\nUne histoire de l’antifolk et du folkpunk \r\nEarly black metal \r\n>Mountain Goats \r\n>Circuit bending \r\n>Sun City Girls', 'none', 80, 2020, '6', '2020-09-20 15:22:15'),
-(15, 5, 1, 10, 'Musique & lutte des classes', 'Adrien Durand', 'Le Gospel', 'Revival rock et gentrification à New York \r\nLa musique électronique bourgeoise: une tradition française \r\nPoison Girls \r\nThe Coup \r\nPatty Hearst \r\nCamera Silens \r\nRadio Dept. \r\nLeftöver Crack \r\nDans les yeux de celles qui ont filmé les années no wave', 'none', 80, 2020, '6', '2020-09-20 15:22:15');
+(15, 5, 1, 10, 'Musique & lutte des classes', 'Adrien Durand', 'Le Gospel', 'Revival rock et gentrification à New York \r\nLa musique électronique bourgeoise: une tradition française \r\nPoison Girls \r\nThe Coup \r\nPatty Hearst \r\nCamera Silens \r\nRadio Dept. \r\nLeftöver Crack \r\nDans les yeux de celles qui ont filmé les années no wave', 'none', 80, 2020, '6', '2020-09-20 15:22:15'),
+(16, 5, 4, 3, 'Gran Paris', 'inconnu', 'Big Cartel', 'Cet objet éditorial présente une série de photographies réalisée par 100navigo.\\n21 x 14,8cm, 64 pages couleurs. Papier 90 grammes.\\nImposé, imprimé et façonné dans notre four. Reliure en piqûre à cheval.\\nCouverture sérigraphiée en deux couleurs par nos soins.\\n30 exemplaires numérotés.\\nAccompagné d’une photographie A3 imprimé en sérigraphie par nos soins également.\'', 'Couverture sérigraphiée en deux couleurs par nos soins. ', 40, 2020, '9', '2020-09-20 15:22:15'),
+(17, 7, 4, 10, 'CARACAS NUESTRA ', 'Ronald Pizzoferrato', 'éditions nuits noires', 'Le photographe et graffeur Ronald Pizzoferrato présente dans Caracas Nuestra un ensemble d’archives photographiques né de ses premières sorties dans le métro ultra surveillé et sécurisé de la capitale Vénézuélienne. Il offre une vision intime d’un Caracas que peu de gens connaissent et qu’il compare à une boîte de Pandore : ce réseau souterrain unique, ordonné, aligné, rampant, contraste avec la ville du dessus et offre un terrain de jeu sans fin, jusqu’alors jamais exploré ni vandalisé. Ces images témoignent du début d’un phénomène né secrètement, dans l’obscurité totale et l’anxiété la plus complète. Cette « Caracas Nuestra », seulement comprise des caraqueños et de ces graffeurs passionnés est une ville souterraine encore plus dangereuse que la surface', 'Cette « Caracas Nuestra », seulement comprise des caraqueños et de ces graffeurs passionnés est une ville souterraine encore plus dangereuse que la surface.\', \'Cette « Caracas Nuestra », seulement comprise des caraqueños et de ces graffeurs passionnés...', 70, 2019, '15', '2020-09-20 15:22:15'),
+(18, 7, 4, 10, 'PHÉNIX', 'Emilie désir', 'éditions nuits noires', 'Cette série de cinq fanzines, publiée au cours des années 2019/2020, témoigne des manifestations parisiennes issues du mouvement inédit des gilets jaunes.\\nChaque tome est destiné à aborder un thème lié à ce mouvement contestataire : flammes, armes, actions violentes, portraits des manifestants et des forces de l’ordre etc...\\nLa photographe Émilie Désir a couvert la quasi-totalité des rassemblements au plus près de l’action. Des scènes de protestation pures naissent des images très esthétiques et composées. Le résultat en est une vision en cinq actes, à la fois documentaire et puissamment dramatique.\\n\\nTome 1 : Phénix\\nPublié à l’occasion de l’exposition collective « Documenting Paris » à la Retramp Gallery de Berlin en juillet 2019, le fanzine Phénix est le premier tome de la série. Émilie Désir s’est ici confrontée aux flammes nées de la colère : feux violents, fumées asphyxiantes et aveuglantes, pompiers en action, tous ces instants brûlants sont captés par le reflex argentique de la photographe.', 'Des scènes de protestation pures naissent des images très esthétiques et composées. Le résultat en est une vision en cinq actes, à la fois documentaire et puissamment dramatique.', 52, 2020, '10', '2020-09-20 15:22:15'),
+(19, 9, 4, 10, 'KX en Y', 'Adrien Vautier', 'éditions nuits noires', 'KX en Y : un modèle de moto, une figure de cross. L\'ouvrage et son titre tiennent dans ces deux éléments clés qui définissent le cross-bitume. Le reste, ce sont les riders suivis par Adrien Vautier qui le construisent.Le photojournaliste a couvert le quotidien de ces jeunes passionnés de cross qui brûlent régulièrement le goudron de leurs banlieues jusqu\'à Paris en prenant tous les risques. Il en livre une vision complète et tranchante, à l\'image du péril permanent auquel se confrontent ces bikers lors de leurs sorties de groupe. Le documentaire photographique raconte cette histoire : le groupe, l\'oublie des clans, le danger, l\'euphorie, les accidents, la police qui est partout. La passion pour le bitume n\'a ni âge, ni milieu, ni limite. Parcourir des yeux KX en Y, c\'est sentir son rythme cardiaque s\'accélérer et prendre soi-même une dose d\'adrénaline.\', ', '\'Le documentaire photographique raconte cette histoire : le groupe, l\'oublie des clans, le danger, l\'euphorie, les accidents, la police qui est partout.', 50, 2019, '18', '2020-09-20 15:22:15'),
+(20, 9, 1, 6, 'punk Slash magazine', 'Ryan Richardson', 'slash', 'The importance of Slash to the L.A. punk scene, and really to the worldwide punk scene in general, cannot be overstated.  The writing of Claude “Kickboy Face” Bessy, Jeffrey Lee Pierce, and Chris D. helped to define the attitude and outlook of the nascent subculture, while the imagery of illustrators Gary Panter and Mark Vallen established punk as an art movement working outside of—but in conjunction with—the music scene. Photographers like Ed Colver and Jenny Lens provided essential documentation of the era, making names for themselves producing some of the most important rock photography ever captured.', 'The importance of Slash to the L.A. punk scene, and really to the worldwide punk scene in general, cannot be overstated.', 30, 1970, '15', '2020-09-20 15:22:15'),
+(21, 2, 3, 4, 'Ailleurs & Autres n° 11', 'Francis VALERY ', 'A & A Infos', 'bel ailleurs ', 'none', 25, 1978, '55', '2020-09-20 15:22:15'),
+(22, 2, 3, 4, 'A-Z', 'Graham Masterton', 'catalogue analytique', 'catalogue analytique\', \'principalement consacré à la littérature, mais on y trouvait aussi quelques sujets cinéma. Entre 1985 et 1988 il y eu 23 numéros ainsi que plusieurs hors-série ', 'none', 30, 1991, '11', '2020-09-20 15:22:15'),
+(23, 2, 3, 4, 'Faille temporelle', 'Moebius', 'aucune', 'fanzine était lui plutôt spécialisé dans la BD, avec notamment ce n° 3 datant de janvier 1991.', 'none', 30, 1991, '39', '2020-09-20 15:22:15'),
+(24, 2, 3, 7, 'Jungle Juice n° 02', 'multi auteurs', 'les presses du réel', 'les presses du réel, 40 auteurs, poètes et plasticiens se passent le relais page après page de ce numéro littéraire empreint de désobéissance et de vacarme. 114 pages articulées autour de textes théoriques sur la musique (Bernard Sjazner, « Plaidoyer pour écoute sensible de la musique », Pauline Nadrigny « L\'atelier d\'écoutes N°5 », ...), de textes narratifs (Francis avec « Hibakusha » qui relate l\'explosion de la centrale de Flamanville 48 heures avant l\'explosion du 9 février 2017, Marie Debray « Au seuil »...) et de poésie (Emmanuelle K, « Quand l\'obéissance est devenue impossible », Edith Msika, Rosalie Bribes, François Salmeron, Marin Fouqué...). ', 'none', 20, 2015, '9', '2020-09-20 15:22:15'),
+(25, 12, 5, 11, 'Les mutants', 'multi auteurs', 'Biscoto', 'Le journal qui change de peau.', 'Le journal qui change de peau.', 22, 2016, '4', '2020-09-20 15:22:15'),
+(26, 12, 5, 11, 'Par là-bas', 'Alexis Grasset', 'Paper cut', 'Alexis Grasset nous peint ici de nombreux paysages, aux ambiances toutes différentes, dans lesquels This et That viennent vivre leur récit. Tantôt forêt, tantôt grotte, tantôt volcan, son monde change au gré de son histoire et de ses envies, construisant un univers tout aussi palpable que grandiose. Chaque page est une grande illustration colorée aux multiples détails à contempler, dans laquelle les yeux se perdent avec plaisir.', 'none', 16, 2020, '10', '2020-09-20 15:22:15'),
+(27, 12, 5, 11, 'Rencontre2', 'Amelie Patin', 'Paper cut', 'Ce leporello raconte l\'histoire d\'un rocher qui rêve de grandir et d\'une jeune fille qui recherche son jardin parfait.', 'none', 16, 2018, '85', '2020-09-20 15:22:15'),
+(28, 12, 5, 11, 'Le culte', 'Daphné Geisler', 'Paper cut', 'Dans son journal intitulé Le Culte, Daphné Geisler donne à ses personnages This et That le costume de scientifiques, observant et analysant un objet qui va les perdre dans ses mystères. Son trait en noir et blanc organique mélangé à son découpage franc donne une dynamique temporelle à son récit parfois proche de la cinématographie.', 'Un étrange monolithe est apparu en plein milieu du désert.', 16, 2019, '10', '2020-09-20 15:22:15'),
+(29, 12, 5, 11, 'Longcourci', 'Margaux Meissonnier', 'Paper cut', 'Margaux Meissonnier nous emmène ici dans une ballade où le temps et l’espace ne semblent pas fonctionner de la même façon que dans notre réalité. This et That sont égarés dans un univers fantastique, où comètes et oiseaux à 3 yeux ne semblent étonner personne. L’autrice nous laisse nous perdre dans ces paysages aussi magnifiques qu’immenses, rappelant à tous que ce n’est pas la destination qui compte, mais bien le voyage.', 'Finalement, est-il important de savoir où ce raccourci nous emmènera? Dépêchons-nous de prendre le temps, Pressons-nous d’aller lentement, qu’importe! Tant que le voyage n’est pas solitaire…', 16, 2019, '10', '2020-09-20 15:22:15'),
+(30, 15, 1, 10, 'So Young', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(31, 15, 1, 10, 'So Young #26', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(32, 15, 1, 10, 'So Young #25', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(33, 15, 1, 10, 'So Young #24', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(34, 15, 1, 10, 'So Young #23', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(35, 15, 1, 10, 'So Young #22', 'multi auteurs', 'So Young', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 'So Young is a printed publication, fully illustrated by emerging and contemporary illustrators, our limited print runs make So Young an item to be collected and treasured.', 50, 2020, '10', '2020-09-20 15:22:15'),
+(36, 22, 6, 12, 'Les vies imaginaires', 'Emre Orhum', 'Le dernier cri', 'les vies imaginaires', 'les vies imaginaires', 32, 2013, '35', '2020-09-20 15:22:15');
 
 -- --------------------------------------------------------
 
@@ -85,7 +106,7 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `date_registration`) V
 (3, 'littérature', '2020-09-01 17:20:45'),
 (4, 'contre-culture', '2020-09-01 17:20:45'),
 (5, 'jeunesse', '2020-09-01 17:20:45'),
-(6, 'manga', '2020-09-01 17:20:45'),
+(6, 'bande-dessinée', '2020-09-01 17:20:45'),
 (7, 'category', '2020-09-01 17:20:45');
 
 -- --------------------------------------------------------
@@ -115,7 +136,21 @@ INSERT INTO `commande` (`id_commande`, `id_utilisateur`, `date_commande`, `statu
 (113, 27, '2020-09-21 15:51:59', 2),
 (114, 26, '2020-09-22 17:24:45', 1),
 (115, 26, '2020-09-22 18:16:19', 1),
-(116, 26, '2020-09-22 18:29:32', 1);
+(116, 26, '2020-09-22 18:29:32', 1),
+(117, 26, '2020-09-23 11:11:33', 1),
+(118, 26, '2020-09-23 11:16:07', 1),
+(119, 26, '2020-09-23 11:19:33', 1),
+(120, 26, '2020-09-23 11:22:27', 1),
+(121, 26, '2020-09-23 11:26:37', 1),
+(122, 26, '2020-09-23 11:29:29', 1),
+(123, 26, '2020-09-23 11:32:50', 1),
+(124, 26, '2020-09-23 11:33:26', 1),
+(125, 26, '2020-09-23 11:39:47', 1),
+(126, 26, '2020-09-23 11:42:53', 1),
+(127, 26, '2020-09-23 11:50:32', 1),
+(128, 26, '2020-09-23 12:10:12', 1),
+(129, 26, '2020-09-23 16:21:31', 1),
+(130, 26, '2020-09-24 09:40:51', 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +181,22 @@ INSERT INTO `detail_commande` (`id_detail_commande`, `id_article`, `titre_articl
 (105, 1, 'Peter Markli', 2, 113),
 (106, 6, 'CRAP ZINE volume 5', 1, 114),
 (107, 1, 'Peter Markli', 2, 115),
-(108, 1, 'Peter Markli', 1, 116);
+(108, 1, 'Peter Markli', 1, 116),
+(109, 15, 'Musique & lutte des classes', 2, 117),
+(110, 15, 'Musique & lutte des classes', 1, 119),
+(111, 14, 'Une autre histoire du DIY', 1, 120),
+(112, 14, 'Une autre histoire du DIY', 1, 121),
+(113, 14, 'Une autre histoire du DIY', 1, 122),
+(114, 15, 'Musique & lutte des classes', 1, 123),
+(115, 15, 'Musique & lutte des classes', 1, 124),
+(116, 2, 'Silences éloquents', 1, 125),
+(117, 1, 'Peter Markli', 1, 126),
+(118, 1, 'Peter Markli', 1, 127),
+(119, 4, 'Simplifions', 1, 127),
+(120, 15, 'Musique & lutte des classes', 1, 128),
+(121, 1, 'Peter Markli', 1, 129),
+(122, 10, 'Project issue 4', 1, 129),
+(123, 9, 'Project issue 5', 1, 130);
 
 -- --------------------------------------------------------
 
@@ -178,7 +228,12 @@ INSERT INTO `facture` (`id_facture`, `id_commande`, `nbr_total_articles`, `prix_
 (35, 110, 1, 48, 5.9, 2, 'nadia', 53.9, 27, '2020-09-06 13:19:04'),
 (36, 111, 1, 48, 5.9, 2, 'la crau', 53.9, 27, '2020-09-07 21:22:19'),
 (37, 113, 2, 96, 7.9, 3, 'mla ville de marseille', 103.9, 27, '2020-09-21 15:51:59'),
-(38, 115, 2, 96, 5.9, 2, 'la crau', 101.9, 26, '2020-09-22 18:16:19');
+(38, 115, 2, 96, 5.9, 2, 'la crau', 101.9, 26, '2020-09-22 18:16:19'),
+(39, 126, 1, 48, 5.9, 2, 'rue de la paix', 53.9, 26, '2020-09-23 11:42:53'),
+(40, 127, 2, 68, 5.9, 2, 'rue de la paix 13001 marseille', 73.9, 26, '2020-09-23 11:50:32'),
+(41, 128, 1, 6, 5.9, 2, 'rue de la plateforme 13001 marseille', 11.9, 26, '2020-09-23 12:10:12'),
+(42, 129, 2, 64, 5.9, 2, 'rue de la paix 13001 marseille', 69.9, 26, '2020-09-23 16:21:31'),
+(43, 130, 1, 20, 3.9, 1, 'rue de la paix 13001 marseille', 23.9, 26, '2020-09-24 09:40:51');
 
 -- --------------------------------------------------------
 
@@ -197,6 +252,7 @@ CREATE TABLE `image_article` (
 --
 
 INSERT INTO `image_article` (`id_image_article`, `id_article`, `chemin`) VALUES
+(0, 0, 'uploads/image_default.jpg'),
 (1, 1, 'uploads/cosa_mentale_Markli_couverture.jpg'),
 (2, 2, 'uploads/cosa_mentale_silences-eloquents_couverture.jpg'),
 (3, 3, 'uploads/cosa_mentale_spectre_vegetal_trauma_couverture.jpg'),
@@ -211,7 +267,28 @@ INSERT INTO `image_article` (`id_image_article`, `id_article`, `chemin`) VALUES
 (12, 12, 'uploads/PROJECT_Issue-2_Front-Cover.jpg'),
 (13, 13, 'uploads/PROJECT_Issue-1_Front-Cover.jpg'),
 (14, 14, 'uploads/le gospel-diy.jpg'),
-(15, 15, 'uploads/le gospel-lutte des classes.jpg');
+(15, 15, 'uploads/le gospel-lutte des classes.jpg'),
+(16, 16, 'uploads/versionbigcartel.jpg'),
+(17, 17, 'uploads/couvBC.jpg'),
+(18, 18, 'uploads/coverphenix.jpg'),
+(19, 19, 'uploads/kxeny.jpg'),
+(20, 20, 'uploads/slash.jpg'),
+(21, 21, 'uploads/abc.jpg'),
+(22, 22, 'uploads/az.jpg'),
+(23, 23, 'uploads/faille.jpg'),
+(24, 24, 'uploads/juice.jpg'),
+(25, 25, 'uploads/biscoto.jpg'),
+(26, 26, 'uploads/labas.png'),
+(27, 27, 'uploads/rencontre.png'),
+(28, 28, 'uploads/leculte.png'),
+(29, 29, 'uploads/longcourci.png'),
+(30, 30, 'uploads/So-Young-27.jpg'),
+(31, 31, 'uploads/So-young-26.jpg'),
+(32, 32, 'uploads/So-young-25.jpg'),
+(33, 33, 'uploads/So-young-24.jpg'),
+(34, 34, 'uploads/So-young-23.jpg'),
+(35, 35, 'uploads/So-young-22.jpg'),
+(36, 36, 'uploads/Les-vies-imaginaires.jpg');
 
 -- --------------------------------------------------------
 
@@ -336,7 +413,10 @@ INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_sous_categorie`, `id_cat
 (7, 'auto-fiction', 3, '2020-09-02 16:31:36'),
 (8, 'installations', 2, '2020-09-02 16:31:36'),
 (9, 'théorie', 2, '2020-09-02 16:31:36'),
-(10, 'indépendante', 1, '2020-09-02 16:31:36');
+(10, 'indépendante', 1, '2020-09-02 16:31:36'),
+(11, 'illustrations', 5, '2020-09-02 16:31:36'),
+(12, 'bd ', 6, '2020-09-02 16:31:36'),
+(13, 'manga', 6, '2020-09-02 16:31:36');
 
 -- --------------------------------------------------------
 
@@ -356,21 +436,42 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id_stock`, `id_article`, `nb_articles_stock`, `date_check_stock`) VALUES
-(1, 1, 50, '2020-09-22 18:29:32'),
-(2, 2, 21, '2020-09-21 15:50:01'),
+(1, 1, 47, '2020-09-23 16:21:31'),
+(2, 2, 20, '2020-09-23 11:39:47'),
 (3, 3, 0, '2020-09-03 12:15:53'),
-(4, 4, 43, '2020-09-03 12:22:23'),
+(4, 4, 42, '2020-09-23 11:50:32'),
 (5, 5, 50, '2020-08-14 15:22:15'),
 (6, 6, 47, '2020-09-22 17:24:45'),
 (7, 7, 100, '2020-08-14 15:22:15'),
 (8, 8, 19, '2020-09-06 10:13:23'),
-(9, 9, 37, '2020-09-06 12:35:27'),
-(10, 10, 33, '2020-09-06 12:24:19'),
+(9, 9, 36, '2020-09-24 09:40:51'),
+(10, 10, 32, '2020-09-23 16:21:31'),
 (11, 11, 25, '2020-08-14 15:22:15'),
 (12, 12, 29, '2020-09-06 10:13:23'),
 (13, 13, 29, '2020-09-06 10:29:45'),
-(14, 14, 29, '2020-09-06 10:29:45'),
-(15, 15, 29, '2020-09-06 10:29:45');
+(14, 14, 26, '2020-09-23 11:29:29'),
+(15, 15, 23, '2020-09-23 12:10:12'),
+(16, 16, 78, '2020-09-23 12:10:12'),
+(17, 17, 100, '2020-09-23 12:10:12'),
+(18, 18, 67, '2020-09-23 12:10:12'),
+(19, 19, 98, '2020-09-23 12:10:12'),
+(20, 20, 76, '2020-09-23 12:10:12'),
+(21, 21, 43, '2020-09-23 12:10:12'),
+(22, 22, 20, '2020-09-23 12:10:12'),
+(23, 23, 67, '2020-09-23 12:10:12'),
+(24, 24, 32, '2020-09-23 12:10:12'),
+(25, 25, 11, '2020-09-23 12:10:12'),
+(26, 26, 11, '2020-09-23 12:10:12'),
+(27, 27, 76, '2020-09-23 12:10:12'),
+(28, 28, 13, '2020-09-23 12:10:12'),
+(29, 29, 34, '2020-09-23 12:10:12'),
+(30, 30, 43, '2020-09-23 12:10:12'),
+(31, 31, 43, '2020-09-23 12:10:12'),
+(32, 32, 67, '2020-09-23 12:10:12'),
+(33, 33, 43, '2020-09-23 12:10:12'),
+(34, 34, 98, '2020-09-23 12:10:12'),
+(35, 35, 54, '2020-09-23 12:10:12'),
+(38, 36, 23, '2020-09-23 12:10:12');
 
 -- --------------------------------------------------------
 
@@ -401,7 +502,21 @@ INSERT INTO `transactions` (`id_transaction`, `id_utilisateur`, `id_commande`, `
 (25, 27, 113, 103.9, '2020-09-21 15:51:59'),
 (26, 26, 114, 17.9, '2020-09-22 17:24:45'),
 (27, 26, 115, 101.9, '2020-09-22 18:16:19'),
-(28, 26, 116, 51.9, '2020-09-22 18:29:32');
+(28, 26, 116, 51.9, '2020-09-22 18:29:32'),
+(29, 26, 117, 15.9, '2020-09-23 11:11:33'),
+(30, 26, 118, 5.9, '2020-09-23 11:16:07'),
+(31, 26, 119, 9.9, '2020-09-23 11:19:33'),
+(32, 26, 120, 9.9, '2020-09-23 11:22:27'),
+(33, 26, 121, 9.9, '2020-09-23 11:26:37'),
+(34, 26, 122, 11.9, '2020-09-23 11:29:29'),
+(35, 26, 123, 9.9, '2020-09-23 11:32:50'),
+(36, 26, 124, 9.9, '2020-09-23 11:33:26'),
+(37, 26, 125, 27.9, '2020-09-23 11:39:47'),
+(38, 26, 126, 53.9, '2020-09-23 11:42:53'),
+(39, 26, 127, 73.9, '2020-09-23 11:50:32'),
+(40, 26, 128, 11.9, '2020-09-23 12:10:12'),
+(41, 26, 129, 69.9, '2020-09-23 16:21:31'),
+(42, 26, 130, 23.9, '2020-09-24 09:40:51');
 
 -- --------------------------------------------------------
 
@@ -574,7 +689,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `categorie`
@@ -586,25 +701,25 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT for table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `detail_commande`
 --
 ALTER TABLE `detail_commande`
-  MODIFY `id_detail_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id_detail_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `image_article`
 --
 ALTER TABLE `image_article`
-  MODIFY `id_image_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_image_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `livraison`
@@ -640,19 +755,19 @@ ALTER TABLE `news_index`
 -- AUTO_INCREMENT for table `sous_categorie`
 --
 ALTER TABLE `sous_categorie`
-  MODIFY `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `utilisateurs`
