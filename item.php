@@ -47,7 +47,7 @@ button {
                               $query = $db->query("SELECT * FROM wishlist WHERE id_utilisateur = $id_user AND id_article= $id_article");
 
             if (count($query) >= 1 ) {?>
-<ion-icon name="heart-sharp"></ion-icon> <?php    } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
+<ion-icon name="heart-sharp"></ion-icon> <?php   } else { # Si les deux sont faux, alors on peut ajouter à la wishlist
 ?>
 
 <form method="post" action="action_wishlist.php" class="form" id="userForm">
@@ -59,10 +59,11 @@ button {
 
 
 </form>
-<?php }
-} ?>
+<?php } } else {
+ ?>
 <a href="connexion.php"><ion-icon name="heart-outline">
 </ion-icon></a>
+<?php } ?>
                     <h1><?= ($item['nom_article'])?></h1>
                     <h2>par <?= ($item['auteur_article']).', '.($item['editions_article'])?></h2>
                         <aside id="ex-item">exemplaires disponibles : <?= ($item['nb_articles_stock'])?></aside>
@@ -121,7 +122,8 @@ button {
 
             <?php
                     }
-                } ?>
+                }
+              } ?>
             </section>
 
         </section>
