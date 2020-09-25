@@ -37,6 +37,16 @@ class Order{
 		return $delivery; 
 			
     }
+
+    public function delivery_id($prix_delivery){
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM livraison WHERE prix_livraison = $prix_delivery ");
+        $q->execute();
+		$selected_delivery = $q->fetch();
+		
+		return $selected_delivery; 
+			
+    }
     
     // ESTIMATION PRIX TOTAL AVANT VALIDATION COMMANDE
     public function estimation($total_panier, $default_delivery) {
@@ -46,7 +56,7 @@ class Order{
         return $calcul;
     }
 
-    public function register_order( $firstname, $lastname, $address, $delivery_choice, $nb_article, $sous_total, $prix_total)
+    public function register_order( $firstname, $lastname, $address, $delivery_choice, $id_delivery, $nb_article, $sous_total, $prix_total)
     {
         $connexion = $this->db->connectDb();
 
@@ -93,12 +103,13 @@ class Order{
 
              // ENREGISTREMENT DANS LA TABLE FACTURE
             $q2 = $connexion->prepare(
-                "INSERT INTO facture (id_commande, nbr_total_articles, prix_total_articles, prix_livraison, adresse_facturation, prix_total, id_utilisateur, date_facturation) VALUES (:id_commande, :nbr_total_articles, :prix_total_articles, :prix_livraison, :adresse_facturation, :prix_total, :id_utilisateur, NOW())"
+                "INSERT INTO facture (id_commande, nbr_total_articles, prix_total_articles, prix_livraison, id_livraison, adresse_facturation, prix_total, id_utilisateur, date_facturation) VALUES (:id_commande, :nbr_total_articles, :prix_total_articles, :prix_livraison, :id_livraison, :adresse_facturation, :prix_total, :id_utilisateur, NOW())"
             );
             $q2->bindParam(':id_commande', $id_commande, PDO::PARAM_INT);
             $q2->bindParam(':nbr_total_articles', $nb_article, PDO::PARAM_INT);
             $q2->bindParam(':prix_total_articles', $sous_total, PDO::PARAM_STR);
             $q2->bindParam(':prix_livraison', $delivery_choice, PDO::PARAM_STR);
+            $q2->bindParam(':id_livraison', $id_delivery, PDO::PARAM_INT);
             $q2->bindParam(':adresse_facturation', $address, PDO::PARAM_STR);
             $q2->bindParam(':prix_total', $prix_total, PDO::PARAM_STR);
             $q2->bindParam(':id_utilisateur', $id_user, PDO::PARAM_INT);
@@ -195,9 +206,20 @@ class Order{
     public function all_orders($id_user){
 
         $connexion = $this->db->connectDb();
-        $q = $connexion->prepare("SELECT * FROM commande WHERE id_utilisateur = $id_user ORDER by date_commande DESC");
+        $q = $connexion->prepare("SELECT * FROM commande WHERE commande.id_utilisateur = $id_user ORDER by date_commande DESC");
         $q->execute();
         $all_orders = $q->fetchAll();
+
+        return $all_orders;
+    }
+
+    
+    public function all_order($id_user){
+
+        $connexion = $this->db->connectDb();
+        $q = $connexion->prepare("SELECT * FROM commande INNER JOIN facture ON commande.id_commande = facture.id_commande WHERE commande.id_utilisateur = $id_user ORDER by date_commande DESC");
+        $q->execute();
+        $all_orders = $q->fetchAll(PDO::FETCH_OBJ);
 
         return $all_orders;
     }
