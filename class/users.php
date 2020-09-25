@@ -161,9 +161,9 @@ class Users
         $this->newsletter = ($_POST['newsletter']);
         //var_dump($this->newsletter);
             $q3 = $connexion->prepare(
-                "INSERT INTO newsletter(email_utilisateur) VALUES (:email)"
+                "INSERT INTO newsletter(email_utilisateur) VALUES (:email_utilisateur)"
             );
-            $q3->bindParam(':email', $email, PDO::PARAM_STR);
+            $q3->bindParam(':email_utilisateur', $email, PDO::PARAM_STR);
             $q3->execute();
             header('location:connexion.php');
     }
@@ -177,17 +177,18 @@ class Users
         if (!$email_required) {
             $errors[] = "L'email n'est pas conforme.";
         }
-        $q = $connexion->prepare("SELECT email_utilisateur FROM newsletter WHERE email = :email");
-        $q->bindParam(':email', $email, PDO::PARAM_STR);
+        $q = $connexion->prepare("SELECT email_utilisateur FROM newsletter WHERE email_utilisateur = :email_utilisateur");
+        $q->bindParam(':email_utilisateur', $email, PDO::PARAM_STR);
         $q->execute();
         $email_check = $q->fetch();
         if (!empty($email_check)) {
             $errors[] = "Cette adresse mail est déjà utilisée.";
         }
         if (empty($errors)) {
-            $q1 = $connexion->prepare("INSERT INTO newsletter(email_utilisateur) VALUES (:email)");
-            $q1->bindParam(':email', $email, PDO::PARAM_STR);
+            $q1 = $connexion->prepare("INSERT INTO newsletter(email_utilisateur) VALUES (:email_utilisateur)");
+            $q1->bindParam(':email_utilisateur', $email, PDO::PARAM_STR);
             $q1->execute();
+            $errors[] = "Vous êtes inscrit(e).";
         }
         else {
             $message = new messages($errors);

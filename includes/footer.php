@@ -31,18 +31,12 @@
                     <input type="submit" name="newsletter" id="btnnews" value="newsletter">
                 </form>
 
-<?php
+        <?php
 
-                if (isset($_POST['newsletter']))
-                {
-
-
-
-                  echo "vous êtes inscrit(e)!";
-                }
-
-
-?>
+        if (isset($_POST['newsletter'])){
+            $user->newsletter_footer($_POST['email']);
+        }
+        ?>
 
             </section>
             <section id="end-logo">
