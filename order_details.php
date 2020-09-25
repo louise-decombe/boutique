@@ -100,7 +100,7 @@
             <?php }
 
                 if(isset ($_POST['submit'])){
-                var_dump($_POST['statut']);
+                //var_dump($_POST['statut']);
                 $statut_order = $admin_changes->change_status($detail_order[0]['id_commande'], $_POST['statut']);
                 echo '<a href="javascript:history.go(-2)">retour aux commandes</a>';
                 }
