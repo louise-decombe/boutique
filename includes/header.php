@@ -3,7 +3,6 @@ require 'class/db.php';
 require 'class/panier.php';
 require 'class/users.php';
 require 'class/categories.php';
-
 session_start();
 $db = new DB();
 $panier = new Panier($db);
@@ -30,10 +29,12 @@ if (isset($_POST["deco"])) {
     </a>
     <section id="first-nav">
         <section id="loupe">
-            <form id="search-form" action="search.php" method="GET">
-               <input class=search type="search" name="search" placeholder="Recherche..." />
-               <input type="submit" value="Valider"><i class="fa fa-search"></i> </input>
-            </form>
+          <form id="search-form" action="search.php" method="post">
+
+           <input type='text'   class=search placeholder='recherche' name="recherche_valeur"/>
+
+            <i class="fa fa-search"><button type="submit" name="search"></button></i>
+         </form>
         </section>
         <a href="index.php"><h2>FANZINE BOOKSTORE</h2></a>
         <nav>
@@ -44,18 +45,18 @@ if (isset($_POST["deco"])) {
 
               {
                   ?>
-              <ul>
+
                <li>
-                   <a href="admin.php"><img src="https://img.icons8.com/material-sharp/48/000000/maintenance.png"/>admin</a>
+                   <a href="admin.php"><ion-icon name="construct-outline"></ion-icon></a>
                </li>
-             </ul>
-           <?php } ?>
+
+           <?php }else{?>
 
                 <div class="dropdown">
                     <li>
                         <ul>
                             <li id="basket">
-                                <a href="panier.php"><i class="fas fa-shopping-basket"></i></a>
+                                <a href="panier.php"><ion-icon name="basket"></ion-icon></a>
                             </li>
                             <div class="dropdown-content">
                             <?php // récupération des informations de session pour le panier avec array_keys qui sont les clés du tableau
@@ -89,7 +90,7 @@ if (isset($_POST["deco"])) {
                 </div>
 
                 <?php
-                if (isset($_SESSION['user'])){
+                if (isset($_SESSION['user']) && ($_SESSION['user']['is_admin'] == 0)){
                 ?>
                 <div class="dropdown">
                     <li>
@@ -100,9 +101,7 @@ if (isset($_POST["deco"])) {
                             <div class="dropdown-content2">
                             <li id="dropdown-title">bonjour @ <?= $_SESSION['user']['firstname'] ?></li>
                             <li><a class="dropdownlist" href="profil.php">MES INFORMATIONS</a></li>
-                            <li><a class="dropdownlist" href="orders.php">MES COMMANDES</a></li>
-                            <li><a class="dropdownlist" href="deliveries.php">MES LIVRAISONS</a></li>
-                            <li><a class="dropdownlist" href="profil.php">CHANGER LE PASSWORD</a></li>
+                            <li><a class="dropdownlist" href="orders_track.php">MES COMMANDES</a></li>
                             <li><a class="dropdownlist" href="wishlist.php">WHISHLIST</a></li>
                             <li>
                                 <form action="index.php" method="post">
@@ -114,10 +113,11 @@ if (isset($_POST["deco"])) {
                         </ul>
                     </li>
                 </div>
+            <?php } }?>
             <?php
-                }else{
+                if(empty($_SESSION['user'])){
             ?>
-            <li><a href="connexion.php"><i class="far fa-user"></i></a></li>
+            <li><a id="icon-profile" href="connexion.php"><i class="far fa-user"></i></a></li>
             <?php }  ?>
             </ul>
         </nav>
@@ -126,7 +126,7 @@ if (isset($_POST["deco"])) {
         <nav>
             <ul>
                 <?php $categorie = $category->categories();?>
-                <li><a href="about.php">QUI SOMMES NOUS ?</a></li>
+                <li><a href="category.php">voir tout</a></li>
                 <?php if (isset($_SESSION['user'])){ ?>
                 <form action="index.php" method="post">
                     <input id="deco1" name="deco" value="DECONNEXION" type="submit"/>
@@ -136,4 +136,3 @@ if (isset($_POST["deco"])) {
         </nav>
     </section>
 </header>
-
