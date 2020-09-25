@@ -1,0 +1,243 @@
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*** CONFIRMATION-ORDER ***/
+#container-order{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-bottom:5%;
+}
+
+#container-order nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    border-top: 0.3px solid gainsboro;
+    border-bottom: 0.3px solid gainsboro;
+}
+
+#container-order nav ul{
+    display: flex;
+    font-size:12px;
+}
+
+#container-order nav ul li{
+    padding : 20px;
+}
+
+#header-order-details{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    margin-top: -5%;
+    background: url(background/banner1.jpg);
+    background-size: cover;
+    color:black;
+    letter-spacing: 2px;
+}
+
+#header-order-details h1{
+    display: flex;
+    padding: 20px;
+    background-color: rgba(208, 208, 208, 0.7);
+}
+
+#sub-details-order{
+    display:flex;
+    justify-content: center;
+    padding-top: 2.5%;
+}
+
+#infos-details-order{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:0.5px solid gray;
+    padding: 2.5%;
+    
+}
+#infos-details-order h2,#infos-details-order h3{
+    display: flex;
+    justify-content: center;
+    width:80%;
+    padding-bottom: 1.5%;
+}
+
+#infos-box1{
+    display: flex;
+    flex-direction: column;
+    border-bottom:0.5px solid gray;
+    padding-bottom: 2.5%;
+}
+#infos-box1 ul li{
+    font-family: 'Exo', sans-serif;
+    padding-top:5px;
+}
+
+#infos-box2{
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    margin-top: 1.5%;
+}
+
+#infos-box2-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+#infos-box2-details ul li{
+    font-family: 'Exo', sans-serif;
+    font-size: 12px;
+}
+
+
+#recap-img{
+    width:50px;
+    height: 70px;
+}
+
+#link-confirmation-message{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    margin-top: 5%;
+    min-height: 10vh;
+    line-height: 25px;
+}
+
+#link-confirmation-message p, a{
+    font-family: 'Exo', sans-serif;
+    color:gray;
+}
+
+#link-confirmation-message a:hover{
+    border-bottom:0.2px solid gray;
+}
+
+
+/*** ORDER ***/ 
+
+@media screen and (max-width: 1315px){
+
+    #container-order nav ul{
+        display: flex;
+        font-size:10px;
+        margin-top: 7.5%;
+    }
+    
+    #container-order nav ul li{
+        padding : 10px;
+    }
+
+    #container-delivery{
+        flex-direction: column;
+        align-items: center;
+  
+    }
+
+    
+    
+#link-confirmation-message{
+    display: flex;
+    flex-direction: column;
+    color:gray;
+    align-items:center;
+    justify-content:center;
+    margin-top: 5%;
+    min-height: 10vh;
+}
+
+#link-confirmation-message p, a{
+    font-family: 'Exo', sans-serif;
+    font-weight: 200;
+}
+
+
+
+
+  
+}
+
+@media screen and (max-width: 980px){
+    #container-order nav ul{
+        display: flex;
+        font-size:10px;
+        margin-top: 15%;
+    }
+    
+    #container-order nav ul li{
+        padding : 10px;
+    }
+
+    #container-delivery{
+        flex-direction: column;
+        align-items: center;
+  
+    }
+
+}
+
+@media screen and (max-width: 680px){
+    #container-order nav ul{
+        display: flex;
+        font-size:10px;
+        margin-top: 20%;
+        padding-top:10%;
+    }
+    
+    #container-order nav ul li{
+        padding : 10px;
+    }
+
+    #container-delivery{
+        flex-direction: column;
+        align-items: center;
+  
+    }
+
+    #infos-details-order{
+        width: 80%; 
+    }
+
+    #header-order-details{
+        margin-top: -5%;
+    }
+
+    #header-order-details h1{
+        width: 80%;
+        padding: 10px;
+        background-color: rgba(208, 208, 208, 0.7);
+    }
+
+    #infos-box1 ul li{
+        font-size: 12px;
+    }
+
+    #infos-details-order h2,#infos-details-order h3{
+        font-size: 15px;
+    }
+
+
+    #link-confirmation-message p, a{
+    font-size: 10px;
+    }
+}
+
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
+
+
+
+

@@ -4,6 +4,13 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*** ITEM  ***/
 
+#container-page-item{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    padding-bottom: 5%;
+}
+
 #info-category{
     display: flex;
     width: 80%;
@@ -26,14 +33,17 @@
     justify-content: center;
     background-color:#00FF00;
     border : 1px solid black;
-    height: 85vh;
+    height: 70%;
     width : 35%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
     margin-right : 2.5%;
+    margin-top: 5%;
 }
 
 #box-img-item img{
     width: 90%;
-    height: 90%;
+    height: 80%;
     box-shadow: 6px 6px 10px black;
 }
 
@@ -42,7 +52,7 @@
     padding-left : 2.5%;
     flex-direction: column;
     width: 25%;
-    min-height: 85vh;
+    min-height: 70%;
 }
 
 #presentation-item h1{
@@ -187,7 +197,6 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    height: 60vh;
 }
 
 #similar-article h3{
@@ -217,6 +226,7 @@
     align-items:center;
     width: 80%;
     padding-top: 2.5%;
+    padding-bottom: 5%;
 }
 
 #selection-article{
@@ -235,7 +245,7 @@
 
 #selection-article a img{
     width: 100%;
-    height: 300px;
+    height: 350px;
     margin-bottom:5%;
     box-shadow: 0 0 15px black;
 }
@@ -273,21 +283,83 @@
 }
 
 /*** ITEM ***/
+@media screen and (min-width:981px) and (max-width:1280px){
+
+    #selection-article a img{
+        width: 95%;
+        height: 95%;
+        padding-bottom: 0;
+    }
+
+    
+    
+}
 
 
-@media (max-width: 980px){
+@media screen and (min-width: 681px) and (max-width: 980px){
+    #container-item{
+     
+        padding-top: 15%;
+    
+    }
+    #selection-article a img{
+        width: 95%;
+        height: 95%;
+    }
+
+    #selection-article a {
+        width: 70%;
+    }
+
+}
 
 
+@media (max-width: 681px){
+    #container-item{
+        display: flex;
+        flex-direction: column;
+        padding-top: 45%;
+        padding-bottom: 2.5%;
+    }
+
+    #box-img-item{
+        height: 95%;
+        width : 65%;
+        padding-top: 3.5%;
+        padding-bottom: 3.5%;
+    }
+
+    #presentation-item{
+        padding-left : 2.5%;
+        width: 70%;
+    }
+    
+
+    #selection{
+        padding-top: 5%;
+    }
+
+    #selection-article a img{
+        width: 95%;
+        height: 95%;
+    }
+
+    #selection-article a {
+        width: 100%;
+        font-size: 8px;
+    }
+
+    
   
 }
 
-@media screen and (max-width:700px){
-   
-}
 
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+
 
 
 
