@@ -10,7 +10,7 @@ Louise Décombe
 Sujet
 -----
 
-Projet réalisé dans le cadre de la formation de développeur web de la Plateforme_ Marseille.
+Projet réalisé dans le cadre de la formation de développeur web de la Plateforme_ Marseille full PHP.
 Il s'agit de réaliser une application de e-commerce sur laquelle on peut acheter des fanzine, ces magazines le plus souvent autoédité et en tirage limité.
 
     - Création de compte utilisateurs
